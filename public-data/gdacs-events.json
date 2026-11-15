@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generatedAt": "2026-11-15T09:49:00.464Z",
+  "generatedAt": "2026-11-15T10:33:49.758Z",
   "source": "GDACS",
   "endpoint": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventlist=WF%3BFL%3BTC%3BDR&fromDate=2026-09-16&toDate=2026-11-15&alertlevel=Green%3BOrange%3BRed",
   "currentFeed": "https://www.gdacs.org/xml/rss.xml",
-  "checkedAt": "2026-11-15T09:49:00.464Z",
+  "checkedAt": "2026-11-15T10:33:49.758Z",
   "fromDate": "2026-09-16",
   "toDate": "2026-11-15",
   "count": 193,
@@ -40,7 +40,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033766"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -69,7 +69,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033761"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -98,7 +98,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033715"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -127,7 +127,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033757"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -156,7 +156,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033714"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -185,7 +185,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033736"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -214,7 +214,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033706"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -243,7 +243,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033732"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -272,7 +272,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033753"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -301,7 +301,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033750"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -330,7 +330,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033748"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -359,7 +359,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033745"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -388,7 +388,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033744"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -417,7 +417,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033742"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -446,7 +446,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033737"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -501,7 +501,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -556,7 +556,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -585,7 +585,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033717"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -614,7 +614,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033718"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -643,7 +643,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033734"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -672,7 +672,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033707"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -701,7 +701,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033724"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -730,7 +730,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033695"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -759,7 +759,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033688"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -788,7 +788,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033713"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -817,7 +817,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033705"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -846,7 +846,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033700"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -901,7 +901,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -930,7 +930,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033489"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -959,7 +959,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033675"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -988,7 +988,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033677"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1017,7 +1017,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104253"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1046,7 +1046,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104280"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1075,7 +1075,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033792"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1104,7 +1104,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033779"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1159,7 +1159,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1188,7 +1188,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033770"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1217,7 +1217,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033774"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1272,7 +1272,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1301,7 +1301,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033836"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1330,7 +1330,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033834"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1359,7 +1359,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033833"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1388,7 +1388,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033601"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1417,7 +1417,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033627"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1446,7 +1446,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033619"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1475,7 +1475,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033618"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1504,7 +1504,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033613"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1533,7 +1533,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033612"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1562,7 +1562,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033835"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1591,7 +1591,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033842"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1646,7 +1646,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1701,7 +1701,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1730,7 +1730,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033827"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1759,7 +1759,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033831"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1788,7 +1788,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033786"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1817,7 +1817,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033830"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1846,7 +1846,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033825"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1875,7 +1875,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033563"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1904,7 +1904,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033657"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1933,7 +1933,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033674"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1962,7 +1962,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104276"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -1991,7 +1991,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104271"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2020,7 +2020,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033634"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2049,7 +2049,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033822"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2104,7 +2104,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2133,7 +2133,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033818"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2162,7 +2162,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033817"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2217,7 +2217,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2246,7 +2246,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033806"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2275,7 +2275,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033804"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2304,7 +2304,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033798"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2333,7 +2333,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033793"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2362,7 +2362,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033790"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2417,7 +2417,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2477,7 +2477,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2506,7 +2506,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033787"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2535,7 +2535,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104283"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2564,7 +2564,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033778"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2593,7 +2593,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033777"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2622,7 +2622,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033769"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2651,7 +2651,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001348"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2680,7 +2680,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001347"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2730,7 +2730,7 @@
           "severityunit": "km/h"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2759,7 +2759,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033767"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2788,7 +2788,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033631"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2817,7 +2817,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033499"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2846,7 +2846,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033549"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2875,7 +2875,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033809"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2904,7 +2904,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033693"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2933,7 +2933,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033765"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -2988,7 +2988,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3017,7 +3017,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033451"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3046,7 +3046,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033629"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3101,7 +3101,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3156,7 +3156,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3211,7 +3211,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3266,7 +3266,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3321,7 +3321,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3376,7 +3376,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3431,7 +3431,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3486,7 +3486,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3541,7 +3541,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3596,7 +3596,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3651,7 +3651,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3706,7 +3706,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3761,7 +3761,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3816,7 +3816,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3871,7 +3871,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3926,7 +3926,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -3981,7 +3981,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4036,7 +4036,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4096,7 +4096,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4151,7 +4151,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4206,7 +4206,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4261,7 +4261,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4316,7 +4316,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4371,7 +4371,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4426,7 +4426,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4491,7 +4491,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4546,7 +4546,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4601,7 +4601,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4656,7 +4656,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4716,7 +4716,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4771,7 +4771,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4831,7 +4831,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4886,7 +4886,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -4941,7 +4941,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5001,7 +5001,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5061,7 +5061,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5116,7 +5116,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5171,7 +5171,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5226,7 +5226,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5286,7 +5286,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5341,7 +5341,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5396,7 +5396,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5451,7 +5451,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5506,7 +5506,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5561,7 +5561,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5616,7 +5616,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5671,7 +5671,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5726,7 +5726,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5781,7 +5781,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5836,7 +5836,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5891,7 +5891,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -5946,7 +5946,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6001,7 +6001,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6056,7 +6056,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6111,7 +6111,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6166,7 +6166,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6221,7 +6221,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6276,7 +6276,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6331,7 +6331,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6386,7 +6386,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6441,7 +6441,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6470,7 +6470,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033839"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6525,7 +6525,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6580,7 +6580,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6635,7 +6635,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6690,7 +6690,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6745,7 +6745,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6800,7 +6800,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6855,7 +6855,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6884,7 +6884,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033845"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6939,7 +6939,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -6994,7 +6994,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7049,7 +7049,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7104,7 +7104,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7164,7 +7164,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7219,7 +7219,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7274,7 +7274,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7334,7 +7334,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7389,7 +7389,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7444,7 +7444,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7499,7 +7499,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7554,7 +7554,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7609,7 +7609,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7664,7 +7664,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7719,7 +7719,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7774,7 +7774,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7829,7 +7829,7 @@
           "severityunit": ""
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7858,7 +7858,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=DR&eventid=1027737"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7887,7 +7887,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=DR&eventid=1023877"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7916,7 +7916,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033457"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7945,7 +7945,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033456"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -7974,7 +7974,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033551"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -8003,7 +8003,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033785"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -8032,7 +8032,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033389"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -8087,7 +8087,7 @@
           "severityunit": ""
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -8116,7 +8116,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033652"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -8145,7 +8145,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033394"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -8174,7 +8174,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033436"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -8203,7 +8203,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033537"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     },
@@ -8232,7 +8232,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033458"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-15T09:49:00.464Z",
+        "_verifiedAt": "2026-11-15T10:33:49.758Z",
         "_active": true
       }
     }
