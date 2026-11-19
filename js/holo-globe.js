@@ -17,8 +17,7 @@
     /* 状态 */
     var rotY = -110 * DEG;         /* 初始朝向东亚 */
     var tilt = 20 * DEG;           /* 地轴倾角 */
-    var darkSpin = .021; // Radians per second.
-    var lightSpin = .008;
+    var autoSpin = .008; // Radians per second.
     var zoom = 1;
     var dragging = false;
     var lastX = 0, lastY = 0;
@@ -579,7 +578,7 @@
       lastFrame = timestamp;
       var still = paused || reducedMotion.matches || document.documentElement.classList.contains('reduce-motion');
       if (cv.isConnected && cv.clientWidth && !document.hidden) {
-        if (!dragging && !still) rotY += (lightTheme ? lightSpin : darkSpin) * elapsed;
+        if (!dragging && !still) rotY += autoSpin * elapsed;
         if (dirty || !still) drawGlobe();
         dirty = false;
       }
