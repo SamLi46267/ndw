@@ -703,7 +703,11 @@
     function fillGlobal(data) {
       var k = kpis.querySelectorAll('.ops-kpi b');
       if (k[2]) { k[2].textContent = String((data.earthquakes || []).length); }
-      if (k[3]) { k[3].textContent = 'M' + Number((data.summary && data.summary.max_magnitude) || 0).toFixed(1); }
+      var maximum = data.summary && data.summary.max_magnitude;
+      if (k[3] && (data.earthquakes || []).length && maximum != null && Number.isFinite(Number(maximum))) {
+        k[3].textContent = 'M' + Number(maximum).toFixed(1);
+        k[3].style.color = window.NDCore.magnitudeColor(maximum);
+      }
       var timeEl = document.getElementById('opsGlobalTime');
       if (timeEl) {
         var ts = data.generatedAt || data.fetchedAt;
@@ -715,7 +719,7 @@
         if (top) {
           var old = box.querySelector('[data-global-top]');
           if (old) { old.parentNode.removeChild(old); }
-          box.insertAdjacentHTML('afterbegin', '<a data-global-top href="#/disasters?mode=live&event=' + encodeURIComponent(top.id) + '"><span>M' + Number(top.magnitude).toFixed(1) + ' · ' + esc(web('globalTab')) + '</span><b>' + esc(top.place) + '</b></a>');
+          box.insertAdjacentHTML('afterbegin', '<a data-global-top href="#/disasters?mode=live&event=' + encodeURIComponent(top.id) + '"><span><strong style="color:' + window.NDCore.magnitudeColor(top.magnitude) + '">M' + Number(top.magnitude).toFixed(1) + '</strong> · ' + esc(web('globalTab')) + '</span><b>' + esc(top.place) + '</b></a>');
         }
       }
     }
@@ -751,7 +755,7 @@
       });
       ((results[1] && results[1].earthquakes) || []).forEach(function (q) {
         if (!isFinite(q.longitude) || !isFinite(q.latitude)) return;
-        globeHazards.push({ lng: +q.longitude, lat: +q.latitude, time: +q.timestamp, type: 'quake', color: '#ff9a3c', label: 'M' + q.magnitude + ' · ' + q.place, level: 'normal' });
+        globeHazards.push({ lng: +q.longitude, lat: +q.latitude, time: +q.timestamp, type: 'quake', color: window.NDCore.magnitudeColor(q.magnitude), label: 'M' + q.magnitude + ' · ' + q.place, level: 'normal' });
       });
       globeChinaHazards = [];
       var entries = (results[2] && results[2].entries) || {};
@@ -910,10 +914,10 @@
     if (dbState.category === 'china') { renderDbChina(body); } else if (dbState.category === 'earthquake') { renderDbEarthquake(body); } else { renderDbGdacs(body); }
   }
 
-  function dbStat(label, value, recordIndex) {
+  function dbStat(label, value, recordIndex, magnitude) {
     var action = recordIndex >= 0 ? ' data-kind="earthquake" data-idx="' + recordIndex + '"' : '';
     return '<button type="button" class="detail-card-link" data-action="' + (action ? 'db-row' : 'db-show-records') + '"' + action +
-      '><span>' + esc(label) + '</span><b>' + esc(value) + '</b></button>';
+      '><span>' + esc(label) + '</span><b style="color:' + window.NDCore.magnitudeColor(magnitude) + '">' + esc(value) + '</b></button>';
   }
 
   function renderDbEarthquake(body) {
@@ -935,7 +939,7 @@
     }).join('');
     var html = '<div class="db-stats">' +
       dbStat(web('quakeRecords'), rows.length) +
-      dbStat(web('maxMagnitude'), rows.length ? 'M' + max.toFixed(1) : '—', rows.findIndex(function (r) { return Number(r[4]) === max; })) +
+      dbStat(web('maxMagnitude'), rows.length ? 'M' + max.toFixed(1) : '—', rows.findIndex(function (r) { return Number(r[4]) === max; }), rows.length ? max : null) +
       dbStat(web('historyRange'), dbDateShort(range[0]) + ' → ' + dbDateShort(range[1])) +
       '</div>' +
       '<div class="db-toolbar">' +
@@ -949,7 +953,7 @@
       '</tr></thead><tbody>' +
       (slice.length ? slice.map(function (r, i) {
         var mag = Number(r[4]);
-        return '<tr class="db-row" data-action="db-row" data-kind="earthquake" data-idx="' + (start + i) + '" tabindex="0"><td>' + esc(dbFormat(r[0])) + '</td><td><span class="db-mag ' + (mag >= 7 ? 'm7' : mag >= 6 ? 'm6' : mag >= 5 ? 'm5' : 'm4') + '">M' + mag.toFixed(1) + '</span></td>' +
+        return '<tr class="db-row" data-action="db-row" data-kind="earthquake" data-idx="' + (start + i) + '" tabindex="0"><td>' + esc(dbFormat(r[0])) + '</td><td><span class="db-mag" style="color:' + window.NDCore.magnitudeColor(mag) + '">M' + mag.toFixed(1) + '</span></td>' +
           '<td>' + esc(r[5]) + '</td><td>' + Number(r[3]).toFixed(1) + ' km</td><td>' + Number(r[1]).toFixed(2) + '°, ' + Number(r[2]).toFixed(2) + '°</td></tr>';
       }).join('') : '<tr><td colspan="5" class="db-empty">' + esc(web('noMatch')) + '</td></tr>') +
       '</tbody></table></div>' + dbPager(pages);
@@ -1023,8 +1027,8 @@
     body.innerHTML = html;
   }
 
-  function dbField(label, value) {
-    return '<div><span>' + esc(label) + '</span><b>' + esc(value == null || value === '' ? '—' : String(value)) + '</b></div>';
+  function dbField(label, value, magnitude) {
+    return '<div><span>' + esc(label) + '</span><b style="color:' + (magnitude == null ? 'var(--text)' : window.NDCore.magnitudeColor(magnitude)) + '">' + esc(value == null || value === '' ? '—' : String(value)) + '</b></div>';
   }
   function showDbDetail(kind, idx) {
     var modal = document.getElementById('dbModal');
@@ -1050,10 +1054,10 @@
       html = '<div class="db-modal-card" role="dialog" aria-modal="true">' +
         '<button type="button" class="db-modal-close" data-action="db-close" aria-label="Close">×</button>' +
         '<div class="gkicker">' + esc(web('earthquakeType')) + '</div>' +
-        '<h2>M' + mag.toFixed(1) + ' · ' + esc(r[5]) + '</h2>' +
+        '<h2><span style="color:' + window.NDCore.magnitudeColor(mag) + '">M' + mag.toFixed(1) + '</span> · ' + esc(r[5]) + '</h2>' +
         '<div class="db-detail-grid">' +
           dbField(web('dataTime'), dbFormat(r[0])) +
-          dbField(web('magnitude'), 'M' + mag.toFixed(1)) +
+          dbField(web('magnitude'), 'M' + mag.toFixed(1), mag) +
           dbField(web('depth'), Number(r[3]).toFixed(1) + ' km') +
           dbField(web('coordinates'), Number(r[1]).toFixed(2) + '°, ' + Number(r[2]).toFixed(2) + '°') +
           dbField(web('locationLabel'), r[5]) +

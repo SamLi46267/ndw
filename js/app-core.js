@@ -209,7 +209,18 @@
   };
   function web(key) { var l = lang(); return (WEB[key] && WEB[key][l]) || WEB[key].zh; }
 
+  function magnitudeColor(value) {
+    if (value == null || value === '' || !Number.isFinite(Number(value))) return 'inherit';
+    var magnitude = Number(value);
+    if (magnitude >= 7) return '#ff5265';
+    if (magnitude >= 6) return '#ff7452';
+    if (magnitude >= 5) return '#ff9d45';
+    if (magnitude >= 4) return '#ffc069';
+    return '#ffdb9b';
+  }
+
   window.NDCore = {
+    magnitudeColor: magnitudeColor,
     esc: esc,
     pad: pad,
     lang: lang,
