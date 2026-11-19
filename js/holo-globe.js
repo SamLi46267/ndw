@@ -17,7 +17,8 @@
     /* 状态 */
     var rotY = -110 * DEG;         /* 初始朝向东亚 */
     var tilt = 20 * DEG;           /* 地轴倾角 */
-    var autoSpin = 0.00035;
+    var darkSpin = .021; // Radians per second.
+    var lightSpin = .008;
     var zoom = 1;
     var dragging = false;
     var lastX = 0, lastY = 0;
@@ -26,7 +27,7 @@
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     var resizeObserver = window.ResizeObserver ? new ResizeObserver(resize) : null;
     var observedContainer = null;
-    var lightPanel = false;
+    var lightTheme = false;
 
     /* 颜色 */
     var darkPalette = {
@@ -156,10 +157,9 @@
     }
 
     function resize() {
-      var panel = cv.closest('.main-globe');
-      var container = panel || cv.closest('.hero');
-      lightPanel = Boolean(panel);
-      COL = lightPanel ? lightPalette : darkPalette;
+      var container = cv.closest('.hero');
+      lightTheme = document.documentElement.dataset.theme === 'light';
+      COL = lightTheme ? lightPalette : darkPalette;
       if (resizeObserver && container !== observedContainer) {
         resizeObserver.disconnect();
         if (container) { resizeObserver.observe(container); }
@@ -175,15 +175,12 @@
       cx = W * 0.72;
       cy = H * 0.48;
       R = Math.min(H * 0.46, W * 0.32) * zoom;
-      if (lightPanel) {
-        cx = W * .5;
-        cy = H * .47;
-        R = Math.min(H * .4, W * .36) * zoom;
-      } else if (W < 900) {
+      if (W < 900) {
         cx = W * .85;
         cy = H * .4;
         R = Math.min(H * .4, W * .64) * zoom;
       }
+      if (lightTheme) { R *= 1.12; }
       dirty = true;
     }
 
@@ -490,7 +487,7 @@
         var rr2 = 3.5 + pulse * 3.5;
         ctx.save();
         ctx.globalAlpha = 0.55 + front * 0.45;
-        ctx.strokeStyle = lightPanel ? '#3d5c52' : (c.color || COL.cityBase);
+        ctx.strokeStyle = lightTheme ? '#3d5c52' : (c.color || COL.cityBase);
         ctx.lineWidth = 1.2;
         ctx.beginPath();
         ctx.arc(pp.sx, pp.sy, rr2, 0, Math.PI * 2);
@@ -499,11 +496,11 @@
         ctx.beginPath();
         ctx.arc(pp.sx, pp.sy, 2.6 + front * 1.6, 0, Math.PI * 2);
         ctx.fill();
-        if (lightPanel) { ctx.stroke(); }
+        if (lightTheme) { ctx.stroke(); }
         if (c.label && pp.depth > .35) {
-          if (lightPanel && labelBoxes.length < 10) {
+          if (lightTheme && labelBoxes.length < 10) {
             drawLightLabel(c.label, pp, labelBoxes);
-          } else if (!lightPanel && labels < 10) {
+          } else if (!lightTheme && labels < 10) {
             ctx.font = '11px system-ui, sans-serif';
             ctx.fillStyle = '#e5f3ec';
             ctx.fillText(c.label.length > 36 ? c.label.slice(0, 35) + '…' : c.label, pp.sx + 9, pp.sy - 8);
@@ -562,15 +559,17 @@
       }
     }
 
-    var raf = null;
-    function loop() {
+    var lastFrame;
+    function loop(timestamp) {
+      var elapsed = lastFrame == null ? 0 : Math.min(timestamp - lastFrame, 50) / 1000;
+      lastFrame = timestamp;
       var still = paused || reducedMotion.matches || document.documentElement.classList.contains('reduce-motion');
       if (cv.isConnected && cv.clientWidth && !document.hidden) {
-        if (!dragging && !still) rotY += autoSpin;
+        if (!dragging && !still) rotY += (lightTheme ? lightSpin : darkSpin) * elapsed;
         if (dirty || !still) drawGlobe();
         dirty = false;
       }
-      raf = requestAnimationFrame(loop);
+      requestAnimationFrame(loop);
     }
 
     /* ---- 交互：拖拽 ---- */
@@ -605,7 +604,7 @@
     reducedMotion.addEventListener('change', function () { dirty = true; });
 
     resize();
-    loop();
+    requestAnimationFrame(loop);
 
     return {
       setCities: setCities,

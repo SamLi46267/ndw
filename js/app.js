@@ -785,14 +785,6 @@
       '<span>' + esc(web(light ? 'darkTheme' : 'lightTheme')) + '</span>';
   }
 
-  function placeMainGlobe() {
-    if (!globe || !bgCanvas) { return; }
-    var panel = document.documentElement.dataset.theme === 'light' && viewEl.querySelector('.main-globe');
-    if (panel) { panel.appendChild(bgCanvas); }
-    else { document.body.insertBefore(bgCanvas, document.getElementById('app')); }
-    globe.resize();
-  }
-
   function toggleTheme(button) {
     var root = document.documentElement;
     var theme = root.dataset.theme === 'light' ? 'dark' : 'light';
@@ -800,7 +792,7 @@
     document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f4f6f2' : '#101010';
     try { localStorage.setItem('ndw-theme', theme); } catch (error) { /* The active theme still works. */ }
     button.innerHTML = themeButtonContent();
-    placeMainGlobe();
+    if (globe) { globe.resize(); }
   }
 
   function renderMainPage() {
@@ -826,14 +818,13 @@
             '<a class="btn btn-outline" href="#/global">' + esc(web('mainGlobalCta')) + ' →</a>' +
           '</div>' +
         '</section>' +
-        '<div class="main-globe" aria-hidden="true"></div>' +
         '<section class="main-overview" aria-label="' + esc(web('situationOverview')) + '">' + homeDashboardHtml(s, t) + '</section>' +
       '</div>' +
     '</div>';
     viewEl.innerHTML = html;
     document.title = web('mainTab');
     document.body.classList.add('main-page');
-    placeMainGlobe();
+    if (globe) { globe.resize(); }
     hydrateHomeDashboard();
     loadGlobeHazards();
     explainView();
