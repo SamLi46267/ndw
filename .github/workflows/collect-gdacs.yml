@@ -2,6 +2,7 @@ name: Collect GDACS events
 
 on:
   push:
+    branches: [main]
     paths:
       - 'backend/collect-gdacs.mjs'
       - 'backend/parse-gdacs-feed.py'
@@ -27,6 +28,8 @@ jobs:
       name: github-pages
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -45,14 +48,4 @@ jobs:
           git commit -m "Publish GDACS snapshot [skip ci]"
           git pull --rebase origin main
           git push
-      - uses: actions/configure-pages@v5
-      - name: Stage site
-        run: |
-          mkdir -p "$RUNNER_TEMP/ndw-public"
-          cp index.html CNAME favicon.svg sw.js manifest.webmanifest robots.txt sitemap.xml "$RUNNER_TEMP/ndw-public/"
-          cp -R js css assets public-data "$RUNNER_TEMP/ndw-public/"
-          ALLOW_STALE_DATA=1 node backend/prepare-site.mjs "$RUNNER_TEMP/ndw-public"
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ runner.temp }}/ndw-public
-      - uses: actions/deploy-pages@v4
+      - uses: ./.github/actions/publish-pages

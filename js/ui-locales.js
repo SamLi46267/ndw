@@ -365,6 +365,11 @@
     "fr": "Suivant",
     "it": "Successivo"
   },
+  "Live data updates are overdue.": {
+    "es": "Las actualizaciones de datos en tiempo real llevan retraso.",
+    "fr": "Les mises à jour des données en direct sont en retard.",
+    "it": "Gli aggiornamenti dei dati in tempo reale sono in ritardo."
+  },
   "Some data sources could not be loaded; showing available records.": {
     "es": "No se pudieron cargar algunas fuentes; se muestran los registros disponibles.",
     "fr": "Certaines sources n’ont pas pu être chargées ; les enregistrements disponibles sont affichés.",

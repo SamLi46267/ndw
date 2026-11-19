@@ -1,0 +1,17 @@
+name: Publish public site
+description: Stage and deploy the static site with current repository snapshots
+runs:
+  using: composite
+  steps:
+    - uses: actions/configure-pages@v5
+    - name: Stage site
+      shell: bash
+      run: |
+        mkdir -p "$RUNNER_TEMP/ndw-public"
+        cp index.html CNAME favicon.svg sw.js manifest.webmanifest robots.txt sitemap.xml "$RUNNER_TEMP/ndw-public/"
+        cp -R js css assets public-data "$RUNNER_TEMP/ndw-public/"
+        ALLOW_STALE_DATA=1 node backend/prepare-site.mjs "$RUNNER_TEMP/ndw-public"
+    - uses: actions/upload-pages-artifact@v3
+      with:
+        path: ${{ runner.temp }}/ndw-public
+    - uses: actions/deploy-pages@v4
