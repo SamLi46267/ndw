@@ -1170,12 +1170,10 @@
         (nationalSweeping ? '<span class="map-scan-spin"></span>' + esc(t.scanning)
                           : SVG.refresh + esc(safetyText('refreshPublished'))) +
         '</button></div>' +
-      '<div class="map-meta"><p class="map-hint">' + esc(web('expandMap')) + ' ↗</p>' +
+      '<div class="map-meta"><a class="map-hint" href="#/map">' + esc(web('expandMap')) + ' ↗</a>' +
       '<p class="map-hint" id="mapCoverage" role="status">' + esc(web('coverage')) + ': ' + api.getSnapshotInfo().checked + ' / ' + api.getSnapshotInfo().total + '</p>' +
       '</div>' +
-      '<a class="map-preview-link" href="#/map" aria-label="' + esc(web('expandMap')) + '">' +
-        '<div class="china-map-wrap" id="chinaMapWrap"></div>' +
-      '</a>' +
+      '<div class="map-preview"><div class="china-map-wrap" id="chinaMapWrap"></div></div>' +
       '<div class="map-legend">' +
         '<span><i class="status-dot status-none"></i>' + esc(safetyText('lastNoAlerts')) + '</span>' +
         '<span><i class="status-dot status-normal"></i>' + esc(safetyText('lastAlerts')) + '</span>' +
@@ -1305,14 +1303,20 @@
     html += '</section></div></div>';
 
     html += '</div>';
+    var warningsFocused = document.activeElement.id === 'localHeading';
     viewEl.innerHTML = html;
+    if (warningsFocused) {
+      var heading = document.getElementById('localHeading');
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    }
     document.title = web('chinaTab');
     explainView();
 
     /* 中国态势图 */
     var wrap = document.getElementById('chinaMapWrap');
     if (wrap) {
-      chinaMap = __require('china-holo').create(wrap);
+      chinaMap = __require('china-holo').create(wrap, onMapClickCity);
       chinaMap.setStatus(sessionStatus);
       setChinaBase(chinaBase);
       hydrateNationalStatus();   /* 立即显示上次扫描结果 */
@@ -1326,11 +1330,12 @@
     hydrateHomeDashboard();
   }
 
-  function onMapClickCity(adcode, name) {
+  function onMapClickCity(adcode) {
     var geo = districts.getCityGeo(adcode);
     if (!geo) { return; }
     applyRegion({ province: geo.province, city: geo.name, adcode: adcode, district: '' });
-    if ((location.hash || '') !== '#/china') { location.hash = '#/china'; } else { renderHome(); }
+    var destination = '#/china?section=alerts';
+    if (location.hash === destination) { route(); } else { location.hash = destination; }
     pickerEl.innerHTML = '';
   }
 
@@ -1364,13 +1369,7 @@
     '</div></section>';
     document.title = t.nationalSituation;
     explainView();
-    chinaMap = __require('china-holo').create(document.getElementById('expandedMap'), function (adcode) {
-      inspectMapCity(adcode);
-      document.querySelector('#cityInspection button').focus({ preventScroll: true });
-    }, function (adcode) {
-      // Keep an explicitly chosen city stable while its action button has focus.
-      if (!document.activeElement.closest('#cityInspection')) inspectMapCity(adcode);
-    });
+    chinaMap = __require('china-holo').create(document.getElementById('expandedMap'), onMapClickCity, inspectMapCity);
     chinaMap.setStatus(sessionStatus);
     setChinaBase(chinaBase);
     hydrateNationalStatus();
@@ -1396,7 +1395,7 @@
       '<p>' + esc(reliability.checkedAt(state.checkedAt, lang())) + '</p>' +
       (Number.isInteger(state.count) ? '<p>' + esc(safetyText('scanCount').replace('{n}', state.count)) + '</p>' : '') +
       (historical ? '<p class="history-notice">' + esc(safetyText('historyNotice')) + '</p>' : '') + '</div>' +
-      '<button class="btn btn-outline" data-action="view-map-city" data-adcode="' + esc(adcode) + '">' + esc(safetyText('viewWarnings')) + '</button>' + window.NDRescue.button('China', city.name, lang());
+      window.NDRescue.button('China', city.name, lang());
     box.dataset.signature = signature;
     document.querySelectorAll('#expandedMap .ch-city').forEach(function (node) { node.classList.toggle('is-selected', node.getAttribute('data-city') === adcode); });
   }
@@ -2531,7 +2530,6 @@
         if (d.v === 'prev') { dbState.page = Math.max(1, dbState.page - 1); } else { dbState.page += 1; }
         renderDbBody();
         break;
-      case 'view-map-city': onMapClickCity(d.adcode); break;
       case 'open-picker': openPicker(); break;
       case 'open-district': openDistrictPicker(); break;
       case 'close-picker': closePicker(); break;
