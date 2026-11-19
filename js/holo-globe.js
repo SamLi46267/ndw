@@ -180,7 +180,21 @@
         cy = H * .4;
         R = Math.min(H * .4, W * .64) * zoom;
       }
-      if (lightTheme) { R *= 1.12; }
+      if (lightTheme && !container) {
+        var nav = document.querySelector('#navbar .navbar');
+        var sidebar = window.matchMedia('(min-width: 981px)').matches;
+        var margin = W < 900 ? 20 : 28;
+        var left = margin + (sidebar && nav ? nav.offsetWidth : 0);
+        var top = margin + (!sidebar && nav ? nav.offsetHeight : 0);
+        var right = W - margin;
+        var bottom = H - margin;
+
+        // Leave room for the globe above its decorative ground rings.
+        var fitRadius = Math.min((right - left) / 2, (bottom - top) / 2.25);
+        R = Math.max(1, Math.min(R, fitRadius));
+        cx = Math.max(left + R, Math.min(cx, right - R));
+        cy = Math.max(top + R, Math.min(cy, bottom - 1.25 * R));
+      }
       dirty = true;
     }
 
