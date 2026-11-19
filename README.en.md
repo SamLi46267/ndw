@@ -1,101 +1,67 @@
-*English translation of [README.md](README.md).*
+# Natural Disaster Alert System
 
-# Natural Disaster Early Warning (Web Edition)
+[简体中文](README.md) · [Open the website](https://geowarning.cn/)
 
-## Features and Data Notes
+A static, mobile-friendly site for checking disaster reports and finding preparedness resources. The interface supports Chinese, English, Spanish, French, and Italian. Switch between light and dark themes on Main. The browser remembers your choice.
 
-Each page provides an expandable "Notes" section that explains operations, data meaning, update times, and usage boundaries; it supports five languages and offline reading. The notes do not trigger data requests. "Snapshot download attempts" in Settings only counts shared-data download attempts in the current browser (including failures); it is not the weather provider's API usage.
+## What you can do
 
-The map retains the warning count and original query time from the last successful query. Green means zero warnings in the last query, yellow means warnings are present, and red means red-level warnings are included. When data is older than six hours, when the network is disconnected, or when a refresh fails, the original color is kept and a dashed ring marks a historical result; click it to view the count and time. Gray means there is no history at all. Historical counts do not indicate warnings that are currently still in effect, and they are not written into the current counts or trends. A new successful query (including zero warnings) replaces the old result. The refresh button only re-downloads already-published data; for a city with no updates, a clear message is shown.
+| Page | Features |
+| --- | --- |
+| Main | See an overview of China warnings and global earthquakes. Open a summary card to view the related records. |
+| China | Choose a province, city, or district. Tap a city dot on either China map to jump to that city's warnings. Use **Open larger map** for a bigger view. Warning details include affected areas, recommended actions, and the original notice when available. Secondary hazards are described qualitatively. |
+| Global Hazards | Explore earthquakes and GDACS reports on the world map. Filter by hazard type or open **View all live disasters** for the searchable list. The map panel and list show GDACS reports in update order. Earthquake magnitudes use an amber-to-red scale. |
+| Database and rescue contacts | Browse collected historical records and find relief organizations or official directories by country or region. |
+| Guide, Tools, and Products | Read preparedness guides, use the first-aid cards, build a checklist or family plan, and try the interactive demos. |
+| Settings | Change language, text size, contrast, motion, or browser reminders. |
 
-## Shared Data Collection (Current Version)
+## Where the data comes from
 
-The site is still statically hosted on GitHub Pages. Warnings are now collected on a schedule by GitHub Actions, and all visitors share `public-data/warnings.json`; browsers no longer request the weather API directly.
-Add `WEATHERCN_API_KEY` to the repository's Actions Secrets, then after merging into `main`, manually run "Deploy to GitHub Pages" once. Set the Pages Source to GitHub Actions.
-Normally 4 cities are collected every 15 minutes; after scheduling delays, catch-up collection covers the elapsed periods, with at most 77 cities per run, limited by the remaining quota. A rolling 24-hour window allows at most 450 attempts; the 77 configured cities take about 5 hours to complete one round, and scheduling delays lengthen the cycle. Data older than 6 hours is marked unavailable.
-The first run prioritizes collecting the remaining cities within the same quota cap (up to 77 requests, with at least 300 ms between requests); afterwards it rotates at a rate of 4 cities per 15 minutes, and delayed jobs catch up according to the rules above. Cities not yet collected show as unknown, along with the number of cities that currently have valid data.
-Live weather and city-location queries are not collected for now, in order to prioritize the warning quota.
-For full configuration and quota-persistence details, see [backend/README.md](backend/README.md).
-Clicking the nationwide map on the home page opens the large-map page at `#/map`; selecting a city there returns to that city's warnings.
-The "Update Data" button on the home page and the large map opens a GitHub request form; the user must be logged in and submit the form to trigger collection. Requests respect the shared cooldown time and quota and are closed automatically once successfully published; return to the site and click "Refresh Published Data" to read the result. Visitors who are not logged in can still read all published data.
-On mobile, the large map can be swiped through while continuing to use the same shared snapshot, without additional weather-API calls.
-After selecting a city on the large map, you can view the last query time and whether the data has expired, then enter the local warnings.
-Secondary disasters are now shown as qualitative safety prompts, and unverified occurrence probabilities are no longer displayed; the detail page prioritizes the affected area, issuance information, and defense key points, and provides the original official text with a language label. After visiting while online, the safety guide can be read offline in the same browser; when offline, old warnings are not shown as current data. Notifications are checked only while the web page remains open.
-The browser-direct API access and front-end Key configuration described in the original feature notes below no longer apply to the current version.
+GitHub Actions collects data and GitHub Pages serves the published snapshots. Normal browsing and local development require no API keys.
 
-A single-page web app fully ported from the WeChat mini-program "Natural Disaster Early Warning": **pure front-end, no backend, no build required**; open it directly in a browser and it runs, on both mobile and desktop browsers.
+- **China warnings:** WeatherCN, a data service authorized by the China Meteorological Administration. The provider reports at city level. District filtering uses place names in the official text. Broad city notices may apply to all districts. The scheduled collector rotates through 77 configured cities, normally four per 15-minute slot, with a rolling limit of 450 attempts in 24 hours. Separate weather readouts may use Open-Meteo.
+- **Global hazards:** GDACS current-event reports, with details from its search API. Collection is scheduled every five minutes. The Global Hazards panel and Live Disasters list check for published updates every minute while visible. GitHub Actions may delay a scheduled run or publication.
+- **Earthquakes:** APIZERO when configured, with USGS as the fallback. Collection is scheduled every 15 minutes.
+- **History and rescue contacts:** The archive contains records collected by this project. The rescue directory covers listed organizations and public contact resources. It does not provide dispatch or verify current availability.
 
-The visuals use a "Holographic Command Center" theme: a full-screen **3D dot-matrix holographic globe** (latitude/longitude grid + scanning sector + pulsing markers on disaster cities) and a **China holographic situation map** (glowing national/provincial borders, scan lines, cities clickable to switch directly), paired with translucent cyan-glow cards; the top navigation is fixed, and the table of contents sits in the top-right corner (collapses into a hamburger menu on mobile).
+**Refresh published data** reloads the latest published snapshot. On the China page and expanded map, **Update data** opens a GitHub issue form. Sign in and submit it to request a collection run, subject to shared limits. See the [collection and deployment guide](backend/README.md) for setup, quota rules, and GitHub Actions secrets.
 
-## How to Open
+## How to read stale or missing data
 
-- Simplest: double-click `index.html` and open it with any modern browser (Chrome / Edge / Safari / WeChat built-in browser).
-- On mobile: place the entire folder in any static web space (or a local HTTP server on the phone), and access `index.html` in the mobile browser.
-- No Node installation, no compilation, and no third-party CDN dependencies.
+China map dots retain the original time and result of the last successful check. Green means no alerts at that check, yellow means alerts were found, and red means at least one red alert was found. A dashed ring marks a historical result, including when a China result is more than six hours old. Gray means there is no prior result.
 
-> The folder structure must be preserved (`index.html`, `css/`, `js/` must keep their relative positions); copy/upload the whole folder.
+When GDACS updates are overdue, dashed markers show last-reported locations whose current status is unconfirmed. Neither archived records nor an empty list can establish that an area is safe. Follow current instructions from local authorities and call your local emergency number in an emergency.
 
-## Features
+After visiting online, the safety guide can be read offline in the same browser. Browser reminders only check while the page is open and cannot replace official emergency notifications. The snapshot download counter in Settings records this browser's attempts, including failures.
 
-| Module | Contents |
-|---|---|
-| Warning Center | Province → city → **district three-level selection**; after a city is selected, **district pills in the hero area switch districts independently**; status dots to the right of cities and districts: green/dark = no warnings, yellow = warnings present, red = includes red-level warnings; live weather; red/orange/yellow/blue counts; **China holographic situation map (click a city to switch directly)**; warning activity timeline, type-distribution donut chart, top-5 secondary risks, 14-day warning trend line chart |
-| Warning Details | Warning body text, **district-level affected areas and key impact areas** (extracted from the official text, marked with chips), **end-time countdown**, **radar-style impact-radius map**, **secondary-disaster probability estimate**, **recommended emergency-supplies checklist**, same-type knowledge quiz, defense guide, issuing agency/time/period; one-tap call to 12121, share |
-| Defense Guides | 12 disaster types (typhoon, torrential rain, flood, earthquake, high temperature, cold wave, lightning, strong wind, hail, dense fog, forest fire, drought): **causes**, warning signals, defense key points, preparation checklist, knowledge quiz, **read check-in (learning progress X/12)** |
-| Emergency Tools | **Step-by-step first-aid cards** (CPR / bleeding / burns / airway obstruction, with steps + progress dots), **emergency-kit guide** (home / driving / outdoor scenarios), emergency phone numbers (tap to call), supplies checklist (auto-saved when checked), **family emergency plan (fill in / export)**, safety key points, disclaimer |
-| Settings | Language card (中文/English/Español/Français/Italiano; **the entire UI switches to the corresponding language**), accessibility card (three text sizes / high contrast / reduced motion), warning-reminder card (browser notification + 15/30/60-minute frequency + test), data-source switch, cache and **cumulative request count**, **reset all local data**, about |
-| Product Catalog | Navigation entry and placeholder page; content is currently empty and will be added later |
+## Run locally
 
-## District Scope (Important Boundaries)
+Use Python 3 to serve the site over HTTP. From the repository root:
 
-- The WeatherCN (华风) API provides **city-level** data (no district-level keys): weather and warning requests are still made per city, and **local matching and filtering** are performed at the district level.
-- When the official text explicitly mentions districts (e.g., "focus on Longwan District and Ouhai District"), the corresponding districts show status dots and can be filtered; broad warnings not broken down to districts are treated as **covering the whole city** (the district popover explains this).
-- District names are proper place names and keep their Chinese spelling in non-Chinese interfaces (e.g., Longwan District is written "龙湾区"), while all other interface text is translated into the selected language.
-
-## Data Sources
-
-- Default data source: **WeatherCN (华风爱科) Weather OpenAPI** (officially authorized by the China Meteorological Administration); endpoint `https://openapi.weathercn.com`
-  - Warnings: `/alerts/v1/{locationKey}.json`
-  - Live weather: `/currentconditions/v1/{locationKey}.json`
-  - City resolution: `/locations/v1/cities/translate` (keys for common cities are pre-filled; querying these cities does not consume location requests)
-- Administrative boundaries and district coordinates: Alibaba Cloud DataV geographic data open platform (`geo.datav.aliyun.com`; fetched only at build time and solidified into local data, with no requests at runtime).
-- The web version **requests the official APIs directly from the browser** (the APIs allow cross-origin access via CORS), bypassing any intermediary server, so it is not subject to the mini-program's "legal request domain" restriction.
-- API requests uniformly use the original Chinese text; all copy in non-Chinese interfaces is translated by the local i18n module, and the Chinese interface shows the original official text.
-- The defense guides, secondary-disaster probabilities, emergency phone numbers/supplies/safety key points are local static knowledge data. Secondary-disaster probabilities are empirical estimates based on warning type and level (probability = lower bound + (upper bound − lower bound) × level weight; red 1.0 / orange 0.75 / yellow 0.5 / blue 0.25). They are **not official probability forecasts** and are for reference only.
-
-## Quota and Caching
-
-- Currently built in is the WeatherCN standard test Key: 500 free calls per day, 5 QPS.
-- Two levels of local caching are built in to save quota: warnings for 15 minutes and live weather for 30 minutes (adjustable via `cacheMinutes` / `cacheWeatherMinutes` in `js/config.js`); the status dots in the city selection panel also use the cache.
-- Warnings that have been loaded are registered in memory, so even if the cache expires, entering details from an already-open page does not fail.
-- For multi-user or high-frequency use, upgrade to a paid official Key on the WeatherCN platform; just replace `weathercn.apiKey` in `js/config.js`, with no other code changes needed.
-- The Settings page allows manual cache clearing and viewing the cumulative request count.
-
-## File Structure
-
-```
-natural-disaster-warning-web/
-├── index.html          Sole entry point (includes the holographic globe canvas)
-├── css/
-│   └── styles.css      All styles (Holographic Command Center theme, responsive layout)
-└── js/
-    ├── shim.js         Browser adapter layer: wx.request→fetch, wx.storage→localStorage, request counting
-    ├── config.js       Data source and cache configuration (API Key lives here)
-    ├── data.js         Level colors, 12 defense guides
-    ├── cities.js       National provinces/cities and pre-filled city keys
-    ├── districts.js    800+ district coordinates and city coordinates (DataV, with Hong Kong/Macau/Taiwan hand-completed)
-    ├── china-geo.js    National/provincial border GeoJSON (simplified point sampling)
-    ├── i18n.js         5-language strings; place-name/weather/risk/defense/quiz/first-aid translations
-    ├── risk.js         Secondary-disaster probability calculation
-    ├── api.js          WeatherCN data fetching, district extraction, caching, city status, in-memory registry
-    ├── holo-globe.js   3D dot-matrix holographic globe
-    ├── china-holo.js   China holographic situation map (SVG, cities clickable)
-    ├── charts.js       Donut / bar / line charts (canvas)
-    └── app.js          Hash routing, top navigation, and rendering/interaction for each view
+```sh
+python3 -m http.server 8000
 ```
 
-## Deployment Tips
+Open `http://localhost:8000/`. The site uses the repository's published snapshots, which may be stale. No compilation or package install is needed.
 
-- These are pure static files; place them on any static hosting (intranet web server, object-storage static website, GitHub Pages, etc.) and they can be accessed.
-- Browser requirements: support for ES5+ syntax, fetch, and localStorage (all major browsers in recent years support these).
-- Cities are selected manually and cover the whole country; location permission is not forcibly used.
+Use Node.js 22 or newer to run the checks:
+
+```sh
+node --test backend/*.test.mjs
+```
+
+To exercise site preparation and generate the search catalog without changing tracked files, stage a copy and serve that instead:
+
+```sh
+site="$(mktemp -d)"
+cp -R index.html CNAME favicon.svg sw.js manifest.webmanifest robots.txt sitemap.xml css js assets public-data "$site/"
+ALLOW_STALE_DATA=1 node backend/prepare-site.mjs "$site"
+python3 -m http.server 8000 --directory "$site"
+```
+
+## Repository layout
+
+- `index.html`, `css/`, `js/`, and `assets/` contain the static site.
+- `public-data/` contains published warnings, disaster records, and directory data.
+- `backend/` contains collectors, tests, and site preparation scripts.
+- `.github/workflows/` contains collection and GitHub Pages publishing workflows.
