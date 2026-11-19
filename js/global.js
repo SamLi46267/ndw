@@ -10,6 +10,8 @@
   var cache = { live: null, history: null, countries: null, cities: null, paths: null, gdacs: null, gdacsRaw: null, gdacsHistory: null };
   var wms = { key: '', timer: null };
   var bound = false;
+  var gdacsRequest = null;
+  var dataRefresh = null;
 
   function web(k) { return state.ctx.web(k); }
   function esc(v) { return state.ctx.esc(v); }
@@ -61,16 +63,28 @@
     }
     return '';
   }
+  function refreshGdacs() {
+    if (!gdacsRequest) {
+      gdacsRequest = fetchJson('public-data/gdacs-events.json').then(function (data) {
+        cache.gdacsRaw = data;
+        cache.gdacs = normalizeGdacs(data);
+        if (state.mode === 'live' && state.selected && state.selected.kind === 'gdacs') {
+          var selectedId = state.selected.id;
+          state.selected = currentGdacs().find(function (event) { return event.id === selectedId; }) || null;
+        }
+      }).catch(function () {
+        // Keep the last successful snapshot when a download fails.
+      }).finally(function () { gdacsRequest = null; });
+    }
+    return gdacsRequest;
+  }
   function ensureGeo() {
     return Promise.all([
       cache.countries ? Promise.resolve(cache.countries) : fetchJson('assets/world-countries.geojson'),
-      cache.cities ? Promise.resolve(cache.cities) : fetchJson('assets/world-cities.json'),
-      cache.gdacsRaw ? Promise.resolve(cache.gdacsRaw) : fetchJson('public-data/gdacs-events.json').catch(function () { return { features: [] }; })
+      cache.cities ? Promise.resolve(cache.cities) : fetchJson('assets/world-cities.json')
     ]).then(function (res) {
       cache.countries = res[0];
       cache.cities = res[1];
-      cache.gdacsRaw = res[2];
-      if (!cache.gdacs) { cache.gdacs = normalizeGdacs(cache.gdacsRaw); }
       if (cache.paths) { return; }
         var paths = [];
       (cache.countries.features || []).forEach(function (f) {
@@ -198,7 +212,7 @@
         lon: Number(c[0]), lat: Number(c[1])
       });
     });
-    out.sort(function (a, b) { return gdacsParse(b.modified) - gdacsParse(a.modified); });
+    out.sort(function (a, b) { return GdacsStatus.reportTime(b.status) - GdacsStatus.reportTime(a.status); });
     return out;
   }
   function currentGdacs() {
@@ -720,7 +734,7 @@
     return '<button type="button" class="gitem" data-quake="' + esc(q.id) + '"><b style="color:' + magColor(q.mag) + '">M' + q.mag.toFixed(1) + '</b><span>' + esc(q.place) + '</span><small>' + esc(fmt(q.time)) + '</small></button>';
   }
   function gdacsItem(g) {
-    return '<button type="button" class="gitem gitem-gdacs" data-gdacs="' + esc(g.id) + '"><b style="color:' + gdacsColor(g.type) + '">' + esc(g.type) + '</b><span>' + esc(g.name) + '</span><small>' + esc(gdacsAlertLabel(g.alert)) + ' · ' + esc(fmt(gdacsMs(g))) + '</small></button>';
+    return '<button type="button" class="gitem gitem-gdacs" data-gdacs="' + esc(g.id) + '"><b style="color:' + gdacsColor(g.type) + '">' + esc(g.type) + '</b><span>' + esc(g.name) + '</span><small>' + esc(gdacsAlertLabel(g.alert)) + ' · ' + esc(fmt(GdacsStatus.reportTime(g.status))) + '</small></button>';
   }
 
   function sideHtml(quakes) {
@@ -728,7 +742,7 @@
       return state.selected.kind === 'gdacs' ? gdacsDetailHtml(state.selected) : detailHtml(state.selected);
     }
     var qs = (state.country ? quakesInCountry(quakes) : quakes).slice().sort(function (a, b) { return (b.time || 0) - (a.time || 0); }).slice(0, 8);
-    var gs = (state.country ? gdacsInCountry() : currentGdacs()).slice().sort(function (a, b) { return gdacsMs(b) - gdacsMs(a); });
+    var gs = (state.country ? gdacsInCountry() : currentGdacs()).slice().sort(function (a, b) { return GdacsStatus.reportTime(b.status) - GdacsStatus.reportTime(a.status); });
     var showQuakes = state.gdacsType === 'all' || state.gdacsType === 'EQ';
     var showGdacs = state.layers.gdacs && state.gdacsType !== 'EQ';
     var title = state.country || web('gdacsEvents');
@@ -818,7 +832,7 @@
             var on = wrap.classList.toggle('gfull');
             state.fullscreen = on;
             document.body.classList.toggle('gmap-lock', on);
-            setTimeout(applyView, 60);
+            if (on) { setTimeout(applyView, 60); } else { paint(); }
           }
         } else { state.zoom = 1; state.panX = 0; state.panY = 0; applyView(); }
         return;
@@ -892,18 +906,22 @@
     if (ga) { state.gdacsAlert = ga.value || 'all'; state.selected = null; paint(); }
   }
 
-  function refreshData() {
+  function globalPageVisible() {
     var path = (location.hash || '#/home').split('?')[0];
-    if (path !== '#/global' && path !== '#/home') { return; }
-    if (!state.el || !state.el.isConnected || !state.el.querySelector('.global-section')) { return; }
-    Promise.all([
+    return state.el && state.el.isConnected && state.el.querySelector('.global-page') &&
+      path === (state.ctx.embedded ? '#/home' : '#/global');
+  }
+
+  function refreshData() {
+    if (!globalPageVisible() || state.loading || dataRefresh) { return; }
+    dataRefresh = Promise.all([
       fetchJson('public-data/global-earthquakes.json').catch(function () { return null; }),
-      fetchJson('public-data/gdacs-events.json').catch(function () { return null; })
+      refreshGdacs()
     ]).then(function (res) {
       if (res[0]) { state.live = res[0]; cache.live = res[0]; }
-      if (res[1]) { cache.gdacsRaw = res[1]; cache.gdacs = normalizeGdacs(res[1]); }
-      paint();
-    }).catch(function () {});
+      if (globalPageVisible() && !state.fullscreen) { paint(); }
+    }).finally(function () { dataRefresh = null; });
+    return dataRefresh;
   }
 
   function render(viewEl, ctx) {
@@ -937,7 +955,7 @@
         var full = state.el && state.el.querySelector('.global-map-wrap.gfull');
         if (full) {
           exitFullscreen();
-          applyView();
+          paint();
         }
       });
       window.addEventListener('hashchange', function () {
@@ -958,12 +976,13 @@
     Promise.all([
       state.live ? Promise.resolve(state.live) : fetchJson('public-data/global-earthquakes.json'),
       ensureGeo(),
+      refreshGdacs(),
       state.mode === 'history' && !state.history ? Promise.all([
         fetchJson('public-data/global-quakes-recent.json'), fetchJson('public-data/gdacs-disaster-history.json')
       ]) : Promise.resolve(null)
     ]).then(function(res) {
       state.live = res[0]; cache.live = res[0];
-      if(res[2]) { state.history = res[2][0]; cache.history = res[2][0]; cache.gdacsHistory = normalizeGdacs(res[2][1]); }
+      if(res[3]) { state.history = res[3][0]; cache.history = res[3][0]; cache.gdacsHistory = normalizeGdacs(res[3][1]); }
       state.loading = false; paint();
     }).catch(function(err) { state.loading = false; state.error = String(err.message || err); paint(); });
   }

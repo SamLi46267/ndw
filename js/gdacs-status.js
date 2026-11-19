@@ -13,7 +13,8 @@
       isFinite(verified) && verified <= now + 300000;
   }
   function fresh(p, now) { var verified = time(p._verifiedAt); return isFinite(verified) && verified <= now + 300000 && now - verified < 1800000; }
-  var api = { time: time, active: active, fresh: fresh };
+  function reportTime(p) { return time(p.datemodified) || time(p.fromdate) || 0; }
+  var api = { time: time, active: active, fresh: fresh, reportTime: reportTime };
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.GdacsStatus = api;
 })(typeof window === 'object' ? window : globalThis);
