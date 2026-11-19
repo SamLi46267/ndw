@@ -161,16 +161,16 @@
     return isFinite(time) ? time : 0;
   }
   function gdacsMs(g) { return gdacsParse(g && (g.from || g.modified)); }
-  function gdacsColor(type) {
-    if (type === 'WF') { return '#ff7a1a'; }
-    if (type === 'FL') { return '#4aa8ff'; }
-    if (type === 'TC') { return '#b388ff'; }
-    return '#c9a227';
+  function gdacsColor(type, text) {
+    if (type === 'WF') { return text ? 'var(--gdacs-wildfire, #ff7a1a)' : '#ff7a1a'; }
+    if (type === 'FL') { return text ? 'var(--gdacs-flood, #4aa8ff)' : '#4aa8ff'; }
+    if (type === 'TC') { return text ? 'var(--gdacs-cyclone, #b388ff)' : '#b388ff'; }
+    return text ? 'var(--gdacs-other, #c9a227)' : '#c9a227';
   }
-  function gdacsAlertColor(alert) {
-    if (alert === 'red') { return '#ff5252'; }
-    if (alert === 'orange') { return '#ff9a3c'; }
-    return '#43e8a0';
+  function gdacsAlertColor(alert, text) {
+    if (alert === 'red') { return text ? 'var(--gdacs-alert-red, #ff5252)' : '#ff5252'; }
+    if (alert === 'orange') { return text ? 'var(--gdacs-alert-orange, #ff9a3c)' : '#ff9a3c'; }
+    return text ? 'var(--gdacs-alert-green, #43e8a0)' : '#43e8a0';
   }
   function gdacsTypeLabel(type) {
     if (type === 'WF') { return web('gdacsWildfire'); }
@@ -278,7 +278,7 @@
     var hazardHref = listHref + '&source=gdacs&type=' + encodeURIComponent(state.gdacsType) +
       (state.gdacsAlert === 'all' ? '' : '&alert=' + state.gdacsAlert);
     function kpi(label, value, sub, href, magnitude) {
-      return '<a class="gkpi detail-card-link" href="' + esc(href) + '"><span>' + esc(label) + '</span><b style="color:' + (magnitude == null ? 'var(--text)' : window.NDCore.magnitudeColor(magnitude)) + '">' + esc(value) + '</b><small>' + esc(sub || '') + '</small></a>';
+      return '<a class="gkpi detail-card-link" href="' + esc(href) + '"><span>' + esc(label) + '</span><b style="color:' + (magnitude == null ? 'var(--text)' : window.NDCore.magnitudeColor(magnitude, true)) + '">' + esc(value) + '</b><small>' + esc(sub || '') + '</small></a>';
     }
     var layerDefs = [
       ['gdacs', web('gdacsLayer')], ['affected', web('affected')], ['population', web('population')],
@@ -681,7 +681,7 @@
     return '<div class="gdetail">' + window.NDRescue.button(state.country || q.place, q.place, lang()) +
       '<div class="gdetail-top"><div><div class="gkicker">' + esc(web('quakeDetail')) + '</div>' +
         '<h3>' + esc(q.place || '—') + '</h3><div class="gcoords">' + esc(q.lon.toFixed(2)) + '°, ' + esc(q.lat.toFixed(2)) + '°</div></div>' +
-        '<div class="gmag" style="color:' + window.NDCore.magnitudeColor(q.mag) + '">M' + esc(q.mag.toFixed(1)) + '</div></div>' +
+        '<div class="gmag" style="color:' + window.NDCore.magnitudeColor(q.mag, true) + '">M' + esc(q.mag.toFixed(1)) + '</div></div>' +
       '<div class="gcards">' +
         '<div><span>' + esc(web('depth')) + '</span><b>' + esc(isFinite(q.depth) ? q.depth.toFixed(1) + ' km' : '—') + '</b></div>' +
         '<div><span>' + esc(web('intensity')) + ' (MMI)' + '</span><b>' + esc(mmi) + '</b></div>' +
@@ -711,7 +711,7 @@
     return '<div class="gdetail gdacs-detail">' + (!GdacsStatus.fresh(g.status, Date.now()) ? '<p class="history-notice">' + window.NDLocale.phrase('上次报告 · 等待 GDACS 更新','Last reported · awaiting GDACS refresh',lang()) + '</p>' : '') + window.NDRescue.button(g.country, g.name, lang()) +
       '<div class="gdetail-top"><div><div class="gkicker">GDACS · ' + esc(typeLabel) + '</div>' +
         '<h3>' + esc(g.name || '—') + '</h3><div class="gcoords">' + esc(g.country || '') + ' · ' + esc(g.lon.toFixed(2)) + '°, ' + esc(g.lat.toFixed(2)) + '°</div></div>' +
-        '<div class="gdacs-badge" style="color:' + gdacsAlertColor(g.alert) + '">' + esc(alertLabel) + '</div></div>' +
+        '<div class="gdacs-badge" style="color:' + gdacsAlertColor(g.alert, true) + '">' + esc(alertLabel) + '</div></div>' +
       '<div class="gcards">' +
         '<div><span>' + esc(web('disasterType')) + '</span><b>' + esc(typeLabel) + '</b></div>' +
         '<div><span>' + esc(web('gdacsAlert')) + '</span><b>' + esc(alertLabel) + '</b></div>' +
@@ -732,10 +732,10 @@
 
   function eventTime(e) { return e.kind === 'gdacs' ? gdacsMs(e) : (Number(e.time) || 0); }
   function quakeItem(q) {
-    return '<button type="button" class="gitem" data-quake="' + esc(q.id) + '"><b style="color:' + window.NDCore.magnitudeColor(q.mag) + '">M' + q.mag.toFixed(1) + '</b><span>' + esc(q.place) + '</span><small>' + esc(fmt(q.time)) + '</small></button>';
+    return '<button type="button" class="gitem" data-quake="' + esc(q.id) + '"><b style="color:' + window.NDCore.magnitudeColor(q.mag, true) + '">M' + q.mag.toFixed(1) + '</b><span>' + esc(q.place) + '</span><small>' + esc(fmt(q.time)) + '</small></button>';
   }
   function gdacsItem(g) {
-    return '<button type="button" class="gitem gitem-gdacs" data-gdacs="' + esc(g.id) + '"><b style="color:' + gdacsColor(g.type) + '">' + esc(g.type) + '</b><span>' + esc(g.name) + '</span><small>' + esc(gdacsAlertLabel(g.alert)) + ' · ' + esc(web('gdacsUpdated')) + ' ' + esc(fmt(GdacsStatus.reportTime(g.status))) + '</small></button>';
+    return '<button type="button" class="gitem gitem-gdacs" data-gdacs="' + esc(g.id) + '"><b style="color:' + gdacsColor(g.type, true) + '">' + esc(g.type) + '</b><span>' + esc(g.name) + '</span><small>' + esc(gdacsAlertLabel(g.alert)) + ' · ' + esc(web('gdacsUpdated')) + ' ' + esc(fmt(GdacsStatus.reportTime(g.status))) + '</small></button>';
   }
 
   function sideHtml(quakes) {

@@ -122,6 +122,8 @@
     locationLabel: { zh: '位置', en: 'Location', es: 'Ubicación', fr: 'Lieu', it: 'Località' },
     coordinates: { zh: '经纬度', en: 'Coordinates', es: 'Coordenadas', fr: 'Coordonnées', it: 'Coordinate' },
     mainEyebrow: { zh: '全球灾害与中国预警', en: 'Global hazards & China alerts', es: 'Amenazas globales y alertas de China', fr: 'Risques mondiaux et alertes Chine', it: 'Rischi globali e allerte Cina' },
+    lightTheme: { zh: '切换到浅色主题', en: 'Use light theme', es: 'Usar tema claro', fr: 'Utiliser le thème clair', it: 'Usa il tema chiaro' },
+    darkTheme: { zh: '切换到深色主题', en: 'Use dark theme', es: 'Usar tema oscuro', fr: 'Utiliser le thème sombre', it: 'Usa il tema scuro' },
     mainTitle: { zh: '看见风险，提前一步。', en: 'See risk before it arrives.', es: 'Ve el riesgo antes de que llegue.', fr: 'Voyez le risque avant qu’il n’arrive.', it: 'Vedi il rischio prima che arrivi.' },
     mainIntro: { zh: 'GeoWarning 汇集全球灾害监测、中国天气预警与应急准备工具，帮助你在同一处判断风险、找到行动建议。', en: 'GeoWarning brings global disaster monitoring, China weather alerts and preparedness tools together, so you can judge risk and find next steps in one place.', es: 'GeoWarning reúne monitoreo global de desastres, alertas meteorológicas de China y herramientas de preparación en un solo lugar.', fr: 'GeoWarning réunit la surveillance mondiale des catastrophes, les alertes météo en Chine et des outils de préparation au même endroit.', it: 'GeoWarning riunisce monitoraggio globale dei disastri, allerte meteo cinesi e strumenti di preparazione in un unico posto.' },
     mainChinaCta: { zh: '中国天气与预警', en: 'China weather & alerts', es: 'Clima y alertas de China', fr: 'Météo et alertes Chine', it: 'Meteo e allerte Cina' },
@@ -209,14 +211,11 @@
   };
   function web(key) { var l = lang(); return (WEB[key] && WEB[key][l]) || WEB[key].zh; }
 
-  function magnitudeColor(value) {
+  function magnitudeColor(value, text) {
     if (value == null || value === '' || !Number.isFinite(Number(value))) return 'inherit';
-    var magnitude = Number(value);
-    if (magnitude >= 7) return '#ff5265';
-    if (magnitude >= 6) return '#ff7452';
-    if (magnitude >= 5) return '#ff9d45';
-    if (magnitude >= 4) return '#ffc069';
-    return '#ffdb9b';
+    var band = Math.min(7, Math.max(3, Math.floor(Number(value))));
+    var color = ['#ffdb9b', '#ffc069', '#ff9d45', '#ff7452', '#ff5265'][band - 3];
+    return text ? 'var(--magnitude-' + band + ', ' + color + ')' : color;
   }
 
   window.NDCore = {

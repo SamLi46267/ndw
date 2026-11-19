@@ -706,7 +706,7 @@
       var maximum = data.summary && data.summary.max_magnitude;
       if (k[3] && (data.earthquakes || []).length && maximum != null && Number.isFinite(Number(maximum))) {
         k[3].textContent = 'M' + Number(maximum).toFixed(1);
-        k[3].style.color = window.NDCore.magnitudeColor(maximum);
+        k[3].style.color = window.NDCore.magnitudeColor(maximum, true);
       }
       var timeEl = document.getElementById('opsGlobalTime');
       if (timeEl) {
@@ -719,7 +719,7 @@
         if (top) {
           var old = box.querySelector('[data-global-top]');
           if (old) { old.parentNode.removeChild(old); }
-          box.insertAdjacentHTML('afterbegin', '<a data-global-top href="#/disasters?mode=live&event=' + encodeURIComponent(top.id) + '"><span><strong style="color:' + window.NDCore.magnitudeColor(top.magnitude) + '">M' + Number(top.magnitude).toFixed(1) + '</strong> · ' + esc(web('globalTab')) + '</span><b>' + esc(top.place) + '</b></a>');
+          box.insertAdjacentHTML('afterbegin', '<a data-global-top href="#/disasters?mode=live&event=' + encodeURIComponent(top.id) + '"><span><strong style="color:' + window.NDCore.magnitudeColor(top.magnitude, true) + '">M' + Number(top.magnitude).toFixed(1) + '</strong> · ' + esc(web('globalTab')) + '</span><b>' + esc(top.place) + '</b></a>');
         }
       }
     }
@@ -779,6 +779,21 @@
       refreshMaps();
     });
   }
+  function themeButtonContent() {
+    var light = document.documentElement.dataset.theme === 'light';
+    return '<span class="theme-toggle-icon" aria-hidden="true">' + (light ? '☾' : '☀') + '</span>' +
+      '<span>' + esc(web(light ? 'darkTheme' : 'lightTheme')) + '</span>';
+  }
+
+  function toggleTheme(button) {
+    var root = document.documentElement;
+    var theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+    root.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f4f6f2' : '#101010';
+    try { localStorage.setItem('ndw-theme', theme); } catch (error) { /* The active theme still works. */ }
+    button.innerHTML = themeButtonContent();
+  }
+
   function renderMainPage() {
     var l = lang();
     var t = T(l);
@@ -793,6 +808,7 @@
                 return '<button class="home-lang-btn' + (lg.code === l ? ' active' : '') +
                   '" data-action="select-lang" data-code="' + lg.code + '" aria-pressed="' + (lg.code === l) + '">' + esc(shortName) + '</button>';
               }).join('') +
+              '<button type="button" class="theme-toggle" data-action="toggle-theme">' + themeButtonContent() + '</button>' +
             '</div>' +
           '<h1>' + esc(web('mainTitle')) + '</h1>' +
           '<p>' + esc(web('mainIntro')) + '</p>' +
@@ -917,7 +933,7 @@
   function dbStat(label, value, recordIndex, magnitude) {
     var action = recordIndex >= 0 ? ' data-kind="earthquake" data-idx="' + recordIndex + '"' : '';
     return '<button type="button" class="detail-card-link" data-action="' + (action ? 'db-row' : 'db-show-records') + '"' + action +
-      '><span>' + esc(label) + '</span><b style="color:' + window.NDCore.magnitudeColor(magnitude) + '">' + esc(value) + '</b></button>';
+      '><span>' + esc(label) + '</span><b style="color:' + window.NDCore.magnitudeColor(magnitude, true) + '">' + esc(value) + '</b></button>';
   }
 
   function renderDbEarthquake(body) {
@@ -953,7 +969,7 @@
       '</tr></thead><tbody>' +
       (slice.length ? slice.map(function (r, i) {
         var mag = Number(r[4]);
-        return '<tr class="db-row" data-action="db-row" data-kind="earthquake" data-idx="' + (start + i) + '" tabindex="0"><td>' + esc(dbFormat(r[0])) + '</td><td><span class="db-mag" style="color:' + window.NDCore.magnitudeColor(mag) + '">M' + mag.toFixed(1) + '</span></td>' +
+        return '<tr class="db-row" data-action="db-row" data-kind="earthquake" data-idx="' + (start + i) + '" tabindex="0"><td>' + esc(dbFormat(r[0])) + '</td><td><span class="db-mag" style="color:' + window.NDCore.magnitudeColor(mag, true) + '">M' + mag.toFixed(1) + '</span></td>' +
           '<td>' + esc(r[5]) + '</td><td>' + Number(r[3]).toFixed(1) + ' km</td><td>' + Number(r[1]).toFixed(2) + '°, ' + Number(r[2]).toFixed(2) + '°</td></tr>';
       }).join('') : '<tr><td colspan="5" class="db-empty">' + esc(web('noMatch')) + '</td></tr>') +
       '</tbody></table></div>' + dbPager(pages);
@@ -1028,7 +1044,7 @@
   }
 
   function dbField(label, value, magnitude) {
-    return '<div><span>' + esc(label) + '</span><b style="color:' + (magnitude == null ? 'var(--text)' : window.NDCore.magnitudeColor(magnitude)) + '">' + esc(value == null || value === '' ? '—' : String(value)) + '</b></div>';
+    return '<div><span>' + esc(label) + '</span><b style="color:' + (magnitude == null ? 'var(--text)' : window.NDCore.magnitudeColor(magnitude, true)) + '">' + esc(value == null || value === '' ? '—' : String(value)) + '</b></div>';
   }
   function showDbDetail(kind, idx) {
     var modal = document.getElementById('dbModal');
@@ -1054,7 +1070,7 @@
       html = '<div class="db-modal-card" role="dialog" aria-modal="true">' +
         '<button type="button" class="db-modal-close" data-action="db-close" aria-label="Close">×</button>' +
         '<div class="gkicker">' + esc(web('earthquakeType')) + '</div>' +
-        '<h2><span style="color:' + window.NDCore.magnitudeColor(mag) + '">M' + mag.toFixed(1) + '</span> · ' + esc(r[5]) + '</h2>' +
+        '<h2><span style="color:' + window.NDCore.magnitudeColor(mag, true) + '">M' + mag.toFixed(1) + '</span> · ' + esc(r[5]) + '</h2>' +
         '<div class="db-detail-grid">' +
           dbField(web('dataTime'), dbFormat(r[0])) +
           dbField(web('magnitude'), 'M' + mag.toFixed(1), mag) +
@@ -2613,6 +2629,7 @@
       case 'plan-export': exportPlan(); break;
       case 'toggle-material': toggleMaterial(parseInt(d.index, 10)); break;
       case 'toggle-lang': settingsUI.langExpanded = !settingsUI.langExpanded; renderSettings(); break;
+      case 'toggle-theme': toggleTheme(el); break;
       case 'select-lang':
         if (d.code && d.code !== lang()) {
           i18n.setLang(d.code);
