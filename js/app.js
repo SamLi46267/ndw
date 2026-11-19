@@ -115,15 +115,6 @@
   var WEB = window.NDCore.WEB;
   var web = window.NDCore.web;
 
-  /* 免责声明：把“小程序/mini program/mini-app”改为“应用/app” */
-  function disclaimerText(l) {
-    return i18n.t('disclaimerContent', l)
-      .replace('本小程序', '本应用')
-      .replace('this mini program', 'this app')
-      .replace('esta mini app', 'esta app')
-      .replace('cette mini-app', 'cette app')
-      .replace('questa mini-app', 'questa app');
-  }
 
   /* ---------- 内联 SVG（见 js/icons.js） ---------- */
   var SVG = window.ND_ICONS;
@@ -2365,7 +2356,7 @@
     var l = lang();
     wx.showModal({
       title: i18n.t('disclaimerTitle', l),
-      content: disclaimerText(l),
+      content: i18n.t('disclaimerContent', l),
       showCancel: false,
       confirmText: i18n.t('iKnow', l)
     });
