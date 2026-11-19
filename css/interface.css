@@ -1039,3 +1039,17 @@ a.rescue-button { text-decoration: none; }
 .rescue-org > .rescue-scope-label { justify-self: start; padding: 5px 9px; border: 1px solid #617b80; border-radius: 7px; color: #e1f1ee; background: #20343b; }
 .rescue-detail dd { overflow-wrap: anywhere; }
 .rescue-detail dd small { display: inline-block; color: #c0d1d6; }
+
+/* Give the global hazard map the main screen area, with details below it. */
+.global-page > .container { max-width: none; padding-inline: clamp(12px, 2vw, 36px); }
+.global-page .global-layout { grid-template-columns: minmax(0, 1fr); }
+.global-page .global-map-wrap:not(.gfull) {
+  aspect-ratio: auto;
+  height: 80vh;
+  height: 80svh;
+  min-height: 360px;
+}
+.global-page .global-side { margin-top: 0; max-height: 360px; }
+@media (max-width: 620px) {
+  .global-page .global-map-wrap:not(.gfull) { min-height: 280px; }
+}
