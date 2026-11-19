@@ -372,7 +372,7 @@
       parts.push('<g class="gaffected">');
       quakes.forEach(function (q) {
         var p = proj(q.lon, q.lat);
-        var color = window.NDCore.magnitudeColor(q.mag);
+        var color = window.NDCore.magnitudeColor(q.mag, true);
         parts.push('<circle class="impact-pulse" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + kmToUnits(radiusKm(q.mag)).toFixed(1) + '" fill="' + color + '" opacity=".16" stroke="' + color + '" stroke-opacity=".55" stroke-width=".6" stroke-dasharray="2 3" vector-effect="non-scaling-stroke"></circle>');
       });
       parts.push('</g>');
@@ -408,7 +408,7 @@
       var p = proj(q.lon, q.lat);
       var r = Math.max(2, Math.min(8, 2 + (q.mag - 1) * 1.05));
       var sel = state.selected && state.selected.id === q.id;
-      var color = window.NDCore.magnitudeColor(q.mag);
+      var color = window.NDCore.magnitudeColor(q.mag, true);
       parts.push('<g class="gmarker' + (sel ? ' sel' : '') + '" data-quake="' + esc(q.id) + '" transform="translate(' + p.x.toFixed(1) + ',' + p.y.toFixed(1) + ')" style="color:' + color + '"><g class="gmarker-inner">' +
         (sel ? '<circle class="gsmile" r="' + (r + 8).toFixed(1) + '" fill="none" stroke="' + color + '" stroke-width="1.5"></circle>' : '') +
         '<circle class="core" r="' + r.toFixed(1) + '" fill="' + color + '"></circle>' +
@@ -420,8 +420,8 @@
       parts.push('<g class="ggdacs">');
       gdacs.forEach(function (g) {
         var p = proj(g.lon, g.lat);
-        var color = gdacsColor(g.type);
-        var alertColor = gdacsAlertColor(g.alert);
+        var color = gdacsColor(g.type, true);
+        var alertColor = gdacsAlertColor(g.alert, true);
         var sel = state.selected && state.selected.kind === 'gdacs' && state.selected.id === g.id;
         var shape;
         if (g.type === 'WF') {
@@ -436,7 +436,7 @@
         parts.push('<g class="gdacs-marker' + (!GdacsStatus.fresh(g.status, Date.now()) ? ' gdacs-overdue' : '') + (sel ? ' sel' : '') + '" data-gdacs="' + esc(g.id) + '" transform="translate(' + p.x.toFixed(1) + ',' + p.y.toFixed(1) + ')" style="color:' + color + '"><g class="gmarker-inner">' +
           (sel ? '<circle r="11" fill="none" stroke="' + color + '" stroke-width="1.4"></circle>' : '') +
           shape +
-          '<circle r="8" fill="none" stroke="' + alertColor + '" stroke-width="1"></circle>' +
+          '<circle class="gdacs-status-ring" r="8" fill="none" stroke="' + alertColor + '" stroke-width="1"></circle>' +
           '<title>' + esc(gdacsTypeLabel(g.type) + ' · ' + g.name + ' · ' + gdacsAlertLabel(g.alert)) + '</title></g></g>');
       });
       parts.push('</g>');
@@ -445,7 +445,7 @@
       var s = state.selected;
       var sp = proj(s.lon, s.lat);
       [100, 200].forEach(function (km) {
-        parts.push('<circle cx="' + sp.x.toFixed(1) + '" cy="' + sp.y.toFixed(1) + '" r="' + kmToUnits(km).toFixed(1) + '" fill="none" stroke="#7ef0ff" stroke-width="1" stroke-dasharray="4 4" opacity=".8" vector-effect="non-scaling-stroke"></circle>');
+        parts.push('<circle class="gevacuation-ring" cx="' + sp.x.toFixed(1) + '" cy="' + sp.y.toFixed(1) + '" r="' + kmToUnits(km).toFixed(1) + '" fill="none" stroke="#7ef0ff" stroke-width="1" stroke-dasharray="4 4" opacity=".8" vector-effect="non-scaling-stroke"></circle>');
       });
     }
     parts.push('</g>');
@@ -800,7 +800,7 @@
         '</div>' +
         '<div class="gzoom-hint">' + esc(web('zoomHint')) + '</div>' +
         ((state.gdacsType === 'all' || state.gdacsType === 'EQ') ? '<div class="glegend">' + ['M&lt;4', 'M4', 'M5', 'M6', 'M7+'].map(function (label, index) {
-          return '<span style="color:' + window.NDCore.magnitudeColor(index + 3) + '">' + label + '</span>';
+          return '<span style="color:' + window.NDCore.magnitudeColor(index + 3, true) + '">' + label + '</span>';
         }).join('') + '</div>' : '') +
         ((state.layers.gdacs && state.gdacsType !== 'EQ') ? '<div class="gdacs-legend"><span class="wf">WF</span><span class="fl">FL</span><span class="tc">TC</span><span class="dr">DR</span></div>' : '') +
       '</div><aside class="global-side"><nav class="disaster-list-actions" aria-label="' + (window.NDLocale.phrase('灾害列表','Disaster lists',lang())) + '"><a class="btn btn-green" href="#/disasters?mode=' + state.mode + '">' + (state.mode === 'live' ? (window.NDLocale.phrase('查看全部当前灾害','View all live disasters',lang())) : (window.NDLocale.phrase('查看灾害历史','Browse disaster history',lang()))) + ' →</a></nav>' + sideHtml(quakes) + '</aside></div>' +

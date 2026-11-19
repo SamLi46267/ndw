@@ -25,10 +25,11 @@
     var dirty = true;
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     var resizeObserver = window.ResizeObserver ? new ResizeObserver(resize) : null;
-    var observedHero = null;
+    var observedContainer = null;
+    var lightPanel = false;
 
     /* 颜色 */
-    var COL = {
+    var darkPalette = {
       grid: 'rgba(157, 175, 163, 0.55)',
       gridBack: 'rgba(157, 175, 163, 0.14)',
       dot: 'rgba(150, 178, 164, 0.34)',
@@ -45,6 +46,25 @@
       fire: 'rgba(255, 178, 118, 0.95)',
       flood: 'rgba(140, 200, 255, 0.9)'
     };
+
+    var lightPalette = {
+      grid: 'rgba(36, 91, 79, .76)',
+      gridBack: 'rgba(36, 91, 79, .17)',
+      dot: 'rgba(35, 97, 81, .55)',
+      dotDim: 'rgba(50, 111, 95, .25)',
+      ring: 'rgba(51, 111, 97, .48)',
+      cityBase: '#526872',
+      land: '#447a6a',
+      link: '#337b65',
+      node: '#32765e',
+      nodePulse: '#245c49',
+      quake: '#a73e32',
+      typhoon: '#39568d',
+      storm: '#5a4691',
+      fire: '#b24e10',
+      flood: '#216985'
+    };
+    var COL = darkPalette;
 
     /* Fibonacci 点阵 */
     var N = 460;
@@ -86,7 +106,7 @@
           x: Math.cos(phi) * Math.sin(lam),
           y: -Math.sin(phi),
           z: Math.cos(phi) * Math.cos(lam),
-          color: c.color || COL.cityBase,
+          color: c.color,
           level: c.level || '',
           label: c.label || '',
           adcode: c.adcode || ''
@@ -136,14 +156,17 @@
     }
 
     function resize() {
-      var hero = cv.closest('.hero');
-      if (hero && resizeObserver && hero !== observedHero) {
+      var panel = cv.closest('.main-globe');
+      var container = panel || cv.closest('.hero');
+      lightPanel = Boolean(panel);
+      COL = lightPanel ? lightPalette : darkPalette;
+      if (resizeObserver && container !== observedContainer) {
         resizeObserver.disconnect();
-        resizeObserver.observe(hero);
-        observedHero = hero;
+        if (container) { resizeObserver.observe(container); }
+        observedContainer = container;
       }
-      W = hero ? hero.clientWidth : window.innerWidth;
-      H = hero ? hero.clientHeight : window.innerHeight;
+      W = container ? Math.max(1, container.clientWidth) : window.innerWidth;
+      H = container ? Math.max(1, container.clientHeight) : window.innerHeight;
       /* Cap the backing-store resolution on small screens to keep the globe smooth. */
       dpr = Math.min(window.devicePixelRatio || 1, W < 760 ? 1.5 : 2);
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
@@ -152,7 +175,15 @@
       cx = W * 0.72;
       cy = H * 0.48;
       R = Math.min(H * 0.46, W * 0.32) * zoom;
-      if (W < 900) { cx = W * 0.85; cy = H * 0.4; R = Math.min(H * 0.4, W * 0.64) * zoom; }
+      if (lightPanel) {
+        cx = W * .5;
+        cy = H * .47;
+        R = Math.min(H * .4, W * .36) * zoom;
+      } else if (W < 900) {
+        cx = W * .85;
+        cy = H * .4;
+        R = Math.min(H * .4, W * .64) * zoom;
+      }
       dirty = true;
     }
 
@@ -367,6 +398,34 @@
       }
     }
 
+    function drawLightLabel(label, point, boxes) {
+      ctx.font = '600 12px system-ui, sans-serif';
+      var maxWidth = Math.min(210, W - 16);
+      if (maxWidth < 32) { return; }
+      if (ctx.measureText(label).width > maxWidth) {
+        var chars = Array.from(label);
+        do {
+          chars.pop();
+          label = chars.join('') + '…';
+        } while (chars.length && ctx.measureText(label).width > maxWidth);
+      }
+      var width = ctx.measureText(label).width + 4;
+      var x = Math.max(4, Math.min(point.sx + 8, W - width - 6));
+      var y = Math.max(15, Math.min(point.sy - 9, H - 4));
+      var box = { left: x, right: x + width, top: y - 13, bottom: y + 3 };
+      if (boxes.some(function (other) {
+        return box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top;
+      })) { return; }
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = 3;
+      ctx.lineJoin = 'round';
+      ctx.strokeStyle = '#f4faf6';
+      ctx.strokeText(label, x, y);
+      ctx.fillStyle = '#203e35';
+      ctx.fillText(label, x, y);
+      boxes.push(box);
+    }
+
     function drawGlobe() {
       ctx.clearRect(0, 0, W, H);
       var time = reducedMotion.matches || paused || document.documentElement.classList.contains('reduce-motion') ? 0 : Date.now() / 1000;
@@ -422,6 +481,7 @@
 
       /* 城市脉冲 */
       var labels = 0;
+      var labelBoxes = [];
       cities.forEach(function (c) {
         var pp = project(c.x, c.y, c.z);
         if (pp.depth < 0.05) { return; }
@@ -430,20 +490,25 @@
         var rr2 = 3.5 + pulse * 3.5;
         ctx.save();
         ctx.globalAlpha = 0.55 + front * 0.45;
-        ctx.strokeStyle = c.color;
+        ctx.strokeStyle = lightPanel ? '#3d5c52' : (c.color || COL.cityBase);
         ctx.lineWidth = 1.2;
         ctx.beginPath();
         ctx.arc(pp.sx, pp.sy, rr2, 0, Math.PI * 2);
         ctx.stroke();
-        ctx.fillStyle = c.color;
+        ctx.fillStyle = c.color || COL.cityBase;
         ctx.beginPath();
         ctx.arc(pp.sx, pp.sy, 2.6 + front * 1.6, 0, Math.PI * 2);
         ctx.fill();
-        if (c.label && pp.depth > .35 && labels < 10) {
-          ctx.font = '11px system-ui, sans-serif';
-          ctx.fillStyle = '#e5f3ec';
-          ctx.fillText(c.label.length > 36 ? c.label.slice(0, 35) + '…' : c.label, pp.sx + 9, pp.sy - 8);
-          labels++;
+        if (lightPanel) { ctx.stroke(); }
+        if (c.label && pp.depth > .35) {
+          if (lightPanel && labelBoxes.length < 10) {
+            drawLightLabel(c.label, pp, labelBoxes);
+          } else if (!lightPanel && labels < 10) {
+            ctx.font = '11px system-ui, sans-serif';
+            ctx.fillStyle = '#e5f3ec';
+            ctx.fillText(c.label.length > 36 ? c.label.slice(0, 35) + '…' : c.label, pp.sx + 9, pp.sy - 8);
+            labels++;
+          }
         }
         ctx.restore();
       });

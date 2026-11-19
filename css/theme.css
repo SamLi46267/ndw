@@ -57,8 +57,26 @@
 [data-theme="light"] :is(#navbar .navbar, .nav-drawer, .site-footer) { background: var(--card-solid); border-color: var(--border); color: var(--text); }
 [data-theme="light"] :is(.navbar .brand, .navbar .nav-link:hover, .site-footer h4) { color: var(--text); }
 [data-theme="light"] #navbar .nav-link.active { background: var(--holo-soft); color: var(--holo-bright); box-shadow: none; }
-[data-theme="light"] .main-landing { background: linear-gradient(180deg, rgba(244, 246, 242, .5), var(--bg) 82%); }
-[data-theme="light"] body.main-page .bg-globe { opacity: .26; }
+[data-theme="light"] .main-landing { background: var(--bg); }
+.main-globe { display: none; }
+[data-theme="light"] .main-landing-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 24px; }
+[data-theme="light"] .main-copy { padding-top: 0; }
+[data-theme="light"] .main-globe {
+  position: relative;
+  display: block;
+  min-width: 0;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: radial-gradient(ellipse at center, #f5faf7, #e5efea);
+}
+[data-theme="light"] body.main-page .main-globe .bg-globe { position: absolute; opacity: 1; }
+[data-theme="light"] .main-overview { grid-column: 1 / -1; margin-top: 0; }
+@media (max-width: 980px) {
+  [data-theme="light"] .main-landing-inner { grid-template-columns: minmax(0, 1fr); }
+  [data-theme="light"] .main-globe { width: 100%; max-height: 500px; }
+}
 [data-theme="light"] .main-overview { background: var(--card-solid); box-shadow: var(--shadow-card); }
 [data-theme="light"] .home-lang-btn.active { background: var(--holo); border-color: var(--holo); color: #fff; }
 
@@ -74,7 +92,11 @@
 [data-theme="light"] :is(.local-panel .alert-card, .disaster-record) { border-inline-start-color: var(--hazard, var(--border)); }
 [data-theme="light"] :is(.local-panel .alert-card:hover, .guide-side-item.active, .phone-card:hover, .product-card:hover, .rescue-place:hover, .rescue-org:hover, .search-item:hover, .search-item.active, .db-table tbody tr:hover) { background: var(--card-hover); color: var(--text); }
 [data-theme="light"] .guide-side-item.active { box-shadow: inset 3px 0 var(--holo); }
+[data-theme="light"] .quiz-opt:not(.correct, .wrong) { background: var(--card-2); }
+[data-theme="light"] .quiz-opt:not(.correct, .wrong):hover { background: var(--card-hover); }
 [data-theme="light"] :is(.quiz-opt.correct .opt-key, .quiz-opt.wrong .opt-key) { color: #fff; }
+[data-theme="light"] .btn-outline.btn-danger { color: var(--red); border-color: var(--red); }
+[data-theme="light"] .btn-outline.btn-danger:hover { background: var(--red-soft); }
 [data-theme="light"] :is(.db-note, .global-foot, .rescue-place span, .rescue-org > span, .rescue-detail dd small, .disaster-record summary > span, .disaster-record-body dt) { color: var(--text-mid); }
 [data-theme="light"] :is(.rescue-breadcrumb a, .rescue-detail dt, .disaster-record summary .record-open, .rescue-type) { color: var(--holo); }
 
@@ -116,9 +138,85 @@
 [data-theme="light"] .disaster-record[data-alert="red"] summary > strong { color: var(--red); }
 [data-theme="light"] .disaster-record[data-alert="yellow"] summary > strong { color: var(--yellow); }
 
-[data-theme="light"] .global-map-wrap { --text-dim: #c0d1da; color-scheme: dark; }
+/* Light cartography keeps boundaries and alert symbols distinct. */
+[data-theme="light"] :is(.national-panel .china-map-wrap, .expanded-map-viewport) { background: #e9f2f0; border-color: #9fb7af; }
+[data-theme="light"] .china-svg {
+  --china-map-label: #263f36;
+  --china-map-label-halo: #f8fcf8;
+  --china-map-safe: #226747;
+  --china-map-alert: #88510e;
+  --china-map-high: #a32132;
+  --china-map-unknown: #526872;
+  --china-map-history: #3d575c;
+}
+[data-theme="light"] .china-svg .ch-national { fill: #dce9dc; stroke: #58766b; stroke-width: 1.2; }
+[data-theme="light"] .china-svg .ch-provinces { stroke: #839e90; stroke-width: .75; }
+[data-theme="light"] .china-svg .ch-gridlines line { stroke: #bccfc5; }
+[data-theme="light"] .china-svg .ch-label {
+  fill: var(--china-map-label);
+  font-size: 14px;
+  opacity: 1;
+  paint-order: stroke;
+  stroke: var(--china-map-label-halo);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+}
+[data-theme="light"] .china-svg .label-hidden .ch-label { opacity: 0; }
+[data-theme="light"] .china-svg .ch-city:hover .ch-label { opacity: 1; }
+[data-theme="light"] .china-svg .ch-city:focus-visible { outline-color: var(--china-map-label); }
+[data-theme="light"] .china-svg :is(.ch-dot, .ch-halo) { opacity: 1; }
+[data-theme="light"] .china-svg .ch-city { --city-marker: var(--china-map-unknown); }
+[data-theme="light"] .china-svg .st-safe { --city-marker: var(--china-map-safe); }
+[data-theme="light"] .china-svg .st-normal { --city-marker: var(--china-map-alert); }
+[data-theme="light"] .china-svg .st-high { --city-marker: var(--china-map-high); }
+[data-theme="light"] .china-svg .ch-dot { fill: var(--city-marker); }
+[data-theme="light"] .china-svg .ch-halo { stroke: var(--city-marker); }
+[data-theme="light"] .china-svg .st-history .ch-halo { stroke: var(--china-map-history); }
+[data-theme="light"] .status-dot.status-history { outline-color: #3d575c; }
+
+/* Satellite imagery uses its own marker and label colors. */
+[data-theme="light"] .china-svg.is-nasa {
+  --china-map-label: #fff;
+  --china-map-label-halo: #10221d;
+  --china-map-safe: #97e6ae;
+  --china-map-alert: #ffcb65;
+  --china-map-high: #ff8f9d;
+  --china-map-unknown: #c3d2dd;
+  --china-map-history: #f5fbfe;
+}
+[data-theme="light"] .china-svg.is-nasa .ch-national { fill: rgba(3, 9, 13, .1); stroke: #d7f9ec; }
+[data-theme="light"] .china-svg.is-nasa .ch-provinces { stroke: rgba(226, 251, 242, .7); }
+[data-theme="light"] .china-svg.is-nasa .ch-label { stroke-width: 3px; }
+
+[data-theme="light"] .global-map-wrap { background: #e5f0f4; border-color: #9ab6be; }
+[data-theme="light"] #gmapBase { opacity: .14; }
+[data-theme="light"] :is(#gmapHi, #gmapWms) { opacity: .42; }
+[data-theme="light"] .gcountry { fill: rgba(221, 235, 216, .82); stroke: #67837a; stroke-width: .75; }
+[data-theme="light"] .gcountry.hit { fill: rgba(246, 208, 170, .84); stroke: #a15d36; }
+[data-theme="light"] .gcountry:hover { fill: #bfded1; }
+[data-theme="light"] .gcountry.sel { fill: #b4d6cd; stroke: #195b4c; stroke-width: 1.3; }
+[data-theme="light"] .glables text,
+[data-theme="light"] .gcity-label { fill: #233a35; opacity: 1; paint-order: stroke; stroke: #f5faf8; stroke-width: .28px; }
+[data-theme="light"] .gmarker .core { stroke: #fff; stroke-width: .9; }
+[data-theme="light"] .gcities circle { fill: #266b83; }
+[data-theme="light"] .ginfra rect { fill: #734d17; }
+[data-theme="light"] :is(.glegend, .gdacs-legend, .gzoom-hint, .gzoom button) { background: #fff; border: 1px solid #849eaa; color: #24414b; }
+[data-theme="light"] .gzoom button:hover { background: #d9e9ed; color: #162f37; }
+[data-theme="light"] .gdacs-legend .wf::before { background: var(--gdacs-wildfire); }
+[data-theme="light"] .gdacs-legend .fl::before { background: var(--gdacs-flood); }
+[data-theme="light"] .gdacs-legend .tc::before { background: var(--gdacs-cyclone); }
+[data-theme="light"] .gdacs-legend .dr::before { background: var(--gdacs-other); }
+[data-theme="light"] .gdacs-overdue .gmarker-inner { opacity: 1; }
+[data-theme="light"] .gdacs-status-ring { stroke-width: 1.25; }
+[data-theme="light"] .gevacuation-ring { stroke: #266b83; }
 [data-theme="light"] .history-notice { color: var(--text-mid); }
 [data-theme="light"] :is(.galert.green, .db-alert.green) { color: var(--ok); }
 [data-theme="light"] .galert.yellow { color: var(--yellow); }
 [data-theme="light"] :is(.galert.orange, .db-alert.orange) { color: var(--orange); }
 [data-theme="light"] :is(.galert.red, .db-alert.red) { color: var(--red); }
+
+
+/* Light-theme surfaces that previously inherited dark-theme ink or overlays. */
+[data-theme="light"] .product-card h3 { color: var(--text); }
+[data-theme="light"] .product-card p { color: var(--text-mid); }
+[data-theme="light"] .gchina { background: var(--holo-soft) !important; color: var(--holo-bright) !important; border-color: var(--holo-line) !important; }
