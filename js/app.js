@@ -621,7 +621,7 @@
   function applyHomeFilter(alerts) {
     var now = Date.now();
     return (alerts || []).filter(function (a) {
-      if (homeFilter.level !== 'all' && a.level !== homeFilter.level) { return false; }
+      if (homeFilter.level === 'critical' ? !['red', 'orange'].includes(a.level) : homeFilter.level !== 'all' && a.level !== homeFilter.level) { return false; }
       if (homeFilter.type !== 'all' && a.type !== homeFilter.type) { return false; }
       if (homeFilter.time !== 'all') {
         var ms = alertMs(a);
@@ -631,7 +631,7 @@
     });
   }
   function alertFilterBar(s, t) {
-    var levels = [['all', web('all')], ['red', t.redAlert], ['orange', t.orangeAlert], ['yellow', t.yellowAlert], ['blue', t.blueAlert]];
+    var levels = [['all', web('all')], ['critical', web('criticalLocations')], ['red', t.redAlert], ['orange', t.orangeAlert], ['yellow', t.yellowAlert], ['blue', t.blueAlert]];
     var types = [];
     (s.shownAlerts || []).forEach(function (a) { if (types.indexOf(a.type) < 0) { types.push(a.type); } });
     var typeOpts = '<option value="all">' + esc(web('all')) + '</option>' + types.map(function (ty) {
@@ -655,10 +655,10 @@
     return '<div class="ops-head"><div><div class="eyebrow">OPERATIONAL OVERVIEW</div><h2>' + esc(web('situationOverview')) + '</h2><p>' + esc(web('overviewSubtitleBoth')) + '</p></div>' +
       '</div>' +
       '<div class="ops-kpis" id="opsKpis">' +
-        opsKpi(web('chinaStatus'), '—', '', '#/china') +
-        opsKpi(web('criticalLocations'), '—', '', '#/china') +
-        opsKpi(web('activeQuakes'), '—', '', '#/global') +
-        opsKpi(web('maxMagnitude'), '—', '', '#/global') +
+        opsKpi(web('chinaStatus'), '—', '', '#/china?section=alerts') +
+        opsKpi(web('criticalLocations'), '—', '', '#/china?section=alerts&level=critical') +
+        opsKpi(web('activeQuakes'), '—', '', '#/disasters?mode=live&type=EQ&source=quake') +
+        opsKpi(web('maxMagnitude'), '—', '', '#/disasters?mode=live&type=EQ&source=quake&sort=magnitude') +
       '</div>' +
       '<div class="ops-grid">' +
         '<div class="ops-card"><h3>' + esc(web('criticalLocations')) + '</h3><div class="ops-list" id="opsCritical"><a class="ops-empty" href="#/china">…</a></div></div>' +
@@ -693,10 +693,10 @@
         '<a class="ops-row" href="#/global"><span>' + esc(web('activeQuakes')) + '</span><b id="opsGlobalTime">—</b></a>' +
         '<a class="ops-row" href="#/global"><span>' + esc(web('globalTab')) + '</span><b>' + esc(web('selectHint')) + ' →</b></a>';
     }
-    kpis.innerHTML = opsKpi(web('chinaStatus'), String((s.shownAlerts || []).length), '', '#/china') +
-      opsKpi(web('criticalLocations'), String((s.levelStats.red || 0) + (s.levelStats.orange || 0)), 'red + orange', '#/china') +
-      opsKpi(web('activeQuakes'), '—', '24h', '#/global') +
-      opsKpi(web('maxMagnitude'), '—', '', '#/global');
+    kpis.innerHTML = opsKpi(web('chinaStatus'), String((s.shownAlerts || []).length), '', '#/china?section=alerts') +
+      opsKpi(web('criticalLocations'), String((s.levelStats.red || 0) + (s.levelStats.orange || 0)), 'red + orange', '#/china?section=alerts&level=critical') +
+      opsKpi(web('activeQuakes'), '—', '24h', '#/disasters?mode=live&type=EQ&source=quake') +
+      opsKpi(web('maxMagnitude'), '—', '', '#/disasters?mode=live&type=EQ&source=quake&sort=magnitude');
     if (!window.NDGlobal) { return; }
     var g = window.NDGlobal.cached();
     if (g) { fillGlobal(g); } else { window.NDGlobal.loadLive().then(fillGlobal).catch(function () {}); }
@@ -715,7 +715,7 @@
         if (top) {
           var old = box.querySelector('[data-global-top]');
           if (old) { old.parentNode.removeChild(old); }
-          box.insertAdjacentHTML('afterbegin', '<a data-global-top href="#/global"><span>M' + Number(top.magnitude).toFixed(1) + ' · ' + esc(web('globalTab')) + '</span><b>' + esc(top.place) + '</b></a>');
+          box.insertAdjacentHTML('afterbegin', '<a data-global-top href="#/disasters?mode=live&event=' + encodeURIComponent(top.id) + '"><span>M' + Number(top.magnitude).toFixed(1) + ' · ' + esc(web('globalTab')) + '</span><b>' + esc(top.place) + '</b></a>');
         }
       }
     }
@@ -910,6 +910,12 @@
     if (dbState.category === 'china') { renderDbChina(body); } else if (dbState.category === 'earthquake') { renderDbEarthquake(body); } else { renderDbGdacs(body); }
   }
 
+  function dbStat(label, value, recordIndex) {
+    var action = recordIndex >= 0 ? ' data-kind="earthquake" data-idx="' + recordIndex + '"' : '';
+    return '<button type="button" class="detail-card-link" data-action="' + (action ? 'db-row' : 'db-show-records') + '"' + action +
+      '><span>' + esc(label) + '</span><b>' + esc(value) + '</b></button>';
+  }
+
   function renderDbEarthquake(body) {
     var q = dbState.q.toLowerCase();
     var rows = ((dbState.eq && dbState.eq.rows) || []).filter(function (r) {
@@ -928,9 +934,9 @@
       return '<option value="' + v + '"' + (dbState.minMag === v ? ' selected' : '') + '>' + esc(label) + '</option>';
     }).join('');
     var html = '<div class="db-stats">' +
-      '<div><span>' + esc(web('quakeRecords')) + '</span><b>' + rows.length + '</b></div>' +
-      '<div><span>' + esc(web('maxMagnitude')) + '</span><b>M' + max.toFixed(1) + '</b></div>' +
-      '<div><span>' + esc(web('historyRange')) + '</span><b>' + esc(dbDateShort(range[0]) + ' → ' + dbDateShort(range[1])) + '</b></div>' +
+      dbStat(web('quakeRecords'), rows.length) +
+      dbStat(web('maxMagnitude'), rows.length ? 'M' + max.toFixed(1) : '—', rows.findIndex(function (r) { return Number(r[4]) === max; })) +
+      dbStat(web('historyRange'), dbDateShort(range[0]) + ' → ' + dbDateShort(range[1])) +
       '</div>' +
       '<div class="db-toolbar">' +
       '<input id="dbSearch" class="db-search" data-db-q type="search" value="' + esc(dbState.q) + '" placeholder="' + esc(web('dbSearchHint')) + '" aria-label="' + esc(web('dbSearchHint')) + '">' +
@@ -990,9 +996,9 @@
       if (counts[a] != null) { counts[a] += 1; }
     });
     var html = '<div class="db-stats">' +
-      '<div><span>' + esc(web('gdacsEvents')) + '</span><b>' + features.length + '</b></div>' +
-      '<div><span>' + esc(web('gdacsAlert')) + '</span><b>G ' + counts.green + ' · O ' + counts.orange + ' · R ' + counts.red + '</b></div>' +
-      '<div><span>' + esc(web('historyRange')) + '</span><b>' + esc(String(range[0] || '—')) + ' → ' + esc(String(range[1] || '—')) + '</b></div>' +
+      dbStat(web('gdacsEvents'), features.length) +
+      dbStat(web('gdacsAlert'), 'G ' + counts.green + ' · O ' + counts.orange + ' · R ' + counts.red) +
+      dbStat(web('historyRange'), String(range[0] || '—') + ' → ' + String(range[1] || '—')) +
       '</div>' +
       '<div class="db-toolbar">' +
       '<input id="dbSearch" class="db-search" data-db-q type="search" value="' + esc(dbState.q) + '" placeholder="' + esc(web('dbSearchHint')) + '" aria-label="' + esc(web('dbSearchHint')) + '">' +
@@ -1250,7 +1256,7 @@
     var riskMap = {};
     shownRaw.forEach(function (a) {
       risk.getRisks(a).forEach(function (r) {
-        if (!riskMap[r.key] || r.prob > riskMap[r.key].prob) { riskMap[r.key] = r; }
+        if (!riskMap[r.key] || r.prob > riskMap[r.key].prob) { riskMap[r.key] = { key: r.key, prob: r.prob, alertId: a.id }; }
       });
     });
     var topRisks = Object.keys(riskMap).map(function (k) { return riskMap[k]; })
@@ -1262,7 +1268,7 @@
       '<section class="panel-card"><h2 class="panel-card-title"><span class="h2-ic">' + SVG.iWarn + '</span>' + esc(safetyText('hazards')) + '</h2>' +
         (topRisks.length ? topRisks.map(function (r) {
           var nm = i18n.riskItem(r.key, l);
-          return '<div class="potential-hazard"><b>' + esc(nm.name) + '</b><p>' + esc(nm.note) + '</p></div>';
+          return '<a class="potential-hazard detail-card-link" href="#/detail?id=' + encodeURIComponent(r.alertId) + '&section=hazards"><b>' + esc(nm.name) + '</b><p>' + esc(nm.note) + '</p></a>';
         }).join('') : '<div class="state-box">' + esc(dataReady ? t.noAlerts : dataState) + '</div>') +
       '<p class="hazard-explanation">' + esc(safetyText('hazardNote')) + '</p></section>';
 
@@ -1392,9 +1398,9 @@
   }
 
   function statBox(cls, num, label) {
-    return '<div class="stat-box ' + cls + '">' +
+    return '<a class="stat-box detail-card-link ' + cls + '" href="#/china?section=alerts&level=' + cls.slice(3) + '">' +
       '<span class="stat-num">' + (num === null ? '—' : num) + '</span>' +
-      '<span class="stat-label">' + esc(label) + '</span></div>';
+      '<span class="stat-label">' + esc(label) + '</span></a>';
   }
 
   /* ================================================================
@@ -1733,7 +1739,7 @@
 
     /* 次生风险 */
     if (a.risks && a.risks.length) {
-      html += '<div class="dcard"><div class="dcard-title"><span class="title-bar"></span>' + esc(safetyText('hazards')) + '</div>' +
+      html += '<div class="dcard" id="warningHazards"><div class="dcard-title"><span class="title-bar"></span>' + esc(safetyText('hazards')) + '</div>' +
         a.risks.map(function (r) {
           return '<div class="potential-hazard"><b>' + esc(r.name) + '</b><p>' + esc(r.note) + '</p></div>';
         }).join('') +
@@ -1770,7 +1776,9 @@
         infoRow(t.validPeriod, a.duration) +
       '</div></div>';
 
+    var guide = data.getGuides().find(function (entry) { return entry.name === alert.type; });
     html += '<div class="detail-actions">' +
+      (guide ? '<a class="btn btn-outline" href="#/guide?topic=' + encodeURIComponent(guide.id) + '">' + esc(t.tabGuide) + ' →</a>' : '') +
       '<a class="btn btn-green" href="tel:12121">' + esc(t.callHotline) + '</a>' +
       '<button class="btn btn-outline" data-action="share">' + esc(t.share) + '</button>' +
     '</div></aside></div></section>';
@@ -2265,7 +2273,7 @@
 
   function foldCard(key, expanded, title, bodyHtml) {
     return '<div class="set-card ' + (expanded ? 'expanded' : '') + '">' +
-      '<button class="set-card-title" data-action="toggle-' + key + '"><span>' + esc(title) + '</span><span class="set-arrow">›</span></button>' +
+      '<button class="set-card-title" aria-expanded="' + expanded + '" data-action="toggle-' + key + '"><span>' + esc(title) + '</span><span class="set-arrow">›</span></button>' +
       (expanded ? '<div class="set-card-body">' + bodyHtml + '</div>' : '') +
     '</div>';
   }
@@ -2402,7 +2410,16 @@
     return out;
   }
 
-  function route() {
+  function focusDetails(selector) {
+    var target = viewEl.querySelector(selector);
+    if (!target) { return; }
+    target.tabIndex = -1;
+    target.focus({ preventScroll: true });
+    target.scrollIntoView({ block: 'start' });
+  }
+
+  function route(preservePosition) {
+    preservePosition = preservePosition === true;
     var raw = location.hash || '#/home';
     var parts = raw.replace(/^#/, '').split('?');
     var path = parts[0] || '/home';
@@ -2423,7 +2440,13 @@
         break;
       case '/china':
         if (!homeState.city) { initRegion(); }
+        if (!preservePosition) {
+          homeFilter.level = ['critical', 'red', 'orange', 'yellow', 'blue'].includes(query.level) ? query.level : 'all';
+          homeFilter.type = 'all';
+          homeFilter.time = 'all';
+        }
         renderHome();
+        if (!preservePosition && query.section === 'alerts') { focusDetails('#localHeading'); }
         break;
       case '/rescue': window.NDRescue.render(viewEl, query); break;
       case '/disasters': window.NDDisasterList.render(viewEl, query); break;
@@ -2432,10 +2455,23 @@
         if (query.category) { dbState.category = query.category; dbState.q = query.q || ''; dbState.page = 1; }
         renderDatabase(); break;
       case '/map': renderExpandedMap(); break;
-      case '/detail': renderDetail(query.id); break;
-      case '/guide': renderGuide(); break;
+      case '/detail':
+        renderDetail(query.id);
+        if (!preservePosition && query.section === 'hazards') { focusDetails('#warningHazards'); }
+        break;
+      case '/guide':
+        if (!preservePosition && query.topic) {
+          var topicIndex = data.getGuides().findIndex(function (entry) { return entry.id === query.topic; });
+          if (topicIndex >= 0) { guideIndex = topicIndex; }
+        }
+        renderGuide();
+        break;
       case '/tools': renderTools(); break;
-      case '/products': renderProducts(); break;
+      case '/products':
+        if (window.NDGames) { window.NDGames.stop(); }
+        productsState.game = ['aqua', 'pyro'].includes(query.game) ? query.game : null;
+        renderProducts();
+        break;
       case '/settings': renderSettings(); break;
       default:
         if (!homeState.city) { initRegion(); }
@@ -2449,7 +2485,7 @@
   /* 保持滚动位置的重绘（答题/勾选时） */
   function softRerender() {
     var y = window.scrollY;
-    route();
+    route(true);
     window.scrollTo(0, y);
   }
 
@@ -2457,6 +2493,12 @@
    * 全局事件委托
    * ================================================================ */
   document.getElementById('app').addEventListener('click', function (e) {
+    var card = e.target.closest('a.stat-box');
+    if (card && location.hash === card.hash && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey) {
+      e.preventDefault();
+      route();
+      return;
+    }
     var el = e.target.closest('[data-action]');
     if (!el) { return; }
     var action = el.dataset.action;
@@ -2478,6 +2520,7 @@
         renderDbBody();
         break;
       }
+      case 'db-show-records': focusDetails('.db-table-wrap'); break;
       case 'db-row': showDbDetail(d.kind, parseInt(d.idx, 10)); break;
       case 'db-close': closeDbDetail(); break;
       case 'db-page':
@@ -2524,16 +2567,6 @@
         renderPicker();
         break;
       case 'share': shareAlert(); break;
-      case 'open-game':
-        if (window.NDGames) { window.NDGames.stop(); }
-        productsState.game = d.type || 'aqua';
-        renderProducts();
-        break;
-      case 'back-products':
-        if (window.NDGames) { try { window.NDGames.stop(); } catch (e) { /* never block leaving the game */ } }
-        productsState.game = null;
-        renderProducts();
-        break;
       case 'quiz-answer':
         if (quizState[d.qid] && quizState[d.qid].picked >= 0) { break; }
         quizState[d.qid] = { picked: parseInt(d.pick, 10) };

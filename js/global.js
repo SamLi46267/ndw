@@ -278,9 +278,15 @@
     var tsu = quakes.filter(function (q) { return q.tsunami; }).length;
     var source = isLive ? (data.sourceName || data.source || 'USGS') : (data.source || 'CnOpenData');
     var dataTime = isLive ? (data.generatedAt || data.fetchedAt) : (data.range ? data.range[1] : '');
-    var kpi = function (label, value, sub) {
-      return '<div class="gkpi"><span>' + esc(label) + '</span><b>' + esc(value) + '</b><small>' + esc(sub || '') + '</small></div>';
-    };
+    var listHref = '#/disasters?mode=' + state.mode + (isLive ? '' : '&days=' + historyDays());
+    var quakeHref = listHref + '&source=quake&type=EQ' +
+      (isLive ? '' : '&minMag=' + state.hmin) +
+      (state.gdacsAlert === 'all' ? '' : '&alert=' + state.gdacsAlert);
+    var hazardHref = listHref + '&source=gdacs&type=' + encodeURIComponent(state.gdacsType) +
+      (state.gdacsAlert === 'all' ? '' : '&alert=' + state.gdacsAlert);
+    function kpi(label, value, sub, href) {
+      return '<a class="gkpi detail-card-link" href="' + esc(href) + '"><span>' + esc(label) + '</span><b>' + esc(value) + '</b><small>' + esc(sub || '') + '</small></a>';
+    }
     var layerDefs = [
       ['gdacs', web('gdacsLayer')], ['affected', web('affected')], ['population', web('population')],
       ['evacuation', web('evacuation')], ['infrastructure', web('infrastructure')]
@@ -301,10 +307,10 @@
     var gdacs = currentGdacs();
     var kpiHtml;
     if (showQuakes) {
-      kpiHtml = kpi(isLive ? web('activeQuakes') : web('quakeRecords'), total, capped ? 'Top ' + quakes.length : (isLive ? web('live') : web('records'))) +
-        kpi(web('maxMagnitude'), 'M' + max.toFixed(1), '') +
-        kpi(web('significantQuakes'), sig, 'M4.5+') +
-        kpi(web('tsunamiAlerts'), tsu, '');
+      kpiHtml = kpi(isLive ? web('activeQuakes') : web('quakeRecords'), total, capped ? 'Top ' + quakes.length : (isLive ? web('live') : web('records')), quakeHref) +
+        kpi(web('maxMagnitude'), total ? 'M' + max.toFixed(1) : '—', '', quakeHref + '&sort=magnitude') +
+        kpi(web('significantQuakes'), sig, 'M4.5+', quakeHref + '&significant=1') +
+        (isLive ? kpi(web('tsunamiAlerts'), tsu, '', quakeHref + '&tsunami=1') : '');
     } else {
       var active = gdacs.filter(function (g) { return g.active !== false; }).length;
       var alertRank = { green: 1, orange: 2, red: 3 };
@@ -313,10 +319,10 @@
         if ((alertRank[g.alert] || 0) > (alertRank[maxAlert] || 0)) { maxAlert = g.alert; }
         if (g.country) { countries[g.country] = 1; }
       });
-      kpiHtml = kpi(web('gdacsEvents'), String(gdacs.length), web('gdacsLayer')) +
-        kpi(web('live'), String(active), '') +
-        kpi(web('gdacsAlert'), maxAlert ? gdacsAlertLabel(maxAlert) : '—', '') +
-        kpi(web('countryLabel'), String(Object.keys(countries).length), '');
+      kpiHtml = kpi(web('gdacsEvents'), String(gdacs.length), web('gdacsLayer'), hazardHref) +
+        kpi(web('live'), String(active), '', hazardHref + '&active=1') +
+        kpi(web('gdacsAlert'), maxAlert ? gdacsAlertLabel(maxAlert) : '—', '', hazardHref + (state.gdacsAlert === 'all' && maxAlert ? '&alert=' + maxAlert : '')) +
+        kpi(web('countryLabel'), String(Object.keys(countries).length), '', hazardHref + '&withCountry=1');
     }
     return '<div class="global-head">' +
         '<div class="global-head-main"><div class="eyebrow">GLOBAL DISASTER MONITOR</div>' +

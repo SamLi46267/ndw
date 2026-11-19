@@ -791,7 +791,7 @@ body:not(.main-page) .bg-globe { opacity: 0; visibility: hidden; }
 .db-tab:hover { color: var(--text); }
 .db-tab.active { color: var(--holo-bright); border-bottom-color: var(--holo); }
 .db-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
-.db-stats > div { padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: rgba(10, 18, 24, .7); }
+.db-stats > button { color: inherit; text-align: start; font: inherit; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: rgba(10, 18, 24, .7); }
 .db-stats span { display: block; color: var(--text-dim); font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; }
 .db-stats b { display: block; margin-top: 4px; font-size: 1.15rem; }
 .db-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
@@ -1053,3 +1053,11 @@ a.rescue-button { text-decoration: none; }
 @media (max-width: 620px) {
   .global-page .global-map-wrap:not(.gfull) { min-height: 280px; }
 }
+
+
+.detail-card-link { color: inherit; text-decoration: none; cursor: pointer; }
+.detail-card-link:hover { border-color: var(--holo); }
+.detail-card-link:focus-visible { outline: 2px solid var(--holo); outline-offset: 3px; }
+a.potential-hazard { display: block; }
+a.potential-hazard:hover b { text-decoration: underline; }
+#localHeading, #warningHazards, .db-table-wrap { scroll-margin-top: calc(var(--nav-h) + 20px); }

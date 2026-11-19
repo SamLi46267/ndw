@@ -17,7 +17,7 @@
       var how = g === 'aqua' ? t.gameAquaHow : t.gamePyroHow;
       ctx.viewEl.innerHTML =
         '<section class="section"><div class="container">' +
-          '<button class="btn btn-outline" data-action="back-products">' + esc(t.backToProducts) + '</button>' +
+          '<a class="btn btn-outline" href="#/products">' + esc(t.backToProducts) + '</a>' +
           '<div class="game-frame">' +
             '<div class="game-title"><h2>' + esc(name) + '</h2><p>' + esc(how) + '</p></div>' +
             '<div class="game-hud" id="gameHUD"></div>' +
@@ -82,12 +82,12 @@
           '<div class="product-grid">';
       cards.forEach(function (c) {
         html +=
-          '<div class="product-card">' +
+          '<a class="product-card detail-card-link" href="#/products?game=' + c.type + '">' +
             '<div class="product-icon">' + c.icon + '</div>' +
             '<h3>' + esc(c.name) + '</h3>' +
             '<p>' + esc(c.desc) + '</p>' +
-            '<button class="btn btn-green" data-action="open-game" data-type="' + c.type + '">' + esc(t.startDemo) + '</button>' +
-          '</div>';
+            '<span class="btn btn-green">' + esc(t.startDemo) + '</span>' +
+          '</a>';
       });
       html += '</div></div></section>';
       ctx.viewEl.innerHTML = html;

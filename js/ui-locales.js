@@ -350,6 +350,11 @@
     "fr": "Type de catastrophe",
     "it": "Tipo di catastrofe"
   },
+  "View all records": {
+    "es": "Ver todos los registros",
+    "fr": "Voir tous les enregistrements",
+    "it": "Mostra tutti i record"
+  },
   "All types": {
     "es": "Todos los tipos",
     "fr": "Tous les types",
