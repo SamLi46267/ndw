@@ -1,7 +1,7 @@
 {
   "source": "USGS",
   "timezone": "UTC",
-  "count": 1935,
+  "count": 1946,
   "range": [
     1792454726067,
     1795045471790
@@ -316,6 +316,16 @@
       "67 km NNE of Ruteng, Indonesia",
       "earthquake",
       "us7000tyy2"
+    ],
+    [
+      1794977940780,
+      -178.9306,
+      -24.2437,
+      507.035,
+      4.4,
+      "south of the Fiji Islands",
+      "earthquake",
+      "us7000tyxq"
     ],
     [
       1794977351633,
@@ -876,6 +886,16 @@
       "26 km E of Port-Olry, Vanuatu",
       "earthquake",
       "us7000tyqi"
+    ],
+    [
+      1794882586651,
+      -147.349,
+      59.358,
+      18.3,
+      2.7,
+      "87 km SSE of Chenega, Alaska",
+      "earthquake",
+      "aka2026wtfzxh"
     ],
     [
       1794880817654,
@@ -2246,6 +2266,16 @@
       "13 km SSW of Skwentna, Alaska",
       "earthquake",
       "aka2026wnvaqb"
+    ],
+    [
+      1794627927019,
+      74.7283,
+      21.1258,
+      10,
+      4.2,
+      "25 km NNW of Dhūlia, India",
+      "earthquake",
+      "us7000ty6u"
     ],
     [
       1794626306652,
@@ -4008,34 +4038,44 @@
       "aka2026wgggss"
     ],
     [
-      1794269483263,
-      138.6219,
-      -2.3853,
+      1794269482956,
+      138.8149,
+      -2.3778,
       35,
       4.5,
-      "224 km W of Abepura, Indonesia",
+      "203 km W of Abepura, Indonesia",
       "earthquake",
       "us7000txa7"
     ],
     [
-      1794267926548,
-      -177.3757,
-      -24.5715,
-      175.527,
-      4.9,
+      1794267926019,
+      -177.4424,
+      -24.5461,
+      168.416,
+      5,
       "south of the Fiji Islands",
       "earthquake",
       "us7000tx7v"
     ],
     [
-      1794267612931,
-      -23.8725,
-      -56.7537,
+      1794267612774,
+      -23.7994,
+      -56.7322,
       10,
       4.9,
       "South Sandwich Islands region",
       "earthquake",
       "us7000tx9y"
+    ],
+    [
+      1794266104191,
+      71.7181,
+      37.4777,
+      138.715,
+      4,
+      "14 km E of Khorugh, Tajikistan",
+      "earthquake",
+      "us7000tx7n"
     ],
     [
       1794265018999,
@@ -4048,12 +4088,12 @@
       "nn00926833"
     ],
     [
-      1794261787482,
-      171.6466,
-      52.7984,
+      1794261788409,
+      171.727,
+      52.9178,
       10,
-      4.7,
-      "103 km W of Attu Station, Alaska",
+      4.8,
+      "98 km W of Attu Station, Alaska",
       "earthquake",
       "us7000tx7h"
     ],
@@ -11588,12 +11628,12 @@
       "pr71537838"
     ],
     [
-      1793200073185,
-      140.5751,
-      35.701,
-      49.935,
+      1793200072318,
+      140.6098,
+      35.6777,
+      43.059,
       5.5,
-      "2 km E of Yōkaichiba, Japan",
+      "5 km SW of Asahi, Japan",
       "earthquake",
       "us7000ttpe"
     ],
@@ -11726,6 +11766,16 @@
       "9 km WNW of Balangonan, Philippines",
       "earthquake",
       "us7000ttnq"
+    ],
+    [
+      1793188957793,
+      54.5448,
+      14.6129,
+      10,
+      4.4,
+      "224 km NNE of Hadibu, Yemen",
+      "earthquake",
+      "us7000twk2"
     ],
     [
       1793188871490,
@@ -12758,12 +12808,12 @@
       "pr71537733"
     ],
     [
-      1793092065122,
-      -173.4094,
-      -15.1739,
+      1793092065037,
+      -173.4394,
+      -15.2566,
       10,
       5,
-      "95 km NNE of Hihifo, Tonga",
+      "86 km NNE of Hihifo, Tonga",
       "earthquake",
       "us7000ttfc"
     ],
@@ -13458,14 +13508,14 @@
       "us7000ttv8"
     ],
     [
-      1792995926168,
-      -164.957,
-      53.464,
-      4.4,
+      1792995928283,
+      -164.9235,
+      53.514,
+      35,
       3.3,
-      "92 km SE of Akutan, Alaska",
+      "88 km SE of Akutan, Alaska",
       "earthquake",
-      "aka2026vexjqv"
+      "us7000ttv4"
     ],
     [
       1792995869328,
@@ -13508,14 +13558,14 @@
       "us6000u4y6"
     ],
     [
-      1792991126516,
-      -172.637,
-      52.215,
-      2.2,
-      3.4,
-      "106 km E of Atka, Alaska",
+      1792991126154,
+      -172.6697,
+      52.113,
+      5.865,
+      3.9,
+      "105 km E of Atka, Alaska",
       "earthquake",
-      "aka2026veusca"
+      "us7000ttuz"
     ],
     [
       1792990420521,
@@ -15118,6 +15168,16 @@
       "us7000tv7g"
     ],
     [
+      1792840734825,
+      165.3953,
+      -13.8983,
+      10,
+      4.3,
+      "220 km NW of Port-Olry, Vanuatu",
+      "earthquake",
+      "us7000tv7h"
+    ],
+    [
       1792840440464,
       165.5598,
       -13.8446,
@@ -15186,6 +15246,26 @@
       "20 km NNE of Myingyan, Burma (Myanmar)",
       "earthquake",
       "us7000tv79"
+    ],
+    [
+      1792836088121,
+      -69.2615,
+      -18.4759,
+      122.647,
+      4.3,
+      "94 km N of Camiña, Chile",
+      "earthquake",
+      "us6000u4lu"
+    ],
+    [
+      1792835548118,
+      165.253,
+      -14.1246,
+      10,
+      4.3,
+      "220 km WNW of Port-Olry, Vanuatu",
+      "earthquake",
+      "us7000tv8w"
     ],
     [
       1792834728917,
@@ -16378,6 +16458,26 @@
       "us7000ttk6"
     ],
     [
+      1792751150644,
+      14.303,
+      38.731,
+      10,
+      4.5,
+      "49 km WNW of Malfa, Italy",
+      "earthquake",
+      "us7000tua1"
+    ],
+    [
+      1792751098839,
+      14.216,
+      38.7683,
+      10,
+      4.3,
+      "57 km WNW of Malfa, Italy",
+      "earthquake",
+      "us7000tubx"
+    ],
+    [
       1792750756576,
       14.1404,
       38.7172,
@@ -16446,6 +16546,16 @@
       "60 km WNW of Malfa, Italy",
       "earthquake",
       "us7000tu9t"
+    ],
+    [
+      1792740328172,
+      179.7442,
+      -33.3086,
+      199.597,
+      4.4,
+      "south of the Kermadec Islands",
+      "earthquake",
+      "us6000u4ap"
     ],
     [
       1792739653808,
