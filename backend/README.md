@@ -16,7 +16,7 @@ Browsers never call the weather provider.
 The first eligible run reserves and checks all remaining map cities (at most
 77 requests), paced at least 300ms apart. This one-time warm-up uses the same
 450-call cap and persisted quota ledger; interrupted reservations still count.
-Subsequent runs are scheduled at minutes 7, 22, 37 and 52 each hour (UTC),
+Subsequent runs are scheduled at minutes 4, 19, 34 and 49 each hour (UTC),
 with four cities per elapsed 15-minute slot. If GitHub delays a run, the next
 eligible run catches up missed slots, up to one 77-city rotation and the remaining
 rolling quota. Catch-up can spend more requests in one run, but never raises the
@@ -145,7 +145,9 @@ collection time and expires from Live after 30 minutes without another successfu
 check. Removed events remain in the archive. This supersedes the earlier strict
 start/end interval rule above; current listing is not on-site verification.
 
-Collection requests run every five minutes, offset from the top of the hour.
+Collection is scheduled every five minutes at minutes 2, 7, 12, …, 57 (UTC).
+China warning collection is offset so it does not enter the shared Pages queue
+at the same scheduled time as GDACS.
 GitHub schedules remain best-effort and may be delayed. Each collection workflow
 also publishes Pages directly because GITHUB_TOKEN pushes do not trigger another
 workflow. The browser refreshes published data every minute, and shows overdue

@@ -10,7 +10,8 @@ on:
   issues:
     types: [opened]
   schedule:
-    - cron: '7,22,37,52 * * * *'
+    # Offset from GDACS runs, which share the Pages concurrency group.
+    - cron: '4,19,34,49 * * * *'
 
 permissions:
   contents: write
