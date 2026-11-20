@@ -354,7 +354,8 @@
         '</div>' +
       '</div>' +
       '<div class="global-kpis">' + kpiHtml + '</div>' +
-      '<details class="global-map-options"' + (window.innerWidth > 620 || state.mobileOptionsOpen ? ' open' : '') + '>' +
+      '<details class="global-map-options"' + (window.innerWidth <= 620 ? ' data-compact' : '') +
+        (window.innerWidth > 620 || state.mobileOptionsOpen ? ' open' : '') + '>' +
       '<summary>' + esc(label('controls')) + '</summary>' +
       '<div class="global-toolbar">' +
         '<div class="global-filters"><span class="gfl">' + esc(web('countryLabel')) + '</span><select data-g="country-select" aria-label="' + esc(web('countryLabel')) + '">' + countryOpts + '</select>' +
@@ -794,6 +795,8 @@
         !GdacsStatus.active(state.selected.status, Date.now())) { state.selected = null; }
     var el = state.el;
     if (!el) { return; }
+    var compactOptions = el.querySelector('.global-map-options[data-compact]');
+    if (compactOptions) state.mobileOptionsOpen = compactOptions.open;
     if (state.fullscreen) { exitFullscreen(); }
     if (state.loading) {
       el.innerHTML = '<section class="global-page"><div class="container"><div class="global-head"><div><h1>' + esc(web('globalTitle')) + '</h1><p>' + esc(web('globalSub')) + '</p></div></div><div class="state-box"><div class="spinner"></div>' + esc(web('live')) + '…</div></div></section>';
@@ -833,10 +836,6 @@
         '<a href="https://earthdata.nasa.gov/gibs" target="_blank" rel="noopener noreferrer">NASA GIBS</a>' +
       '</p>' +
       '</div></section>';
-    var options = el.querySelector('.global-map-options');
-    if (options) options.addEventListener('toggle', function () {
-      if (window.innerWidth <= 620) state.mobileOptionsOpen = options.open;
-    });
     if (window.NDUnits) window.NDUnits.enhance(el);
     state.ctx.explainView && state.ctx.explainView();
     wms.key = '';
@@ -993,7 +992,12 @@
       });
       window.addEventListener('resize', function () {
         var options = state.el && state.el.querySelector('.global-map-options');
-        if (options) options.open = window.innerWidth > 620 || state.mobileOptionsOpen;
+        var compact = window.innerWidth <= 620;
+        if (options && options.hasAttribute('data-compact') !== compact) {
+          if (!compact) state.mobileOptionsOpen = options.open;
+          options.toggleAttribute('data-compact', compact);
+          options.open = !compact || state.mobileOptionsOpen;
+        }
         syncSideHeight();
       });
       window.setInterval(function () {
