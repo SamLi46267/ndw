@@ -1,0 +1,43 @@
+name: Collect NWS alerts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/collect-nws.mjs'
+      - '.github/workflows/collect-nws.yml'
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Collect and validate NWS snapshot
+        run: node backend/collect-nws.mjs
+      - name: Save snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public-data/nws-active-alerts.json
+          git commit -m "Publish NWS active alerts snapshot [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - uses: ./.github/actions/publish-pages

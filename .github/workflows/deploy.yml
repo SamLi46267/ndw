@@ -99,6 +99,10 @@ jobs:
           mkdir -p "$RUNNER_TEMP/ndw-public"
           cp index.html CNAME favicon.svg sw.js manifest.webmanifest robots.txt sitemap.xml "$RUNNER_TEMP/ndw-public/"
           cp -R js css assets public-data "$RUNNER_TEMP/ndw-public/"
+          if [ ! -s "$RUNNER_TEMP/ndw-public/public-data/nws-active-alerts.json" ]; then
+            node backend/collect-nws.mjs "$RUNNER_TEMP/ndw-public/public-data/nws-active-alerts.json" ||
+              echo "::warning::NWS snapshot could not be collected during deployment"
+          fi
           node backend/prepare-site.mjs "$RUNNER_TEMP/ndw-public"
       - uses: actions/upload-pages-artifact@v3
         with:

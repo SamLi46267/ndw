@@ -1,8 +1,10 @@
-// National Weather Service CAP messages, requested directly from its active alerts API.
+// National Weather Service CAP messages from the API or a published snapshot.
 (function (root) {
   'use strict';
   const endpoint = 'https://api.weather.gov/alerts/active';
   const pollInterval = 120000;
+  const snapshotPath = 'public-data/nws-active-alerts.json';
+  const maxSnapshotAge = 6 * 3600000;
   const areas = {
     AL: 'Alabama', AK: 'Alaska', AS: 'American Samoa', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
     CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District of Columbia', FL: 'Florida',
@@ -22,6 +24,7 @@
       loading: 'Checking the NWS feed…', failed: 'The NWS feed is unavailable. Check the official map for current warnings.',
       empty: 'No qualifying unexpired messages in this response.', issued: 'Issued', expires: 'Message expires', issuer: 'Issued by',
       checked: 'Feed checked', updated: 'Feed last changed', agency: 'Official message', instructions: 'Issuer instructions',
+      published: 'Published NWS snapshot', overdue: 'Snapshot update overdue',
       cadence: 'Checks every two minutes while this page is visible.'
     },
     zh: {
@@ -30,6 +33,7 @@
       loading: '正在查询 NWS 通报…', failed: '暂时无法获取 NWS 数据。请查看官方地图了解当前预警。',
       empty: '此次响应中没有符合条件且尚未过期的通报。', issued: '发布', expires: '通报到期', issuer: '发布机构',
       checked: '数据查询时间', updated: '数据源最后变更', agency: '官方通报原文', instructions: '发布机构建议',
+      published: '已发布的 NWS 快照', overdue: '快照更新已延迟',
       cadence: '页面可见时每两分钟查询一次。'
     },
     es: {
@@ -38,6 +42,7 @@
       loading: 'Consultando el NWS…', failed: 'El servicio del NWS no está disponible. Consulta el mapa oficial para ver los avisos actuales.',
       empty: 'Esta respuesta no contiene mensajes vigentes que cumplan los criterios.', issued: 'Emisión', expires: 'Caducidad del mensaje', issuer: 'Emisor',
       checked: 'Consulta', updated: 'Último cambio en la fuente', agency: 'Mensaje oficial', instructions: 'Instrucciones del emisor',
+      published: 'Instantánea publicada del NWS', overdue: 'Actualización de la instantánea retrasada',
       cadence: 'Se consulta cada dos minutos mientras esta página está visible.'
     },
     fr: {
@@ -46,6 +51,7 @@
       loading: 'Consultation du NWS…', failed: 'Le flux du NWS est indisponible. Consultez la carte officielle pour les alertes en cours.',
       empty: 'Cette réponse ne contient aucun message en cours de validité répondant aux critères.', issued: 'Émission', expires: 'Expiration du message', issuer: 'Émetteur',
       checked: 'Flux consulté', updated: 'Dernière modification du flux', agency: 'Message officiel', instructions: 'Consignes de l’émetteur',
+      published: 'Instantané publié du NWS', overdue: 'Actualisation de l’instantané en retard',
       cadence: 'Consultation toutes les deux minutes lorsque cette page est visible.'
     },
     it: {
@@ -54,6 +60,7 @@
       loading: 'Consultazione del NWS…', failed: 'Il servizio NWS non è disponibile. Consulta la mappa ufficiale per le allerte in corso.',
       empty: 'Questa risposta non contiene messaggi validi che soddisfino i criteri.', issued: 'Emissione', expires: 'Scadenza del messaggio', issuer: 'Ente emittente',
       checked: 'Ultima consultazione', updated: 'Ultima modifica alla fonte', agency: 'Messaggio ufficiale', instructions: 'Istruzioni dell’ente emittente',
+      published: 'Dati NWS pubblicati', overdue: 'Aggiornamento dei dati in ritardo',
       cadence: 'Aggiornamento ogni due minuti mentre la pagina è visibile.'
     }
   };
@@ -69,7 +76,7 @@
     if (Object.hasOwn(areas, area)) query.set('area', area);
     return endpoint + '?' + query;
   }
-  function readFeed(payload, now) {
+  function readFeed(payload, now, area) {
     if (!payload || payload.type !== 'FeatureCollection' || !Array.isArray(payload.features)) throw Error('Invalid NWS response');
     const replaced = new Set();
     const entries = new Map();
@@ -90,12 +97,43 @@
       if (expires <= now || effective > now) continue;
       if (typeof p.id !== 'string' || !p.id || typeof p.event !== 'string' || !p.event ||
           typeof p.areaDesc !== 'string' || !p.areaDesc) throw Error('Incomplete NWS bulletin');
+      if (area && !p.geocode?.UGC?.some(code => typeof code === 'string' && code.startsWith(area))) continue;
       entries.set(p.id, { id: p.id, sent, expires, event: p.event, area: p.areaDesc, issuer: p.senderName,
         headline: p.headline, description: p.description, instruction: p.instruction });
     }
     const rows = Array.from(entries.values()).filter(row => !replaced.has(row.id)).sort((a, b) => b.sent - a.sent);
     const updated = stamp(payload.updated);
     return { updated: updated <= now ? updated : null, rows: rows.slice(0, 40) };
+  }
+
+  async function loadBulletins(area, signal, fetcher = fetch, now = Date.now) {
+    async function get(url, timeout, options) {
+      const response = await fetcher(url, {
+        ...options, cache: 'no-cache', signal: AbortSignal.any([signal, AbortSignal.timeout(timeout)])
+      });
+      if (!response.ok) throw Error('NWS data HTTP ' + response.status);
+      return response.json();
+    }
+
+    try {
+      const payload = await get(urlFor(area), 4500, {
+        headers: { Accept: 'application/geo+json' }, credentials: 'omit'
+      });
+      const checkedAt = now();
+      return { ...readFeed(payload, checkedAt), checkedAt, published: false };
+    } catch (error) {
+      if (signal.aborted) throw error;
+      const payload = await get(snapshotPath, 8000);
+      const checkedAt = stamp(payload?.checkedAt);
+      const readAt = now();
+      if (!Number.isFinite(checkedAt) || checkedAt > readAt + 300000 || readAt - checkedAt >= maxSnapshotAge) {
+        throw Error('NWS snapshot unavailable or too old');
+      }
+      return {
+        ...readFeed(payload, readAt, Object.hasOwn(areas, area) ? area : ''),
+        checkedAt, published: true
+      };
+    }
   }
 
   function render(lang) {
@@ -137,11 +175,13 @@
     function clock(ms) {
       return '<time datetime="' + new Date(ms).toISOString() + '">' + esc(formatter.format(ms)) + '</time>';
     }
-    let pending, expiryTimer, feed, checked, lastHtml;
+    let pending, expiryTimer, feed, attemptedAt, lastHtml;
 
     function updateRows() {
       clearTimeout(expiryTimer);
-      const now = Date.now(), valid = feed.rows.filter(row => row.expires > now);
+      const now = Date.now();
+      const tooOld = feed.published && now - feed.checkedAt >= maxSnapshotAge;
+      const valid = tooOld ? [] : feed.rows.filter(row => row.expires > now);
       const html = valid.map(row => rowHtml(row, t, clock)).join('');
       if (html !== lastHtml) {
         const openIds = new Set(Array.from(list.querySelectorAll('details[open]'), item => item.dataset.id));
@@ -154,11 +194,21 @@
         });
         lastHtml = html;
       }
-      status.innerHTML = (valid.length ? '' : t.empty + ' ') + t.checked + ' · ' + clock(checked) +
+      if (tooOld) {
+        status.textContent = t.failed;
+        return;
+      }
+      const source = feed.published ? t.published + ' · ' : '';
+      const delayed = feed.published && now - feed.checkedAt >= 30 * 60000 ? ' · ' + t.overdue : '';
+      status.innerHTML = (valid.length ? '' : t.empty + ' ') + source + t.checked + ' · ' + clock(feed.checkedAt) + delayed +
         (feed.updated ? ' / ' + t.updated + ' · ' + clock(feed.updated) : '');
-      if (valid.length) {
-        const earliest = Math.min(...valid.map(row => row.expires));
-        expiryTimer = setTimeout(updateRows, Math.min(2147483647, earliest - now + 1));
+      const nextChanges = valid.map(row => row.expires);
+      if (feed.published) {
+        if (!delayed) nextChanges.push(feed.checkedAt + 30 * 60000);
+        nextChanges.push(feed.checkedAt + maxSnapshotAge);
+      }
+      if (nextChanges.length) {
+        expiryTimer = setTimeout(updateRows, Math.min(2147483647, Math.min(...nextChanges) - now + 1));
       }
     }
     function clearRows() {
@@ -173,23 +223,17 @@
       pending = request;
       button.disabled = true;
       status.textContent = t.loading;
-      const timeout = setTimeout(() => request.abort(), 15000);
+      attemptedAt = Date.now();
       try {
-        const response = await fetch(urlFor(select.value), {
-          headers: { Accept: 'application/geo+json' }, credentials: 'omit', cache: 'no-cache', signal: request.signal
-        });
-        if (!response.ok) throw Error('NWS ' + response.status);
-        const payload = await response.json();
+        const result = await loadBulletins(select.value, request.signal);
         if (pending !== request) return;
-        checked = Date.now();
-        feed = readFeed(payload, checked);
+        feed = result;
         updateRows();
       } catch (error) {
         if (pending !== request) return;
         clearRows();
         status.textContent = t.failed;
       } finally {
-        clearTimeout(timeout);
         if (pending === request) {
           pending = null;
           button.disabled = false;
@@ -203,7 +247,7 @@
       load();
     }
     function visibilityChanged() {
-      if (!document.hidden && (!feed || Date.now() - checked >= pollInterval)) {
+      if (!document.hidden && (!feed || Date.now() - attemptedAt >= pollInterval)) {
         clearRows();
         load();
       }
@@ -224,6 +268,6 @@
     load();
   }
   const api = { render, mount, unmount };
-  if (typeof module === 'object' && module.exports) module.exports = { ...api, readFeed, urlFor, rowHtml, messages };
+  if (typeof module === 'object' && module.exports) module.exports = { ...api, readFeed, loadBulletins, urlFor, rowHtml, messages };
   else root.NDLiveBulletins = api;
 })(typeof window === 'object' ? window : globalThis);

@@ -61,3 +61,38 @@ test('every supported language supplies all feed controls and status text', () =
     if (lang !== 'en') assert.notEqual(copy.failed, bulletins.messages.en.failed);
   }
 });
+
+test('blocked direct access uses the published collection time and filters zones before limiting results', async () => {
+  const features = Array.from({ length: 41 }, (_, index) =>
+    feature('tx-' + index, { sent: iso(-10000), geocode: { UGC: ['TXC001'] } }));
+  features.push(feature('pr', { sent: iso(-20000), geocode: { UGC: ['PRZ001', 'VIZ001'] } }));
+  const payload = { ...collection(features), checkedAt: iso(-3600000) };
+  const calls = [];
+  const fetcher = async url => {
+    calls.push(url);
+    return url.startsWith('https:') ? new Response(null, { status: 403 }) : Response.json(payload);
+  };
+  const signal = new AbortController().signal;
+  const result = await bulletins.loadBulletins('PR', signal, fetcher, () => now);
+  assert.deepEqual(result.rows.map(r => r.id), ['pr']);
+  assert.equal(result.checkedAt, now - 3600000);
+  assert.equal(result.published, true);
+  assert.deepEqual(calls, [bulletins.urlFor('PR'), 'public-data/nws-active-alerts.json']);
+  assert.equal((await bulletins.loadBulletins('', signal, fetcher, () => now)).rows.length, 40);
+  payload.checkedAt = iso(-6 * 3600000);
+  await assert.rejects(bulletins.loadBulletins('PR', signal, fetcher, () => now), /too old/);
+});
+
+test('collector validates all pages, preserves regional codes and accepts only NWS pagination', async () => {
+  const { collectNws } = await import('./collect-nws.mjs');
+  const page1 = collection([feature('tx')]);
+  page1.pagination = { next: 'https://api.weather.gov/alerts/active?cursor=more' };
+  const page2 = collection([feature('fl', { geocode: { UGC: ['FLZ001'] }, unused: true })]);
+  const snapshot = await collectNws(async url => Response.json(url.includes('cursor=') ? page2 : page1), () => now);
+  assert.equal(snapshot.checkedAt, iso(0));
+  assert.deepEqual(snapshot.features.map(f => f.properties.id), ['tx', 'fl']);
+  assert.equal(snapshot.features[1].properties.unused, undefined);
+  assert.deepEqual(bulletins.readFeed(snapshot, now, 'FL').rows.map(row => row.id), ['fl']);
+  page1.pagination.next = 'https://example.org/alerts/active';
+  await assert.rejects(collectNws(async () => Response.json(page1), () => now), /pagination/);
+});
