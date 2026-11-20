@@ -9,7 +9,7 @@ const fields = ['id', 'status', 'messageType', 'event', 'areaDesc', 'effective',
 export async function collectNws(fetcher = fetch, now = Date.now) {
   const features = [];
   const seen = new Set();
-  let next = endpoint + '?status=actual&limit=500';
+  let next = endpoint;
   let updated = null;
   while (next) {
     const url = new URL(next, endpoint);
@@ -22,7 +22,11 @@ export async function collectNws(fetcher = fetch, now = Date.now) {
       headers: { Accept: 'application/geo+json', 'User-Agent': 'GeoWarning (https://geowarning.cn)' },
       signal: AbortSignal.timeout(15000)
     });
-    if (!res.ok) throw Error('NWS active alerts HTTP ' + res.status);
+    if (!res.ok) {
+      const problem = await res.json().catch(() => null);
+      const detail = typeof problem?.detail === 'string' ? ' · ' + problem.detail.slice(0, 350) : '';
+      throw Error('NWS active alerts HTTP ' + res.status + detail);
+    }
     const page = await res.json();
     if (page?.type !== 'FeatureCollection' || !Array.isArray(page.features)) {
       throw Error('Unexpected NWS active alerts response');

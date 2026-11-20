@@ -72,9 +72,7 @@
     return typeof value === 'string' && /(?:Z|[+-]\d\d:\d\d)$/i.test(value) ? Date.parse(value) : NaN;
   }
   function urlFor(area) {
-    const query = new URLSearchParams({ status: 'actual', limit: '40' });
-    if (Object.hasOwn(areas, area)) query.set('area', area);
-    return endpoint + '?' + query;
+    return Object.hasOwn(areas, area) ? endpoint + '/area/' + area : endpoint;
   }
   function readFeed(payload, now, area) {
     if (!payload || payload.type !== 'FeatureCollection' || !Array.isArray(payload.features)) throw Error('Invalid NWS response');

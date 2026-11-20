@@ -39,8 +39,8 @@ test('malformed responses produce an error, valid empty collections are accepted
 });
 
 test('NWS uses only documented area filters, escapes upstream text and retains the official link', () => {
-  assert.equal(bulletins.urlFor('PR'), 'https://api.weather.gov/alerts/active?status=actual&limit=40&area=PR');
-  assert.equal(bulletins.urlFor('xxx'), 'https://api.weather.gov/alerts/active?status=actual&limit=40');
+  assert.equal(bulletins.urlFor('PR'), 'https://api.weather.gov/alerts/active/area/PR');
+  assert.equal(bulletins.urlFor('xxx'), 'https://api.weather.gov/alerts/active');
   const input = feature('urn:oid:example', { description: '<b>Severe flooding</b>', instruction: 'Leave & seek help' });
   const row = bulletins.readFeed(collection([input]), now).rows[0];
   const html = bulletins.rowHtml(row, bulletins.messages.en, value => iso(value - now));
