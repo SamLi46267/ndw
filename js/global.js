@@ -796,12 +796,14 @@
     var gdacs = event.kind === 'gdacs';
     var type = gdacs ? gdacsTypeLabel(event.type) : web('earthquakeType');
     var status = gdacs ? gdacsAlertLabel(event.alert) : 'M' + event.mag.toFixed(1);
+    var accent = gdacs ? gdacsColor(event.type, true) : window.NDCore.magnitudeColor(event.mag, true);
+    var statusColor = gdacs ? gdacsAlertColor(event.alert, true) : accent;
     var location = gdacs ? event.country : Number.isFinite(event.depth) && web('depth') + ' ' + event.depth.toFixed(1) + ' km';
     var time = gdacs ? GdacsStatus.reportTime(event.status) : event.time;
     var overdue = gdacs && state.mode === 'live' && !GdacsStatus.fresh(event.status, Date.now());
-    return '<div class="gmap-summary" hidden>' +
+    return '<div class="gmap-summary" style="--summary-accent:' + accent + ';--summary-status:' + statusColor + '" hidden>' +
       '<button type="button" class="gmap-summary-close" data-g="close-summary" aria-describedby="gmap-summary-details" aria-label="' + esc(window.NDCore.T().close) + '">×</button>' +
-      '<div id="gmap-summary-details"><div class="gkicker">' + esc(type) + ' · ' + esc(status) + '</div>' +
+      '<div id="gmap-summary-details"><div class="gkicker">' + esc(type) + ' <span class="gmap-summary-status">' + esc(status) + '</span></div>' +
       '<h3>' + esc((gdacs ? event.name : event.place) || '—') + '</h3>' +
       '<p>' + (location ? esc(location) + ' · ' : '') + esc(fmt(time)) + '</p>' +
       (overdue ? '<p>' + esc(label('lastListed')) + '</p>' : '') + '</div></div>';

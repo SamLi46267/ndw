@@ -12,6 +12,7 @@
   var state = null, L = {};
   var frameEl = null;
   var panelEl = null;
+  var onResult = null;
   var G = 9.81;
   var ENV_TEX = null;
 
@@ -686,7 +687,7 @@
     if (S.waterTex) { S.waterTex.offset.x += dt * 0.02; S.waterTex.offset.y += dt * 0.012; }
     if (S.timeLeft <= 0) {
       S.timeLeft = 0; S.over = true;
-      showFail(S);
+      showAquaTimeout(S);
       return;
     }
     // 键盘调角度
@@ -805,15 +806,27 @@
     });
   }
 
+  function resultRows(S) {
+    var aqua = S.type === 'aqua';
+    var goal = aqua ? S.saved / S.cfg.targets : Math.min(1, S.bestLen / S.userSteps);
+    var remaining = Math.max(0, S.timeLeft);
+    var time = S.cfg.time - remaining;
+    var points = Math.round(700 * goal + 300 * remaining / S.cfg.time * (aqua ? goal : 1));
+    var measure = aqua ? Math.round(goal * 100) : S.userSteps;
+    if (onResult) onResult({ level: S.level, points: points, time: time, measure: measure });
+    return '<div><span>' + (aqua ? L.progress : L.steps) + '</span><b>' + measure + (aqua ? '%' : '') + '</b></div>' +
+      '<div><span>' + L.timeUsed + '</span><b>' + time.toFixed(1) + 's</b></div>' +
+      '<div><span>' + L.gamePoints + '</span><b>' + points + '</b></div>';
+  }
+
   function showAquaWin(S) {
-    var used = S.cfg.time - S.timeLeft;
     var acc = S.shots > 0 ? Math.round(S.hits / S.shots * 100) : 0;
     var last = S.level >= 7;
     var p = showPanel(
       '<div class="gp-icon">✓</div>' +
       '<div class="gp-title">' + L.levelClear + ' ' + S.level + '</div>' +
       '<div class="gp-rows">' +
-        '<div><span>' + L.timeUsed + '</span><b>' + used.toFixed(1) + 's</b></div>' +
+        resultRows(S) +
         '<div><span>' + L.accuracy + '</span><b>' + acc + '% (' + S.hits + '/' + S.shots + ')</b></div>' +
       '</div>' +
       '<button class="gp-btn" data-gp="next">' + (last ? L.keepChallenge : L.nextLevel) + '</button>'
@@ -825,16 +838,20 @@
     });
   }
 
-  function showFail(S) {
+  function showAquaTimeout(S) {
+    showRetry(S, resultRows(S), initAqua);
+  }
+
+  function showRetry(S, rows, init) {
     var p = showPanel(
       '<div class="gp-icon" style="color:#ff5a5a">✕</div>' +
       '<div class="gp-title">' + L.failed + '</div>' +
-      '<div class="gp-rows"><div><span>' + L.progress + '</span><b>' + S.saved + '/' + S.cfg.targets + '</b></div></div>' +
+      '<div class="gp-rows">' + rows + '</div>' +
       '<button class="gp-btn" data-gp="retry">' + L.retry + '</button>'
     );
     p.querySelector('[data-gp=retry]').addEventListener('click', function () {
       hidePanel();
-      state = initAqua(S.level);
+      state = init(S.level);
     });
   }
 
@@ -1292,8 +1309,9 @@
       }
     });
     if (S.timeLeft <= 0) {
+      S.timeLeft = 0;
       S.over = true;
-      showFail(S);
+      showRetry(S, '<div><span>' + L.progress + '</span><b>' + S.cleared + '/' + S.piles.length + '</b></div>', initPyro);
       return;
     }
     if (S.moving) {
@@ -1367,7 +1385,7 @@
     var extra = userM - bestM;
     paintBestPath(S);
     var last = S.level >= 7;
-    var rows =
+    var rows = resultRows(S) +
       '<div><span>' + L.yourPath + '</span><b>' + userM + 'm</b></div>' +
       '<div><span>' + L.bestPath + '</span><b style="color:#76b900">' + bestM + 'm</b></div>' +
       (extra === 0
@@ -1389,6 +1407,7 @@
   /* ---------------- 输入 ---------------- */
   function onKey(e, down) {
     if (!running || !state) { return; }
+    if (down && e.target instanceof Element && e.target.closest('button, a, select, input, textarea, summary')) { return; }
     var k = e.key;
     if (state.type === 'aqua') {
       if (e.key === 'a' || e.key === 'A' || k === 'ArrowLeft') { state.input.l = down; e.preventDefault(); }
@@ -1459,8 +1478,9 @@
   }
 
   window.NDGames = {
-    start: function (canvas, type, labels) {
+    start: function (canvas, type, labels, reportResult) {
       this.stop();
+      onResult = reportResult;
       ENV_TEX = null;
       L = labels || {};
       clock = new THREE.Clock();
@@ -1475,6 +1495,7 @@
     },
     stop: function () {
       running = false;
+      onResult = null;
       if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
       window.removeEventListener('keydown', onKeyDn);
       window.removeEventListener('keyup', onKeyUp);

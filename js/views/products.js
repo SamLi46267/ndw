@@ -9,6 +9,73 @@
     var state = ctx.state;
     var esc = ctx.esc;
     var T = ctx.T;
+    var unsavedScores = new Map();
+
+    function leaderboard(game, t) {
+      var aqua = game === 'aqua';
+      var section = document.createElement('section');
+      section.className = 'game-leaderboard';
+      section.setAttribute('aria-labelledby', 'gameLeaderboardTitle');
+      section.innerHTML =
+        '<div class="game-leaderboard-head"><h2 id="gameLeaderboardTitle">' + esc(t.gameLeaderboard) + '</h2>' +
+        '<label>' + esc(t.level) + ' <select></select></label></div>' +
+        '<p>' + esc(aqua ? t.gameAquaScoring : t.gamePyroScoring) + '</p>' +
+        '<div class="game-leaderboard-results"></div>';
+      var select = section.querySelector('select');
+      var results = section.querySelector('.game-leaderboard-results');
+      for (var level = 1; level <= 7; level++) select.add(new Option(level, level));
+
+      function key() { return 'ndw-game-scores-v1-' + game + '-' + select.value; }
+      function entries() {
+        var id = key();
+        if (unsavedScores.has(id)) return unsavedScores.get(id);
+        var saved;
+        try { saved = JSON.parse(localStorage.getItem(id)); } catch (_) { /* Storage may be unavailable. */ }
+        return Array.isArray(saved) ? saved.filter(function (entry) {
+          return entry && Number.isInteger(entry.points) && entry.points >= 0 && entry.points <= 1000 &&
+            Number.isInteger(entry.measure) && entry.measure >= 0 && Number.isFinite(entry.time) && entry.time >= 0;
+        }).slice(0, 10) : [];
+      }
+
+      function renderScores() {
+        var rows = entries();
+        if (!rows.length) {
+          results.textContent = t.gameNoScores;
+          return;
+        }
+        results.innerHTML =
+          '<table aria-labelledby="gameLeaderboardTitle"><thead><tr>' +
+          [t.gameRank, t.gamePoints, aqua ? t.progress : t.steps, t.timeUsed].map(function (label) {
+            return '<th scope="col">' + esc(label) + '</th>';
+          }).join('') + '</tr></thead><tbody>' +
+          rows.map(function (entry, index) {
+            return '<tr><th scope="row">' + (index + 1) + '</th><td><strong>' + entry.points + '</strong></td><td>' +
+              entry.measure + (aqua ? '%' : '') + '</td><td>' + entry.time.toFixed(1) + 's</td></tr>';
+          }).join('') + '</tbody></table>';
+      }
+
+      select.addEventListener('change', renderScores);
+      renderScores();
+      return {
+        element: section,
+        record: function (result) {
+          select.value = result.level;
+          var rows = entries();
+          rows.push(result);
+          rows.sort(function (a, b) {
+            return b.points - a.points || (aqua ? b.measure - a.measure : a.measure - b.measure) || a.time - b.time;
+          });
+          if (rows.length > 10) rows.length = 10;
+          try {
+            localStorage.setItem(key(), JSON.stringify(rows));
+            unsavedScores.delete(key());
+          } catch (_) {
+            unsavedScores.set(key(), rows);
+          }
+          renderScores();
+        }
+      };
+    }
 
     function renderGameView() {
       var t = T();
@@ -49,7 +116,9 @@
       }
       var cv = document.getElementById('gameCanvas');
       if (window.NDGames && cv) {
-        window.NDGames.start(cv, g, T());
+        var board = leaderboard(g, t);
+        cv.parentElement.after(board.element);
+        window.NDGames.start(cv, g, t, board.record);
       }
     }
 
