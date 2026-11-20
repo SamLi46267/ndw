@@ -44,8 +44,15 @@ export async function collectNws(fetcher = fetch, now = Date.now) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const dest = process.argv[2] || fileURLToPath(new URL('../public-data/nws-active-alerts.json', import.meta.url));
-  const snapshot = await collectNws();
-  await writeFile(dest + '.tmp', JSON.stringify(snapshot) + '\n');
-  await rename(dest + '.tmp', dest);
-  console.log('NWS snapshot collected at ' + snapshot.checkedAt + ' with ' + snapshot.features.length + ' messages');
+  try {
+    const snapshot = await collectNws();
+    await writeFile(dest + '.tmp', JSON.stringify(snapshot) + '\n');
+    await rename(dest + '.tmp', dest);
+    console.log('NWS snapshot collected at ' + snapshot.checkedAt + ' with ' + snapshot.features.length + ' messages');
+  } catch (error) {
+    const message = [error.message, error.cause?.code].filter(Boolean).join(' · ');
+    const annotation = message.replaceAll('%', '%25').replaceAll('\r', '%0D').replaceAll('\n', '%0A');
+    console.error(process.env.GITHUB_ACTIONS ? '::error title=NWS collection failed::' + annotation : message);
+    process.exitCode = 1;
+  }
 }
