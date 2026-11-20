@@ -69,8 +69,8 @@
     retryFetch: { zh: '刷新数据', en: 'Refresh data', es: 'Actualizar datos', fr: 'Actualiser', it: 'Aggiorna dati' },
     coverage: { zh: '数据在更新周期内的城市', en: 'Cities with current data', es: 'Ciudades con datos actuales', fr: 'Villes aux données à jour', it: 'Città con dati attuali' },
     overviewTitle: {
-      zh: '自然灾害预警总览', en: 'Disaster warning overview', es: 'Resumen de alertas',
-      fr: 'Vue d’ensemble des alertes', it: 'Panoramica delle allerte'
+      zh: '中国气象预警', en: 'Weather warnings across China', es: 'Alertas meteorológicas en China',
+      fr: 'Alertes météo en Chine', it: 'Allerte meteo in Cina'
     },
     overviewSubtitle: {
       zh: '关注所在城市，了解全国预警态势。', en: 'Your local warnings, with a view across the country.',

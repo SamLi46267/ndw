@@ -491,6 +491,38 @@ body { background: var(--bg); }
 .global-meta { display: flex; flex-wrap: wrap; gap: 16px; color: var(--text-dim); font-size: .74rem; margin: 6px 0 14px; }
 .global-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 16px; align-items: start; }
 .global-map-wrap { position: relative; background: #03080d; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.gmap-summary {
+  position: absolute;
+  z-index: 5;
+  box-sizing: border-box;
+  width: min(250px, calc(100% - 16px));
+  max-height: calc(100% - 16px);
+  overflow: auto;
+  padding: 12px 40px 12px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--card-solid);
+  color: var(--text);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, .35);
+  overflow-wrap: anywhere;
+}
+.gmap-summary h3 { margin: 4px 0; font-size: 1rem; line-height: 1.35; }
+.gmap-summary p { margin: 0; color: var(--text-mid); font-size: .78rem; }
+.gmap-summary-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.gmap-summary-close:hover { background: var(--card-hover); }
 .gmap { display: block; width: 100%; height: auto; }
 .gcountry { fill: rgba(8, 18, 26, .22); stroke: rgba(120, 205, 225, .32); stroke-width: .5; cursor: pointer; }
 .gcountry:hover { fill: rgba(90, 220, 240, .14); }
@@ -581,7 +613,7 @@ a.ops-kpi:focus-visible { outline: 2px solid var(--holo); outline-offset: 3px; }
 .global-map-wrap { position: relative; }
 .gmap { touch-action: none; cursor: grab; }
 .gmap:active { cursor: grabbing; }
-.gzoom { position: absolute; right: 12px; top: 12px; display: flex; flex-direction: column; gap: 6px; z-index: 4; }
+.gzoom { position: absolute; right: 12px; top: 12px; display: flex; flex-direction: column; gap: 6px; z-index: 6; }
 .gzoom button { width: 34px; height: 34px; border: 1px solid var(--border-strong); border-radius: 9px; background: rgba(10, 15, 20, .82); color: #fff; font: 600 18px/1 sans-serif; cursor: pointer; }
 .gzoom button:hover { background: rgba(126, 240, 255, .16); color: var(--holo-bright); }
 .gzoom-hint { position: absolute; left: 12px; top: 12px; z-index: 4; max-width: 230px; padding: 6px 9px; border-radius: 8px; background: rgba(4, 10, 14, .75); color: var(--text-dim); font-size: .68rem; pointer-events: none; }
@@ -1242,3 +1274,15 @@ dialog.db-modal-card::backdrop { background: transparent; }
   .set-row:has(.btn) { align-items: start; flex-direction: column; }
   .global-page .rescue-section form, .global-page .rescue-section input { min-width: 0; max-width: 100%; }
 }
+
+/* Gameplay previews on the Products landing page. */
+.product-card .game-preview {
+  width: calc(100% + 48px);
+  max-width: none;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  margin: -28px -24px 4px;
+  border-radius: 15px 15px 0 0;
+}
+.product-card:focus-visible { outline: 3px solid var(--holo); outline-offset: 4px; }

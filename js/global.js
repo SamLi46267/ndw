@@ -423,7 +423,7 @@
     quakes.forEach(function (q, index) {
       var p = proj(q.lon, q.lat);
       var r = Math.max(2, Math.min(8, 2 + (q.mag - 1) * 1.05));
-      var sel = state.selected && state.selected.id === q.id;
+      var sel = state.selected && state.selected.kind === 'quake' && state.selected.id === q.id;
       var color = window.NDCore.magnitudeColor(q.mag, true);
       parts.push('<g class="gmarker' + (sel ? ' sel' : '') + '" data-quake="' + esc(q.id) + '" transform="translate(' + p.x.toFixed(1) + ',' + p.y.toFixed(1) + ')" style="color:' + color + '"><g class="gmarker-inner">' +
         (sel ? '<circle r="' + (r + 4).toFixed(1) + '" fill="none" stroke="' + color + '" stroke-width="1.5"></circle>' : '') +
@@ -499,7 +499,43 @@
       cil.style.display = state.zoom >= 3 ? '' : 'none';
       cil.style.fontSize = (5 / state.zoom) + 'px';
     }
+    positionMapSummary();
     updateWms();
+  }
+
+  function positionMapSummary() {
+    var wrap = state.el.querySelector('.global-map-wrap');
+    var card = wrap && wrap.querySelector('.gmap-summary');
+    if (!card) return;
+    var marker = wrap.querySelector('.gmarker.sel, .gdacs-marker.sel');
+    var matrix = marker && marker.getScreenCTM();
+    var rect = wrap.getBoundingClientRect();
+    var x = matrix && matrix.e - rect.left - wrap.clientLeft;
+    var y = matrix && matrix.f - rect.top - wrap.clientTop;
+    var width = wrap.clientWidth;
+    var height = wrap.clientHeight;
+    card.hidden = !matrix || x < 0 || y < 0 || x > width || y > height;
+    if (card.hidden) return;
+
+    var gap = 16;
+    var right = x + gap;
+    var left = x - gap - card.offsetWidth;
+    var top = y - card.offsetHeight / 2;
+    if (right + card.offsetWidth <= width - 8) {
+      left = right;
+    } else if (left < 8) {
+      left = x - card.offsetWidth / 2;
+      top = y + gap + card.offsetHeight <= height - 8 ? y + gap : y - gap - card.offsetHeight;
+    }
+    left = Math.max(8, Math.min(left, width - card.offsetWidth - 8));
+    top = Math.max(8, Math.min(top, height - card.offsetHeight - 8));
+    var controls = wrap.querySelector('.gzoom');
+    if (left + card.offsetWidth > controls.offsetLeft - 8 &&
+        top < controls.offsetTop + controls.offsetHeight + 8) {
+      top = Math.min(height - card.offsetHeight - 8, controls.offsetTop + controls.offsetHeight + 8);
+    }
+    card.style.left = left + 'px';
+    card.style.top = Math.max(8, top) + 'px';
   }
   function exitFullscreen() {
     state.fullscreen = false;
@@ -755,6 +791,22 @@
     return '<button type="button" class="gitem gitem-gdacs" data-gdacs="' + esc(g.id) + '"><b style="color:' + gdacsColor(g.type, true) + '">' + esc(g.type) + '</b><span>' + esc(g.name) + '</span><small>' + esc(gdacsAlertLabel(g.alert)) + ' · ' + esc(web('gdacsUpdated')) + ' ' + esc(fmt(GdacsStatus.reportTime(g.status))) + '</small></button>';
   }
 
+  function mapSummary(event) {
+    if (!event) return '';
+    var gdacs = event.kind === 'gdacs';
+    var type = gdacs ? gdacsTypeLabel(event.type) : web('earthquakeType');
+    var status = gdacs ? gdacsAlertLabel(event.alert) : 'M' + event.mag.toFixed(1);
+    var location = gdacs ? event.country : Number.isFinite(event.depth) && web('depth') + ' ' + event.depth.toFixed(1) + ' km';
+    var time = gdacs ? GdacsStatus.reportTime(event.status) : event.time;
+    var overdue = gdacs && state.mode === 'live' && !GdacsStatus.fresh(event.status, Date.now());
+    return '<div class="gmap-summary" hidden>' +
+      '<button type="button" class="gmap-summary-close" data-g="close-summary" aria-describedby="gmap-summary-details" aria-label="' + esc(window.NDCore.T().close) + '">×</button>' +
+      '<div id="gmap-summary-details"><div class="gkicker">' + esc(type) + ' · ' + esc(status) + '</div>' +
+      '<h3>' + esc((gdacs ? event.name : event.place) || '—') + '</h3>' +
+      '<p>' + (location ? esc(location) + ' · ' : '') + esc(fmt(time)) + '</p>' +
+      (overdue ? '<p>' + esc(label('lastListed')) + '</p>' : '') + '</div></div>';
+  }
+
   function sideHtml(quakes) {
     if (state.selected) {
       return state.selected.kind === 'gdacs' ? gdacsDetailHtml(state.selected) : detailHtml(state.selected);
@@ -797,7 +849,6 @@
     if (!el) { return; }
     var compactOptions = el.querySelector('.global-map-options[data-compact]');
     if (compactOptions) state.mobileOptionsOpen = compactOptions.open;
-    if (state.fullscreen) { exitFullscreen(); }
     if (state.loading) {
       el.innerHTML = '<section class="global-page"><div class="container"><div class="global-head"><div><h1>' + esc(web('globalTitle')) + '</h1><p>' + esc(web('globalSub')) + '</p></div></div><div class="state-box"><div class="spinner"></div>' + esc(web('live')) + '…</div></div></section>';
       return;
@@ -814,7 +865,8 @@
       (state.mode === 'live' && !GdacsStatus.quakeSnapshotFresh(data, Date.now()) ? '<p class="history-notice" role="status">' + esc(label('overdue')) + '</p>' : '') +
       (state.layers.gdacs && (state.mode === 'live' ? !cache.gdacsRaw : !cache.gdacsHistory) ? '<p class="history-notice" role="status">GDACS · ' + esc(web('dataUnavailable')) + '</p>' : '') +
       (state.mode === 'live' && cache.gdacsRaw && Date.now() - gdacsParse(cache.gdacsRaw && (cache.gdacsRaw.checkedAt || cache.gdacsRaw.generatedAt)) >= 1800000 ? '<p class="history-notice" role="status">' + (window.NDLocale.phrase('GDACS 更新已延迟。虚线标记为上次报告的位置，当前状态尚未确认；这不代表灾害已结束。','GDACS updates are overdue. Dashed markers show last-reported locations; current status is unconfirmed. A delayed update does not mean the disasters have ended.',lang())) + '</p>' : '') +
-      '<div class="global-layout"><div class="global-map-wrap">' + mapSvg(quakes) +
+      '<div class="global-layout"><div class="global-map-wrap' + (state.fullscreen ? ' gfull' : '') + '">' + mapSvg(quakes) +
+        mapSummary(state.selected) +
         '<div class="gzoom">' +
           '<button type="button" data-g="zoom" data-v="in" aria-label="' + esc(web('zoomIn')) + '" title="' + esc(web('zoomIn')) + '">+</button>' +
           '<button type="button" data-g="zoom" data-v="out" aria-label="' + esc(web('zoomOut')) + '" title="' + esc(web('zoomOut')) + '">−</button>' +
@@ -848,6 +900,7 @@
     var g = e.target.closest('[data-g]');
     if (g) {
       var k = g.getAttribute('data-g'), v = g.getAttribute('data-v');
+      if (k === 'close-summary') { closeMapSummary(); return; }
       if (k === 'zoom') {
         if (v === 'in') { zoomAt(W / 2, H / 2, 1.6); }
         else if (v === 'out') { zoomAt(W / 2, H / 2, 1 / 1.6); }
@@ -897,17 +950,36 @@
     var d = e.target.closest('[data-gdacs]');
     if (d) {
       selectGdacs(d.getAttribute('data-gdacs'));
+      if (e.detail === 0) focusMapSummary();
       return;
     }
     var q = e.target.closest('[data-quake]');
     if (q) {
       selectQuake(q.getAttribute('data-quake'));
+      if (e.detail === 0) focusMapSummary();
       return;
     }
     var c = e.target.closest('[data-country]');
     if (c) {
       selectCountry(c.getAttribute('data-country'));
+    } else if (state.selected && e.target.closest('.gmap')) {
+      closeMapSummary();
     }
+  }
+
+  function focusMapSummary() {
+    var close = state.el.querySelector('.gmap-summary:not([hidden]) .gmap-summary-close');
+    if (close) close.focus({ preventScroll: true });
+  }
+
+  function closeMapSummary() {
+    var selected = state.selected;
+    state.selected = null;
+    paint();
+    if (!selected) return;
+    var key = selected.kind === 'gdacs' ? 'gdacs' : 'quake';
+    var item = state.el.querySelector('button[data-' + key + '="' + CSS.escape(selected.id) + '"]');
+    if (item && !state.fullscreen) item.focus({ preventScroll: true });
   }
 
   function onChange(e) {
@@ -981,6 +1053,10 @@
       window.addEventListener('pointerup', onPointerUp);
       window.addEventListener('keydown', function (e) {
         if (e.key !== 'Escape') { return; }
+        if (globalPageVisible() && state.el.querySelector('.gmap-summary:not([hidden])')) {
+          closeMapSummary();
+          return;
+        }
         var full = state.el && state.el.querySelector('.global-map-wrap.gfull');
         if (full) {
           exitFullscreen();
@@ -999,6 +1075,7 @@
           options.open = !compact || state.mobileOptionsOpen;
         }
         syncSideHeight();
+        if (state.el) positionMapSummary();
       });
       window.setInterval(function () {
         if (!state.el || !state.el.isConnected || document.hidden) { return; }
