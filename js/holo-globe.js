@@ -30,13 +30,13 @@
 
     /* 颜色 */
     var darkPalette = {
-      grid: 'rgba(157, 175, 163, 0.55)',
+      grid: 'rgba(165, 208, 188, 0.64)',
       gridBack: 'rgba(157, 175, 163, 0.14)',
       dot: 'rgba(150, 178, 164, 0.34)',
       dotDim: 'rgba(118, 138, 128, 0.12)',
       ring: 'rgba(142, 158, 147, 0.3)',
       cityBase: '#7e929d',
-      land: 'rgba(190, 246, 224, 1)',
+      land: '#c8fae4',
       link: 'rgba(160, 236, 210, 0.92)',
       node: 'rgba(214, 252, 238, 1)',
       nodePulse: 'rgba(226, 255, 244, 1)',
@@ -241,7 +241,7 @@
         var pr = project(p.x, p.y, p.z);
         if (pr.depth < -0.25) { continue; }
         var t = (pr.depth + 1) / 2;
-        var sz = 1.1 + t * 1.3;
+        var sz = 1.2 + t * 1.35;
         ctx.globalAlpha = 0.32 + t * 0.6;
         ctx.fillRect(pr.sx - sz / 2, pr.sy - sz / 2, sz, sz);
       }
