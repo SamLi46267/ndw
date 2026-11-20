@@ -95,3 +95,15 @@ test('country detail shows mapped locations inside polygons, excluding holes and
   const records = [1,3,10.1,23].map(n => ({ lat: n, lon: n }));
   assert.deepEqual(context.window.inCountry(country, records), [records[0], records[3]]);
 });
+
+test('overdue earthquake cards and their lists use the 24 hours ending at collection', () => {
+  const checkedAt = now - 48 * 3600000;
+  const event = { timestamp: checkedAt - 1, latitude: 30, longitude: 10, magnitude: 5.6 };
+  const data = { fetchedAt: new Date(checkedAt).toISOString(), earthquakes: [
+    event, { ...event, timestamp: checkedAt - 86400001 }, { ...event, timestamp: checkedAt + 1 }
+  ] };
+  assert.deepEqual(status.quakeWindow(data, now), { checkedAt, fresh: false, quakes: [event] });
+  assert.deepEqual(status.quakeWindow({ ...data, earthquakes: [] }, now), { checkedAt, fresh: false, quakes: [] });
+  assert.equal(status.quakeWindow({ ...data, fetchedAt: 'unknown' }, now), null);
+  assert.equal(status.quakeWindow({ ...data, fetchedAt: new Date(now + 300001).toISOString() }, now), null);
+});

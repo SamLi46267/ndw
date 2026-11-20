@@ -150,7 +150,8 @@
     if (state.mode === 'live') {
       var live = state.live;
       if (!live || !live.earthquakes) { return []; }
-      return GdacsStatus.recentQuakes(live, Date.now()).map(function (q) {
+      var report = GdacsStatus.quakeWindow(live, Date.now());
+      return (report ? report.quakes : []).map(function (q) {
         return {
           kind: 'quake',
           id: q.id, mag: Number(q.magnitude), place: q.place, time: q.timestamp,
@@ -287,9 +288,13 @@
   function header(data, quakes) {
     var isLive = state.mode === 'live';
     var total = quakes.length;
-    var max = quakes.reduce(function (m, q) { return Math.max(m, q.mag); }, 0);
+    var max = quakes.reduce(function (m, q) { return Math.max(m, q.mag); }, -Infinity);
     var sig = quakes.filter(function (q) { return q.mag >= 4.5; }).length;
-    var reliableCount = !isLive || GdacsStatus.quakeSnapshotFresh(data, Date.now());
+    var quakeWindow = isLive ? GdacsStatus.quakeWindow(data, Date.now()) : null;
+    var hasQuakeData = !isLive || !!quakeWindow;
+    var freshnessLabel = window.__modules.reliability.text(quakeWindow ? 'outdated' : 'unavailable', lang());
+    var windowLabel = !isLive ? web('records') : quakeWindow?.fresh ? web('last24h') :
+      quakeWindow ? freshnessLabel + ' · 24 h → ' + fmt(quakeWindow.checkedAt) : freshnessLabel;
     var tsu = quakes.filter(function (q) { return q.tsunami; }).length;
     var source = isLive ? (data.sourceName || data.source || 'USGS') : (data.source || 'CnOpenData');
     var dataTime = isLive ? data.fetchedAt : (data.range ? data.range[1] : '');
@@ -322,10 +327,10 @@
     var gdacsAvailable = isLive ? !!cache.gdacsRaw : !!cache.gdacsHistory;
     var kpiHtml;
     if (showQuakes) {
-      kpiHtml = kpi(isLive ? label('recent') : web('quakeRecords'), reliableCount ? total : '—', isLive ? '24 h' : web('records'), quakeHref) +
-        kpi(web('maxMagnitude'), reliableCount && total ? 'M' + max.toFixed(1) : '—', '', quakeHref + '&sort=magnitude', total ? max : null) +
-        kpi(label('significanceFilter'), reliableCount ? sig : '—', '', quakeHref + '&significant=1') +
-        (isLive ? kpi(label('flag'), reliableCount ? tsu : '—', '', quakeHref + '&tsunami=1') : '');
+      kpiHtml = kpi(isLive ? label('recent') : web('quakeRecords'), hasQuakeData ? total : '—', windowLabel, quakeHref) +
+        kpi(web('maxMagnitude'), hasQuakeData && total ? 'M' + max.toFixed(1) : '—', windowLabel, quakeHref + '&sort=magnitude', total ? max : null) +
+        kpi(label('significanceFilter'), hasQuakeData ? sig : '—', windowLabel, quakeHref + '&significant=1') +
+        (isLive ? kpi(label('flag'), hasQuakeData ? tsu : '—', windowLabel, quakeHref + '&tsunami=1') : '');
     } else {
       var active = gdacs.filter(function (g) { return g.active !== false; }).length;
       var alertRank = { green: 1, orange: 2, red: 3 };

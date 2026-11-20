@@ -454,7 +454,7 @@ function cityFreshness(region) {
 
 // Historical summaries are separate from the current-warning API. Never renew
 // their timestamp or use them as evidence that there are no current warnings.
-function lastKnownCityStatus(region) {
+function lastKnownCityWarnings(region) {
   const r = normalizeRegion(region);
   const key = cities.getLocationKey(r.city) || (r.city === config.defaultCity.name && config.defaultCity.locationKey);
   const entry = key && snapshotEntries['/alerts/v1/' + key + '.json'];
@@ -467,8 +467,12 @@ function lastKnownCityStatus(region) {
     }
   }
   if (cached && Array.isArray(cached.value)) candidates.push({ checkedAt: cached.time, alerts: cached.value });
-  const latest = candidates.filter(item => window.__modules.reliability.freshness(item.checkedAt) !== 'unavailable')
-    .sort((a, b) => b.checkedAt - a.checkedAt)[0];
+  return candidates.filter(item => window.__modules.reliability.freshness(item.checkedAt) !== 'unavailable')
+    .sort((a, b) => b.checkedAt - a.checkedAt)[0] || null;
+}
+
+function lastKnownCityStatus(region) {
+  const latest = lastKnownCityWarnings(region);
   return latest ? { checkedAt: latest.checkedAt, count: latest.alerts.length, high: latest.alerts.some(alert => alert.level === 'red') } : null;
 }
 
@@ -856,6 +860,7 @@ function getCacheInfo() {
 }
 
 module.exports = {
+  getLastKnownCityWarnings: lastKnownCityWarnings,
   getLastKnownCityStatus: lastKnownCityStatus,
   getCityFreshness: cityFreshness,
   refreshSnapshot: function () {

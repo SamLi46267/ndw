@@ -134,11 +134,11 @@
       { group: 'monitorNav', path: '/china', label: web('mainChinaCta'), icon: SVG.iPin },
       { group: 'monitorNav', path: '/global', label: web('globalTab'), icon: SVG.iGlobe },
       { group: 'monitorNav', path: '/bulletins', label: web('bulletinsNav'), icon: SVG.iBell },
-      { group: 'referenceNav', path: '/database', label: web('database'), icon: SVG.iChart, hint: 'archiveHint' },
-      { group: 'referenceNav', path: '/rescue', label: web('rescueNav'), icon: SVG.iPin, hint: 'rescueHint' },
-      { group: 'referenceNav', path: '/sources', label: web('sourcesNav'), icon: SVG.iClock, hint: 'sourcesHint' },
-      { group: 'prepareNav', path: '/guide', label: i18n.t('tabGuide', l), icon: SVG.iGuide, hint: 'guideHint' },
-      { group: 'prepareNav', path: '/tools', label: i18n.t('tabTools', l), icon: SVG.iTools, hint: 'toolsHint' },
+      { group: 'referenceNav', path: '/database', label: web('database'), icon: SVG.iChart },
+      { group: 'referenceNav', path: '/rescue', label: web('rescueNav'), icon: SVG.iPin },
+      { group: 'referenceNav', path: '/sources', label: web('sourcesNav'), icon: SVG.iClock },
+      { group: 'prepareNav', path: '/guide', label: i18n.t('tabGuide', l), icon: SVG.iGuide },
+      { group: 'prepareNav', path: '/tools', label: i18n.t('tabTools', l), icon: SVG.iTools },
       { group: 'prepareNav', path: '/products', label: i18n.t('navProducts', l), icon: SVG.iProducts },
       { path: '/settings', label: i18n.t('tabSettings', l), icon: SVG.iSettings }
     ].map(function (item) {
@@ -670,7 +670,11 @@
     var t = T();
     var ready = s.hasData && !s.loading && !s.error && reliability.freshness(s.checkedAt) === 'available';
     var stateLabel = s.loading ? t.loading : (s.errorCode === 'outdated' || reliability.freshness(s.checkedAt) === 'outdated' ? safetyText('outdated') : safetyText('unavailable'));
-    var list = ready ? s.shownAlerts : [];
+    var lastReport = ready ? null : api.getLastKnownCityWarnings(currentRegion());
+    var list = ready ? s.shownAlerts : lastReport ? localizeList(lastReport.alerts.filter(function (alert) {
+      return !s.district || alertAffectsDistrict(alert, s.district);
+    }), lang()) : [];
+    var checkLabel = lastReport ? stateLabel + ' · ' + reliability.checkedAt(lastReport.checkedAt, lang()) : stateLabel;
     var priority = list.filter(function (a) { return a.level === 'red' || a.level === 'orange'; });
     var crit = priority.slice().sort(function (a, b) {
       return Number(b.level === 'red') - Number(a.level === 'red') || alertMs(b) - alertMs(a);
@@ -680,39 +684,39 @@
       return '<a href="#/detail?id=' + encodeURIComponent(a.id) + '"><span>' + esc(a.levelName + ' · ' + i18n.disasterName(a.type, lang())) + '</span><b>' + esc(a.area || '') + '</b></a>';
     }
     var critEl = document.getElementById('opsCritical');
-    if (critEl) { critEl.innerHTML = crit.length ? crit.map(item).join('') : '<a class="ops-empty" href="#/china">' + esc(ready ? safetyText('noPriority') : stateLabel) + '</a>'; }
+    if (critEl) { critEl.innerHTML = crit.length ? crit.map(item).join('') : '<a class="ops-empty" href="#/china">' + esc(ready ? safetyText('noPriority') : checkLabel) + '</a>'; }
     var recentEl = document.getElementById('opsRecent');
     if (recentEl) {
       recentEl.innerHTML = recent.length ? recent.map(function (a) {
         return '<a href="#/detail?id=' + encodeURIComponent(a.id) + '"><span>' + esc(a.time || '') + '</span><b>' + esc(a.title || '') + '</b></a>';
-      }).join('') : '<a class="ops-empty" href="#/china">' + esc(ready ? safetyText('lastNoAlerts') : stateLabel) + '</a>';
+      }).join('') : '<a class="ops-empty" href="#/china">' + esc(ready ? safetyText('lastNoAlerts') : checkLabel) + '</a>';
     }
     var upd = document.getElementById('opsUpdated');
     if (upd) {
-      upd.innerHTML = '<a class="ops-row" href="#/china"><span>' + esc(safetyText('localNotices')) + '</span><b>' + esc(s.lastUpdate || '—') + '</b></a>' +
+      upd.innerHTML = '<a class="ops-row" href="#/china"><span>' + esc(safetyText('localNotices')) + '</span><b>' + esc(lastReport ? formatNow(lastReport.checkedAt) : s.lastUpdate || '—') + '</b></a>' +
         '<a class="ops-row" href="#/global"><span>' + esc(web('activeQuakes')) + '</span><b id="opsGlobalTime">—</b></a>' +
         '<a class="ops-row" href="#/global"><span>' + esc(web('globalTab')) + '</span><b>' + esc(web('selectHint')) + ' →</b></a>';
     }
     var scope = [i18n.placeName(s.city, lang()), s.district && i18n.districtName(s.district, lang())].filter(Boolean).join(' · ');
-    kpis.innerHTML = opsKpi(safetyText('localNotices'), ready ? String(list.length) : '—', scope, '#/china?section=alerts') +
-      opsKpi(safetyText('priorityNotices'), ready ? String(priority.length) : '—', ready ? scope : stateLabel, '#/china?section=alerts&level=critical') +
+    kpis.innerHTML = opsKpi(safetyText('localNotices'), ready || lastReport ? String(list.length) : '—', ready ? scope : [scope, checkLabel].filter(Boolean).join(' · '), '#/china?section=alerts') +
+      opsKpi(safetyText('priorityNotices'), ready || lastReport ? String(priority.length) : '—', ready ? scope : checkLabel, '#/china?section=alerts&level=critical') +
       opsKpi(web('activeQuakes'), '—', web('last24h'), '#/disasters?mode=live&type=EQ&source=quake') +
       opsKpi(web('maxMagnitude'), '—', web('last24h'), '#/disasters?mode=live&type=EQ&source=quake&sort=magnitude');
     if (!window.NDGlobal) return;
     window.NDGlobal.loadLive().then(function (data) {
       if (!kpis.isConnected) return;
-      var now = Date.now();
-      var fresh = GdacsStatus.quakeSnapshotFresh(data, now);
-      var check = GdacsStatus.time(data && data.fetchedAt);
+      var report = GdacsStatus.quakeWindow(data, Date.now());
       var timeEl = document.getElementById('opsGlobalTime');
-      if (timeEl) timeEl.textContent = Number.isFinite(check) ? formatNow(check) : '—';
+      if (timeEl) timeEl.textContent = report ? formatNow(report.checkedAt) : '—';
       var cards = kpis.querySelectorAll('.ops-kpi');
-      if (!fresh) {
-        cards[2].querySelector('small').textContent = safetyText('outdated');
-        cards[3].querySelector('small').textContent = safetyText('outdated');
-        return;
+      if (!report || !report.fresh) {
+        var status = report ?
+          safetyText('outdated') + ' · 24 h → ' + formatNow(report.checkedAt) : safetyText('unavailable');
+        cards[2].querySelector('small').textContent = status;
+        cards[3].querySelector('small').textContent = status;
       }
-      var quakes = GdacsStatus.recentQuakes(data, now);
+      if (!report) return;
+      var quakes = report.quakes;
       cards[2].querySelector('b').textContent = String(quakes.length);
       if (!quakes.length) return;
       var maximum = Math.max.apply(null, quakes.map(function (q) { return Number(q.magnitude); }));
@@ -740,6 +744,81 @@
     renderGlobalInto(viewEl, false);
   }
 
+  var globe, globeLoadedAt = 0, globeLanguage;
+  function renderMainGlobe() {
+    var canvas = document.getElementById('bgGlobe');
+    if (!globe) {
+      if (!canvas || !canvas.getContext('2d')) return;
+      globe = __require('holo-globe').create(canvas);
+    }
+    globe.resize();
+
+    var l = lang();
+    var now = Date.now();
+    if (globeLanguage === l && now - globeLoadedAt < 60000) return;
+    globeLanguage = l;
+    globeLoadedAt = now;
+    var requestedAt = now;
+    Promise.all(['gdacs-events', 'global-earthquakes', 'warnings'].map(function (name) {
+      return fetch('public-data/' + name + '.json', { cache: 'no-cache' })
+        .then(function (response) { return response.ok ? response.json() : null; })
+        .catch(function () { return null; });
+    })).then(function (snapshots) {
+      if (globeLoadedAt !== requestedAt || globeLanguage !== l) return;
+      var now = Date.now();
+      var hazards = [];
+      var gdacs = snapshots[0];
+      var types = { WF: 'fire', FL: 'flood', TC: 'typhoon', DR: 'drought' };
+      for (var feature of (gdacs && gdacs.features) || []) {
+        var p = feature.properties || {};
+        var coords = feature.geometry && feature.geometry.coordinates;
+        if (!coords || !Number.isFinite(coords[0]) || !Number.isFinite(coords[1]) || !GdacsStatus.active(p, now)) continue;
+        var fresh = GdacsStatus.fresh(p, now);
+        hazards.push({
+          lng: coords[0], lat: coords[1], type: types[p.eventtype], level: 'normal',
+          color: !fresh ? '#a4b6bc' : p.alertlevel === 'Red' ? '#ff5252' : p.alertlevel === 'Orange' ? '#ff9a3c' : '#43e8a0',
+          label: (p.name || p.description || '') + (fresh ? '' : window.NDLocale.phrase(' · 上次报告', ' · Last reported', l))
+        });
+      }
+      var earthquakeData = snapshots[1];
+      if (GdacsStatus.quakeSnapshotFresh(earthquakeData, now)) {
+        for (var q of GdacsStatus.recentQuakes(earthquakeData, now)) {
+          hazards.push({
+            lng: q.longitude, lat: q.latitude, type: 'quake', level: 'normal',
+            color: window.NDCore.magnitudeColor(q.magnitude), label: 'M' + q.magnitude + ' · ' + q.place
+          });
+        }
+      }
+      var warnings = snapshots[2];
+      var entries = (warnings && warnings.entries) || {};
+      var cityMarkers = [];
+      for (var city of districts.allCityGeo()) {
+        var entry = entries['/alerts/v1/' + cities.getLocationKey(city.name) + '.json'];
+        if (!entry || reliability.freshness(entry.checkedAt, now) !== 'available') continue;
+        var list = Array.isArray(entry.data) ? entry.data : entry.data && entry.data.alerts;
+        for (var alert of Array.isArray(list) ? list : []) {
+          if (!alert || !Array.isArray(alert.Area)) continue;
+          var description = alert.Description || {};
+          var title = alert.HeadlineText || description.Localized;
+          var active = alert.Area.some(function (area) {
+            return area && reliability.warningValidity({
+              title: title, checkedAt: entry.checkedAt,
+              startsAt: reliability.warningTime(area.StartTime), endsAt: reliability.warningTime(area.EndTime)
+            }, now) === 'active';
+          });
+          if (active) {
+            cityMarkers.push({
+              lng: city.lng, lat: city.lat, level: 'normal', color: (alert.Color && alert.Color.Hex) || '#ffb020',
+              label: i18n.placeName(city.name, l) + ' · ' + ((l === 'zh' ? description.Localized : description.English) || i18n.disasterName(alert.Type, l))
+            });
+          }
+        }
+      }
+      globe.setCities(cityMarkers.concat(hazards));
+      globe.setDisasters(hazards);
+    });
+  }
+
   function themeButtonContent() {
     var light = document.documentElement.dataset.theme === 'light';
     return '<span class="theme-toggle-icon" aria-hidden="true">' + (light ? '☾' : '☀') + '</span>' +
@@ -753,6 +832,7 @@
     document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f4f6f2' : '#101010';
     try { localStorage.setItem('ndw-theme', theme); } catch (error) { /* The active theme still works. */ }
     button.innerHTML = themeButtonContent();
+    if (globe) { globe.resize(); }
   }
 
   function renderMainPage() {
@@ -762,7 +842,7 @@
     var html = '<div class="main-landing">' +
       '<div class="main-landing-inner">' +
         '<section class="main-copy">' +
-          '<div class="eyebrow">GeoWarning</div>' +
+          '<div class="eyebrow"><span class="pulse-dot"></span>' + esc(s.dataSource || web('mainEyebrow')) + '</div>' +
             '<div class="home-lang">' +
               i18n.LANGUAGES.map(function (lg) {
                 var shortName = lg.code === 'zh' ? '中文' : lg.code.toUpperCase();
@@ -775,24 +855,16 @@
           '<p>' + esc(web('mainIntro')) + '</p>' +
           '<div class="main-actions">' +
             '<a class="btn btn-green" href="#/china">' + esc(web('mainChinaCta')) + ' →</a>' +
-            '<a class="btn btn-outline" href="#/global">' + esc(web('globalTab')) + ' →</a>' +
-            '<a class="btn btn-outline" href="#/bulletins">' + esc(web('bulletinsNav')) + ' →</a>' +
+            '<a class="btn btn-outline" href="#/global">' + esc(web('mainGlobalCta')) + ' →</a>' +
           '</div>' +
         '</section>' +
-        '<aside class="main-safety">' + SVG.iGuide + '<p>' + esc(web('officialGuidance')) + '</p></aside>' +
         '<section class="main-overview" aria-label="' + esc(web('situationOverview')) + '">' + homeDashboardHtml(s, t) + '</section>' +
-        '<section class="main-resource-section" aria-labelledby="resourcesTitle"><h2 id="resourcesTitle">' + esc(web('resourcesTitle')) + '</h2>' +
-          '<div class="main-resources">' +
-            navItems(l).filter(function (item) { return item.hint; }).map(function (item) {
-              return '<a href="' + item.hash + '">' + item.icon + '<span class="main-resource-copy"><strong>' + esc(item.label) +
-                '</strong><small>' + esc(web(item.hint)) + '</small></span><span aria-hidden="true">→</span></a>';
-            }).join('') +
-          '</div></section>' +
       '</div>' +
     '</div>';
     viewEl.innerHTML = html;
     document.title = web('mainTab');
     document.body.classList.add('main-page');
+    renderMainGlobe();
     hydrateHomeDashboard();
     explainView();
   }

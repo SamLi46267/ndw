@@ -2,13 +2,13 @@
 
 [简体中文](README.md) · [Open the website](https://geowarning.cn/)
 
-A static, mobile-friendly site for checking disaster reports and finding preparedness resources. The interface supports Chinese, English, Spanish, French, and Italian. Switch between light and dark themes on Overview. The browser remembers your choice.
+A static, mobile-friendly site for checking disaster reports and finding preparedness resources. The interface supports Chinese, English, Spanish, French, and Italian. Switch between light and dark themes on Main. The browser remembers your choice.
 
 ## What you can do
 
 | Page | Features |
 | --- | --- |
-| Overview | See an overview of China warnings and global earthquakes. Open a summary card to view the related records. |
+| Main | See an overview of China warnings and global earthquakes with an animated globe background. Open a summary card to view the related records. |
 | China | Choose a province, city, or district. Tap a city dot on either China map to jump to that city's warnings. Use **Open larger map** for a bigger view. Warning details include affected areas, recommended actions, and the original notice when available. Secondary hazards are described qualitatively. |
 | Global Hazards | Explore earthquakes and GDACS reports on the world map. Filter by hazard type or open **View all live disasters** for the searchable list. The map panel and list show GDACS reports in update order. Earthquake magnitudes use an amber-to-red scale. |
 | U.S. weather alerts | Read National Weather Service bulletins by state or territory. Open a bulletin for the issuing office, dates, affected area, and original instructions when supplied. |

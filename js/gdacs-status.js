@@ -31,7 +31,7 @@
 
   function recentQuakes(snapshot, now) {
     var cutoff = now - 86400000;
-    return ((snapshot && snapshot.earthquakes) || []).filter(function (quake) {
+    return (Array.isArray(snapshot?.earthquakes) ? snapshot.earthquakes : []).filter(function (quake) {
       return quake && isEarthquakeType(quake.event_type) && Number.isFinite(quake.timestamp) && quake.timestamp >= cutoff &&
         quake.timestamp <= now && Number.isFinite(quake.magnitude) &&
         Number.isFinite(quake.latitude) && Math.abs(quake.latitude) <= 90 &&
@@ -42,6 +42,13 @@
     var checked = time(snapshot && snapshot.fetchedAt);
     return Number.isFinite(checked) && checked <= now + 300000 && now - checked < 3600000;
   }
+  function quakeWindow(snapshot, now) {
+    var checkedAt = time(snapshot && snapshot.fetchedAt);
+    if (!Array.isArray(snapshot?.earthquakes) || !Number.isFinite(checkedAt) || checkedAt > now + 300000) return null;
+    var fresh = quakeSnapshotFresh(snapshot, now);
+    return { checkedAt: checkedAt, fresh: fresh, quakes: recentQuakes(snapshot, fresh ? now : checkedAt) };
+  }
+
   function reportUrl(raw) {
     if (!raw) return '';
     try {
@@ -50,7 +57,7 @@
       return url.protocol === 'https:' && !url.username && !url.password ? url.href : '';
     } catch (error) { return ''; }
   }
-  var api = { isEarthquakeType: isEarthquakeType, uniqueCatalogRows: uniqueCatalogRows, time: time, active: active, fresh: fresh, reportTime: reportTime, recentQuakes: recentQuakes, quakeSnapshotFresh: quakeSnapshotFresh, reportUrl: reportUrl };
+  var api = { isEarthquakeType: isEarthquakeType, uniqueCatalogRows: uniqueCatalogRows, time: time, active: active, fresh: fresh, reportTime: reportTime, recentQuakes: recentQuakes, quakeWindow: quakeWindow, quakeSnapshotFresh: quakeSnapshotFresh, reportUrl: reportUrl };
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.GdacsStatus = api;
 })(typeof window === 'object' ? window : globalThis);
