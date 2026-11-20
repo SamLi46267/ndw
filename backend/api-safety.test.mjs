@@ -78,3 +78,33 @@ test('past city scans retain real counts and timestamps through stale, partial a
   assert.equal(api.getLastKnownCityStatus({ city: '北京市', adcode: '110100' }), null);
   assert(urls.every(url => url.startsWith('public-data/warnings.json?')), 'Only shared snapshots may be fetched');
 });
+
+test('a malformed city payload is unavailable and a shared notice resolves without prior city selection', async () => {
+  const modules = {}, saved = new Map();
+  let snapshot;
+  const context = vm.createContext({
+    window: { __modules: modules }, navigator: { onLine: true }, URL, AbortSignal,
+    wx: { getStorageSync: key => saved.get(key), setStorageSync: (key, value) => saved.set(key, value) },
+    __require: name => modules[name],
+    fetch: async () => ({ ok: true, json: async () => snapshot })
+  });
+  for (const name of ['config', 'data', 'cities', 'i18n', 'reliability', 'api']) {
+    vm.runInContext(fs.readFileSync(new URL('../js/' + name + '.js', import.meta.url), 'utf8'), context);
+  }
+  const region = { city: '广州市', adcode: '440100' };
+  const route = '/alerts/v1/' + modules.cities.getLocationKey(region.city) + '.json';
+  const other = '/alerts/v1/' + modules.cities.getLocationKey('北京市') + '.json';
+  const checkedAt = Date.now() - 5000;
+  snapshot = { version: 1, entries: {
+    [route]: { checkedAt, data: { error: 'invalid payload' } },
+    [other]: { checkedAt, data: [{ AlertID: 123, Type: '大风', StartTime: '2025-01-01T12:00:00+08:00', EndTime: '2025-01-02T00:00:00+08:00' }] }
+  } };
+  assert.equal((await modules.api.fetchAll(region)).ok, false);
+  assert.equal(modules.api.getSnapshotInfo().checked, 1);
+  const alert = await modules.api.loadAlertById('wc_123');
+  assert.equal(alert.cityName, '北京市');
+  assert.equal(alert.endsAt, Date.parse('2025-01-01T16:00:00Z'));
+  assert.equal(alert.level, 'unknown');
+  assert.equal(modules.reliability.warningValidity(alert), 'expired');
+  assert.equal(modules.api.getAlertById('wc_123'), alert);
+});

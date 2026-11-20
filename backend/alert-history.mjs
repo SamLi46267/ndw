@@ -17,10 +17,18 @@ export function archiveWarnings(archive = {}, entries = {}) {
 }
 
 export function mergeQuakeRows(existing, incoming) {
-  const map = new Map();
-  for (const r of [...existing, ...incoming]) {
-    const key = r[7] || [r[0], Number(r[1]).toFixed(3), Number(r[2]).toFixed(3)].join(':');
-    map.set(key, r);
+  const identified = new Map();
+  const legacy = new Map();
+  const identifiedLocations = new Set();
+  for (const row of [...existing, ...incoming]) {
+    const location = [row[0], Number(row[1]).toFixed(3), Number(row[2]).toFixed(3)].join(':');
+    if (row[7]) {
+      identified.set(row[7], row);
+      identifiedLocations.add(location);
+      legacy.delete(location);
+    } else if (!identifiedLocations.has(location)) {
+      legacy.set(location, row);
+    }
   }
-  return [...map.values()].sort((a, b) => b[0] - a[0]);
+  return [...identified.values(), ...legacy.values()].sort((a, b) => b[0] - a[0]);
 }

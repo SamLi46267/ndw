@@ -33,7 +33,7 @@
         },
         heat: {
           name: 'Calor extremo', desc: 'Se considera calor intenso cuando la máxima diaria alcanza 35 °C o más. El calor prolongado aumenta el riesgo de agotamiento, golpe de calor y accidentes eléctricos.',
-          actions: ['Limite las salidas en las horas más calurosas. Protéjase del sol y beba agua regularmente; las bebidas con electrolitos pueden ayudar tras sudoración intensa.', 'Mayores, niños, embarazadas y personas con enfermedades crónicas deben reducir esfuerzos y mantener las habitaciones frescas y ventiladas.', 'Los trabajadores al aire libre deben evitar el mediodía y alternar tareas con descansos.', 'Ante mareo, debilidad o sed inusual, vaya a un lugar fresco y sombreado y empiece a enfriarse. Si los síntomas son graves, llame al 120.']
+          actions: ['Limite las salidas en las horas más calurosas. Protéjase del sol y beba agua regularmente; las bebidas con electrolitos pueden ayudar tras sudoración intensa.', 'Mayores, niños, embarazadas y personas con enfermedades crónicas deben reducir esfuerzos y mantener las habitaciones frescas y ventiladas.', 'Los trabajadores al aire libre deben evitar el mediodía y alternar tareas con descansos.', 'Ante mareo, debilidad o sed inusual, vaya a un lugar fresco y sombreado y empiece a enfriarse. Si los síntomas son graves, llame al servicio local de emergencias médicas.']
         },
         coldwave: {
           name: 'Ola de frío', desc: 'Una ola de frío causa un descenso brusco de temperatura al entrar aire muy frío. El viento, la lluvia, la nieve y el hielo pueden provocar congelación y enfermedades respiratorias.',
@@ -57,7 +57,7 @@
         },
         forestfire: {
           name: 'Riesgo de incendio forestal', desc: 'Los avisos de incendio forestal describen la facilidad con la que puede arder la vegetación. La sequedad, el calor y el viento aumentan considerablemente el peligro.',
-          actions: ['No encienda fuegos al aire libre ni lleve fuentes de ignición a bosques o montañas.', 'Informe inmediatamente de un incendio forestal llamando al 12119.', 'No queme terrenos ni residuos agrícolas. Use prácticas sin fuego en actos conmemorativos.', 'Si le amenaza un incendio, siga las instrucciones oficiales de evacuación. Evite el humo, las vaguadas y las rutas que puedan dejarle atrapado.']
+          actions: ['No encienda fuegos al aire libre ni lleve fuentes de ignición a bosques o montañas.', 'Informe inmediatamente de un incendio forestal al servicio local de bomberos.', 'No queme terrenos ni residuos agrícolas. Use prácticas sin fuego en actos conmemorativos.', 'Si le amenaza un incendio, siga las instrucciones oficiales de evacuación. Evite el humo, las vaguadas y las rutas que puedan dejarle atrapado.']
         },
         drought: {
           name: 'Sequía', desc: 'La falta prolongada de lluvia provoca escasez de agua que afecta al consumo, la agricultura y los ecosistemas. También aumenta el riesgo de incendios forestales.',
@@ -97,7 +97,7 @@
         },
         heat: {
           name: 'Chaleur extrême', desc: 'Une forte chaleur correspond à des maximales quotidiennes de 35 °C ou plus. Sa persistance augmente les risques de malaise, de coup de chaleur et d’accident électrique.',
-          actions: ['Limitez les sorties aux heures les plus chaudes. Protégez-vous du soleil et buvez régulièrement ; des boissons avec électrolytes peuvent aider après une forte transpiration.', 'Les personnes âgées, enfants, femmes enceintes et malades chroniques doivent limiter les efforts et garder les pièces fraîches et ventilées.', 'Les travailleurs extérieurs doivent éviter le milieu de journée et alterner tâches et pauses.', 'En cas de vertiges, faiblesse ou soif inhabituelle, rejoignez un endroit frais à l’ombre et commencez à vous rafraîchir. Pour des symptômes graves, appelez le 120.']
+          actions: ['Limitez les sorties aux heures les plus chaudes. Protégez-vous du soleil et buvez régulièrement ; des boissons avec électrolytes peuvent aider après une forte transpiration.', 'Les personnes âgées, enfants, femmes enceintes et malades chroniques doivent limiter les efforts et garder les pièces fraîches et ventilées.', 'Les travailleurs extérieurs doivent éviter le milieu de journée et alterner tâches et pauses.', 'En cas de vertiges, faiblesse ou soif inhabituelle, rejoignez un endroit frais à l’ombre et commencez à vous rafraîchir. Pour des symptômes graves, appelez les secours médicaux locaux.']
         },
         coldwave: {
           name: 'Vague de froid', desc: 'Une vague de froid entraîne une chute brutale des températures à l’arrivée d’air très froid. Vent, pluie, neige et gel peuvent provoquer des gelures et maladies respiratoires.',
@@ -121,7 +121,7 @@
         },
         forestfire: {
           name: 'Risque de feu de forêt', desc: 'Les alertes indiquent la facilité avec laquelle la végétation peut brûler. Sécheresse, chaleur et vent augmentent fortement le danger.',
-          actions: ['N’allumez aucun feu dehors et n’apportez pas de sources d’allumage en forêt ou en montagne.', 'Signalez immédiatement un feu de forêt au 12119.', 'Ne brûlez ni terrains ni résidus agricoles. Privilégiez des pratiques sans feu lors des commémorations.', 'Si un feu vous menace, suivez les consignes officielles d’évacuation. Évitez la fumée, les ravins et les itinéraires susceptibles de vous piéger.']
+          actions: ['N’allumez aucun feu dehors et n’apportez pas de sources d’allumage en forêt ou en montagne.', 'Signalez immédiatement un feu de forêt aux pompiers locaux.', 'Ne brûlez ni terrains ni résidus agricoles. Privilégiez des pratiques sans feu lors des commémorations.', 'Si un feu vous menace, suivez les consignes officielles d’évacuation. Évitez la fumée, les ravins et les itinéraires susceptibles de vous piéger.']
         },
         drought: {
           name: 'Sécheresse', desc: 'Le manque prolongé de pluie peut causer des pénuries touchant l’eau potable, l’agriculture et les écosystèmes. Il accroît aussi le risque de feu de forêt.',
@@ -161,7 +161,7 @@
         },
         heat: {
           name: 'Caldo estremo', desc: 'Si parla di caldo intenso con massime giornaliere di almeno 35 °C. Il caldo prolungato aumenta il rischio di malessere, colpo di calore e incidenti elettrici.',
-          actions: ['Limita le uscite nelle ore più calde. Proteggiti dal sole e bevi regolarmente; bevande con elettroliti possono aiutare dopo una forte sudorazione.', 'Anziani, bambini, donne in gravidanza e persone con malattie croniche devono limitare gli sforzi e mantenere gli ambienti freschi e ventilati.', 'Chi lavora all’aperto dovrebbe evitare mezzogiorno e alternare le attività con pause.', 'Con capogiri, debolezza o sete insolita, raggiungi un luogo fresco all’ombra e inizia a raffreddarti. Per sintomi gravi chiama il 120.']
+          actions: ['Limita le uscite nelle ore più calde. Proteggiti dal sole e bevi regolarmente; bevande con elettroliti possono aiutare dopo una forte sudorazione.', 'Anziani, bambini, donne in gravidanza e persone con malattie croniche devono limitare gli sforzi e mantenere gli ambienti freschi e ventilati.', 'Chi lavora all’aperto dovrebbe evitare mezzogiorno e alternare le attività con pause.', 'Con capogiri, debolezza o sete insolita, raggiungi un luogo fresco all’ombra e inizia a raffreddarti. Per sintomi gravi chiama il servizio di emergenza locale.']
         },
         coldwave: {
           name: 'Ondata di freddo', desc: 'Un’ondata di freddo provoca un brusco calo delle temperature per l’arrivo di aria gelida. Vento, pioggia, neve e gelo possono causare congelamento e malattie respiratorie.',
@@ -185,7 +185,7 @@
         },
         forestfire: {
           name: 'Rischio di incendio boschivo', desc: 'Le allerte indicano quanto facilmente la vegetazione può bruciare. Siccità, caldo e vento aumentano notevolmente il pericolo.',
-          actions: ['Non accendere fuochi all’aperto e non portare fonti di accensione nei boschi o in montagna.', 'Segnala immediatamente un incendio boschivo chiamando il 12119.', 'Non bruciare terreni o residui agricoli. Usa pratiche senza fuoco durante le commemorazioni.', 'Se un incendio ti minaccia, segui le istruzioni ufficiali di evacuazione. Evita fumo, canaloni e percorsi che potrebbero intrappolarti.']
+          actions: ['Non accendere fuochi all’aperto e non portare fonti di accensione nei boschi o in montagna.', 'Segnala immediatamente un incendio boschivo ai vigili del fuoco locali.', 'Non bruciare terreni o residui agricoli. Usa pratiche senza fuoco durante le commemorazioni.', 'Se un incendio ti minaccia, segui le istruzioni ufficiali di evacuazione. Evita fumo, canaloni e percorsi che potrebbero intrappolarti.']
         },
         drought: {
           name: 'Siccità', desc: 'La mancanza prolungata di pioggia provoca carenze d’acqua per consumo, agricoltura ed ecosistemi. Aumenta anche il rischio di incendi boschivi.',

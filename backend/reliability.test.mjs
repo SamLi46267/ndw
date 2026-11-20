@@ -73,3 +73,17 @@ test('service worker only intercepts shell assets, never warning snapshots', () 
   events.fetch({ request: { method: 'GET', url: 'https://example.com/other' }, respondWith: () => intercepted = true });
   assert.equal(intercepted, false);
 });
+
+test('warning validity respects the provider offset, original check time, cancellation and legacy caches', () => {
+  const policy = module('reliability');
+  const now = Date.parse('2026-02-10T08:00:00Z');
+  const alert = { checkedAt: now, duration: '2026-02-10 15:00 至 2026-02-10 17:00' };
+  assert.equal(policy.warningTime('2026-02-10T16:00:00+08:00'), now);
+  assert.equal(policy.warningTime('2026-02-10 16:00'), now);
+  assert.equal(policy.warningValidity(alert, now), 'active');
+  assert.equal(policy.warningValidity({ ...alert, checkedAt: now - 86400000 }, now), 'unknown');
+  assert.equal(policy.warningValidity({ ...alert, startsAt: now + 10000 }, now), 'upcoming');
+  assert.equal(policy.warningValidity({ ...alert, endsAt: now }, now), 'expired');
+  assert.equal(policy.warningValidity({ ...alert, title: '解除大风红色预警' }, now), 'cancelled');
+  assert.equal(policy.warningValidity({ checkedAt: now }, now), 'unknown');
+});

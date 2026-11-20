@@ -78,16 +78,16 @@ var UI = {
     share: '分享给亲友',
     signals: '预警信号',
     defensePoints: '防御要点',
-    guideNote: '内容依据《气象灾害预警信号及防御指南》等公开资料整理，供学习参考',
-    emergencyPhone: '紧急电话',
+    guideNote: "预警颜色和阈值参照中国的预警制度。请以所在地主管部门发布的预警和行动指引为准。",
+    emergencyPhone: "中国大陆紧急与公共服务电话",
     materialList: '应急物资清单',
     prepared: '已备 {progress}%',
     evacuationTips: '避险要点',
     disclaimer: '查看免责声明',
     disclaimerTitle: '免责声明',
-    disclaimerContent: "中国气象预警来自中国气象局授权的 WeatherCN 数据服务。全球灾害事件来自 GDACS，地震数据来自极数本源或美国地质调查局（USGS）。\n\n本站定期收集并发布数据，覆盖范围有限，更新可能延迟、中断或不完整。历史记录和上次报告不能确认灾害目前是否仍在持续。未显示预警不代表安全。浏览器提醒仅在页面打开时检查，不能替代官方紧急通知。\n\n本站信息、指南和救援目录仅供参考。请遵循当地主管部门发布的最新指示。如有紧急情况，请拨打当地紧急电话。",
+    disclaimerContent: "中国气象预警来自中国气象局授权的 WeatherCN 数据服务。全球灾害事件来自 GDACS，地震数据来自极数本源或美国地质调查局（USGS）。美国天气预警页面直接查询美国国家气象局（NWS）公告。\n\n本站定期收集并发布数据，覆盖范围有限，更新可能延迟、中断或不完整。历史记录和上次报告不能确认灾害目前是否仍在持续。未显示预警不代表安全。浏览器提醒仅在页面打开时检查，不能替代官方紧急通知。\n\n本站信息、指南和救援目录仅供参考。请遵循当地主管部门发布的最新指示。如有紧急情况，请拨打当地紧急电话。",
     iKnow: '我知道了',
-    footerTools: '遇到紧急情况请保持冷静，第一时间拨打 110 / 119 / 120',
+    footerTools: "遇到紧急情况，请拨打所在地的急救或应急电话，并遵循接线员的指示。",
     contentZh: '详细内容为中文原文，仅供参考',
     statusActive: '生效中',
     defaultSource: '气象部门',
@@ -119,9 +119,9 @@ var UI = {
     reduceMotion: '减少动效',
     on: '开',
     off: '关',
-    navProducts: '产品目录',
+    navProducts: "互动演练",
     productsHint: '内容正在建设中，敬请期待',
-    productsTitle: '产品目录',
+    productsTitle: "互动演练",
     productsSubtitle: '防灾互动产品原型 · 可直接操作体验',
     gameAquaName: 'AquaSentry 水上救援',
     gameAquaDesc: '发射口操作员视角，依据真实重力与空气阻力调整抛射角度，将救生圈送到落水者身边',
@@ -130,7 +130,7 @@ var UI = {
     gamePyroDesc: '网格解谜：在石头、树木与凹槽之间，找出收集全部树叶堆的最短路线',
     gamePyroHow: 'WASD 或方向键沿网格逐格移动，清理全部树叶堆，尽量走出最短路线',
     startDemo: '开始体验',
-    backToProducts: '‹ 返回产品目录',
+    backToProducts: "‹ 返回互动演练",
     score: '得分',
     rescued: '已救起',
     distance: '巡逻距离',
@@ -190,7 +190,7 @@ var UI = {
     quizRetry: "重新测验",
     quizDone: "本类测验完成",
     moreQuizSoon: "更多测验即将上线",
-    firstAid: "急救步骤",
+    firstAid: "成人急救",
     familyPlan: "家庭应急计划",
     packWizard: "应急包向导",
     prevStep: "上一步",
@@ -282,16 +282,16 @@ var UI = {
     share: 'Share',
     signals: 'Warning Signals',
     defensePoints: 'Key Actions',
-    guideNote: 'Compiled from public references for learning purposes',
-    emergencyPhone: 'Emergency Phones',
+    guideNote: "Warning colors and thresholds in these guides refer to Chinese warning systems. Follow the alerts and instructions issued for your location.",
+    emergencyPhone: "Mainland China emergency and service numbers",
     materialList: 'Emergency Kit Checklist',
     prepared: '{progress}% ready',
     evacuationTips: 'Safety Tips',
     disclaimer: 'Disclaimer',
     disclaimerTitle: 'Disclaimer',
-    disclaimerContent: "China weather warnings come from WeatherCN, a data service authorized by the China Meteorological Administration. Global disaster reports come from GDACS. Earthquake data comes from APIZERO or the U.S. Geological Survey (USGS).\n\nThis site collects and publishes data periodically. Coverage is limited, and updates may be delayed, interrupted, or incomplete. Archived or last-reported events do not confirm current conditions. No alert shown does not mean it is safe. Browser reminders only check while the page is open and cannot replace official emergency notifications.\n\nThe information, guides, and rescue directory are for reference. Follow the latest instructions from local authorities. In an emergency, call your local emergency number.",
+    disclaimerContent: "China weather warnings come from WeatherCN, a data service authorized by the China Meteorological Administration. Global disaster reports come from GDACS. Earthquake data comes from APIZERO or the U.S. Geological Survey (USGS). The U.S. weather alerts page requests bulletins directly from the National Weather Service (NWS).\n\nThis site collects and publishes data periodically. Coverage is limited, and updates may be delayed, interrupted, or incomplete. Archived or last-reported events do not confirm current conditions. No alert shown does not mean it is safe. Browser reminders only check while the page is open and cannot replace official emergency notifications.\n\nThe information, guides, and rescue directory are for reference. Follow the latest instructions from local authorities. In an emergency, call your local emergency number.",
     iKnow: 'Got it',
-    footerTools: 'Stay calm and call 110 / 119 / 120 in an emergency',
+    footerTools: "In an emergency, call the emergency number for your location and follow the dispatcher’s instructions.",
     contentZh: 'Detailed content is in Chinese (original), for reference only',
     statusActive: 'Active',
     defaultSource: 'Meteorological department',
@@ -323,9 +323,9 @@ var UI = {
     reduceMotion: 'Reduce motion',
     on: 'On',
     off: 'Off',
-    navProducts: 'Products',
+    navProducts: "Practice activities",
     productsHint: 'Content is coming soon. Stay tuned.',
-    productsTitle: 'Products',
+    productsTitle: "Practice activities",
     productsSubtitle: 'Interactive disaster-response prototypes — try them yourself',
     gameAquaName: 'AquaSentry Water Rescue',
     gameAquaDesc: 'Operator view from the launcher: adjust launch angle with real gravity and air drag to land life rings on people in the water',
@@ -334,7 +334,7 @@ var UI = {
     gamePyroDesc: 'Grid puzzle: find the shortest route to collect every leaf pile around rocks, trees and pits',
     gamePyroHow: 'WASD or arrow keys move the tank one grid cell at a time; collect all leaf piles in the fewest steps',
     startDemo: 'Start',
-    backToProducts: '‹ Back to Products',
+    backToProducts: "‹ Back to practice activities",
     score: 'Score',
     rescued: 'Rescued',
     distance: 'Patrol',
@@ -394,7 +394,7 @@ var UI = {
     quizRetry: "Retake quiz",
     quizDone: "Quiz completed!",
     moreQuizSoon: "More quizzes coming soon",
-    firstAid: "First Aid Steps",
+    firstAid: "Adult first aid",
     familyPlan: "Family Emergency Plan",
     packWizard: "Kit Packing Guide",
     prevStep: "Back",
@@ -486,16 +486,16 @@ var UI = {
     share: 'Compartir',
     signals: 'Señales de Alerta',
     defensePoints: 'Acciones clave',
-    guideNote: 'Compilado de referencias públicas con fines educativos',
-    emergencyPhone: 'Teléfonos de Emergencia',
+    guideNote: "Los colores y umbrales corresponden a los sistemas de alerta chinos. Sigue los avisos e indicaciones emitidos para tu zona.",
+    emergencyPhone: "Números de emergencia y servicios en China continental",
     materialList: 'Kit de Emergencia',
     prepared: '{progress}% listo',
     evacuationTips: 'Consejos de Seguridad',
     disclaimer: 'Aviso legal',
     disclaimerTitle: 'Aviso legal',
-    disclaimerContent: "Las alertas meteorológicas de China proceden de WeatherCN, un servicio de datos autorizado por la Administración Meteorológica de China. Los informes sobre desastres en el mundo proceden de GDACS. Los datos sísmicos proceden de APIZERO o del Servicio Geológico de Estados Unidos (USGS).\n\nEste sitio recopila y publica datos periódicamente. La cobertura es limitada y las actualizaciones pueden retrasarse, interrumpirse o estar incompletas. Los registros históricos y los últimos informes no confirman la situación actual. La ausencia de alertas no indica que sea seguro. Los avisos del navegador solo se comprueban mientras la página está abierta y no sustituyen las notificaciones oficiales de emergencia.\n\nLa información, las guías y el directorio de rescate son orientativos. Siga las indicaciones más recientes de las autoridades locales. En caso de emergencia, llame al número de emergencias local.",
+    disclaimerContent: "Las alertas meteorológicas de China proceden de WeatherCN, un servicio de datos autorizado por la Administración Meteorológica de China. Los informes sobre desastres en el mundo proceden de GDACS. Los datos sísmicos proceden de APIZERO o del Servicio Geológico de Estados Unidos (USGS). La página de alertas de EE. UU. consulta directamente los avisos del Servicio Meteorológico Nacional (NWS).\n\nEste sitio recopila y publica datos periódicamente. La cobertura es limitada y las actualizaciones pueden retrasarse, interrumpirse o estar incompletas. Los registros históricos y los últimos informes no confirman la situación actual. La ausencia de alertas no indica que sea seguro. Los avisos del navegador solo se comprueban mientras la página está abierta y no sustituyen las notificaciones oficiales de emergencia.\n\nLa información, las guías y el directorio de rescate son orientativos. Siga las indicaciones más recientes de las autoridades locales. En caso de emergencia, llame al número de emergencias local.",
     iKnow: 'Entendido',
-    footerTools: 'Mantenga la calma y llame al 110 / 119 / 120',
+    footerTools: "En una emergencia, llama al número de emergencias de tu localidad y sigue las instrucciones del operador.",
     contentZh: 'El contenido detallado está en chino (original)',
     statusActive: 'Activa',
     defaultSource: 'Departamento Meteorológico',
@@ -527,9 +527,9 @@ var UI = {
     reduceMotion: 'Reducir animaciones',
     on: 'Sí',
     off: 'No',
-    navProducts: 'Productos',
+    navProducts: "Actividades prácticas",
     productsHint: 'Próximamente. Esté atento.',
-    productsTitle: 'Productos',
+    productsTitle: "Actividades prácticas",
     productsSubtitle: 'Prototipos interactivos de respuesta ante desastres',
     gameAquaName: 'AquaSentry Rescate Acuático',
     gameAquaDesc: 'Vista del operador del lanzador: ajusta el ángulo con gravedad y resistencia del aire reales para lanzar anillos salvavidas',
@@ -538,7 +538,7 @@ var UI = {
     gamePyroDesc: 'Puzle de cuadrícula: encuentra la ruta más corta para recoger todos los montones de hojas entre rocas, árboles y hoyos',
     gamePyroHow: 'WASD o flechas mueven el tanque una celda; recoge todos los montones con el mínimo de pasos',
     startDemo: 'Comenzar',
-    backToProducts: '‹ Volver a Productos',
+    backToProducts: "‹ Volver a las actividades",
     score: 'Puntos',
     rescued: 'Rescatados',
     distance: 'Patrulla',
@@ -598,7 +598,7 @@ var UI = {
     quizRetry: "Rehacer test",
     quizDone: "¡Test completado!",
     moreQuizSoon: "Más tests pronto",
-    firstAid: "Primeros Auxilios",
+    firstAid: "Primeros auxilios para adultos",
     familyPlan: "Plan Familiar de Emergencia",
     packWizard: "Guía del Kit",
     prevStep: "Atrás",
@@ -690,16 +690,16 @@ var UI = {
     share: 'Partager',
     signals: 'Signaux d’Alerte',
     defensePoints: 'Mesures clés',
-    guideNote: 'Compilé à partir de références publiques',
-    emergencyPhone: 'Numéros d’Urgence',
+    guideNote: "Les couleurs et les seuils correspondent aux systèmes d’alerte chinois. Suivez les alertes et consignes émises pour votre lieu de résidence ou de passage.",
+    emergencyPhone: "Numéros d’urgence et de services en Chine continentale",
     materialList: 'Kit d’Urgence',
     prepared: '{progress}% prêt',
     evacuationTips: 'Conseils de Sécurité',
     disclaimer: 'Avertissement',
     disclaimerTitle: 'Avertissement',
-    disclaimerContent: "Les alertes météorologiques en Chine proviennent de WeatherCN, un service de données autorisé par l’Administration météorologique de Chine. Les signalements de catastrophes dans le monde proviennent de GDACS. Les données sismiques proviennent d’APIZERO ou de l’Institut d’études géologiques des États-Unis (USGS).\n\nCe site recueille et publie des données périodiquement. La couverture est limitée et les mises à jour peuvent être retardées, interrompues ou incomplètes. Les archives et les derniers signalements ne confirment pas la situation actuelle. L’absence d’alerte affichée ne signifie pas qu’il n’y a aucun danger. Le navigateur ne vérifie les alertes que lorsque la page est ouverte. Ces rappels ne remplacent pas les notifications officielles d’urgence.\n\nLes informations, les guides et l’annuaire des secours sont fournis à titre indicatif. Suivez les consignes les plus récentes des autorités locales. En cas d’urgence, appelez le numéro d’urgence local.",
+    disclaimerContent: "Les alertes météorologiques en Chine proviennent de WeatherCN, un service de données autorisé par l’Administration météorologique de Chine. Les signalements de catastrophes dans le monde proviennent de GDACS. Les données sismiques proviennent d’APIZERO ou de l’Institut d’études géologiques des États-Unis (USGS). La page des alertes météo américaines interroge directement le National Weather Service (NWS).\n\nCe site recueille et publie des données périodiquement. La couverture est limitée et les mises à jour peuvent être retardées, interrompues ou incomplètes. Les archives et les derniers signalements ne confirment pas la situation actuelle. L’absence d’alerte affichée ne signifie pas qu’il n’y a aucun danger. Le navigateur ne vérifie les alertes que lorsque la page est ouverte. Ces rappels ne remplacent pas les notifications officielles d’urgence.\n\nLes informations, les guides et l’annuaire des secours sont fournis à titre indicatif. Suivez les consignes les plus récentes des autorités locales. En cas d’urgence, appelez le numéro d’urgence local.",
     iKnow: 'Compris',
-    footerTools: 'Restez calme et appelez le 110 / 119 / 120',
+    footerTools: "En cas d’urgence, appelez le numéro de secours local et suivez les consignes de l’opérateur.",
     contentZh: 'Contenu détaillé en chinois (original)',
     statusActive: 'En cours',
     defaultSource: 'Service météorologique',
@@ -731,9 +731,9 @@ var UI = {
     reduceMotion: 'Réduire les animations',
     on: 'Oui',
     off: 'Non',
-    navProducts: 'Produits',
+    navProducts: "Activités pratiques",
     productsHint: 'Contenu bientôt disponible. Restez à l’écoute.',
-    productsTitle: 'Produits',
+    productsTitle: "Activités pratiques",
     productsSubtitle: 'Prototypes interactifs de réponse aux catastrophes',
     gameAquaName: 'AquaSentry Sauvetage Aquatique',
     gameAquaDesc: 'Vue de l’opérateur du lanceur : ajustez l’angle avec la gravité et la traînée de l’air réelles pour lancer les bouées',
@@ -742,7 +742,7 @@ var UI = {
     gamePyroDesc: 'Puzzle en grille : trouvez le chemin le plus court pour collecter tous les tas de feuilles parmi rochers, arbres et fosses',
     gamePyroHow: 'WASD ou les flèches déplacent le tank d’une case ; collectez tous les tas en moins de pas possible',
     startDemo: 'Commencer',
-    backToProducts: '‹ Retour aux Produits',
+    backToProducts: "‹ Retour aux activités",
     score: 'Score',
     rescued: 'Secourus',
     distance: 'Patrouille',
@@ -802,7 +802,7 @@ var UI = {
     quizRetry: "Refaire le quiz",
     quizDone: "Quiz terminé !",
     moreQuizSoon: "D’autres quiz bientôt",
-    firstAid: "Premiers Secours",
+    firstAid: "Premiers secours pour adultes",
     familyPlan: "Plan Familial d’Urgence",
     packWizard: "Guide du Kit",
     prevStep: "Précédent",
@@ -894,16 +894,16 @@ var UI = {
     share: 'Condividi',
     signals: 'Segnali di Allerta',
     defensePoints: 'Azioni chiave',
-    guideNote: 'Compilato da riferimenti pubblici a scopo informativo',
-    emergencyPhone: 'Numeri di Emergenza',
+    guideNote: "Colori e soglie si riferiscono ai sistemi di allerta cinesi. Segui le allerte e le istruzioni emesse per il luogo in cui ti trovi.",
+    emergencyPhone: "Numeri di emergenza e di servizio nella Cina continentale",
     materialList: 'Kit di Emergenza',
     prepared: '{progress}% pronto',
     evacuationTips: 'Consigli di Sicurezza',
     disclaimer: 'Disclaimer',
     disclaimerTitle: 'Disclaimer',
-    disclaimerContent: "Le allerte meteorologiche per la Cina provengono da WeatherCN, un servizio di dati autorizzato dall’Amministrazione meteorologica cinese. Le segnalazioni di disastri nel mondo provengono da GDACS. I dati sui terremoti provengono da APIZERO o dal Servizio geologico degli Stati Uniti (USGS).\n\nIl sito raccoglie e pubblica i dati periodicamente. La copertura è limitata e gli aggiornamenti possono essere in ritardo, interrotti o incompleti. Gli archivi e le ultime segnalazioni non confermano la situazione attuale. L’assenza di allerte visualizzate non indica che non ci sia pericolo. Il browser controlla le allerte solo mentre la pagina è aperta. Questi promemoria non sostituiscono le notifiche ufficiali di emergenza.\n\nLe informazioni, le guide e l’elenco dei soccorsi sono forniti a titolo informativo. Segui le indicazioni più recenti delle autorità locali. In caso di emergenza, chiama il numero di emergenza locale.",
+    disclaimerContent: "Le allerte meteorologiche per la Cina provengono da WeatherCN, un servizio di dati autorizzato dall’Amministrazione meteorologica cinese. Le segnalazioni di disastri nel mondo provengono da GDACS. I dati sui terremoti provengono da APIZERO o dal Servizio geologico degli Stati Uniti (USGS). La pagina delle allerte meteo USA consulta direttamente i bollettini del National Weather Service (NWS).\n\nIl sito raccoglie e pubblica i dati periodicamente. La copertura è limitata e gli aggiornamenti possono essere in ritardo, interrotti o incompleti. Gli archivi e le ultime segnalazioni non confermano la situazione attuale. L’assenza di allerte visualizzate non indica che non ci sia pericolo. Il browser controlla le allerte solo mentre la pagina è aperta. Questi promemoria non sostituiscono le notifiche ufficiali di emergenza.\n\nLe informazioni, le guide e l’elenco dei soccorsi sono forniti a titolo informativo. Segui le indicazioni più recenti delle autorità locali. In caso di emergenza, chiama il numero di emergenza locale.",
     iKnow: 'Ho capito',
-    footerTools: 'Mantieni la calma e chiama 110 / 119 / 120',
+    footerTools: "In caso di emergenza, chiama il numero di soccorso locale e segui le istruzioni dell’operatore.",
     contentZh: 'Contenuto dettagliato in cinese (originale)',
     statusActive: 'Attiva',
     defaultSource: 'Dipartimento meteorologico',
@@ -935,9 +935,9 @@ var UI = {
     reduceMotion: 'Ridurre le animazioni',
     on: 'Sì',
     off: 'No',
-    navProducts: 'Prodotti',
+    navProducts: "Attività pratiche",
     productsHint: 'Contenuti in arrivo. Restate sintonizzati.',
-    productsTitle: 'Prodotti',
+    productsTitle: "Attività pratiche",
     productsSubtitle: 'Prototipi interattivi di risposta alle catastrofi',
     gameAquaName: 'AquaSentry Salvataggio Acquatico',
     gameAquaDesc: 'Vista operatore del lanciatore: regola l’angolo con gravità e resistenza dell’aria reali per lanciare le ciambelle salvagente',
@@ -946,7 +946,7 @@ var UI = {
     gamePyroDesc: 'Puzzle a griglia: trova il percorso più breve per raccogliere tutti i cumuli di foglie tra rocce, alberi e buche',
     gamePyroHow: 'WASD o frecce muovono il carro di una cella; raccogli tutti i cumuli con il minor numero di passi',
     startDemo: 'Inizia',
-    backToProducts: '‹ Torna ai Prodotti',
+    backToProducts: "‹ Torna alle attività",
     score: 'Punti',
     rescued: 'Salvati',
     distance: 'Pattuglia',
@@ -1006,7 +1006,7 @@ var UI = {
     quizRetry: "Rifai il quiz",
     quizDone: "Quiz completato!",
     moreQuizSoon: "Altri quiz in arrivo",
-    firstAid: "Primo Soccorso",
+    firstAid: "Primo soccorso per adulti",
     familyPlan: "Piano Familiare di Emergenza",
     packWizard: "Guida Kit",
     prevStep: "Indietro",
@@ -1068,13 +1068,13 @@ var PHONES_ZH = [
   { name: '气象服务热线', number: '12121', desc: '天气与预警查询' },
   { name: '森林火警', number: '12119', desc: '森林火灾报警' },
   { name: '供电服务', number: '95598', desc: '停电报修、用电咨询' },
-  { name: '政务服务热线', number: '12345', desc: '应急求助与综合服务' }
+  { name: '政务服务热线', number: '12345', desc: '非紧急政务咨询与服务' }
 ];
 var PHONES_I18N = {
-  en: [['Police', 'Public security and emergencies'], ['Fire', 'Fire and rescue'], ['Ambulance', 'Medical emergency'], ['Traffic Accident', 'Traffic accident report'], ['Weather Hotline', 'Weather & alert inquiry'], ['Forest Fire', 'Forest fire report'], ['Power Service', 'Outage repair & inquiry'], ['Government Hotline', 'Emergency & general services']],
-  es: [['Policía', 'Seguridad y emergencias'], ['Bomberos', 'Incendios y rescate'], ['Ambulancia', 'Emergencia médica'], ['Accidente de tráfico', 'Reporte de accidentes'], ['Línea Meteorológica', 'Consulta de clima y alertas'], ['Incendio Forestal', 'Reporte de incendios'], ['Servicio Eléctrico', 'Averías y consultas'], ['Línea del Gobierno', 'Servicios de emergencia']],
-  fr: [['Police', 'Sécurité et urgences'], ['Pompiers', 'Incendie et secours'], ['Ambulance', 'Urgence médicale'], ['Accident de la route', 'Signaler un accident'], ['Ligne Météo', 'Climat et alertes'], ['Feu de forêt', 'Signaler un feu'], ['Service Électrique', 'Pannes et renseignements'], ['Ligne du Gouvernement', 'Urgences et services']],
-  it: [['Polizia', 'Sicurezza e emergenze'], ['Vigili del Fuoco', 'Incendi e soccorso'], ['Ambulanza', 'Emergenza medica'], ['Incidente stradale', 'Segnalazione incidenti'], ['Linea Meteo', 'Meteo e allerte'], ['Incendio boschivo', 'Segnalazione incendi'], ['Servizio Elettrico', 'Guasti e informazioni'], ['Linea del Governo', 'Emergenze e servizi']]
+  en: [['Police', 'Public security and emergencies'], ['Fire', 'Fire and rescue'], ['Ambulance', 'Medical emergency'], ['Traffic Accident', 'Traffic accident report'], ['Weather Hotline', 'Weather & alert inquiry'], ['Forest Fire', 'Forest fire report'], ['Power Service', 'Outage repair & inquiry'], ['Government Hotline', 'Non-emergency government services']],
+  es: [['Policía', 'Seguridad y emergencias'], ['Bomberos', 'Incendios y rescate'], ['Ambulancia', 'Emergencia médica'], ['Accidente de tráfico', 'Reporte de accidentes'], ['Línea Meteorológica', 'Consulta de clima y alertas'], ['Incendio Forestal', 'Reporte de incendios'], ['Servicio Eléctrico', 'Averías y consultas'], ['Línea del Gobierno', 'Servicios públicos no urgentes']],
+  fr: [['Police', 'Sécurité et urgences'], ['Pompiers', 'Incendie et secours'], ['Ambulance', 'Urgence médicale'], ['Accident de la route', 'Signaler un accident'], ['Ligne Météo', 'Climat et alertes'], ['Feu de forêt', 'Signaler un feu'], ['Service Électrique', 'Pannes et renseignements'], ['Ligne du Gouvernement', 'Services administratifs non urgents']],
+  it: [['Polizia', 'Sicurezza e emergenze'], ['Vigili del Fuoco', 'Incendi e soccorso'], ['Ambulanza', 'Emergenza medica'], ['Incidente stradale', 'Segnalazione incidenti'], ['Linea Meteo', 'Meteo e allerte'], ['Incendio boschivo', 'Segnalazione incendi'], ['Servizio Elettrico', 'Guasti e informazioni'], ['Linea del Governo', 'Servizi pubblici non urgenti']]
 };
 
 // ---- 工具页：应急物资清单（5 语言） ----
@@ -1101,17 +1101,17 @@ var MATERIALS_I18N = {
 
 // ---- 工具页：避险要点（5 语言） ----
 var TIPS_ZH = [
-  '收到预警或转移通知，第一时间撤离，不贪恋财物',
+  '按当地指示就地避险或转移。收到撤离指令时立即行动，不要为取财物而耽搁。',
   '熟悉住所周边的应急避险场所和撤离路线',
   '提前给手机充电，保存紧急联系人和应急电话',
   '重要证件、现金和药品放在随手可取的应急包里',
   '关注官方渠道信息，不轻信、不传播谣言'
 ];
 var TIPS_I18N = {
-  en: ['Evacuate immediately on alert, never linger for belongings', 'Know nearby shelters and evacuation routes', 'Charge your phone and save emergency contacts', 'Keep IDs, cash and medicine in an easy-to-grab kit', 'Follow official channels; do not spread rumors'],
-  es: ['Evacúe de inmediato ante una alerta, no se detenga por pertenencias', 'Conozca los refugios y rutas de evacuación cercanos', 'Cargue el móvil y guarde contactos de emergencia', 'Tenga documentos, efectivo y medicinas a mano', 'Siga fuentes oficiales; no difunda rumores'],
-  fr: ['Évacuez immédiatement lors d’une alerte, n’hésitez pas pour vos biens', 'Repérez les abris et les itinéraires d’évacuation', 'Chargez votre téléphone et enregistrez les contacts d’urgence', 'Gardez pièces d’identité, espèces et médicaments à portée', 'Suivez les sources officielles; ne propagez pas de rumeurs'],
-  it: ['Evacuare subito in caso di allerta, non fermarsi per i beni', 'Conoscere i rifugi e le vie di fuga vicine', 'Caricare il telefono e salvare i contatti di emergenza', 'Tenere documenti, contanti e farmaci a portata di mano', 'Seguire fonti ufficiali; non diffondere voci']
+  en: ['Follow local instructions to shelter or evacuate. If told to evacuate, leave promptly without delaying for belongings.', 'Know nearby shelters and evacuation routes', 'Charge your phone and save emergency contacts', 'Keep IDs, cash and medicine in an easy-to-grab kit', 'Follow official channels; do not spread rumors'],
+  es: ['Siga las instrucciones locales para refugiarse o evacuar. Si se ordena evacuar, salga sin demorarse por sus pertenencias.', 'Conozca los refugios y rutas de evacuación cercanos', 'Cargue el móvil y guarde contactos de emergencia', 'Tenga documentos, efectivo y medicinas a mano', 'Siga fuentes oficiales; no difunda rumores'],
+  fr: ['Suivez les consignes locales de mise à l’abri ou d’évacuation. En cas d’ordre d’évacuation, partez immédiatement, sans vous attarder pour récupérer vos affaires.', 'Repérez les abris et les itinéraires d’évacuation', 'Chargez votre téléphone et enregistrez les contacts d’urgence', 'Gardez pièces d’identité, espèces et médicaments à portée', 'Suivez les sources officielles; ne propagez pas de rumeurs'],
+  it: ['Segui le indicazioni locali per ripararti o evacuare. Se viene ordinata l’evacuazione, parti senza fermarti a prendere oggetti.', 'Conoscere i rifugi e le vie di fuga vicine', 'Caricare il telefono e salvare i contatti di emergenza', 'Tenere documenti, contanti e farmaci a portata di mano', 'Seguire fonti ufficiali; non diffondere voci']
 };
 
 // ---- 工具函数 ----
@@ -1371,8 +1371,8 @@ function levelName(level, lang) {
     orange: 'orangeAlert',
     yellow: 'yellowAlert',
     blue: 'blueAlert'
-  }[level] || 'yellowAlert';
-  return t(key, l);
+  }[level];
+  return key ? t(key, l) : ({ zh: '级别未知', en: 'Unknown severity', es: 'Gravedad desconocida', fr: 'Gravité inconnue', it: 'Gravità sconosciuta' })[l] || 'Unknown severity';
 }
 
 // 单字级别词（防御指南“预警信号”里的红/橙/黄/蓝）
@@ -1418,6 +1418,8 @@ function dataSourceName(zhName, lang) {
 
 // 天气现象翻译表（华风实况接口返回中文 WeatherText，按当前语言翻译）
 var WEATHER_WORDS = {
+  '冻毛毛雨': { en: 'Freezing drizzle', es: 'Llovizna helada', fr: 'Bruine verglaçante', it: 'Pioviggine gelata' },
+  '雷暴伴冰雹': { en: 'Thunderstorm with hail', es: 'Tormenta con granizo', fr: 'Orage avec grêle', it: 'Temporale con grandine' },
   '晴': { en: 'Clear', es: 'Despejado', fr: 'Dégagé', it: 'Sereno' },
   '晴朗': { en: 'Clear', es: 'Despejado', fr: 'Dégagé', it: 'Sereno' },
   '碧空': { en: 'Clear Sky', es: 'Cielo despejado', fr: 'Ciel dégagé', it: 'Cielo sereno' },
@@ -2293,7 +2295,218 @@ function alertSummary(alert, lang) {
 
 /* ---- 扩展：测验 / 急救 / 成因（五语言） ---- */
 var QUIZ_DATA = {"zh":{"rain1":{"q":"暴雨预警期间，以下哪种做法最安全？","o":["涉水通过积水的下穿隧道","留在室内高处，远离低洼地带","去河边观察水情"],"a":1,"why":"积水深度难以判断，下穿隧道与河道风险最高，应留在室内并关注官方信息。"},"rain2":{"q":"户外积水已没过脚踝且还在上涨，应该？","o":["快速蹚水回家","就近向高处转移并求救","原地等待水退"],"a":1,"why":"仅15厘米深的流水就可能把人冲倒，应立即向高处转移。"},"typhoon1":{"q":"台风来临前，窗户应如何处理？","o":["大开保持通风","关紧并用胶带贴“米”字，必要时加挡板","只拉上窗帘"],"a":1,"why":"胶带可减少玻璃破碎飞溅，关紧门窗能防止强风灌入。"},"typhoon2":{"q":"台风天在户外，最应远离什么？","o":["高楼、广告牌与大树","空旷的草地","便利店"],"a":0,"why":"高空坠物、倒伏的广告牌和树木是台风主要伤害来源。"},"quake1":{"q":"室内突发地震，第一反应是？","o":["立刻跑出门外","蹲下、掩护、抓牢，躲在坚固桌下","乘电梯下楼"],"a":1,"why":"晃动时奔跑极易摔倒，电梯可能断电，应先就近掩护。"},"quake2":{"q":"地震后撤离大楼，正确做法是？","o":["走楼梯，避开外墙与电线杆","乘电梯最快","回屋拿贵重物品"],"a":0,"why":"余震可能持续，电梯会断电，外墙与高处物品可能坠落。"},"heat1":{"q":"出现头晕、大量出汗、恶心等中暑征兆，应？","o":["继续活动多出汗","转移到阴凉处，补水并降温","喝冰啤酒解暑"],"a":1,"why":"中暑须立即降温并补充水分，酒精反而加重脱水。"},"heat2":{"q":"高温红色预警期间，最不建议做的是？","o":["上午10点到下午4点户外锻炼","留在空调房","少量多次喝水"],"a":0,"why":"正午前后气温与地表温度最高，户外剧烈活动极易中暑。"},"thunder1":{"q":"户外打雷闪电，正确做法是？","o":["到大树下避雨","双脚并拢蹲在低洼处，远离金属与高处","撑金属伞快跑"],"a":1,"why":"树木与金属易引雷，蹲下可降低高度，双脚并拢减少跨步电压。"},"thunder2":{"q":"室内打雷时应避免什么？","o":["使用接水管或外接天线的设备，关窗远离阳台","坐在木椅上","安静看书"],"a":0,"why":"雷电可沿水管、天线侵入室内，金属窗栏同样危险。"}},"en":{"rain1":{"q":"During a rainstorm alert, which action is safest?","o":["Wading through a flooded underpass","Staying indoors on a high level, away from low ground","Going to watch the river"],"a":1,"why":"Flood depth is hard to judge; underpasses and rivers are the deadliest spots—stay indoors."},"rain2":{"q":"Floodwater outdoors is already over your ankles and rising. You should:","o":["Wade home quickly","Move immediately to high ground and call for help","Wait where you are"],"a":1,"why":"Just 15 cm of flowing water can knock you down; move to high ground at once."},"typhoon1":{"q":"Before a typhoon arrives, windows should be:","o":["Left wide open","Closed tightly and taped in an X pattern, with boards if needed","Curtains only"],"a":1,"why":"Tape reduces flying shards; tightly closed windows stop wind forcing its way in."},"typhoon2":{"q":"Outdoors during a typhoon, stay farthest from:","o":["Tall buildings, billboards and large trees","Open grassland","Convenience stores"],"a":0,"why":"Falling debris, toppling billboards and trees cause most typhoon injuries."},"quake1":{"q":"An earthquake strikes while you are indoors. First move:","o":["Run outside immediately","Drop, cover and hold on under a sturdy table","Take the elevator down"],"a":1,"why":"Running while shaking is dangerous and elevators may fail; take cover first."},"quake2":{"q":"Evacuating the building after an earthquake, you should:","o":["Use the stairs, away from outer walls and utility poles","Take the elevator for speed","Go back for valuables"],"a":0,"why":"Aftershocks continue, elevators may fail, and outer walls can shed debris."},"heat1":{"q":"Dizziness, heavy sweating and nausea suggest heat illness. You should:","o":["Keep exercising to sweat it out","Move to shade, drink water and cool down","Drink iced beer"],"a":1,"why":"Heat illness demands immediate cooling and fluids; alcohol worsens dehydration."},"heat2":{"q":"During a red high-temperature alert, the least advisable action is:","o":["Exercising outdoors between 10 a.m. and 4 p.m.","Staying in an air-conditioned room","Drinking water often"],"a":0,"why":"Midday brings peak air and surface temperatures; outdoor exertion risks heatstroke."},"thunder1":{"q":"Lightning while outdoors. The correct action is to:","o":["Shelter under a large tree","Crouch with feet together in a low spot, away from metal and heights","Run with a metal umbrella"],"a":1,"why":"Trees and metal attract lightning; crouching lowers your height and closed feet reduce step voltage."},"thunder2":{"q":"Indoors during a thunderstorm, avoid:","o":["Devices connected to pipes or external antennas; close windows and stay off balconies","Sitting on a wooden chair","Reading quietly"],"a":0,"why":"Lightning can travel indoors through pipes and antennas; metal window frames are also risky."}},"es":{"rain1":{"q":"Durante una alerta por lluvia intensa, ¿qué acción es más segura?","o":["Atravesar un paso inferior inundado","Permanecer en interiores, en zonas altas y lejos de zonas bajas","Ir a ver el río"],"a":1,"why":"La profundidad del agua es difícil de calcular; pasos inferiores y ríos son los puntos más peligrosos."},"rain2":{"q":"El agua en la calle ya supera los tobillos y sigue subiendo. ¿Qué hacer?","o":["Cruzar rápido a casa","Subir de inmediato a un lugar alto y pedir ayuda","Esperar quieto"],"a":1,"why":"Solo 15 cm de agua en movimiento pueden derribarte; sube a un lugar alto."},"typhoon1":{"q":"Antes de que llegue un tifón, las ventanas deben:","o":["Quedar abiertas de par en par","Cerrarse bien y ponerse cinta en X, con tablas si hace falta","Solo correr las cortinas"],"a":1,"why":"La cinta reduce los cristales rotos; ventanas bien cerradas impiden la entrada del viento."},"typhoon2":{"q":"En la calle durante un tifón, aléjese sobre todo de:","o":["Edificios altos, vallas publicitarias y árboles grandes","Praderas abiertas","Tiendas"],"a":0,"why":"Los objetos que caen, las vallas y los árboles causan la mayoría de las lesiones."},"quake1":{"q":"Un terremoto sorprende en interiores. La primera reacción es:","o":["Salir corriendo","Agacharse, cubrirse y sujetarse bajo una mesa firme","Bajar en ascensor"],"a":1,"why":"Correr durante el temblor es peligroso y el ascensor puede fallar; cúbrase primero."},"quake2":{"q":"Al evacuar el edificio tras un terremoto, debe:","o":["Usar las escaleras, lejos de muros exteriores y postes","Usar el ascensor, más rápido","Volver por objetos de valor"],"a":0,"why":"Las réplicas continúan, el ascensor puede fallar y los muros pueden desprender material."},"heat1":{"q":"Mareos, sudor abundante y náuseas sugieren golpe de calor. ¿Qué hacer?","o":["Seguir moviéndose para sudar","Ir a la sombra, beber agua y refrescarse","Beber cerveza fría"],"a":1,"why":"El golpe de calor exige enfriarse y beber agua; el alcohol empeora la deshidratación."},"heat2":{"q":"Durante una alerta roja por calor, lo menos aconsejable es:","o":["Hacer ejercicio al aire libre entre las 10 y las 16","Quedarse con aire acondicionado","Beber agua con frecuencia"],"a":0,"why":"A mediodía el aire y el suelo están más calientes; el esfuerzo al aire libre puede causar golpe de calor."},"thunder1":{"q":"Hay rayos al aire libre. La acción correcta es:","o":["Refugiarse bajo un árbol grande","Agacharse con los pies juntos en un punto bajo, lejos de metal y alturas","Correr con paraguas metálico"],"a":1,"why":"Los árboles y el metal atraen rayos; agacharse reduce la altura y los pies juntos reducen la tensión de paso."},"thunder2":{"q":"En casa durante una tormenta, evite:","o":["Aparatos conectados a tuberías o antenas exteriores; cierre ventanas y aléjese de balcones","Sentarse en una silla de madera","Leer en silencio"],"a":0,"why":"Los rayos pueden entrar por tuberías y antenas; los marcos metálicos también son peligrosos."}},"fr":{"rain1":{"q":"Pendant une alerte pluie torrentielle, quelle conduite est la plus sûre ?","o":["Traverser un passage souterrain inondé","Rester à l’intérieur en hauteur, loin des points bas","Aller observer la rivière"],"a":1,"why":"La profondeur de l’eau est difficile à estimer ; passages souterrains et rivières sont les zones les plus meurtrières."},"rain2":{"q":"L’eau dehors dépasse déjà les chevilles et monte encore. Il faut :","o":["Rentrer vite à gué","Gagner immédiatement un point haut et appeler à l’aide","Attendre sur place"],"a":1,"why":"À peine 15 cm d’eau courante peuvent faire tomber ; gagnez un point haut."},"typhoon1":{"q":"Avant l’arrivée d’un typhon, les fenêtres doivent être :","o":["Grand ouvertes","Bien fermées et renforcées de ruban en X, avec des planches si besoin","Rideaux seulement"],"a":1,"why":"Le ruban limite les éclats ; des fenêtres bien fermées empêchent le vent de s’engouffrer."},"typhoon2":{"q":"Dehors pendant un typhon, il faut surtout s’éloigner :","o":["Immeubles hauts, panneaux publicitaires et grands arbres","Prairies ouvertes","Commerces"],"a":0,"why":"Chutes d’objets, panneaux et arbres renversés causent la plupart des blessures."},"quake1":{"q":"Un séisme survient alors que vous êtes à l’intérieur. Premier réflexe :","o":["Sortir en courant","Se baisser, s’abriter et s’agripper sous une table solide","Prendre l’ascenseur"],"a":1,"why":"Courir pendant les secousses est dangereux et l’ascenseur peut se bloquer ; abritez-vous d’abord."},"quake2":{"q":"Pour évacuer l’immeuble après un séisme, il faut :","o":["Prendre les escaliers, loin des murs extérieurs et des poteaux","Prendre l’ascenseur, plus rapide","Récupérer ses objets de valeur"],"a":0,"why":"Les répliques continuent, l’ascenseur peut se bloquer et les murs peuvent lâcher des débris."},"heat1":{"q":"Vertiges, transpiration forte et nausées signalent un coup de chaleur. Il faut :","o":["Continuer à bouger pour transpirer","Aller à l’ombre, boire et se refroidir","Boire une bière fraîche"],"a":1,"why":"Le coup de chaleur impose de se refroidir et de boire ; l’alcool aggrave la déshydratation."},"heat2":{"q":"Pendant une alerte rouge canicule, l’action la plus déconseillée est :","o":["Faire du sport dehors entre 10 h et 16 h","Rester dans une pièce climatisée","Boire de l’eau régulièrement"],"a":0,"why":"En milieu de journée l’air et le sol sont brûlants ; l’effort dehors expose à l’insolation."},"thunder1":{"q":"Éclairs en extérieur. La bonne conduite est :","o":["S’abriter sous un grand arbre","S’accroupir pieds joints dans un creux, loin du métal et des hauteurs","Courir avec un parapluie métallique"],"a":1,"why":"Arbres et métal attirent la foudre ; s’accroupir réduit sa taille et les pieds joints limitent la tension de pas."},"thunder2":{"q":"À l’intérieur pendant un orage, évitez :","o":["Les appareils reliés à des tuyaux ou antennes extérieures ; fermez fenêtres et éloignez-vous des balcons","Vous asseoir sur une chaise en bois","Lire tranquillement"],"a":0,"why":"La foudre peut entrer par les tuyaux et antennes ; les cadres métalliques sont aussi dangereux."}},"it":{"rain1":{"q":"Durante un’allerta per pioggia intensa, quale comportamento è più sicuro?","o":["Attraversare un sottopassaggio allagato","Restare in casa in alto, lontano dalle zone basse","Andare a osservare il fiume"],"a":1,"why":"La profondità dell’acqua è difficile da giudicare; sottopassaggi e fiumi sono i punti più pericolosi."},"rain2":{"q":"L’acqua fuori supera già le caviglie e continua a salire. Cosa fare?","o":["Tornare a casa a guado","Spostarsi subito in alto e chiedere aiuto","Aspettare sul posto"],"a":1,"why":"Bastano 15 cm di acqua corrente per cadere; spostatevi subito in alto."},"typhoon1":{"q":"Prima dell’arrivo di un tifone, le finestre vanno:","o":["Lasciate spalancate","Chiuse bene e rinforzate con nastro a X, con assi se serve","Solo tende chiuse"],"a":1,"why":"Il nastro riduce i frammenti; finestre chiuse impediscono al vento di entrare."},"typhoon2":{"q":"All’aperto durante un tifone, state soprattutto lontano da:","o":["Palazzi alti, cartelloni e alberi grandi","Prati aperti","Negozi"],"a":0,"why":"Oggetti in caduta, cartelloni e alberi causano la maggior parte delle lesioni."},"quake1":{"q":"Un terremoto arriva mentre siete in casa. Prima reazione:","o":["Correre fuori","Abbassarsi, ripararsi e aggrapparsi sotto un tavolo robusto","Prendere l’ascensore"],"a":1,"why":"Correre durante la scossa è pericoloso e l’ascensore può bloccarsi; riparatevi prima."},"quake2":{"q":"Per evacuare il palazzo dopo un terremoto, bisogna:","o":["Usare le scale, lontano da muri esterni e pali","Prendere l’ascensore, più veloce","Tornare per gli oggetti di valore"],"a":0,"why":"Le scosse continuano, l’ascensore può bloccarsi e i muri possono cedere detriti."},"heat1":{"q":"Vertigini, sudorazione forte e nausea suggeriscono colpo di calore. Cosa fare?","o":["Continuare a muoversi per sudare","Andare all’ombra, bere e rinfrescarsi","Bere birra ghiacciata"],"a":1,"why":"Il colpo di calore richiede subito raffreddamento e liquidi; l’alcol peggiora la disidratazione."},"heat2":{"q":"Durante un’allerta rossa per caldo, l’azione più sconsigliata è:","o":["Fare sport all’aperto tra le 10 e le 16","Restare con aria condizionata","Bere spesso acqua"],"a":0,"why":"A metà giornata aria e suolo sono roventi; lo sforzo all’aperto rischia il colpo di calore."},"thunder1":{"q":"Fulmini all’aperto. Il comportamento corretto è:","o":["Ripararsi sotto un grande albero","Accovacciarsi a piedi uniti in un punto basso, lontano da metalli e altezze","Correre con ombrello metallico"],"a":1,"why":"Alberi e metalli attirano i fulmini; accovacciarsi abbassa la figura e i piedi uniti riducono la tensione di passo."},"thunder2":{"q":"In casa durante un temporale, evitate:","o":["Apparecchi collegati a tubi o antenne esterne; chiudete finestre e state lontani dai balconi","Sedervi su una sedia di legno","Leggere in silenzio"],"a":0,"why":"I fulmini possono entrare da tubi e antenne; anche i telai metallici delle finestre sono pericolosi."}}};
-var FIRSTAID_DATA = {"zh":[{"id":"cpr","name":"心肺复苏（CPR）","steps":["确认环境安全，轻拍呼喊判断意识；无反应立即让人拨打120","双手叠放于乳头连线中点，胸外按压深5–6厘米，每分钟100–120次","每30次按压配合2次人工呼吸（受过培训时），尽量不中断","AED到达后按语音提示使用，坚持到急救人员接手"]},{"id":"bleeding","name":"严重出血","steps":["让伤者坐下或躺下，无骨折时抬高出血部位","用干净纱布或布料直接按压伤口至少10分钟","出血不止时在伤口近心端加压包扎，不要频繁松开查看","若肢体离断，使用止血带并记录时间，立即送医"]},{"id":"burns","name":"烧烫伤","steps":["立即用流动凉水冲洗15–20分钟降温","剪开周围衣物，粘连处不要强行撕脱，不挑破水泡","用干净保鲜膜或纱布轻轻覆盖，不涂牙膏、酱油","大面积、面部或关节处烧烫伤立即送医"]},{"id":"heimlich","name":"气道异物梗阻","steps":["询问是否噎住；无法咳嗽、说话即为梗阻","站到身后，拳眼对准肚脐上方约两指处","快速向内上方冲击，直到异物排出","若伤者昏迷，立即呼救并开始心肺复苏"]}],"en":[{"id":"cpr","name":"Cardiopulmonary Resuscitation (CPR)","steps":["Check the scene is safe; tap and shout to check responsiveness. If none, send someone to call 120","Hands centered between the nipples; compress 5–6 cm deep at 100–120 per minute","Give 2 rescue breaths per 30 compressions (if trained); minimize interruptions","When an AED arrives, follow voice prompts; continue until responders take over"]},{"id":"bleeding","name":"Severe Bleeding","steps":["Seat or lay the victim down; elevate the limb if there is no fracture","Press directly on the wound with clean cloth for at least 10 minutes","If bleeding continues, apply a pressure bandage toward the heart; do not keep removing it","For an amputated limb, use a tourniquet, note the time, and get to hospital immediately"]},{"id":"burns","name":"Burns & Scalds","steps":["Cool immediately under running cool water for 15–20 minutes","Cut away clothing; do not force off stuck fabric and do not pop blisters","Cover loosely with clean cling film or gauze; never apply toothpaste or soy sauce","Large, facial or joint burns require immediate hospital care"]},{"id":"heimlich","name":"Choking (Heimlich Manoeuvre)","steps":["Ask “Are you choking?”; inability to cough or speak means obstruction","Stand behind them; place your fist about two fingers above the navel","Give quick inward-upward thrusts until the object comes out","If the person becomes unconscious, call for help and start CPR"]}],"es":[{"id":"cpr","name":"Reanimación Cardiopulmonar (RCP)","steps":["Compruebe que el entorno es seguro; golpee suave y grite para ver si responde. Si no, pida que llamen al 120","Manos en el centro del pecho, entre los pezones; comprima 5–6 cm, 100–120 veces por minuto","2 ventilaciones cada 30 compresiones (si tiene formación); no interrumpa","Al llegar un DEA, siga las instrucciones de voz; continúe hasta que llegue el personal sanitario"]},{"id":"bleeding","name":"Hemorragia Grave","steps":["Siente o acueste a la persona; eleve la zona si no hay fractura","Presione directamente la herida con tela limpia al menos 10 minutos","Si no cede, ponga un vendaje compresivo hacia el corazón; no lo quite para mirar","Si hay una amputación, use torniquete, anote la hora y vaya al hospital de inmediato"]},{"id":"burns","name":"Quemaduras","steps":["Enfríe de inmediato con agua corriente fresca durante 15–20 minutos","Corte la ropa; no arranque la que esté pegada ni rompa las ampollas","Cubra sin apretar con film limpio o gasas; no ponga pasta de dientes ni salsa de soja","Las quemaduras grandes, faciales o en articulaciones requieren hospital inmediato"]},{"id":"heimlich","name":"Atragantamiento (Heimlich)","steps":["Pregunte “¿se atraganta?”; si no puede toser ni hablar, hay obstrucción","Colóquese detrás; puño a dos dedos por encima del ombligo","Empuje rápido hacia adentro y arriba hasta que salga el objeto","Si la persona pierde el conocimiento, pida ayuda y comience la RCP"]}],"fr":[{"id":"cpr","name":"Réanimation Cardiopulmonaire (RCP)","steps":["Vérifiez la sécurité des lieux ; tapez et parlez pour vérifier la conscience. Sans réponse, faites appeler le 120","Mains au milieu de la poitrine, entre les mamelons ; compression de 5–6 cm, 100–120 par minute","2 bouffées pour 30 compressions (si formé) ; limitez les interruptions","À l’arrivée d’un DAE, suivez les instructions vocales ; continuez jusqu’au relais des secours"]},{"id":"bleeding","name":"Hémorragie Grave","steps":["Asseyez ou allongez la personne ; surélevez la zone sans fracture","Appuyez directement sur la plaie avec un linge propre au moins 10 minutes","Si le saignement continue, bandage compressif côté cœur ; ne le retirez pas pour regarder","En cas d’amputation, garrot et notez l’heure ; hôpital immédiat"]},{"id":"burns","name":"Brûlures","steps":["Refroidissez aussitôt sous l’eau courante fraîche 15–20 minutes","Coupez les vêtements ; n’arrachez pas ce qui colle et ne percez pas les cloques","Couvrez sans serrer avec un film propre ou une compresse ; ni dentifrice ni sauce soja","Brûlures étendues, au visage ou aux articulations : hôpital immédiat"]},{"id":"heimlich","name":"Fausse Route (Heimlich)","steps":["Demandez « vous vous étouffez ? » ; impossible de parler ou tousser = obstruction","Placez-vous derrière ; poing à deux doigts au-dessus du nombril","Poussées rapides vers l’intérieur et le haut jusqu’à expulsion","Si la personne perd connaissance, appelez et commencez la RCP"]}],"it":[{"id":"cpr","name":"Rianimazione Cardiopolmonare (RCP)","steps":["Verificate la sicurezza dell’ambiente; toccate e parlate per controllare la coscienza. Se non risponde, fate chiamare il 120","Mani al centro del petto, tra i capezzoli; compressioni di 5–6 cm, 100–120 al minuto","2 ventilazioni ogni 30 compressioni (se addestrati); poche interruzioni","Quando arriva un DAE, seguite le istruzioni vocali; continuate fino all’arrivo dei soccorsi"]},{"id":"bleeding","name":"Emorragia Grave","steps":["Sedete o sdraiate la persona; sollevate la zona se non c’è frattura","Premete direttamente sulla ferita con stoffa pulita per almeno 10 minuti","Se continua, bendaggio compressivo verso il cuore; non toglietelo per guardare","In caso di amputazione, laccio emostatico, annotate l’ora e ospedale subito"]},{"id":"burns","name":"Ustioni","steps":["Raffreddate subito sotto acqua corrente fresca per 15–20 minuti","Tagliate i vestiti; non strappate ciò che è attaccato e non rompete le vesciche","Coprite senza stringere con pellicola pulita o garze; niente dentifricio o salsa di soia","Ustioni estese, al viso o alle articolazioni: ospedale subito"]},{"id":"heimlich","name":"Soffocamento (Heimlich)","steps":["Chiedete “sta soffocando?”; non poter tossire o parlare significa ostruzione","Mettetevi dietro; pugno a due dita sopra l’ombelico","Spinte rapide verso dentro e sopra finché esce l’oggetto","Se la persona perde conoscenza, chiamate e iniziate la RCP"]}]};
+var FIRSTAID_DATA = {
+  "zh": [
+    {
+      "id": "cpr",
+      "name": "心肺复苏（CPR）",
+      "steps": [
+        "确保现场安全。若成人无反应，请人拨打当地急救电话并取 AED。检查呼吸。若无正常呼吸或仅有喘息，立即开始胸外按压。",
+        "双手叠放于乳头连线中点，胸外按压深5–6厘米，每分钟100–120次",
+        "每30次按压配合2次人工呼吸（受过培训时），尽量不中断",
+        "AED到达后按语音提示使用，坚持到急救人员接手"
+      ]
+    },
+    {
+      "id": "bleeding",
+      "name": "严重出血",
+      "steps": [
+        "在确保安全的情况下，请人立即拨打当地急救电话。尽量用手套或其他屏障避免接触血液。",
+        "用纱布或干净的布直接持续用力压住出血处。若伤口内有异物，压住异物周围，不要拔出。",
+        "保持按压，避免反复揭开敷料查看。若四肢大出血危及生命，且你受过训练，可按所学使用合适的止血带。",
+        "让伤者保持温暖，关注呼吸，并按急救接线员的指示等待救援。"
+      ]
+    },
+    {
+      "id": "burns",
+      "name": "烧烫伤",
+      "steps": [
+        "立即用流动凉水冲洗15–20分钟降温",
+        "剪开周围衣物，粘连处不要强行撕脱，不挑破水泡",
+        "用干净保鲜膜或纱布轻轻覆盖，不涂牙膏、酱油",
+        "大面积、面部或关节处烧烫伤立即送医"
+      ]
+    },
+    {
+      "id": "heimlich",
+      "name": "气道异物梗阻",
+      "steps": [
+        "若成人能有力咳嗽，鼓励继续咳嗽。若不能说话、呼吸或有效咳嗽，请人立即拨打当地急救电话。",
+        "让清醒者向前倾，在两肩胛骨之间用掌根用力拍背最多 5 次。每次后检查异物是否排出。",
+        "若仍梗阻，做最多 5 次腹部冲击。对于孕妇或无法环抱腹部的人，改做胸部冲击。交替拍背和冲击，直到异物排出或伤者失去反应。",
+        "若失去反应，将其平放并开始心肺复苏。仅移除能看见的异物，不要盲目用手指探取。"
+      ]
+    }
+  ],
+  "en": [
+    {
+      "id": "cpr",
+      "name": "Cardiopulmonary Resuscitation (CPR)",
+      "steps": [
+        "If the scene is safe and the adult is unresponsive, send someone to call local emergency services and get an AED. Check breathing. Start compressions if they are not breathing normally or are only gasping.",
+        "Hands centered between the nipples; compress 5–6 cm deep at 100–120 per minute",
+        "Give 2 rescue breaths per 30 compressions (if trained); minimize interruptions",
+        "When an AED arrives, follow voice prompts; continue until responders take over"
+      ]
+    },
+    {
+      "id": "bleeding",
+      "name": "Severe Bleeding",
+      "steps": [
+        "Make sure the scene is safe. Have someone call local emergency services immediately. Use gloves or another barrier if available.",
+        "Apply firm, continuous pressure with gauze or a clean cloth. If an object is embedded, press around it and leave it in place.",
+        "Maintain pressure without repeatedly lifting the dressing. For life-threatening bleeding from a limb, use a suitable tourniquet if trained.",
+        "Keep the person warm, monitor breathing and follow the emergency dispatcher’s instructions until help arrives."
+      ]
+    },
+    {
+      "id": "burns",
+      "name": "Burns & Scalds",
+      "steps": [
+        "Cool immediately under running cool water for 15–20 minutes",
+        "Cut away clothing; do not force off stuck fabric and do not pop blisters",
+        "Cover loosely with clean cling film or gauze; never apply toothpaste or soy sauce",
+        "Large, facial or joint burns require immediate hospital care"
+      ]
+    },
+    {
+      "id": "heimlich",
+      "name": "Choking",
+      "steps": [
+        "If the adult can cough forcefully, encourage coughing. If they cannot speak, breathe or cough effectively, have someone call local emergency services immediately.",
+        "Lean the conscious person forward. Give up to five firm blows between the shoulder blades with the heel of your hand. Check after each blow.",
+        "If still choking, give up to five abdominal thrusts. Use chest thrusts in pregnancy or if you cannot encircle the abdomen. Alternate back blows and thrusts until the obstruction clears or the person becomes unresponsive.",
+        "If they become unresponsive, lower them to the ground and start CPR. Remove only a visible object from the mouth. Avoid blind finger sweeps."
+      ]
+    }
+  ],
+  "es": [
+    {
+      "id": "cpr",
+      "name": "Reanimación Cardiopulmonar (RCP)",
+      "steps": [
+        "Si el lugar es seguro y el adulto no responde, pide que llamen a emergencias y traigan un DEA. Comprueba la respiración. Inicia compresiones si no respira normalmente o solo jadea.",
+        "Manos en el centro del pecho, entre los pezones; comprima 5–6 cm, 100–120 veces por minuto",
+        "2 ventilaciones cada 30 compresiones (si tiene formación); no interrumpa",
+        "Al llegar un DEA, siga las instrucciones de voz; continúe hasta que llegue el personal sanitario"
+      ]
+    },
+    {
+      "id": "bleeding",
+      "name": "Hemorragia Grave",
+      "steps": [
+        "Comprueba que el lugar sea seguro. Pide que llamen de inmediato a emergencias. Usa guantes u otra barrera si la tienes.",
+        "Aplica presión firme y continua con una gasa o un paño limpio. Si hay un objeto clavado, presiona alrededor sin retirarlo.",
+        "Mantén la presión sin levantar repetidamente el apósito. Para una hemorragia en una extremidad que pone en peligro la vida, usa un torniquete adecuado si tienes formación.",
+        "Abriga a la persona, vigila su respiración y sigue las indicaciones del servicio de emergencias hasta que llegue ayuda."
+      ]
+    },
+    {
+      "id": "burns",
+      "name": "Quemaduras",
+      "steps": [
+        "Enfríe de inmediato con agua corriente fresca durante 15–20 minutos",
+        "Corte la ropa; no arranque la que esté pegada ni rompa las ampollas",
+        "Cubra sin apretar con film limpio o gasas; no ponga pasta de dientes ni salsa de soja",
+        "Las quemaduras grandes, faciales o en articulaciones requieren hospital inmediato"
+      ]
+    },
+    {
+      "id": "heimlich",
+      "name": "Atragantamiento",
+      "steps": [
+        "Si el adulto puede toser con fuerza, anímalo a toser. Si no puede hablar, respirar o toser eficazmente, pide que llamen a emergencias de inmediato.",
+        "Inclina hacia delante a la persona consciente. Da hasta cinco golpes firmes entre los omóplatos con el talón de la mano. Comprueba después de cada golpe.",
+        "Si persiste la obstrucción, da hasta cinco compresiones abdominales. En caso de embarazo o si no puedes rodear el abdomen, haz compresiones torácicas. Alterna golpes y compresiones hasta que se resuelva o pierda el conocimiento.",
+        "Si pierde el conocimiento, bájala al suelo e inicia la RCP. Retira solo los objetos visibles de la boca. Evita barrer a ciegas con los dedos."
+      ]
+    }
+  ],
+  "fr": [
+    {
+      "id": "cpr",
+      "name": "Réanimation Cardiopulmonaire (RCP)",
+      "steps": [
+        "Si les lieux sont sûrs et que l’adulte ne répond pas, faites appeler les secours et apporter un défibrillateur. Vérifiez la respiration. Commencez les compressions si elle est absente ou anormale, notamment en cas de gasps.",
+        "Mains au milieu de la poitrine, entre les mamelons ; compression de 5–6 cm, 100–120 par minute",
+        "2 bouffées pour 30 compressions (si formé) ; limitez les interruptions",
+        "À l’arrivée d’un DAE, suivez les instructions vocales ; continuez jusqu’au relais des secours"
+      ]
+    },
+    {
+      "id": "bleeding",
+      "name": "Hémorragie Grave",
+      "steps": [
+        "Assurez-vous que les lieux sont sûrs. Faites appeler immédiatement les secours. Utilisez si possible des gants ou une autre protection.",
+        "Comprimez fermement et sans interruption avec une compresse ou un linge propre. Si un objet est planté, appuyez autour et laissez-le en place.",
+        "Maintenez la pression sans soulever le pansement pour vérifier. En cas d’hémorragie d’un membre menaçant la vie, utilisez un garrot adapté si vous y êtes formé.",
+        "Gardez la personne au chaud, surveillez sa respiration et suivez les consignes des secours."
+      ]
+    },
+    {
+      "id": "burns",
+      "name": "Brûlures",
+      "steps": [
+        "Refroidissez aussitôt sous l’eau courante fraîche 15–20 minutes",
+        "Coupez les vêtements ; n’arrachez pas ce qui colle et ne percez pas les cloques",
+        "Couvrez sans serrer avec un film propre ou une compresse ; ni dentifrice ni sauce soja",
+        "Brûlures étendues, au visage ou aux articulations : hôpital immédiat"
+      ]
+    },
+    {
+      "id": "heimlich",
+      "name": "Étouffement",
+      "steps": [
+        "Si l’adulte peut tousser efficacement, encouragez-le à le faire. S’il ne peut ni parler, ni respirer, ni tousser efficacement, faites appeler les secours immédiatement.",
+        "Penchez la personne consciente vers l’avant. Donnez jusqu’à cinq claques fermes entre les omoplates avec le talon de la main. Vérifiez après chaque claque.",
+        "Si l’obstruction persiste, effectuez jusqu’à cinq compressions abdominales. En cas de grossesse ou si vous ne pouvez entourer l’abdomen, pratiquez des compressions thoraciques. Alternez jusqu’à la désobstruction ou la perte de connaissance.",
+        "Si la personne perd connaissance, accompagnez-la au sol et commencez la réanimation. Retirez uniquement un objet visible dans la bouche. Évitez de chercher à l’aveugle avec les doigts."
+      ]
+    }
+  ],
+  "it": [
+    {
+      "id": "cpr",
+      "name": "Rianimazione Cardiopolmonare (RCP)",
+      "steps": [
+        "Se la scena è sicura e l’adulto non risponde, fai chiamare i soccorsi e portare un DAE. Controlla il respiro. Inizia le compressioni se non respira normalmente o boccheggia soltanto.",
+        "Mani al centro del petto, tra i capezzoli; compressioni di 5–6 cm, 100–120 al minuto",
+        "2 ventilazioni ogni 30 compressioni (se addestrati); poche interruzioni",
+        "Quando arriva un DAE, seguite le istruzioni vocali; continuate fino all’arrivo dei soccorsi"
+      ]
+    },
+    {
+      "id": "bleeding",
+      "name": "Emorragia Grave",
+      "steps": [
+        "Assicurati che la scena sia sicura. Fai chiamare immediatamente i soccorsi. Se disponibili, usa guanti o un’altra barriera.",
+        "Applica una pressione forte e continua con una garza o un panno pulito. Se c’è un oggetto conficcato, premi intorno senza estrarlo.",
+        "Mantieni la pressione senza sollevare ripetutamente la medicazione. Per un’emorragia a un arto che mette in pericolo la vita, usa un laccio emostatico adatto se hai ricevuto formazione.",
+        "Tieni la persona al caldo, controlla il respiro e segui le istruzioni dei soccorritori."
+      ]
+    },
+    {
+      "id": "burns",
+      "name": "Ustioni",
+      "steps": [
+        "Raffreddate subito sotto acqua corrente fresca per 15–20 minuti",
+        "Tagliate i vestiti; non strappate ciò che è attaccato e non rompete le vesciche",
+        "Coprite senza stringere con pellicola pulita o garze; niente dentifricio o salsa di soia",
+        "Ustioni estese, al viso o alle articolazioni: ospedale subito"
+      ]
+    },
+    {
+      "id": "heimlich",
+      "name": "Soffocamento",
+      "steps": [
+        "Se l’adulto riesce a tossire con forza, incoraggialo a farlo. Se non riesce a parlare, respirare o tossire efficacemente, fai chiamare subito i soccorsi.",
+        "Inclina in avanti la persona cosciente. Dai fino a cinque colpi decisi fra le scapole con il palmo della mano. Controlla dopo ogni colpo.",
+        "Se l’ostruzione persiste, esegui fino a cinque spinte addominali. In gravidanza o se non puoi circondare l’addome, usa spinte toraciche. Alterna colpi e spinte fino alla disostruzione o alla perdita di coscienza.",
+        "Se perde conoscenza, accompagnala a terra e inizia la RCP. Rimuovi dalla bocca solo un oggetto visibile. Evita di cercarlo alla cieca con le dita."
+      ]
+    }
+  ]
+};
 var CAUSES_DATA = {"zh":{"typhoon":"热带洋面水汽蒸发形成低压，在科里奥利力作用下旋转增强，登陆时带来狂风、暴雨与风暴潮。","rainstorm":"暖湿气流受锋面、地形或对流作用抬升，水汽快速凝结形成强降水；城市不透水地面加剧内涝。","flood":"短时强降水或上游来水超过河道与排水系统能力，漫过河槽或在低洼区汇集。","earthquake":"板块边界应力积累后突然释放，断层错动产生地震波；需警惕余震、滑坡与海啸。","heat":"副热带高压控制下空气下沉增温，城市热岛与夜间高湿使热量难以散出。","coldwave":"高纬强冷空气大规模南下，气温骤降并伴大风、雨雪与冰冻。","thunder":"强对流云内电荷分离，云地间放电产生雷击，伴短时强风、暴雨、冰雹。","gale":"冷锋、台风外围或强对流造成气压梯度增大，空气高速流动，易吹坠物、倒伏。","hail":"强对流云内水滴反复冻结、碰撞增大，超过上升气流承载后坠落。","fog":"近地面水汽遇冷凝结成悬浮小水滴，能见度骤降，影响交通。","forestfire":"干燥高温条件叠加火源（雷击或人为）引燃植被，大风加速蔓延并产生飞火。","drought":"长期降水偏少、蒸发旺盛，土壤失墒、水源枯竭。"},"en":{"typhoon":"Warm, moist air rises over tropical oceans to form a low-pressure system; the Coriolis effect spins it into a storm bringing violent wind, rain and storm surge.","rainstorm":"Moist air is forced upward by fronts, terrain or convection and condenses rapidly into heavy rain; impermeable city surfaces worsen flooding.","flood":"Heavy rainfall or upstream inflow exceeds the capacity of rivers and drains, overflowing channels or pooling in low-lying areas.","earthquake":"Accumulated stress at plate boundaries releases suddenly as faults slip, sending out seismic waves; aftershocks, landslides and tsunamis may follow.","heat":"Under a subtropical high, sinking air warms the ground; urban heat islands and humid nights trap the heat.","coldwave":"Frigid air masses surge southward, causing a sudden temperature drop with strong winds, snow and freezing rain.","thunder":"Charge separates inside strong convective clouds; cloud-to-ground discharge produces lightning, with brief strong wind, rain and hail.","gale":"Strong pressure gradients from cold fronts, typhoon outflow or convection drive high-speed air that topples objects and structures.","hail":"Droplets inside convective clouds repeatedly freeze and grow until too heavy for updrafts, then fall as hail.","fog":"Near-surface moisture condenses into suspended droplets, sharply reducing visibility and disrupting traffic.","forestfire":"Dry, hot conditions plus an ignition source (lightning or humans) set vegetation alight; wind spreads the fire and carries embers.","drought":"Long periods of below-average rainfall with high evaporation dry the soil and deplete water supplies."},"es":{"typhoon":"El aire cálido y húmedo sube sobre océanos tropicales formando una baja presión; el efecto de Coriolis lo hace girar hasta convertirse en tormenta con viento, lluvia y marea ciclónica.","rainstorm":"El aire húmedo asciende por frentes, relieve o convección y se condensa con rapidez; las superficies impermeables de la ciudad agravan las inundaciones.","flood":"La lluvia intensa o el caudal aguas arriba superan la capacidad de ríos y desagües, que se desbordan o anegan zonas bajas.","earthquake":"La tensión acumulada en los bordes de placas se libera bruscamente al moverse fallas, generando ondas sísmicas; pueden seguir réplicas, deslizamientos y tsunamis.","heat":"Bajo un alta subtropical el aire desciende y se calienta; las islas de calor urbanas y las noches húmedas atrapan el calor.","coldwave":"Masas de aire gélido avanzan hacia el sur con descenso brusco de temperatura, vientos fuertes, nieve y lluvia helada.","thunder":"Las cargas se separan dentro de nubes convectivas; la descarga nube-tierra produce rayos, con viento, lluvia y granizo breves e intensos.","gale":"Los fuertes gradientes de presión de frentes, bordes de tifones o convección generan aire a gran velocidad que derriba objetos.","hail":"Las gotas dentro de nubes convectivas se congelan y crecen repetidamente hasta superar la corriente ascendente y caer como granizo.","fog":"La humedad cerca del suelo se condensa en gotas en suspensión, reduciendo la visibilidad y afectando al tráfico.","forestfire":"El tiempo seco y caluroso, junto con un foco de ignición (rayo o acción humana), prende la vegetación; el viento propaga el fuego y transporta brasas.","drought":"Largos periodos con lluvia escasa y evaporación alta secan el suelo y agotan las reservas de agua."},"fr":{"typhoon":"L’air chaud et humide s’élève au-dessus des océans tropicaux et forme une dépression ; l’effet de Coriolis le fait tourner en tempête, avec vent violent, pluies et onde de tempête.","rainstorm":"L’air humide est soulevé par des fronts, le relief ou la convection et se condense vite en pluies fortes ; les surfaces imperméables urbaines aggravent les inondations.","flood":"Des pluies fortes ou un afflux en amont dépassent la capacité des rivières et égouts, qui débordent ou inondent les creux.","earthquake":"La contrainte accumulée aux limites de plaques se libère brutalement par le glissement de failles, émettant des ondes sismiques ; répliques, glissements de terrain et tsunamis peuvent suivre.","heat":"Sous une dorsale subtropicale l’air descend et se réchauffe ; îlots de chaleur urbains et nuits humides emprisonnent la chaleur.","coldwave":"Des masses d’air glacial dévalent vers le sud avec une chute brutale de température, vents forts, neige et pluie verglaçante.","thunder":"Les charges se séparent dans les nuages convectifs ; la décharge nuage-sol donne la foudre, accompagnée de brefs coups de vent, pluie et grêle.","gale":"De forts gradients de pression (fronts froids, bord de typhon, convection) créent un vent rapide qui renverse objets et structures.","hail":"Les gouttes dans les nuages convectifs gèlent et grossissent à répétition, puis tombent quand elles dépassent les courants ascendants.","fog":"L’humidité près du sol se condense en gouttelettes en suspension, réduisant fortement la visibilité et perturbant la circulation.","forestfire":"Sécheresse et chaleur, ajoutées à une source de feu (foudre ou homme), enflamment la végétation ; le vent propage le feu et porte les braises.","drought":"De longues périodes sans pluie avec forte évaporation dessèchent les sols et épuisent les réserves d’eau."},"it":{"typhoon":"L’aria calda e umida sale sugli oceani tropicali formando una bassa pressione; l’effetto di Coriolis la fa ruotare in tempesta con vento fortissimo, pioggia e marea ciclonica.","rainstorm":"L’aria umida è sollevata da fronti, rilievi o convezione e condensa rapidamente in forti piogge; le superfici impermeabili urbane peggiorano le inondazioni.","flood":"Piogge intense o afflusso a monte superano la capacità di fiumi e scarichi, che esondano o allagano le zone basse.","earthquake":"Lo stress accumulato ai confini delle placche si libera bruscamente con lo scorrimento di faglie, emettendo onde sismiche; possono seguire scosse, frane e tsunami.","heat":"Sotto un’alta subtropicale l’aria scende e si riscalda; isole di calore urbane e notti umide intrappolano il calore.","coldwave":"Masse d’aria gelida scendono a sud con calo brusco di temperatura, venti forti, neve e pioggia gelata.","thunder":"Le cariche si separano nei nuvoloni convettivi; la scarica nuvola-suolo dà il fulmine, con brevi raffiche, pioggia e grandine.","gale":"Forti gradienti di pressione (fronti freddi, bordo di tifoni, convezione) creano vento veloce che rovescia oggetti e strutture.","hail":"Le gocce nei nuvoloni convettivi gelano e crescono a ripetizione, poi cadono quando superano le correnti ascensionali.","fog":"L’umidità vicino al suolo condensa in goccioline sospese, riducendo la visibilità e bloccando il traffico.","forestfire":"Secchezza e caldo, più un innesco (fulmine o uomo), incendiano la vegetazione; il vento propaga il fuoco e porta braci.","drought":"Lunghi periodi di poca pioggia con forte evaporazione disseccano il suolo ed esauriscono le riserve d’acqua."}};
 var QUIZ_TYPE = { rain1:"rainstorm", rain2:"rainstorm", typhoon1:"typhoon", typhoon2:"typhoon", quake1:"earthquake", quake2:"earthquake", heat1:"heat", heat2:"heat", thunder1:"thunder", thunder2:"thunder" };
 var TYPE_ALIAS = {

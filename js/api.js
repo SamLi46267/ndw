@@ -57,22 +57,29 @@ var snapshotPromise = null, snapshotLoadedAt = 0;
 var snapshotInfo = { checked: 0, total: 77, fromCache: false, cachedAt: 0 };
 var snapshotEntries = {};
 
+function validEntry(entry) {
+  const list = entry && (Array.isArray(entry.data) ? entry.data : entry.data && entry.data.alerts);
+  return Array.isArray(list) && list.every(item => item && typeof item === 'object' && !Array.isArray(item) &&
+    (item.AlertID || item.alertId || item.id || item.Type || item.Category || item.type || item.Description || item.HeadlineText));
+}
+
 function applySnapshot(snapshot) {
   if (!snapshot || snapshot.version !== 1 || !snapshot.entries) { throw new Error('Invalid snapshot'); }
   // Partial publications must not erase a city's last successful scan.
   Object.keys(snapshot.entries).forEach(function (route) {
     const entry = snapshot.entries[route], previous = snapshotEntries[route];
-    if (entry && (Array.isArray(entry.data) || Array.isArray(entry.data && entry.data.alerts)) &&
+    if (validEntry(entry) &&
         window.__modules.reliability.freshness(entry.checkedAt) !== 'unavailable' &&
         (!previous || entry.checkedAt >= previous.checkedAt)) snapshotEntries[route] = entry;
   });
   snapshotInfo.checked = Object.keys(snapshot.entries).filter(function (key) {
-    return window.__modules.reliability.freshness(snapshot.entries[key].checkedAt) === 'available';
+    return /^\/alerts\/v1\/[^/]+\.json$/.test(key) && validEntry(snapshot.entries[key]) &&
+      window.__modules.reliability.freshness(snapshot.entries[key].checkedAt) === 'available';
   }).length;
   return snapshot;
 }
 
-function readSharedSnapshot(route) {
+function loadSharedSnapshot() {
   if (!snapshotPromise || Date.now() - snapshotLoadedAt >= 60000) {
     snapshotLoadedAt = Date.now();
     try { wx.setStorageSync('shared_snapshot_reads', (Number(wx.getStorageSync('shared_snapshot_reads')) || 0) + 1); } catch (e) { /* Local statistics must not block downloads. */ }
@@ -99,8 +106,13 @@ function readSharedSnapshot(route) {
         throw error;
       });
   }
-  return snapshotPromise.then(function (snapshot) {
+  return snapshotPromise;
+}
+
+function readSharedSnapshot(route) {
+  return loadSharedSnapshot().then(function (snapshot) {
     var entry = snapshot.entries[route];
+    if (entry && route.startsWith('/alerts/') && !validEntry(entry)) throw new Error('Invalid warning payload');
     if (!entry || window.__modules.reliability.freshness(entry.checkedAt) !== 'available') {
       var error = new Error(entry ? 'outdated' : 'pending');
       error.code = entry ? 'outdated' : 'pending';
@@ -120,7 +132,7 @@ function readCache(key, minutes) {
     }
     const expires =
       (minutes !== undefined ? minutes : config.cacheMinutes) * 60 * 1000;
-    if (Date.now() - data.time > expires) {
+    if (window.__modules.reliability.freshness(data.time) !== 'available' || Date.now() - data.time >= expires) {
       return null;
     }
     if (Array.isArray(data.value)) { data.value.fetchedAt = data.time; }
@@ -175,7 +187,7 @@ function normalizeLevelKey(raw) {
     extreme: 'red', severe: 'orange', moderate: 'yellow', minor: 'blue'
   };
   const key = map[String(raw || '').toLowerCase()];
-  return key || 'yellow';
+  return key || 'unknown';
 }
 
 /**
@@ -377,7 +389,7 @@ function normalizeAlert(item, opts) {
   }
   const type = item.Type || item.Category || item.type || '气象';
   const level = normalizeLevelKey(item.Level || item.AlarmLevel || item.Severity || item.level);
-  const lv = LEVELS[level] || LEVELS.yellow;
+  const lv = LEVELS[level] || { name: '级别未知', color: '#8b989d', bg: 'transparent' };
   const areaRaw = item.Area || item.area;
   const firstArea = Array.isArray(areaRaw) ? areaRaw[0] : areaRaw;
   const startTime =
@@ -396,7 +408,7 @@ function normalizeAlert(item, opts) {
     (firstArea && (firstArea.Text || firstArea.text)) ||
     (firstArea && (firstArea.Summary || firstArea.summary)) ||
     item.Summary || item.summary || '';
-  const areaInfo = buildArea(item, opts && opts.city, opts && opts.lang);
+  const areaInfo = buildArea(item, opts && opts.city, 'zh');
   const rawId = item.AlertID || item.alertId || item.id || (type + '_' + String(startTime));
   const publisher = extractPublisher(content) || pickSource(item);
   return {
@@ -410,10 +422,13 @@ function normalizeAlert(item, opts) {
     title: title,
     area: areaInfo.area || '待补充',
     focusArea: areaInfo.focus.length ? areaInfo.focus.join('、') : '',
+    startsAt: window.__modules.reliability.warningTime(startTime),
+    endsAt: window.__modules.reliability.warningTime(endTime),
+    cancelled: /解除|撤销|取消|终止/.test(title) ||
+      !!(firstArea && firstArea.LastAction && /cancel|解除|撤销|取消|终止/i.test([firstArea.LastAction.English, firstArea.LastAction.Localized].join(' '))),
     time: formatTime(startTime),
     source: publisher,
     sourceUrl: safeSourceUrl(item.MobileLink || item.Link || ''),
-    status: '生效中',
     duration: formatTime(startTime) + (endTime ? ' 至 ' + formatTime(endTime) : ''),
     summary: (firstArea && (firstArea.Summary || firstArea.summary)) || item.Summary || item.summary || '',
     content: content || title,
@@ -424,6 +439,7 @@ function normalizeAlert(item, opts) {
 function safeSourceUrl(value) {
   try {
     const url = new URL(value);
+    if (url.protocol === 'http:' && url.hostname === 'm.weathercn.com') url.protocol = 'https:';
     return url.protocol === 'https:' && !url.username && !url.password ? url.href : '';
   } catch (e) { return ''; }
 }
@@ -531,7 +547,7 @@ function weathercnFetchAlerts(apiKey, host, locationKey, region) {
         return normalizeAlert(item, { city: region && region.city, lang: i18n.getLang() });
       })
       .filter(Boolean);
-    normalized.fetchedAt = data.fetchedAt || Date.now();
+    normalized.fetchedAt = data.fetchedAt;
     normalized.forEach(function (alert) { alert.checkedAt = normalized.fetchedAt; });
     return normalized;
   }, function (err) {
@@ -632,7 +648,7 @@ function fetchAll(region) {
             source: '华风爱科天气API（中国气象局授权）',
             alerts: results[0],
             weather: results[1],
-            fetchedAt: cacheTime(alertCacheKey) || Date.now()
+            fetchedAt: results[0].fetchedAt
           });
         })
         .catch(function (err) {
@@ -675,6 +691,28 @@ function getAlertById(id) {
     }
   }
   return ALERT_REGISTRY[id] || null;
+}
+
+// Shared warning URLs also work in a browser that has never opened the city.
+async function loadAlertById(id) {
+  await loadSharedSnapshot();
+  for (const province of cities.PROVINCES) {
+    for (const city of cities.getCitiesOfProvince(province.name)) {
+      const key = cities.getLocationKey(city.name);
+      const entry = snapshotEntries['/alerts/v1/' + key + '.json'];
+      if (!entry) continue;
+      const records = Array.isArray(entry.data) ? entry.data : entry.data.alerts;
+      for (const item of records) {
+        const alert = normalizeAlert(item, { city: city.name, lang: 'zh' });
+        if (alert && alert.id === id) {
+          alert.checkedAt = entry.checkedAt;
+          rememberAlerts([alert]);
+          return alert;
+        }
+      }
+    }
+  }
+  return null;
 }
 
 /**
@@ -830,6 +868,7 @@ module.exports = {
   fetchAlertsOnly: fetchAlertsOnly,
   fetchCitiesStatus: fetchCitiesStatus,
   getAlertById: getAlertById,
+  loadAlertById: loadAlertById,
   getGuides: getGuides,
   clearCaches: clearCaches,
   getCacheInfo: getCacheInfo,

@@ -79,7 +79,7 @@
         'Limit trips during the hottest hours. Use sun protection and drink water regularly; electrolyte drinks may help replace salts lost through heavy sweating.',
         'Older adults, children, pregnant people and people with chronic conditions should reduce exertion and keep indoor spaces cool and ventilated.',
         'Outdoor workers should avoid midday heat and rotate tasks with rest breaks.',
-        'If dizziness, weakness or unusual thirst develops, move to a cool shaded place and begin cooling. For severe symptoms, call 120.'
+        'If dizziness, weakness or unusual thirst develops, move to a cool shaded place and begin cooling. For severe symptoms, call local emergency medical services.'
       ]
     },
     coldwave: {
@@ -169,7 +169,7 @@
       ]),
       actions: [
         'Do not light outdoor fires or bring ignition sources into forests and mountain areas.',
-        'Report a forest fire immediately by calling 12119.',
+        'Report a forest fire immediately to the local fire service.',
         'Do not burn land or crop residue. Use fire-free practices for memorial activities.',
         'If threatened by a forest fire, follow official evacuation instructions. Avoid smoke, gullies and routes that could leave you trapped.'
       ]

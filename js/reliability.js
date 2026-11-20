@@ -2,6 +2,18 @@
 (function () {
   var copy = {
     zh: {
+      localNotices: "当地预警记录",
+      priorityNotices: "红色及橙色预警",
+      noPriority: "上次查询没有红色或橙色预警",
+      issued: "通告时间",
+      openNotice: "阅读通告",
+      expired: "已过有效期",
+      upcoming: "尚未到生效时间",
+      unknown: "有效状态未确认",
+      active: "在通告有效期内",
+      cancelled: "通告已解除",
+      modelWeather: "天气模型估计",
+      trendScope: "已查询城市 · 本浏览器",
       manualUpdate: '更新数据', manualUpdateHint: '将在 GitHub 打开全国预警更新申请，需登录并提交表单。采集遵守 15 分钟冷却时间与每日 450 次尝试上限，不保证单次更新全部城市。队列及发布需要时间；完成后点击“刷新已发布数据”。', updateProgress: '查看更新进度',
       refreshPublished: '刷新已发布数据', noNewChecks: '没有更新的城市查询结果，继续显示已保存的数据。', updatedCities: '已更新 {n} 个城市的查询结果。', lastNoAlerts: '上次查询无预警', lastAlerts: '上次查询有预警', lastRedAlert: '上次查询有红色预警',
       historical: '虚线环：历史查询', scanCount: '上次查询时的预警数：{n}', historyNotice: '仅为历史记录，当前状态未知。请勿将旧预警视为仍在生效，也勿将过去的零预警视为当前安全。',
@@ -14,6 +26,18 @@
       notificationLimit: '提醒仅在页面保持打开时检查；后台标签页可能延迟，关闭页面即停止。不能替代官方应急通知。'
     },
     en: {
+      localNotices: "Local warning notices",
+      priorityNotices: "Red and orange notices",
+      noPriority: "No red or orange notices at last check",
+      issued: "Notice time",
+      openNotice: "Read notice",
+      expired: "Validity period ended",
+      upcoming: "Validity period starts later",
+      unknown: "Validity unconfirmed",
+      active: "Within stated validity period",
+      cancelled: "Cancellation notice",
+      modelWeather: "Modelled weather",
+      trendScope: "Cities checked in this browser",
       manualUpdate: 'Update data', manualUpdateHint: 'Opens a national update request on GitHub. Sign in and submit the form to start. Collection respects a 15-minute cooldown and 450-attempt daily cap; one run may not check every city. Allow time for the queue and deployment, then choose Refresh published data.', updateProgress: 'View update progress',
       refreshPublished: 'Refresh published data', noNewChecks: 'No newer city checks available. Showing saved results.', updatedCities: 'Updated checks for {n} cities.', lastNoAlerts: 'No alerts at last check', lastAlerts: 'Alerts at last check', lastRedAlert: 'Red alert at last check',
       historical: 'Dashed ring: past scan', scanCount: 'Warnings at last scan: {n}', historyNotice: 'Historical record only; current status is unknown. Old warnings may have expired, and a past zero does not mean it is safe now.',
@@ -26,6 +50,18 @@
       notificationLimit: 'Checks only while this page stays open. Background tabs may be delayed; closing the page stops checks. This does not replace official emergency alerts.'
     },
     es: {
+      localNotices: "Avisos locales",
+      priorityNotices: "Avisos rojos y naranjas",
+      noPriority: "Sin avisos rojos o naranjas en la última consulta",
+      issued: "Hora del aviso",
+      openNotice: "Leer aviso",
+      expired: "Periodo de validez finalizado",
+      upcoming: "El periodo de validez empieza más tarde",
+      unknown: "Vigencia sin confirmar",
+      active: "Dentro del periodo de validez indicado",
+      cancelled: "Aviso de cancelación",
+      modelWeather: "Tiempo estimado por modelo",
+      trendScope: "Ciudades consultadas en este navegador",
       manualUpdate: 'Actualizar datos', manualUpdateHint: 'Abre una solicitud nacional en GitHub. Inicia sesión y envía el formulario para empezar. Se respeta una espera de 15 minutos y un máximo diario de 450 intentos; una ejecución puede no consultar todas las ciudades. Espera la cola y publicación, y pulsa Actualizar datos publicados.', updateProgress: 'Ver progreso',
       refreshPublished: 'Actualizar datos publicados', noNewChecks: 'No hay consultas más recientes. Se muestran los datos guardados.', updatedCities: 'Consultas actualizadas para {n} ciudades.', lastNoAlerts: 'Sin alertas en última consulta', lastAlerts: 'Alertas en última consulta', lastRedAlert: 'Alerta roja en última consulta',
       historical: 'Anillo discontinuo: consulta anterior', scanCount: 'Alertas en la última consulta: {n}', historyNotice: 'Solo registro histórico; se desconoce el estado actual. Las alertas antiguas pueden haber caducado y un cero anterior no indica seguridad actual.',
@@ -38,6 +74,18 @@
       notificationLimit: 'Solo se comprueba mientras la página permanece abierta. Las pestañas en segundo plano pueden retrasarse; al cerrar se detienen las comprobaciones. No sustituye las alertas oficiales de emergencia.'
     },
     fr: {
+      localNotices: "Avis locaux",
+      priorityNotices: "Avis rouges et orange",
+      noPriority: "Aucun avis rouge ou orange au dernier relevé",
+      issued: "Heure de l’avis",
+      openNotice: "Lire l’avis",
+      expired: "Période de validité terminée",
+      upcoming: "La période de validité commence plus tard",
+      unknown: "Validité non confirmée",
+      active: "Dans la période de validité indiquée",
+      cancelled: "Avis de levée",
+      modelWeather: "Météo estimée par modèle",
+      trendScope: "Villes consultées dans ce navigateur",
       manualUpdate: 'Mettre à jour les données', manualUpdateHint: 'Ouvre une demande nationale sur GitHub. Connectez-vous et envoyez le formulaire pour démarrer. La collecte respecte un délai de 15 minutes et 450 tentatives par jour ; une exécution peut ne pas couvrir toutes les villes. Attendez la file et la publication, puis actualisez les données publiées.', updateProgress: 'Voir la progression',
       refreshPublished: 'Actualiser les données publiées', noNewChecks: 'Aucun contrôle plus récent. Affichage des données enregistrées.', updatedCities: 'Contrôles actualisés pour {n} villes.', lastNoAlerts: 'Aucune alerte au dernier contrôle', lastAlerts: 'Alertes au dernier contrôle', lastRedAlert: 'Alerte rouge au dernier contrôle',
       historical: 'Anneau pointillé : contrôle passé', scanCount: 'Alertes lors de la dernière vérification : {n}', historyNotice: 'Historique uniquement ; état actuel inconnu. Les anciennes alertes peuvent avoir expiré et un ancien zéro ne garantit pas la sécurité actuelle.',
@@ -50,6 +98,18 @@
       notificationLimit: 'Vérification uniquement lorsque cette page reste ouverte. Les onglets en arrière-plan peuvent être retardés ; fermer la page arrête les vérifications. Cela ne remplace pas les alertes officielles d’urgence.'
     },
     it: {
+      localNotices: "Avvisi locali",
+      priorityNotices: "Avvisi rossi e arancioni",
+      noPriority: "Nessun avviso rosso o arancione all’ultimo controllo",
+      issued: "Ora dell’avviso",
+      openNotice: "Leggi avviso",
+      expired: "Periodo di validità concluso",
+      upcoming: "Il periodo di validità inizia più tardi",
+      unknown: "Validità non confermata",
+      active: "Nel periodo di validità indicato",
+      cancelled: "Avviso di revoca",
+      modelWeather: "Meteo stimato dal modello",
+      trendScope: "Città consultate in questo browser",
       manualUpdate: 'Aggiorna dati', manualUpdateHint: 'Apre una richiesta nazionale su GitHub. Accedi e invia il modulo per iniziare. La raccolta rispetta una pausa di 15 minuti e 450 tentativi al giorno; una singola esecuzione potrebbe non controllare tutte le città. Attendi la coda e la pubblicazione, poi aggiorna i dati pubblicati.', updateProgress: 'Vedi avanzamento',
       refreshPublished: 'Aggiorna dati pubblicati', noNewChecks: 'Nessun controllo più recente. Sono mostrati i dati salvati.', updatedCities: 'Controlli aggiornati per {n} città.', lastNoAlerts: 'Nessuna allerta all’ultimo controllo', lastAlerts: 'Allerte all’ultimo controllo', lastRedAlert: 'Allerta rossa all’ultimo controllo',
       historical: 'Anello tratteggiato: controllo passato', scanCount: 'Allerte all’ultimo controllo: {n}', historyNotice: 'Solo dati storici; stato attuale sconosciuto. Le vecchie allerte potrebbero essere scadute e un precedente zero non indica sicurezza attuale.',
@@ -68,6 +128,34 @@
     if (!Number.isFinite(time) || time <= 0 || time > now + 300000) return 'unavailable';
     return now - time < maxAge ? 'available' : 'outdated';
   }
+  // WeatherCN wall-clock strings without an offset refer to China Standard Time.
+  function warningTime(value) {
+    if (typeof value === 'number') return Number.isFinite(value) && value > 0 ? value : null;
+    if (typeof value !== 'string' || !value) return null;
+    var iso = value.trim().replace(' ', 'T');
+    if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?$/.test(iso)) iso += '+08:00';
+    if (!/(?:Z|[+-]\d{2}:?\d{2})$/i.test(iso)) return null;
+    var timestamp = Date.parse(iso);
+    return Number.isFinite(timestamp) ? timestamp : null;
+  }
+  function warningPeriod(alert) {
+    // Earlier cached records retained a formatted duration only.
+    var legacy = String(alert.duration || '').split(' 至 ');
+    return {
+      start: alert.startsAt || warningTime(legacy[0] || alert.time),
+      end: alert.endsAt || warningTime(legacy[1])
+    };
+  }
+  function warningValidity(alert, now) {
+    now = now === undefined ? Date.now() : now;
+    if (alert.cancelled || /解除|撤销|取消|终止/.test(alert.title || '')) return 'cancelled';
+    var period = warningPeriod(alert);
+    if (period.end && period.start && period.end <= period.start) return 'unknown';
+    if (period.end && period.end <= now) return 'expired';
+    if (period.start && period.start > now) return 'upcoming';
+    if (period.start && period.end && freshness(alert.checkedAt, now) === 'available') return 'active';
+    return 'unknown';
+  }
   function text(key, language) { return (copy[language] || copy.en)[key] || copy.en[key] || key; }
   function checkedAt(time, language) {
     return time && Number.isFinite(time) ? text('lastChecked', language) + ': ' + new Date(time).toLocaleString(language || 'en') : text('neverChecked', language);
@@ -84,5 +172,5 @@
       return visible;
     });
   }
-  window.__modules.reliability = { text: text, freshness: freshness, checkedAt: checkedAt, visibleLabels: visibleLabels, copy: copy };
+  window.__modules.reliability = { warningTime: warningTime, warningPeriod: warningPeriod, warningValidity: warningValidity, text: text, freshness: freshness, checkedAt: checkedAt, visibleLabels: visibleLabels, copy: copy };
 })();

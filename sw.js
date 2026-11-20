@@ -1,12 +1,12 @@
 /* Cache safety knowledge and application assets, never live warning snapshots. */
-const CACHE = 'ndw-shell-da04355cf731e424';
+const CACHE = 'ndw-shell-c2ca788a9fe69a1e';
 const ASSETS = [
   './', './index.html', './favicon.svg', './manifest.webmanifest', './css/styles.css', './css/interface.css', './css/theme.css',
   './js/shim.js', './js/config.js', './js/data.js', './js/guide-en.js', './js/guide-locales.js',
   './js/cities.js', './js/districts.js', './js/china-geo.js', './js/pinyin-pro.js', './js/ui-locales.js',
   './js/i18n.js',
-  './js/reliability.js', './js/explanations.js', './js/risk.js', './js/api.js', './js/globe-land.js', './js/holo-globe.js', './js/china-holo.js',
-  './js/charts.js', './js/three.min.js', './js/games.js', './js/app-core.js', './js/ui.js', './js/icons.js', './js/views/products.js', './js/search.js', './js/gdacs-status.js', './js/global.js', './js/unit-help.js', './js/directory-search.js', './js/disaster-list.js', './js/rescue.js', './js/app.js', './js/offline.js', './assets/world-satellite.jpg', './assets/china-nasa.jpg', './assets/world-countries.geojson', './assets/world-cities.json'
+  './js/reliability.js', './js/explanations.js', './js/risk.js', './js/api.js', './js/china-holo.js',
+  './js/charts.js', './js/three.min.js', './js/games.js', './js/app-core.js', './js/ui.js', './js/icons.js', './js/views/products.js', './js/search.js', './js/gdacs-status.js', './js/global.js', './js/unit-help.js', './js/directory-search.js', './js/disaster-list.js', './js/rescue.js', './js/source-guide.js', './js/live-bulletins.js', './js/app.js', './js/offline.js', './assets/world-satellite.jpg', './assets/china-nasa.jpg', './assets/world-countries.geojson', './assets/world-cities.json'
 ];
 const allowedPaths = new Set(ASSETS.map(asset => new URL(asset, self.location.href).pathname));
 self.addEventListener('install', event => {

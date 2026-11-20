@@ -75,7 +75,6 @@
     });
   }
   var charts = __require('charts');
-  var holo = __require('holo-globe');
   __require('china-geo');
 
   var REGION_KEY = 'selected_region';
@@ -131,35 +130,47 @@
    * ================================================================ */
   function navItems(l) {
     return [
-      { path: '/home', hash: '#/home', label: web('mainTab'), icon: SVG.iHome },
-      { path: '/china', hash: '#/china', label: web('chinaTab'), icon: SVG.iPin },
-      { path: '/global', hash: '#/global', label: web('globalTab'), icon: SVG.iGlobe },
-      { path: '/database', hash: '#/database', label: web('database'), icon: SVG.iChart },
-      { path: '/rescue', hash: '#/rescue', label: ({zh:'救援联系',en:'Rescue contacts',es:'Contactos de rescate',fr:'Contacts de secours',it:'Contatti di soccorso'})[l] || 'Rescue contacts', icon: SVG.iPin },
-      { path: '/guide', hash: '#/guide', label: i18n.t('tabGuide', l), icon: SVG.iGuide },
-      { path: '/tools', hash: '#/tools', label: i18n.t('tabTools', l), icon: SVG.iTools },
-      { path: '/products', hash: '#/products', label: i18n.t('navProducts', l), icon: SVG.iProducts },
-      { path: '/settings', hash: '#/settings', label: i18n.t('tabSettings', l), icon: SVG.iSettings }
-    ];
+      { group: 'monitorNav', path: '/home', label: web('mainTab'), icon: SVG.iHome },
+      { group: 'monitorNav', path: '/china', label: web('mainChinaCta'), icon: SVG.iPin },
+      { group: 'monitorNav', path: '/global', label: web('globalTab'), icon: SVG.iGlobe },
+      { group: 'monitorNav', path: '/bulletins', label: web('bulletinsNav'), icon: SVG.iBell },
+      { group: 'referenceNav', path: '/database', label: web('database'), icon: SVG.iChart, hint: 'archiveHint' },
+      { group: 'referenceNav', path: '/rescue', label: web('rescueNav'), icon: SVG.iPin, hint: 'rescueHint' },
+      { group: 'referenceNav', path: '/sources', label: web('sourcesNav'), icon: SVG.iClock, hint: 'sourcesHint' },
+      { group: 'prepareNav', path: '/guide', label: i18n.t('tabGuide', l), icon: SVG.iGuide, hint: 'guideHint' },
+      { group: 'prepareNav', path: '/tools', label: i18n.t('tabTools', l), icon: SVG.iTools, hint: 'toolsHint' },
+      { group: 'prepareNav', path: '/products', label: i18n.t('navProducts', l), icon: SVG.iProducts },
+      { path: '/settings', label: i18n.t('tabSettings', l), icon: SVG.iSettings }
+    ].map(function (item) {
+      item.hash = '#' + item.path;
+      return item;
+    });
   }
 
   function renderNav(activePath) {
     var l = lang();
     var items = navItems(l);
-    var links = items.map(function (it) {
+    function navLink(it) {
       return '<a class="nav-link ' + (it.path === activePath ? 'active' : '') + '" href="' + it.hash + '"' + (it.path === activePath ? ' aria-current="page"' : '') + '>' +
         it.icon + '<span>' + esc(it.label) + '</span></a>';
-    }).join('');
+    }
+    var links = ['monitorNav', 'referenceNav', 'prepareNav'].map(function (group) {
+      var label = esc(web(group));
+      var members = items.filter(function (item) { return item.group === group; });
+      return '<div class="nav-group" role="group" aria-label="' + label + '">' +
+        '<div class="nav-group-label">' + label + '</div>' + members.map(navLink).join('') + '</div>';
+    }).join('') + items.filter(function (item) { return !item.group; }).map(navLink).join('');
     var brand = '<a class="brand" href="#/home">' + SVG.brand +
       '<span class="brand-name">' + esc(i18n.t('appName', l)) + '</span></a>';
 
     navEl.innerHTML =
+      '<button type="button" class="skip-content" data-action="skip-content">' + esc(web('skipContent')) + '</button>' +
       '<nav class="navbar"><div class="nav-inner">' + brand +
       '<div class="nav-links">' + links + '</div>' +
       '<button class="nav-search-btn" data-action="open-search" aria-label="' + esc(web('searchTitle')) + '">' + SVG.iSearch + '<span class="nav-search-text">' + esc(web('searchTitle')) + '</span></button>' +
       '<button class="nav-toggle" data-action="toggle-drawer" aria-controls="navDrawer" aria-expanded="false" aria-label="' + esc(i18n.t('menu', l)) + '">' + SVG.menu + '</button>' +
       '</div></nav>' +
-      '<div class="nav-drawer" id="navDrawer">' + links + '</div>';
+      '<div class="nav-drawer" id="navDrawer" role="navigation">' + links + '</div>';
   }
 
   function toggleDrawer() {
@@ -194,14 +205,14 @@
           items.map(function (it) { return '<li><a href="' + it.hash + '">' + esc(it.label) + '</a></li>'; }).join('') +
         '</ul></div>' +
         '<div class="footer-col"><h4>' + esc(t.dataSource) + '</h4>' +
-          '<p>' + esc(i18n.dataSourceName('华风爱科天气API', l)) + '</p>' +
+          '<ul><li><a href="#/sources">' + esc(web('sourcesNav')) + '</a></li>' +
+          '<li><a href="#/bulletins">' + esc(web('bulletinsNav')) + '</a></li></ul>' +
         '</div>' +
         '<div class="footer-col"><h4>' + esc(t.disclaimer) + '</h4>' +
-          '<ul><li><a data-action="show-disclaimer">' + esc(t.disclaimerTitle) + '</a></li></ul>' +
+          '<ul><li><button type="button" class="footer-disclaimer" data-action="show-disclaimer">' + esc(t.disclaimerTitle) + '</button></li></ul>' +
           '<p>' + esc(safetyText('hazardNote')) + '</p>' +
         '</div>' +
       '</div>' +
-      '<div class="footer-credits">' + esc(t.dataSource) + ': GDACS (EU JRC / UN OCHA) · 极数本源 apizero.cn · USGS · NASA GIBS · Open-Meteo</div>' +
       '<div class="footer-bottom"><span>' + esc(t.footerRights) + '</span><span>' + esc(t.version) + ' ' + APP_VERSION + '</span></div>';
   }
 
@@ -209,7 +220,7 @@
    * 地区与区县逻辑
    * ================================================================ */
   var sessionStatus = {};   /* {adcode:{high:bool,count:n}} 本会话已查询城市 */
-  var globe = null, chinaMap = null, search = null, chinaBase = 'holo';
+  var chinaMap = null, search = null, chinaBase = 'holo';
 
   function setChinaBase(mode) {
     chinaBase = mode === 'nasa' ? 'nasa' : 'holo';
@@ -294,28 +305,27 @@
   }
 
   /* ---------- 趋势记录 ---------- */
-  function recordTrend(adcode, count) {
+  function chinaDate(timestamp) {
+    return new Date(timestamp + 8 * 3600000).toISOString().slice(0, 10);
+  }
+  function recordTrend(adcode, count, checkedAt) {
+    if (!adcode || reliability.freshness(checkedAt) !== 'available') return;
     var all = wx.getStorageSync('daily_trend') || {};
-    var ob = all[adcode] || {};
-    var d = new Date();
-    ob[pad(d.getMonth() + 1) + '-' + pad(d.getDate())] = count;
-    all[adcode] = ob;
+    var day = chinaDate(checkedAt);
+    var observations = all[adcode] || {};
+    var previous = observations[day];
+    if (previous && previous.checkedAt >= checkedAt) return;
+    var cutoff = chinaDate(checkedAt - 14 * 86400000);
+    Object.keys(observations).forEach(function (date) {
+      if (date.length !== 10 || date < cutoff) delete observations[date];
+    });
+    observations[day] = { checkedAt: checkedAt, count: count };
+    all[adcode] = observations;
     wx.setStorageSync('daily_trend', all);
   }
 
   /* ---------- 全息地图/地球状态 ---------- */
-  var globeHazards = [], globeChinaHazards = [];
-  function globeCities() {
-    return globeChinaHazards.filter(function (c) { return c.end > Date.now() && reliability.freshness(c.checkedAt) === 'available'; });
-  }
   function refreshMaps() {
-    if (globe) {
-      var activeHazards = globeHazards.filter(function (g) { return g.status ? GdacsStatus.active(g.status, Date.now()) : Date.now() - g.time < 86400000 && g.time <= Date.now(); });
-      globe.setCities(globeCities().concat(activeHazards.map(function(g) {
-        return g.status && !GdacsStatus.fresh(g.status, Date.now()) ? Object.assign({}, g, { color: '#a4b6bc', label: g.label + (window.NDLocale.phrase(' · 上次报告',' · Last reported',lang())) }) : g;
-      })));
-      globe.setDisasters(activeHazards);
-    }
     if (chinaMap) { chinaMap.setStatus(sessionStatus); }
     if (selectedMapCity && document.getElementById('cityInspection')) { inspectMapCity(selectedMapCity); }
   }
@@ -387,9 +397,9 @@
             sessionStatus[c.adcode] = {
               high: list.some(function (a) { return a.level === 'red'; }),
               count: list.length,
-              checkedAt: list.fetchedAt || Date.now()
+              checkedAt: list.fetchedAt
             };
-            recordTrend(c.adcode, list.length);
+            recordTrend(c.adcode, list.length, list.fetchedAt);
           } else {
             retainCityStatus({ city: c.name, adcode: c.adcode });
           }
@@ -423,9 +433,10 @@
 
   // Read shared snapshots periodically; these reads never call the provider.
   setInterval(function () {
-    if (!document.hidden && ['#/home', '#/map'].indexOf(location.hash || '#/home') >= 0) {
-      sweepNationalStatus(true);
-    }
+    if (document.hidden) return;
+    var path = (location.hash || '#/home').split('?')[0];
+    if (path === '#/map' || path === '#/china') sweepNationalStatus(true);
+    if (path === '#/home' || path === '#/china') loadHomeData();
   }, 60000);
 
   /* ---------- 数据加载 ---------- */
@@ -433,7 +444,7 @@
     return raw.map(function (a) {
       return Object.assign({}, a, {
         levelName: i18n.levelName(a.level, l),
-        status: i18n.t('statusActive', l),
+        status: reliability.text(reliability.warningValidity(a), l),
         title: i18n.alertTitle(a.title, a.type, a.level, l),
         area: i18n.areaName(a.area, a.cityName, l),
         focusArea: i18n.areaName(a.focusArea, a.cityName, l),
@@ -451,32 +462,33 @@
       })
       : null;
   }
-  function fallbackWeatherText(code, l) {
-    var zh = l === 'zh';
-    if (code === 0) { return zh ? '晴' : 'Clear'; }
-    if (code <= 2) { return zh ? '晴间多云' : 'Mostly clear'; }
-    if (code === 3) { return zh ? '多云' : 'Overcast'; }
-    if (code === 45 || code === 48) { return zh ? '雾' : 'Fog'; }
-    if (code >= 51 && code <= 57) { return zh ? '毛毛雨' : 'Drizzle'; }
-    if (code >= 61 && code <= 67) { return zh ? '雨' : 'Rain'; }
-    if (code >= 71 && code <= 77) { return zh ? '雪' : 'Snow'; }
-    if (code >= 80 && code <= 82) { return zh ? '阵雨' : 'Showers'; }
-    if (code >= 85 && code <= 86) { return zh ? '阵雪' : 'Snow showers'; }
-    if (code >= 95) { return zh ? '雷暴' : 'Thunderstorm'; }
-    return zh ? '多云' : 'Cloudy';
+  function fallbackWeatherText(code) {
+    if (!Number.isInteger(code)) return '';
+    var names = { 0: '晴', 1: '大部晴朗', 2: '晴间多云', 3: '阴', 45: '雾', 48: '雾',
+      51: '毛毛雨', 53: '毛毛雨', 55: '毛毛雨', 56: '冻毛毛雨', 57: '冻毛毛雨',
+      61: '小雨', 63: '中雨', 65: '大雨', 66: '冻雨', 67: '冻雨', 71: '小雪', 73: '中雪', 75: '大雪',
+      77: '米雪', 80: '阵雨', 81: '阵雨', 82: '阵雨', 85: '阵雪', 86: '阵雪', 95: '雷暴', 96: '雷暴伴冰雹', 99: '雷暴伴冰雹' };
+    return names[code] || '';
   }
+  var weatherRequestedFor = 0;
   function loadFallbackWeather(region, requestId) {
     var geo = region && region.adcode ? districts.getCityGeo(region.adcode) : null;
-    if (!geo || !isFinite(geo.lat) || !isFinite(geo.lng)) { return; }
+    if (!geo || !Number.isFinite(geo.lat) || !Number.isFinite(geo.lng) || weatherRequestedFor === requestId) return;
+    if ((location.hash || '#/home').split('?')[0] !== '#/china') return;
+    weatherRequestedFor = requestId;
     fetch('https://api.open-meteo.com/v1/forecast?latitude=' + geo.lat + '&longitude=' + geo.lng +
       '&current=temperature_2m,weather_code,wind_speed_10m&timezone=Asia%2FShanghai', { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (j) {
         if (requestId !== homeRequest || !j || !j.current || homeState.rawWeather) { return; }
         var c = j.current;
-        var temp = isFinite(c.temperature_2m) ? Math.round(c.temperature_2m) + '°C' : '';
-        var wind = isFinite(c.wind_speed_10m) ? Math.round(c.wind_speed_10m) + ' km/h' : '';
-        homeState.rawWeather = { temp: temp, weather: fallbackWeatherText(c.weather_code, lang()), wind: wind };
+        var weatherAt = reliability.warningTime(c.time);
+        if (!weatherAt || Date.now() - weatherAt >= 3600000 || weatherAt > Date.now() + 300000) return;
+        var temp = Number.isFinite(c.temperature_2m) ? Math.round(c.temperature_2m) + '°C' : '';
+        var wind = Number.isFinite(c.wind_speed_10m) ? Math.round(c.wind_speed_10m) + ' km/h' : '';
+        var description = fallbackWeatherText(c.weather_code);
+        if (!temp && !wind && !description) return;
+        homeState.rawWeather = { temp: temp, weather: description, wind: wind, observedAt: weatherAt };
         homeState.weatherSource = 'Open-Meteo';
         deriveHome(lang());
         var path = (location.hash || '#/home').split('?')[0];
@@ -529,16 +541,15 @@
       homeState.rawSource = res.source || '';
       homeState.rawAlerts = raw;
       if (!homeState.rawWeather) { loadFallbackWeather(region, requestId); }
-      deriveHome(l);
+      deriveHome(lang());
 
       homeState.loading = false;
       homeState.hasData = !!res.ok;
       homeState.error = res.ok ? '' : (res.error || web('dataUnavailable'));
       homeState.errorCode = res.errorCode || '';
       homeState.fromCache = !!res.fromCache;
-      if (res.ok && (!res.fromCache || res.fetchedAt)) {
-        homeState.lastUpdate = formatNow(res.fetchedAt);
-      }
+      homeState.checkedAt = res.fetchedAt || api.getCityFreshness(region).checkedAt;
+      homeState.lastUpdate = homeState.checkedAt ? formatNow(homeState.checkedAt) : '';
 
       if (res.ok) {
         sessionStatus[region.adcode] = {
@@ -549,7 +560,7 @@
       } else {
         retainCityStatus(region);
       }
-      if (res.ok && region.adcode) { recordTrend(region.adcode, raw.length); }
+      if (res.ok && region.adcode) { recordTrend(region.adcode, raw.length, res.fetchedAt); }
       refreshMaps();
 
       var homePath = (location.hash || '#/home').split('?')[0];
@@ -602,12 +613,7 @@
   var homeFilter = { level: 'all', type: 'all', time: 'all' };
 
   function alertMs(a) {
-    var s = String((a && (a.time || a.issued)) || '');
-    var m = s.match(/(\d{4})[-/](\d{1,2})[-/](\d{1,2})[ T](\d{1,2}):(\d{2})/);
-    if (m) { return new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]).getTime(); }
-    m = s.match(/(\d{1,2})[-/](\d{1,2})[ T](\d{1,2}):(\d{2})/);
-    if (m) { var n = new Date(); return new Date(n.getFullYear(), +m[1] - 1, +m[2], +m[3], +m[4]).getTime(); }
-    return NaN;
+    return a ? reliability.warningPeriod(a).start : null;
   }
   function applyHomeFilter(alerts) {
     var now = Date.now();
@@ -616,13 +622,13 @@
       if (homeFilter.type !== 'all' && a.type !== homeFilter.type) { return false; }
       if (homeFilter.time !== 'all') {
         var ms = alertMs(a);
-        if (isFinite(ms) && now - ms > (homeFilter.time === '24h' ? 86400000 : 604800000)) { return false; }
+        if (!ms || ms > now || now - ms > (homeFilter.time === '24h' ? 86400000 : 604800000)) { return false; }
       }
       return true;
     });
   }
   function alertFilterBar(s, t) {
-    var levels = [['all', web('all')], ['critical', web('criticalLocations')], ['red', t.redAlert], ['orange', t.orangeAlert], ['yellow', t.yellowAlert], ['blue', t.blueAlert]];
+    var levels = [['all', web('all')], ['critical', safetyText('priorityNotices')], ['red', t.redAlert], ['orange', t.orangeAlert], ['yellow', t.yellowAlert], ['blue', t.blueAlert]];
     var types = [];
     (s.shownAlerts || []).forEach(function (a) { if (types.indexOf(a.type) < 0) { types.push(a.type); } });
     var typeOpts = '<option value="all">' + esc(web('all')) + '</option>' + types.map(function (ty) {
@@ -643,16 +649,16 @@
     return '<a class="ops-kpi" href="' + esc(href || '#/china') + '"><span>' + esc(label) + '</span><b>' + esc(value) + '</b><small>' + esc(sub || '') + '</small></a>';
   }
   function homeDashboardHtml(s, t) {
-    return '<div class="ops-head"><div><div class="eyebrow">OPERATIONAL OVERVIEW</div><h2>' + esc(web('situationOverview')) + '</h2><p>' + esc(web('overviewSubtitleBoth')) + '</p></div>' +
+    return '<div class="ops-head"><div><h2>' + esc(web('situationOverview')) + '</h2><p>' + esc(web('overviewSubtitleBoth')) + '</p></div>' +
       '</div>' +
       '<div class="ops-kpis" id="opsKpis">' +
-        opsKpi(web('chinaStatus'), '—', '', '#/china?section=alerts') +
-        opsKpi(web('criticalLocations'), '—', '', '#/china?section=alerts&level=critical') +
+        opsKpi(safetyText('localNotices'), '—', '', '#/china?section=alerts') +
+        opsKpi(safetyText('priorityNotices'), '—', '', '#/china?section=alerts&level=critical') +
         opsKpi(web('activeQuakes'), '—', '', '#/disasters?mode=live&type=EQ&source=quake') +
         opsKpi(web('maxMagnitude'), '—', '', '#/disasters?mode=live&type=EQ&source=quake&sort=magnitude') +
       '</div>' +
       '<div class="ops-grid">' +
-        '<div class="ops-card"><h3>' + esc(web('criticalLocations')) + '</h3><div class="ops-list" id="opsCritical"><a class="ops-empty" href="#/china">…</a></div></div>' +
+        '<div class="ops-card"><h3>' + esc(safetyText('priorityNotices')) + '</h3><div class="ops-list" id="opsCritical"><a class="ops-empty" href="#/china">…</a></div></div>' +
         '<div class="ops-card"><h3>' + esc(web('recentWarnings')) + '</h3><div class="ops-list" id="opsRecent"><a class="ops-empty" href="#/china">…</a></div></div>' +
         '<div class="ops-card"><h3>' + esc(web('dataTime')) + '</h3><div class="ops-list" id="opsUpdated"></div></div>' +
       '</div>';
@@ -662,60 +668,62 @@
     if (!kpis) { return; }
     var s = homeState;
     var t = T();
-    var list = (s.shownAlerts || []).slice();
-    var rank = { red: 4, orange: 3, yellow: 2, blue: 1 };
-    list.sort(function (a, b) { return (rank[b.level] || 0) - (rank[a.level] || 0); });
-    var crit = list.slice(0, 4);
-    var recent = (s.shownAlerts || []).slice().sort(function (a, b) { return (alertMs(b) || 0) - (alertMs(a) || 0); }).slice(0, 5);
+    var ready = s.hasData && !s.loading && !s.error && reliability.freshness(s.checkedAt) === 'available';
+    var stateLabel = s.loading ? t.loading : (s.errorCode === 'outdated' || reliability.freshness(s.checkedAt) === 'outdated' ? safetyText('outdated') : safetyText('unavailable'));
+    var list = ready ? s.shownAlerts : [];
+    var priority = list.filter(function (a) { return a.level === 'red' || a.level === 'orange'; });
+    var crit = priority.slice().sort(function (a, b) {
+      return Number(b.level === 'red') - Number(a.level === 'red') || alertMs(b) - alertMs(a);
+    }).slice(0, 4);
+    var recent = list.slice().sort(function (a, b) { return (alertMs(b) || 0) - (alertMs(a) || 0); }).slice(0, 5);
     function item(a) {
       return '<a href="#/detail?id=' + encodeURIComponent(a.id) + '"><span>' + esc(a.levelName + ' · ' + i18n.disasterName(a.type, lang())) + '</span><b>' + esc(a.area || '') + '</b></a>';
     }
     var critEl = document.getElementById('opsCritical');
-    if (critEl) { critEl.innerHTML = crit.length ? crit.map(item).join('') : '<a class="ops-empty" href="#/china">' + esc(t.noAlerts) + '</a>'; }
+    if (critEl) { critEl.innerHTML = crit.length ? crit.map(item).join('') : '<a class="ops-empty" href="#/china">' + esc(ready ? safetyText('noPriority') : stateLabel) + '</a>'; }
     var recentEl = document.getElementById('opsRecent');
     if (recentEl) {
       recentEl.innerHTML = recent.length ? recent.map(function (a) {
         return '<a href="#/detail?id=' + encodeURIComponent(a.id) + '"><span>' + esc(a.time || '') + '</span><b>' + esc(a.title || '') + '</b></a>';
-      }).join('') : '<a class="ops-empty" href="#/china">' + esc(t.noAlerts) + '</a>';
+      }).join('') : '<a class="ops-empty" href="#/china">' + esc(ready ? safetyText('lastNoAlerts') : stateLabel) + '</a>';
     }
     var upd = document.getElementById('opsUpdated');
     if (upd) {
-      upd.innerHTML = '<a class="ops-row" href="#/china"><span>' + esc(web('chinaStatus')) + '</span><b>' + esc(s.lastUpdate || '—') + '</b></a>' +
+      upd.innerHTML = '<a class="ops-row" href="#/china"><span>' + esc(safetyText('localNotices')) + '</span><b>' + esc(s.lastUpdate || '—') + '</b></a>' +
         '<a class="ops-row" href="#/global"><span>' + esc(web('activeQuakes')) + '</span><b id="opsGlobalTime">—</b></a>' +
         '<a class="ops-row" href="#/global"><span>' + esc(web('globalTab')) + '</span><b>' + esc(web('selectHint')) + ' →</b></a>';
     }
-    kpis.innerHTML = opsKpi(web('chinaStatus'), String((s.shownAlerts || []).length), '', '#/china?section=alerts') +
-      opsKpi(web('criticalLocations'), String((s.levelStats.red || 0) + (s.levelStats.orange || 0)), 'red + orange', '#/china?section=alerts&level=critical') +
-      opsKpi(web('activeQuakes'), '—', '24h', '#/disasters?mode=live&type=EQ&source=quake') +
-      opsKpi(web('maxMagnitude'), '—', '', '#/disasters?mode=live&type=EQ&source=quake&sort=magnitude');
-    if (!window.NDGlobal) { return; }
-    var g = window.NDGlobal.cached();
-    if (g) { fillGlobal(g); } else { window.NDGlobal.loadLive().then(fillGlobal).catch(function () {}); }
-    function fillGlobal(data) {
-      var k = kpis.querySelectorAll('.ops-kpi b');
-      if (k[2]) { k[2].textContent = String((data.earthquakes || []).length); }
-      var maximum = data.summary && data.summary.max_magnitude;
-      if (k[3] && (data.earthquakes || []).length && maximum != null && Number.isFinite(Number(maximum))) {
-        k[3].textContent = 'M' + Number(maximum).toFixed(1);
-        k[3].style.color = window.NDCore.magnitudeColor(maximum, true);
-      }
+    var scope = [i18n.placeName(s.city, lang()), s.district && i18n.districtName(s.district, lang())].filter(Boolean).join(' · ');
+    kpis.innerHTML = opsKpi(safetyText('localNotices'), ready ? String(list.length) : '—', scope, '#/china?section=alerts') +
+      opsKpi(safetyText('priorityNotices'), ready ? String(priority.length) : '—', ready ? scope : stateLabel, '#/china?section=alerts&level=critical') +
+      opsKpi(web('activeQuakes'), '—', web('last24h'), '#/disasters?mode=live&type=EQ&source=quake') +
+      opsKpi(web('maxMagnitude'), '—', web('last24h'), '#/disasters?mode=live&type=EQ&source=quake&sort=magnitude');
+    if (!window.NDGlobal) return;
+    window.NDGlobal.loadLive().then(function (data) {
+      if (!kpis.isConnected) return;
+      var now = Date.now();
+      var fresh = GdacsStatus.quakeSnapshotFresh(data, now);
+      var check = GdacsStatus.time(data && data.fetchedAt);
       var timeEl = document.getElementById('opsGlobalTime');
-      if (timeEl) {
-        var ts = data.generatedAt || data.fetchedAt;
-        timeEl.textContent = ts ? formatNow(ts) : '—';
+      if (timeEl) timeEl.textContent = Number.isFinite(check) ? formatNow(check) : '—';
+      var cards = kpis.querySelectorAll('.ops-kpi');
+      if (!fresh) {
+        cards[2].querySelector('small').textContent = safetyText('outdated');
+        cards[3].querySelector('small').textContent = safetyText('outdated');
+        return;
       }
-      var box = document.getElementById('opsCritical');
-      if (box) {
-        var top = (data.earthquakes || []).slice().sort(function (a, b) { return b.magnitude - a.magnitude; })[0];
-        if (top) {
-          var old = box.querySelector('[data-global-top]');
-          if (old) { old.parentNode.removeChild(old); }
-          box.insertAdjacentHTML('afterbegin', '<a data-global-top href="#/disasters?mode=live&event=' + encodeURIComponent(top.id) + '"><span><strong style="color:' + window.NDCore.magnitudeColor(top.magnitude, true) + '">M' + Number(top.magnitude).toFixed(1) + '</strong> · ' + esc(web('globalTab')) + '</span><b>' + esc(top.place) + '</b></a>');
-        }
-      }
-    }
+      var quakes = GdacsStatus.recentQuakes(data, now);
+      cards[2].querySelector('b').textContent = String(quakes.length);
+      if (!quakes.length) return;
+      var maximum = Math.max.apply(null, quakes.map(function (q) { return Number(q.magnitude); }));
+      var magnitude = cards[3].querySelector('b');
+      magnitude.textContent = 'M' + maximum.toFixed(1);
+      magnitude.style.color = window.NDCore.magnitudeColor(maximum, true);
+    }).catch(function () {
+      if (!kpis.isConnected) return;
+      Array.from(kpis.querySelectorAll('.ops-kpi small')).slice(2).forEach(function (el) { el.textContent = safetyText('unavailable'); });
+    });
   }
-
 
   function renderGlobalInto(el, embedded) {
     if (!el) { return; }
@@ -732,44 +740,6 @@
     renderGlobalInto(viewEl, false);
   }
 
-  function loadGlobeHazards() {
-    return Promise.all(['public-data/gdacs-events.json', 'public-data/global-earthquakes.json', 'public-data/warnings.json'].map(function (url) {
-      return fetch(url, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw Error(r.status); return r.json(); }).catch(function () { return null; });
-    })).then(function (results) {
-      globeHazards = [];
-      ((results[0] && results[0].features) || []).forEach(function (f) {
-        var p = f.properties || {}, c = (f.geometry && f.geometry.coordinates) || [];
-        if (!GdacsStatus.active(p, Date.now()) || !isFinite(c[0]) || !isFinite(c[1])) return;
-        globeHazards.push({ lng: +c[0], lat: +c[1], status: p, label: p.name,
-          type: { WF: 'fire', FL: 'flood', TC: 'typhoon', DR: 'drought' }[p.eventtype],
-          color: p.alertlevel === 'Red' ? '#ff5252' : p.alertlevel === 'Orange' ? '#ff9a3c' : '#43e8a0', level: 'normal' });
-      });
-      ((results[1] && results[1].earthquakes) || []).forEach(function (q) {
-        if (!isFinite(q.longitude) || !isFinite(q.latitude)) return;
-        globeHazards.push({ lng: +q.longitude, lat: +q.latitude, time: +q.timestamp, type: 'quake', color: window.NDCore.magnitudeColor(q.magnitude), label: 'M' + q.magnitude + ' · ' + q.place, level: 'normal' });
-      });
-      globeChinaHazards = [];
-      var entries = (results[2] && results[2].entries) || {};
-      districts.allCityGeo().forEach(function (city) {
-        var key = cities.getLocationKey(city.name);
-        var entry = entries['/alerts/v1/' + key + '.json'];
-        if (!entry || reliability.freshness(entry.checkedAt) !== 'available') return;
-        (entry.data.alerts || entry.data).forEach(function (alert) {
-          var areas = alert.Area || [];
-          var valid = areas.filter(function (area) {
-            var start = Date.parse(area.StartTime), end = Date.parse(area.EndTime);
-            return isFinite(start) && isFinite(end) && start <= Date.now() && end > Date.now();
-          });
-          if (!valid.length) return;
-          globeChinaHazards.push({ lng: city.lng, lat: city.lat, adcode: city.adcode, checkedAt: entry.checkedAt,
-            end: Math.max.apply(null, valid.map(function (area) { return Date.parse(area.EndTime); })),
-            color: (alert.Color && alert.Color.Hex) || '#ffb020', level: 'normal',
-            label: i18n.placeName(city.name, lang()) + ' · ' + ((alert.Description && (lang() === 'zh' ? alert.Description.Localized : alert.Description.English)) || alert.Type || 'Warning') });
-        });
-      });
-      refreshMaps();
-    });
-  }
   function themeButtonContent() {
     var light = document.documentElement.dataset.theme === 'light';
     return '<span class="theme-toggle-icon" aria-hidden="true">' + (light ? '☾' : '☀') + '</span>' +
@@ -783,7 +753,6 @@
     document.querySelector('meta[name="theme-color"]').content = theme === 'light' ? '#f4f6f2' : '#101010';
     try { localStorage.setItem('ndw-theme', theme); } catch (error) { /* The active theme still works. */ }
     button.innerHTML = themeButtonContent();
-    if (globe) { globe.resize(); }
   }
 
   function renderMainPage() {
@@ -793,7 +762,7 @@
     var html = '<div class="main-landing">' +
       '<div class="main-landing-inner">' +
         '<section class="main-copy">' +
-          '<div class="eyebrow"><span class="pulse-dot"></span>' + esc(s.dataSource || web('mainEyebrow')) + '</div>' +
+          '<div class="eyebrow">GeoWarning</div>' +
             '<div class="home-lang">' +
               i18n.LANGUAGES.map(function (lg) {
                 var shortName = lg.code === 'zh' ? '中文' : lg.code.toUpperCase();
@@ -806,18 +775,25 @@
           '<p>' + esc(web('mainIntro')) + '</p>' +
           '<div class="main-actions">' +
             '<a class="btn btn-green" href="#/china">' + esc(web('mainChinaCta')) + ' →</a>' +
-            '<a class="btn btn-outline" href="#/global">' + esc(web('mainGlobalCta')) + ' →</a>' +
+            '<a class="btn btn-outline" href="#/global">' + esc(web('globalTab')) + ' →</a>' +
+            '<a class="btn btn-outline" href="#/bulletins">' + esc(web('bulletinsNav')) + ' →</a>' +
           '</div>' +
         '</section>' +
+        '<aside class="main-safety">' + SVG.iGuide + '<p>' + esc(web('officialGuidance')) + '</p></aside>' +
         '<section class="main-overview" aria-label="' + esc(web('situationOverview')) + '">' + homeDashboardHtml(s, t) + '</section>' +
+        '<section class="main-resource-section" aria-labelledby="resourcesTitle"><h2 id="resourcesTitle">' + esc(web('resourcesTitle')) + '</h2>' +
+          '<div class="main-resources">' +
+            navItems(l).filter(function (item) { return item.hint; }).map(function (item) {
+              return '<a href="' + item.hash + '">' + item.icon + '<span class="main-resource-copy"><strong>' + esc(item.label) +
+                '</strong><small>' + esc(web(item.hint)) + '</small></span><span aria-hidden="true">→</span></a>';
+            }).join('') +
+          '</div></section>' +
       '</div>' +
     '</div>';
     viewEl.innerHTML = html;
     document.title = web('mainTab');
     document.body.classList.add('main-page');
-    if (globe) { globe.resize(); }
     hydrateHomeDashboard();
-    loadGlobeHazards();
     explainView();
   }
 
@@ -829,30 +805,45 @@
 
   var dbState = { category: 'earthquake', page: 1, minMag: 0, q: '', eq: null, gdacs: null, china: null, loading: false, error: '', eqRows: null, gdacsRows: null };
   var DB_PAGE_SIZE = 50;
+  var dbRequest = 0;
 
-  function dbTime(value) {
-    if (!value) { return 0; }
-    if (typeof value === 'number') { return value; }
-    var s = String(value);
-    var t = Date.parse(/[zZ]|[+-]\d\d:?\d\d$/.test(s) ? s : s + 'Z');
-    return isFinite(t) ? t : 0;
+  var dbLabels = {
+    seismic: { zh: '地震及其他地震动事件', en: 'Seismic events', es: 'Eventos sísmicos', fr: 'Événements sismiques', it: 'Eventi sismici' },
+    observed: { zh: '最后采集时间', en: 'Last observed', es: 'Última observación', fr: 'Dernière observation', it: 'Ultima osservazione' },
+    firstObserved: { zh: '首次采集时间', en: 'First observed', es: 'Primera observación', fr: 'Première observation', it: 'Prima osservazione' },
+    archiveSource: { zh: '档案来源', en: 'Archive source', es: 'Fuente del archivo', fr: 'Source des archives', it: 'Fonte dell’archivio' },
+    eventId: { zh: '事件编号', en: 'Event ID', es: 'ID del evento', fr: 'Identifiant', it: 'ID evento' }
+  };
+  function dbLabel(key) { return dbLabels[key][lang()] || dbLabels[key].en; }
+  function dbFormat(value, dateOnly) {
+    var ms = typeof value === 'number' ? value : GdacsStatus.time(value);
+    if (!Number.isFinite(ms)) return '—';
+    var options = { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' };
+    if (!dateOnly) {
+      options.hour = '2-digit';
+      options.minute = '2-digit';
+      options.timeZoneName = 'short';
+    }
+    return new Intl.DateTimeFormat(lang(), options).format(ms);
   }
-  function dbFormat(value) {
-    var ms = dbTime(value);
-    if (!ms) { return '—'; }
-    try {
-      return new Intl.DateTimeFormat(lang() === 'zh' ? 'zh-CN' : lang(), { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).format(new Date(ms));
-    } catch (e) { return new Date(ms).toLocaleString(); }
+  function dbDepth(depth) {
+    return Number.isFinite(depth) ? depth.toFixed(1) + ' km' : '—';
   }
-  function dbDateShort(value) {
-    var ms = dbTime(value);
-    if (!ms) { return '—'; }
-    try {
-      return new Intl.DateTimeFormat(lang() === 'zh' ? 'zh-CN' : lang(), { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Shanghai' }).format(new Date(ms));
-    } catch (e) { return new Date(ms).toLocaleDateString(); }
+  function dbCoordinates(lon, lat) {
+    if (!Number.isFinite(lat) || !Number.isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return '—';
+    return Math.abs(lat).toFixed(2) + '°' + (lat < 0 ? 'S' : 'N') + ', ' + Math.abs(lon).toFixed(2) + '°' + (lon < 0 ? 'W' : 'E');
+  }
+  function dbAlertTitle(a) {
+    var desc = a.Description || {};
+    if (lang() === 'en' && desc.English) return desc.English;
+    return i18n.alertTitle(desc.Localized || desc.English || a.HeadlineText || a.title || a.Type || '—', a.Type, String(a.AlarmLevel || '').toLowerCase(), lang());
+  }
+  function dbAlertLevel(value) {
+    var key = { green: 'gdacsGreen', orange: 'gdacsOrange', red: 'gdacsRed' }[String(value).toLowerCase()];
+    return key ? web(key) : value || '—';
   }
   function dbCategories() {
-    return [['china', web('chinaStatus')], ['earthquake', web('earthquakeType')], ['WF', web('gdacsWildfire')], ['FL', web('gdacsFlood')], ['TC', web('gdacsCyclone')], ['DR', web('gdacsDrought')]];
+    return [['china', web('chinaStatus')], ['earthquake', dbLabel('seismic')], ['WF', web('gdacsWildfire')], ['FL', web('gdacsFlood')], ['TC', web('gdacsCyclone')], ['DR', web('gdacsDrought')]];
   }
   function dbCategoryLabel(cat) {
     if (cat === 'china') return web('chinaStatus');
@@ -864,18 +855,19 @@
   }
   function dbPager(pages) {
     return '<div class="db-pager">' +
-      '<button type="button" class="db-page-btn" data-action="db-page" data-v="prev"' + (dbState.page <= 1 ? ' disabled' : '') + '>‹</button>' +
+      '<button type="button" class="db-page-btn" data-action="db-page" aria-label="' + esc(T().prevStep) + '" data-v="prev"' + (dbState.page <= 1 ? ' disabled' : '') + '>‹</button>' +
       '<span>' + dbState.page + ' / ' + pages + '</span>' +
-      '<button type="button" class="db-page-btn" data-action="db-page" data-v="next"' + (dbState.page >= pages ? ' disabled' : '') + '>›</button>' +
+      '<button type="button" class="db-page-btn" data-action="db-page" aria-label="' + esc(T().nextStep) + '" data-v="next"' + (dbState.page >= pages ? ' disabled' : '') + '>›</button>' +
     '</div>';
   }
 
   function renderDatabase() {
     var cats = dbCategories();
+    if (!cats.some(function (c) { return c[0] === dbState.category; })) dbState.category = 'earthquake';
     viewEl.innerHTML = '<section class="database-page"><div class="container">' +
-      '<div class="db-head"><div class="eyebrow">DATA ARCHIVE</div><h1>' + esc(web('databaseTitle')) + '</h1><p>' + esc(web('databaseSub')) + '</p><p class="db-note">' + esc(web('databaseDailyNote')) + '</p></div>' +
+      '<div class="db-head"><h1>' + esc(web('databaseTitle')) + '</h1><p>' + esc(web('databaseSub')) + '</p><p class="db-note">' + esc(web('databaseDailyNote')) + '</p></div>' +
       '<div class="db-tabs">' + cats.map(function (c) {
-        return '<button type="button" class="db-tab' + (dbState.category === c[0] ? ' active' : '') + '" data-action="db-cat" data-v="' + c[0] + '">' + esc(c[1]) + '</button>';
+        return '<button type="button" class="db-tab' + (dbState.category === c[0] ? ' active' : '') + '" data-action="db-cat" aria-pressed="' + (dbState.category === c[0]) + '" data-v="' + c[0] + '">' + esc(c[1]) + '</button>';
       }).join('') + '</div>' +
       '<div id="dbBody" class="db-body"></div>' +
       '<div id="dbModal" class="db-modal" hidden></div>' +
@@ -890,24 +882,27 @@
 
   function loadDatabase() {
     if (!document.getElementById('dbBody')) { return; }
-    if (dbState.category === 'earthquake' && dbState.eq) { renderDbBody(); return; }
-    if (dbState.category === 'china' && dbState.china) { renderDbBody(); return; }
-    if (dbState.category !== 'earthquake' && dbState.category !== 'china' && dbState.gdacs) { renderDbBody(); return; }
     var category = dbState.category;
-    dbState.loading = true;
+    var key = category === 'earthquake' ? 'eq' : category === 'china' ? 'china' : 'gdacs';
+    var request = ++dbRequest;
     dbState.error = '';
+    dbState.loading = !dbState[key];
     renderDbBody();
+    if (!dbState.loading) return;
     var url = category === 'china' ? 'public-data/china-warning-history.json' : category === 'earthquake' ? 'public-data/global-quakes-history.json' : 'public-data/gdacs-disaster-history.json';
     fetch(url, { cache: 'no-cache' }).then(function (r) {
       if (!r.ok) { throw new Error('HTTP ' + r.status); }
       return r.json();
     }).then(function (data) {
-      if (dbState.category !== category) { return; }
-      if (category === 'china') { dbState.china = data; } else if (category === 'earthquake') { dbState.eq = data; } else { dbState.gdacs = data; }
+      if (request !== dbRequest) { return; }
+      var field = key === 'china' ? 'records' : key === 'eq' ? 'rows' : 'features';
+      if (!data || !Array.isArray(data[field])) throw new Error(web('dataUnavailable'));
+      if (key === 'eq') data.rows = GdacsStatus.uniqueCatalogRows(data.rows);
+      dbState[key] = data;
       dbState.loading = false;
       renderDbBody();
     }).catch(function (err) {
-      if (dbState.category !== category) { return; }
+      if (request !== dbRequest) { return; }
       dbState.loading = false;
       dbState.error = String(err && err.message ? err.message : err);
       renderDbBody();
@@ -917,8 +912,9 @@
   function renderDbBody() {
     var body = document.getElementById('dbBody');
     if (!body) { return; }
+    body.setAttribute('aria-busy', String(dbState.loading));
     if (dbState.loading) { body.innerHTML = '<div class="state-box"><div class="spinner"></div>' + esc(T().loading) + '</div>'; return; }
-    if (dbState.error) { body.innerHTML = '<div class="state-box error">' + esc(dbState.error) + '</div>'; return; }
+    if (dbState.error) { body.innerHTML = '<div class="state-box error">' + esc(web('dataUnavailable')) + ' · ' + esc(dbState.error) + ' <button type="button" class="btn btn-outline" data-action="db-retry">' + esc(web('retryFetch')) + '</button></div>'; return; }
     if (dbState.category === 'china') { renderDbChina(body); } else if (dbState.category === 'earthquake') { renderDbEarthquake(body); } else { renderDbGdacs(body); }
   }
 
@@ -931,7 +927,7 @@
   function renderDbEarthquake(body) {
     var q = dbState.q.toLowerCase();
     var rows = ((dbState.eq && dbState.eq.rows) || []).filter(function (r) {
-      return Number(r[4]) >= dbState.minMag && (!q || String(r[5] || '').toLowerCase().indexOf(q) >= 0);
+      return (dbState.minMag === 0 || Number(r[4]) >= dbState.minMag) && (!q || [r[5], r[6], r[7]].join(' ').toLowerCase().includes(q));
     });
     rows.sort(function (a, b) { return b[0] - a[0]; });
     dbState.eqRows = rows;
@@ -939,16 +935,15 @@
     dbState.page = Math.min(dbState.page, pages);
     var start = (dbState.page - 1) * DB_PAGE_SIZE;
     var slice = rows.slice(start, start + DB_PAGE_SIZE);
-    var max = rows.reduce(function (m, r) { return Math.max(m, Number(r[4])); }, 0);
-    var range = (dbState.eq && dbState.eq.range) || [];
+    var max = rows.reduce(function (m, r) { return Math.max(m, Number(r[4])); }, -Infinity);
     var minOpts = [0, 2.5, 4.5, 6, 7].map(function (v) {
       var label = v === 0 ? web('all') : 'M' + v + '+';
       return '<option value="' + v + '"' + (dbState.minMag === v ? ' selected' : '') + '>' + esc(label) + '</option>';
     }).join('');
     var html = '<div class="db-stats">' +
-      dbStat(web('quakeRecords'), rows.length) +
+      dbStat(web('records'), rows.length) +
       dbStat(web('maxMagnitude'), rows.length ? 'M' + max.toFixed(1) : '—', rows.findIndex(function (r) { return Number(r[4]) === max; }), rows.length ? max : null) +
-      dbStat(web('historyRange'), dbDateShort(range[0]) + ' → ' + dbDateShort(range[1])) +
+      dbStat(web('historyRange'), rows.length ? dbFormat(rows[rows.length - 1][0], true) + ' → ' + dbFormat(rows[0][0], true) : '—') +
       '</div>' +
       '<div class="db-toolbar">' +
       '<input id="dbSearch" class="db-search" data-db-q type="search" value="' + esc(dbState.q) + '" placeholder="' + esc(web('dbSearchHint')) + '" aria-label="' + esc(web('dbSearchHint')) + '">' +
@@ -962,7 +957,7 @@
       (slice.length ? slice.map(function (r, i) {
         var mag = Number(r[4]);
         return '<tr class="db-row" data-action="db-row" data-kind="earthquake" data-idx="' + (start + i) + '" tabindex="0"><td>' + esc(dbFormat(r[0])) + '</td><td><span class="db-mag" style="color:' + window.NDCore.magnitudeColor(mag, true) + '">M' + mag.toFixed(1) + '</span></td>' +
-          '<td>' + esc(r[5]) + '</td><td>' + Number(r[3]).toFixed(1) + ' km</td><td>' + Number(r[1]).toFixed(2) + '°, ' + Number(r[2]).toFixed(2) + '°</td></tr>';
+          '<td>' + esc(r[5]) + '</td><td>' + dbDepth(r[3]) + '</td><td>' + dbCoordinates(r[1], r[2]) + '</td></tr>';
       }).join('') : '<tr><td colspan="5" class="db-empty">' + esc(web('noMatch')) + '</td></tr>') +
       '</tbody></table></div>' + dbPager(pages);
     body.innerHTML = html;
@@ -977,12 +972,12 @@
     dbState.page = Math.min(dbState.page, pages);
     var start = (dbState.page - 1) * DB_PAGE_SIZE;
     body.innerHTML = '<p>' + (window.NDLocale.phrase('保留实际采集到的预警及更新版本；不能保证包含采集开始前或两次查询之间的全部预警。','Retains observed alerts and revisions. Alerts before collection began or between queries may be missing.',lang())) + '</p>' +
-      '<div class="db-toolbar"><input id="dbSearch" type="search" value="' + esc(dbState.q) + '" placeholder="' + esc(web('dbSearchHint')) + '"><button class="btn btn-outline" data-action="db-search">' + (window.NDLocale.phrase('搜索','Search',lang())) + '</button></div>' +
-      '<div class="db-table-wrap"><table class="db-table"><thead><tr><th>' + esc(web('dataTime')) + '</th><th>' + esc(web('chinaStatus')) + '</th></tr></thead><tbody>' +
-      records.slice(start, start + DB_PAGE_SIZE).map(function (r, i) {
+      '<div class="db-toolbar"><input id="dbSearch" class="db-search" data-db-q aria-label="' + esc(web('dbSearchHint')) + '" type="search" value="' + esc(dbState.q) + '" placeholder="' + esc(web('dbSearchHint')) + '"><button class="btn btn-outline" data-action="db-search">' + (window.NDLocale.phrase('搜索','Search',lang())) + '</button></div>' +
+      '<div class="db-table-wrap"><table class="db-table"><thead><tr><th>' + esc(dbLabel('observed')) + '</th><th>' + esc(web('chinaStatus')) + '</th></tr></thead><tbody>' +
+      (records.length ? records.slice(start, start + DB_PAGE_SIZE).map(function (r, i) {
         var a = r.alert;
-        return '<tr class="db-row" data-action="db-row" data-kind="china" data-idx="' + (start + i) + '" tabindex="0"><td>' + esc(dbFormat(r.lastSeen)) + '</td><td>' + esc((a.Description && (lang() === 'zh' ? a.Description.Localized : a.Description.English)) || a.HeadlineText || a.title || a.Type || 'Warning') + '</td></tr>';
-      }).join('') + '</tbody></table></div>' + dbPager(pages);
+        return '<tr class="db-row" data-action="db-row" data-kind="china" data-idx="' + (start + i) + '" tabindex="0"><td>' + esc(dbFormat(r.lastSeen)) + '</td><td>' + esc(dbAlertTitle(a)) + '</td></tr>';
+      }).join('') : '<tr><td colspan="2" class="db-empty">' + esc(web('noMatch')) + '</td></tr>') + '</tbody></table></div>' + dbPager(pages);
   }
   function renderDbGdacs(body) {
     var q = dbState.q.toLowerCase();
@@ -990,18 +985,17 @@
       if (!f || !f.properties || f.properties.eventtype !== dbState.category) { return false; }
       if (!q) { return true; }
       var p = f.properties;
-      return [p.name, p.country, p.eventtype].join(' ').toLowerCase().indexOf(q) >= 0;
+      return [p.name, p.country, p.eventtype, p.iso3, p.eventid].join(' ').toLowerCase().includes(q);
     });
     features.sort(function (a, b) {
       var ap = a.properties || {}, bp = b.properties || {};
-      return String(bp.fromdate || bp.datemodified || '').localeCompare(String(ap.fromdate || ap.datemodified || ''));
+      return GdacsStatus.reportTime(bp) - GdacsStatus.reportTime(ap);
     });
     dbState.gdacsRows = features;
     var pages = Math.max(1, Math.ceil(features.length / DB_PAGE_SIZE));
     dbState.page = Math.min(dbState.page, pages);
     var start = (dbState.page - 1) * DB_PAGE_SIZE;
     var slice = features.slice(start, start + DB_PAGE_SIZE);
-    var range = (dbState.gdacs && dbState.gdacs.range) || [];
     var counts = { green: 0, orange: 0, red: 0 };
     features.forEach(function (f) {
       var a = String((f.properties || {}).alertlevel || '').toLowerCase();
@@ -1009,27 +1003,27 @@
     });
     var html = '<div class="db-stats">' +
       dbStat(web('gdacsEvents'), features.length) +
-      dbStat(web('gdacsAlert'), 'G ' + counts.green + ' · O ' + counts.orange + ' · R ' + counts.red) +
-      dbStat(web('historyRange'), String(range[0] || '—') + ' → ' + String(range[1] || '—')) +
+      dbStat(web('gdacsAlert'), ['green', 'orange', 'red'].map(function (level) { return dbAlertLevel(level) + ' ' + counts[level]; }).join(' · ')) +
+      dbStat(web('historyRange'), features.length ? dbFormat(features[features.length - 1].properties.datemodified || features[features.length - 1].properties.fromdate, true) + ' → ' + dbFormat(features[0].properties.datemodified || features[0].properties.fromdate, true) : '—') +
       '</div>' +
       '<div class="db-toolbar">' +
       '<input id="dbSearch" class="db-search" data-db-q type="search" value="' + esc(dbState.q) + '" placeholder="' + esc(web('dbSearchHint')) + '" aria-label="' + esc(web('dbSearchHint')) + '">' +
       '<button type="button" class="db-search-btn" data-action="db-search">' + esc(web('searchTitle')) + '</button>' +
       '<span class="db-count">' + features.length + ' ' + esc(web('records')) + '</span></div>' +
       '<div class="db-table-wrap"><table class="db-table"><thead><tr>' +
-        '<th>' + esc(web('dataTime')) + '</th><th>' + esc(web('hazardType')) + '</th><th>' + esc(web('locationLabel')) + '</th><th>' + esc(web('countryLabel')) + '</th><th>' + esc(web('gdacsAlert')) + '</th><th>' + esc(web('coordinates')) + '</th>' +
+        '<th>' + esc(web('gdacsUpdated')) + '</th><th>' + esc(web('hazardType')) + '</th><th>' + esc(web('locationLabel')) + '</th><th>' + esc(web('countryLabel')) + '</th><th>' + esc(web('gdacsAlert')) + '</th><th>' + esc(web('coordinates')) + '</th>' +
       '</tr></thead><tbody>' +
       (slice.length ? slice.map(function (f, i) {
         var p = f.properties || {};
         var c = (f.geometry && f.geometry.coordinates) || [];
-        var url = p.url && p.url.report ? p.url.report : '';
+        var url = GdacsStatus.reportUrl(p.url && p.url.report);
         var name = esc(p.name || '—');
-        return '<tr class="db-row" data-action="db-row" data-kind="gdacs" data-idx="' + (start + i) + '" tabindex="0"><td>' + esc(dbFormat(p.fromdate || p.datemodified)) + '</td>' +
+        return '<tr class="db-row" data-action="db-row" data-kind="gdacs" data-idx="' + (start + i) + '" tabindex="0"><td>' + esc(dbFormat(p.datemodified || p.fromdate)) + '</td>' +
           '<td>' + esc(dbCategoryLabel(p.eventtype)) + '</td>' +
           '<td>' + (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer" data-action="noop">' + name + '</a>' : name) + '</td>' +
           '<td>' + esc(p.country || '—') + '</td>' +
-          '<td><span class="db-alert ' + esc(String(p.alertlevel || '').toLowerCase()) + '">' + esc(p.alertlevel || '—') + '</span></td>' +
-          '<td>' + Number(c[0]).toFixed(2) + '°, ' + Number(c[1]).toFixed(2) + '°</td></tr>';
+          '<td><span class="db-alert ' + esc(String(p.alertlevel || '').toLowerCase()) + '">' + esc(dbAlertLevel(p.alertlevel)) + '</span></td>' +
+          '<td>' + dbCoordinates(c[0], c[1]) + '</td></tr>';
       }).join('') : '<tr><td colspan="6" class="db-empty">' + esc(web('noMatch')) + '</td></tr>') +
       '</tbody></table></div>' + dbPager(pages);
     body.innerHTML = html;
@@ -1046,72 +1040,69 @@
       var record = (dbState.chinaRows || [])[idx];
       if (!record) return;
       var warning = record.alert;
-      modal.innerHTML = '<div class="db-modal-card" role="dialog" aria-modal="true"><button class="db-modal-close" data-action="db-close" aria-label="Close">×</button><h2>' +
-        esc((warning.Description && warning.Description.Localized) || warning.HeadlineText || warning.title || 'Warning') + '</h2>' +
-        '<p>' + esc(dbFormat(record.firstSeen)) + ' → ' + esc(dbFormat(record.lastSeen)) + '</p>' +
-        (warning.Area || []).map(function (area) { return '<h3>' + esc(area.Name) + '</h3><p>' + esc(area.StartTime || '') + ' → ' + esc(area.EndTime || '') + '</p><p>' + esc(area.Text || area.Summary || '') + '</p>'; }).join('') +
-        '<p>' + esc(warning.Source || '') + '</p></div>';
-      modal.hidden = false;
-      modal.querySelector('button').focus();
-      return;
-    }
-    if (kind === 'earthquake') {
+      html = '<h2 id="dbRecordTitle">' + esc(dbAlertTitle(warning)) + '</h2><div class="db-detail-grid">' +
+        dbField(dbLabel('firstObserved'), dbFormat(record.firstSeen)) +
+        dbField(dbLabel('observed'), dbFormat(record.lastSeen)) +
+        dbField(web('sourceLabel'), i18n.orgName(warning.Source, lang())) + '</div>' +
+        (warning.Area || []).map(function (area) {
+          return '<h3>' + esc(i18n.placeName(area.Name, lang()) || '—') + '</h3><p>' + esc(dbFormat(area.StartTime)) + ' → ' + esc(dbFormat(area.EndTime)) + '</p><p>' + esc(area.Text || area.Summary || '') + '</p>';
+        }).join('');
+    } else if (kind === 'earthquake') {
       var r = (dbState.eqRows || [])[idx];
       if (!r) { return; }
       var mag = Number(r[4]);
-      html = '<div class="db-modal-card" role="dialog" aria-modal="true">' +
-        '<button type="button" class="db-modal-close" data-action="db-close" aria-label="Close">×</button>' +
-        '<div class="gkicker">' + esc(web('earthquakeType')) + '</div>' +
-        '<h2><span style="color:' + window.NDCore.magnitudeColor(mag, true) + '">M' + mag.toFixed(1) + '</span> · ' + esc(r[5]) + '</h2>' +
+      html = '<div class="gkicker">' + esc(r[6] === 'earthquake' || r[6] === '地震' ? web('earthquakeType') : r[6] || dbLabel('seismic')) + '</div>' +
+        '<h2 id="dbRecordTitle"><span style="color:' + window.NDCore.magnitudeColor(mag, true) + '">M' + mag.toFixed(1) + '</span> · ' + esc(r[5]) + '</h2>' +
         '<div class="db-detail-grid">' +
           dbField(web('dataTime'), dbFormat(r[0])) +
           dbField(web('magnitude'), 'M' + mag.toFixed(1), mag) +
-          dbField(web('depth'), Number(r[3]).toFixed(1) + ' km') +
-          dbField(web('coordinates'), Number(r[1]).toFixed(2) + '°, ' + Number(r[2]).toFixed(2) + '°') +
+          dbField(web('depth'), dbDepth(r[3])) +
+          dbField(web('coordinates'), dbCoordinates(r[1], r[2])) +
           dbField(web('locationLabel'), r[5]) +
-          dbField(web('sourceLabel'), 'USGS') +
-        '</div>' +
-      '</div>';
+          dbField(dbLabel('eventId'), r[7]) +
+          dbField(dbLabel('archiveSource'), dbState.eq.source) +
+        '</div>';
     } else {
       var f = (dbState.gdacsRows || [])[idx];
       if (!f) { return; }
       var p = f.properties || {};
       var c = (f.geometry && f.geometry.coordinates) || [];
       var desc = p.htmldescription || p.description || '';
-      var report = p.url && p.url.report ? p.url.report : '';
-      html = '<div class="db-modal-card" role="dialog" aria-modal="true">' +
-        '<button type="button" class="db-modal-close" data-action="db-close" aria-label="Close">×</button>' +
-        '<div class="gkicker">' + esc(dbCategoryLabel(p.eventtype)) + '</div>' +
-        '<h2>' + esc(p.name || '—') + '</h2>' +
+      var report = GdacsStatus.reportUrl(p.url && p.url.report);
+      html = '<div class="gkicker">' + esc(dbCategoryLabel(p.eventtype)) + '</div>' +
+        '<h2 id="dbRecordTitle">' + esc(p.name || '—') + '</h2>' +
         '<div class="db-detail-grid">' +
           dbField(web('gdacsFrom'), dbFormat(p.fromdate)) +
           dbField(web('gdacsTo'), dbFormat(p.todate)) +
           dbField(web('countryLabel'), p.country) +
-          dbField(web('gdacsAlert'), p.alertlevel) +
-          dbField(web('coordinates'), Number(c[0]).toFixed(2) + '°, ' + Number(c[1]).toFixed(2) + '°') +
+          dbField(web('gdacsAlert'), dbAlertLevel(p.alertlevel)) +
+          dbField(web('coordinates'), dbCoordinates(c[0], c[1])) +
           dbField(web('gdacsUpdated'), dbFormat(p.datemodified)) +
         '</div>' +
         (desc ? '<p class="db-detail-desc">' + esc(desc) + '</p>' : '') +
-        (report ? '<a class="btn btn-outline" href="' + esc(report) + '" target="_blank" rel="noopener noreferrer">' + esc(web('gdacsReport')) + ' ↗</a>' : '') +
-      '</div>';
+        (report ? '<a class="btn btn-outline" href="' + esc(report) + '" target="_blank" rel="noopener noreferrer">' + esc(web('gdacsReport')) + ' ↗</a>' : '');
     }
-    modal.innerHTML = html;
+    modal.innerHTML = '<dialog class="db-modal-card" aria-labelledby="dbRecordTitle"><button type="button" class="db-modal-close" data-action="db-close" aria-label="' + esc(T().close) + '">×</button>' + html + '</dialog>';
     modal.hidden = false;
-    modal.scrollTop = 0;
+    var dialog = modal.querySelector('dialog');
+    dialog.addEventListener('close', function () { modal.hidden = true; });
+    dialog.showModal();
   }
   function closeDbDetail() {
     var modal = document.getElementById('dbModal');
-    if (modal) { modal.hidden = true; modal.innerHTML = ''; }
+    var dialog = modal && modal.querySelector('dialog[open]');
+    if (dialog) dialog.close();
   }
 
   function renderHome() {
     var l = lang();
     var t = T(l);
     var s = homeState;
-    var dataReady = s.hasData && !s.loading && !s.error;
-    var dataState = s.loading ? t.loading : web('dataUnavailable');
-    var filteredAlerts = applyHomeFilter(s.shownAlerts);
+    var dataReady = s.hasData && !s.loading && !s.error && reliability.freshness(s.checkedAt) === 'available';
+    var dataState = s.loading ? t.loading : (reliability.freshness(s.checkedAt) === 'outdated' ? safetyText('outdated') : web('dataUnavailable'));
     if (!s.loading && (s.rawAlerts.length || s.rawWeather)) { deriveHome(l); }
+    var filteredAlerts = dataReady ? applyHomeFilter(s.shownAlerts) : [];
+    if (s.city && !s.loading && !s.rawWeather) loadFallbackWeather(currentRegion(), homeRequest);
     var displayCity = i18n.placeName(s.city, l);
     var displayProvince = s.province ? i18n.placeName(s.province, l) : '';
     var districtLabel = s.district ? i18n.districtName(s.district, l) : t.allDistricts;
@@ -1122,15 +1113,15 @@
 
     var weatherCard = s.weather
       ? '<div class="weather-card">' +
-          '<div class="wc-label">' + esc(t.realtimeWeather) + '</div>' +
+          '<div class="wc-label">' + esc(s.weatherSource === 'Open-Meteo' ? safetyText('modelWeather') : t.realtimeWeather) + '</div>' +
           '<div class="weather-main">' +
-            '<div class="weather-temp"><span class="h2-ic wc-ic">' + SVG.iTemp + '</span>' + esc(tempNum) + '<small>' + esc(tempUnit || '°') + '</small></div>' +
+            '<div class="weather-temp"><span class="h2-ic wc-ic">' + SVG.iTemp + '</span>' + esc(Number.isFinite(tempNum) ? tempNum : '—') + '<small>' + esc(tempUnit) + '</small></div>' +
             '<div class="weather-text">' + esc(s.weather.weather) + '</div>' +
           '</div>' +
           '<div class="weather-rows">' +
-            '<div class="wr-item"><span class="h2-ic wc-ic">' + SVG.iWind + '</span><b>' + esc(t.wind) + '</b>' + esc(s.weather.wind) + '</div>' +
+            '<div class="wr-item"><span class="h2-ic wc-ic">' + SVG.iWind + '</span><b>' + esc(t.wind) + '</b>' + esc(s.weather.wind || '—') + '</div>' +
           '</div>' +
-          '<div class="wc-source">' + esc(t.cityWeatherNote) + '</div>' +
+          '<div class="wc-source">' + esc(t.cityWeatherNote) + (s.weather.observedAt ? ' · ' + esc(formatNow(s.weather.observedAt)) : '') + '</div>' +
           '<div class="wc-source">' + esc(i18n.tpl('providedBy', { source: s.weatherSource || s.dataSource }, l)) + '</div>' +
         '</div>'
       : '';
@@ -1142,14 +1133,14 @@
         '<div class="hero-inner">' +
           '<div class="hero-left">' +
             '<div class="home-intro">' +
-            '<div class="eyebrow"><span class="pulse-dot"></span>' + esc(s.dataSource || t.loading) + '</div>' +
+            '<div class="eyebrow">' + esc(s.dataSource || (s.loading ? t.loading : web('chinaTab'))) + '</div>' +
             '<h1 class="hero-title">' + esc(web('overviewTitle')) + '</h1>' +
             '<p class="hero-sub">' + esc(web('overviewSubtitle')) + '</p></div>' +
             '<div class="hero-location">' +
               '<div class="hero-city">' + esc(displayCity) +
                 '<small>' + esc(displayProvince) + '</small></div>' +
               '<button class="district-pill" data-action="open-district"><span class="status-dot status-' +
-                (!dataReady ? 'unknown' : s.levelStats.red ? 'high' : s.shownAlerts.length ? 'normal' : 'none') + '" title="' + esc(dataReady ? (s.shownAlerts.length ? t.legendAlert : t.noAlerts) : dataState) + '"></span>' +
+                (!dataReady ? 'unknown' : s.levelStats.red ? 'high' : s.shownAlerts.length ? 'normal' : 'none') + '" title="' + esc(dataReady ? (s.shownAlerts.length ? safetyText('lastAlerts') : safetyText('lastNoAlerts')) : dataState) + '"></span>' +
                 esc(districtLabel) + ' <b>›</b></button>' +
               '<button class="btn btn-green btn-lg" data-action="open-picker"><span class="h2-ic btn-ic">' + SVG.iPin + '</span>' + esc(t.ctaChooseCity) + '</button>' +
               '<button class="btn btn-outline btn-lg icon-btn" data-action="refresh" aria-label="' + esc(t.refresh) + '">' + SVG.refresh + '</button>' +
@@ -1194,7 +1185,7 @@
     /* ---- 预警列表 ---- */
     html += '<div class="container"><div class="home-overview">' +
       '<section class="overview-panel local-panel" aria-labelledby="localHeading">' +
-      '<div class="section-head"><h2 id="localHeading"><span class="h2-ic">' + SVG.iBell + '</span>' + esc(t.activeAlerts) + '</h2>' +
+      '<div class="section-head"><h2 id="localHeading"><span class="h2-ic">' + SVG.iBell + '</span>' + esc(safetyText('localNotices')) + '</h2>' +
       '<span class="head-hint">' + esc(dataReady ? i18n.tpl('total', { n: filteredAlerts.length }, l) : dataState) +
       (s.fromCache ? ' · ' + esc(t.cached) : '') +
       '</span></div>';
@@ -1208,8 +1199,10 @@
         '<div class="source-line" style="justify-content:center">' + esc(web('snapshotHint')) + '</div></div>';
     } else if (s.loading) {
       html += '<div class="state-box"><div class="spinner"></div>' + esc(t.loading) + '</div>';
+    } else if (!dataReady) {
+      html += '<div class="state-box">' + esc(dataState) + '</div>';
     } else if (filteredAlerts.length === 0) {
-      html += '<div class="state-box"><span class="state-icon ok-icon">✓</span>' + esc(s.shownAlerts.length ? web('noMatch') : t.noAlerts) + '</div>';
+      html += '<div class="state-box">' + esc(s.shownAlerts.length ? web('noMatch') : safetyText('lastNoAlerts')) + '</div>';
     } else {
       html += '<div class="alert-grid">' + filteredAlerts.map(function (a) {
         return '<a class="alert-card lv-' + a.level + '" href="#/detail?id=' + encodeURIComponent(a.id) + '">' +
@@ -1219,7 +1212,7 @@
           '</div>' +
           '<h3>' + esc(a.title) + '</h3>' +
           '<div class="alert-card-area">' + esc(a.area) + '</div>' +
-          '<span class="alert-card-cta">' + esc(t.statusActive) + ' →</span>' +
+          '<span class="alert-card-cta">' + esc(a.status) + ' →</span>' +
         '</a>';
       }).join('') + '</div>';
     }
@@ -1279,7 +1272,7 @@
         (topRisks.length ? topRisks.map(function (r) {
           var nm = i18n.riskItem(r.key, l);
           return '<a class="potential-hazard detail-card-link" href="#/detail?id=' + encodeURIComponent(r.alertId) + '&section=hazards"><b>' + esc(nm.name) + '</b><p>' + esc(nm.note) + '</p></a>';
-        }).join('') : '<div class="state-box">' + esc(dataReady ? t.noAlerts : dataState) + '</div>') +
+        }).join('') : '<div class="state-box">' + esc(dataReady ? safetyText('lastNoAlerts') : dataState) + '</div>') +
       '<p class="hazard-explanation">' + esc(safetyText('hazardNote')) + '</p></section>';
 
     /* ---- 趋势（全国城市汇总） ---- */
@@ -1288,21 +1281,20 @@
     var days = [], vals = [];
     var recorded = 0;
     for (var i = 13; i >= 0; i--) {
-      var dt = new Date(Date.now() - i * 86400000);
-      var key = pad(dt.getMonth() + 1) + '-' + pad(dt.getDate());
-      days.push(key);
+      var key = chinaDate(Date.now() - i * 86400000);
+      days.push(key.slice(5));
       var total = 0, hasData = false;
       trendAds.forEach(function (ad) {
         var v = trendAll[ad] && trendAll[ad][key];
-        if (typeof v === 'number') { total += v; hasData = true; }
+        if (v && Number.isInteger(v.count) && v.count >= 0) { total += v.count; hasData = true; }
       });
-      vals.push(total);
+      vals.push(hasData ? total : null);
       if (hasData) { recorded++; }
     }
 
     html += '<section class="panel-card trend-panel">' +
       '<div class="section-head"><h2><span class="h2-ic">' + SVG.iChart + '</span>' + esc(t.trend) + '</h2>' +
-        '<span class="head-hint">' + esc(t.trendNationwide) + ' · 14 ' + esc(t.dayShort) + '</span></div>';
+        '<span class="head-hint">' + esc(safetyText('trendScope')) + ' · 14 ' + esc(t.dayShort) + '</span></div>';
     if (recorded < 1) {
       html += '<div class="state-box">' + esc(t.trendBuilding) + '</div>';
     } else {
@@ -1592,12 +1584,6 @@
    * ================================================================ */
   var countdownTimer = null;
 
-  function parseEndTime(duration) {
-    var m = String(duration || '').match(/\d{4}-\d{2}-\d{2}\s\d{2}(?::\d{2})?/g);
-    if (m && m.length >= 2) { return new Date(m[1].replace(/-/g, '/')); }
-    return null;
-  }
-
   function startCountdown(end) {
     clearInterval(countdownTimer);
     if (!end) { return; }
@@ -1653,24 +1639,27 @@
       var item = i18n.riskItem(r.key, l);
       return Object.assign({}, r, { name: item.name || r.name, note: item.note || r.note });
     });
+    var period = reliability.warningPeriod(alert);
+    var dateOptions = { dateStyle: 'medium', timeStyle: 'long' };
+    var displayTime = function (ms) { return ms ? new Date(ms).toLocaleString(l, dateOptions) : '—'; };
     var localized = Object.assign({}, alert, {
+      time: displayTime(period.start),
       risks: risks,
       title: i18n.alertTitle(alert.title, alert.type, alert.level, l),
       area: i18n.areaName(alert.area, alert.cityName, l),
       focusArea: i18n.areaName(alert.focusArea || '', alert.cityName, l),
       levelName: i18n.levelName(alert.level, l),
-      status: i18n.t('statusActive', l),
-      duration: String(alert.duration || '').replace(' 至 ', ' ' + i18t('durationTo', l) + ' '),
+      status: reliability.text(reliability.warningValidity(alert), l),
+      duration: period.start || period.end ? displayTime(period.start) + ' → ' + displayTime(period.end) : '—',
       source: alert.source === '气象部门' ? i18n.t('defaultSource', l) : i18n.orgName(alert.source, l)
     });
     if (l !== 'zh') {
-      localized.content = i18n.alertSummary(Object.assign({}, alert, { risks: risks }), l);
+      localized.content = i18n.alertSummary(Object.assign({}, alert, { risks: risks, duration: localized.duration }), l);
       localized.defense = i18n.defenseByType(alert.type, l);
     }
     if (!localized.defense || !localized.defense.length) localized.defense = i18n.defenseByType(alert.type, l);
     return localized;
   }
-  function i18t(k, l) { return i18n.t(k, l); }
 
   /* 灾害类型 → 推荐物资 index */
   var RECOMMEND_MAT = {
@@ -1694,8 +1683,22 @@
     var l = lang();
     var t = T(l);
     if (!alert) {
-      wx.showToast({ title: i18n.t('notFound', l), icon: 'none' });
-      location.hash = '#/home';
+      var requestedHash = location.hash;
+      viewEl.innerHTML = '<section class="section"><div class="container state-box" role="status">' + esc(t.loading) + '</div></section>';
+      var placeholder = viewEl.firstElementChild;
+      api.loadAlertById(id).then(function (found) {
+        if (!placeholder.isConnected || location.hash !== requestedHash) return;
+        if (found) {
+          renderDetail(id);
+          if (parseQuery(requestedHash.split('?')[1]).section === 'hazards') focusDetails('#warningHazards');
+        } else showMissing(i18n.t('notFound', lang()));
+      }).catch(function () {
+        if (placeholder.isConnected) showMissing(safetyText('unavailable'));
+      });
+      function showMissing(message) {
+        placeholder.firstElementChild.innerHTML = '<p>' + esc(message) + '</p><a class="btn btn-outline" href="#/database?category=china">' +
+          esc(web('database')) + '</a>';
+      }
       return;
     }
     var a = localizeAlert(alert);
@@ -1715,17 +1718,17 @@
         '<div><span class="level-badge">' + esc(a.levelName) + '</span></div>' +
         '<h1>' + esc(a.title) + '</h1>' +
         '<div class="detail-meta"><span>' + esc(i18n.disasterName(a.type, l)) + '</span>' +
-        '<span class="dot-sep">•</span><span>' + esc(a.source) + '</span></div>' +
+        '<span class="dot-sep">•</span><span>' + esc(a.source) + '</span><span class="dot-sep">•</span><span>' + esc(a.status) + '</span></div>' +
         '<div class="detail-summary">' +
           '<div><span>' + esc(web('disasterType')) + '</span><b>' + esc(i18n.disasterName(a.type, l)) + '</b></div>' +
           '<div><span>' + esc(web('severity')) + '</span><b>' + esc(a.levelName) + '</b></div>' +
           '<div><span>' + esc(t.affectedArea) + '</span><b>' + esc(a.area) + '</b></div>' +
-          '<div><span>' + esc(t.issueTime) + '</span><b>' + esc(a.time) + '</b></div>' +
+          '<div><span>' + esc(t.issueTime) + '</span><b>' + esc(a.time || '—') + '</b></div>' +
           '<div><span>' + esc(t.validPeriod) + '</span><b>' + esc(a.duration || '—') + '</b></div>' +
           '<div><span>' + esc(t.issueBy) + '</span><b>' + esc(a.source) + '</b></div>' +
         '</div>' +
         '<div class="detail-overview info-rows">' + infoRow(t.affectedArea, a.area) + infoRow(t.issueTime, a.time) +
-          infoRow(safetyText('checked'), alert.checkedAt ? new Date(alert.checkedAt).toLocaleString(l) : '—') + '</div>' +
+          infoRow(safetyText('checked'), alert.checkedAt ? new Date(alert.checkedAt).toLocaleString(l, {dateStyle:'medium', timeStyle:'long'}) : '—') + '</div>' +
       '</div></section>';
 
     html += '<section class="section"><div class="container detail-grid">' +
@@ -1775,7 +1778,8 @@
     html += '</div><aside class="detail-side">';
 
     /* 倒计时 */
-    var end = parseEndTime(alert.duration);
+    var scheduledEnd = reliability.warningPeriod(alert).end;
+    var end = scheduledEnd && reliability.warningValidity(alert) !== 'cancelled' ? new Date(scheduledEnd) : null;
     html += '<div class="dcard"><div class="dcard-title"><span class="title-bar"></span>' + esc(t.countdown) + '</div>' +
       '<div class="countdown-box" id="countdownBox">' + (end ? '' : '—') + '</div></div>';
 
@@ -1807,7 +1811,7 @@
 
   function shareAlert() {
     var l = lang();
-    var shareUrl = location.origin + location.pathname;
+    var shareUrl = location.href;
     if (navigator.share) {
       navigator.share({ title: i18n.t('appName', l), url: shareUrl }).catch(function () { });
     } else if (navigator.clipboard) {
@@ -1880,7 +1884,7 @@
   var guideIndex = 0;
   function getReadGuides() {
     var v = wx.getStorageSync('guide_read');
-    return Array.isArray(v) ? v : [];
+    return Array.isArray(v) ? data.getGuides().map(function (g) { return g.id; }).filter(function (id) { return v.includes(id); }) : [];
   }
 
   var GUIDE_MAT = {
@@ -1923,16 +1927,16 @@
       '<section class="page-top"><div class="container"><h1>' + esc(t.tabGuide) + '</h1>' +
       '<p>' + esc(t.guideNote) + '</p>' +
       '<p class="offline-guide-status" id="offlineGuideStatus">' + esc(offlineGuideText()) + '</p>' +
-      '<div class="read-progress"><span>' + esc(t.readProgress) + ' ' + read.length + '/12</span>' +
-        '<span class="read-progress-bar"><i style="width:' + Math.round(read.length / 12 * 100) + '%"></i></span>' +
+      '<div class="read-progress"><span>' + esc(t.readProgress) + ' ' + read.length + '/' + categories.length + '</span>' +
+        '<span class="read-progress-bar"><i style="width:' + Math.round(read.length / categories.length * 100) + '%"></i></span>' +
       '</div></div></section>' +
 
       '<section class="section"><div class="container guide-layout">' +
         '<aside class="guide-side">' +
           categories.map(function (c, i) {
             var rd = read.indexOf(c.id) >= 0;
-            return '<button class="guide-side-item ' + (i === idx ? 'active' : '') + '" data-action="guide-cat" data-index="' + i + '">' +
-              esc(c.name) + (rd ? ' <span class="side-read">✓</span>' : '') + '</button>';
+            return '<a class="guide-side-item ' + (i === idx ? 'active' : '') + '" href="#/guide?topic=' + encodeURIComponent(c.id) + '"' +
+              (i === idx ? ' aria-current="true"' : '') + '>' + esc(c.name) + (rd ? ' <span class="side-read">✓</span>' : '') + '</a>';
           }).join('') +
         '</aside>' +
 
@@ -2005,6 +2009,15 @@
     outdoor: [0, 1, 2, 6, 8]
   };
 
+  var toolSections = {
+    'first-aid': 'firstAid',
+    contacts: 'emergencyPhone',
+    kit: 'packWizard',
+    checklist: 'materialList',
+    plan: 'familyPlan',
+    evacuation: 'evacuationTips'
+  };
+
   function renderTools() {
     var l = lang();
     var t = T(l);
@@ -2018,13 +2031,19 @@
 
     var html =
       '<section class="page-top"><div class="container"><h1>' + esc(t.tabTools) + '</h1>' +
-      '<p>' + esc(t.footerTools) + '</p></div></section>';
+      '<p>' + esc(t.footerTools) + '</p>' +
+      '<nav class="tool-sections" aria-label="' + esc(t.tabTools) + '">' +
+        Object.keys(toolSections).map(function (id) {
+          return '<a href="#/tools?section=' + id + '">' + esc(t[toolSections[id]]) + '</a>';
+        }).join('') +
+      '</nav></div></section>';
 
     /* ---- 急救步骤 ---- */
     var aidList = i18n.firstaid(l);
     var aidCur = aidList[aidState.tab];
     html += '<section class="section"><div class="container">' +
-      '<div class="section-head"><h2>' + esc(t.firstAid) + '</h2></div>' +
+      '<div class="section-head"><h2 id="tool-first-aid">' + esc(t.firstAid) + '</h2></div>' +
+      '<p class="aid-reference"><a href="https://www.nhs.uk/conditions/first-aid/" target="_blank" rel="noopener noreferrer">NHS · ' + esc(t.firstAid) + ' ↗</a></p>' +
       '<div class="aid-tabs">' + aidList.map(function (a, i) {
         return '<button class="aid-tab ' + (i === aidState.tab ? 'active' : '') + '" data-action="aid-tab" data-index="' + i + '">' + esc(a.name) + '</button>';
       }).join('') + '</div>' +
@@ -2044,7 +2063,8 @@
 
     /* ---- 紧急电话 ---- */
     html += '<section class="section section-alt"><div class="container">' +
-      '<div class="section-head"><h2>' + esc(t.emergencyPhone) + '</h2></div>' +
+      '<div class="section-head"><h2 id="tool-contacts">' + esc(t.emergencyPhone) + '</h2></div>' +
+      '<p><a href="#/rescue">' + esc(web('rescueNav')) + ' →</a></p>' +
       '<div class="phone-grid">' +
         phones.map(function (p) {
           return '<a class="phone-card" href="tel:' + esc(p.number) + '">' +
@@ -2056,7 +2076,7 @@
 
     /* ---- 应急包向导 ---- */
     html += '<section class="section"><div class="container">' +
-      '<div class="section-head"><h2>' + esc(t.packWizard) + '</h2></div>' +
+      '<div class="section-head"><h2 id="tool-kit">' + esc(t.packWizard) + '</h2></div>' +
       '<div class="wizard-card">';
 
     if (wizard.stage === 0) {
@@ -2085,7 +2105,7 @@
 
     /* ---- 物资清单 ---- */
     html += '<section class="section section-alt"><div class="container">' +
-      '<div class="section-head"><h2>' + esc(t.materialList) + '</h2>' +
+      '<div class="section-head"><h2 id="tool-checklist">' + esc(t.materialList) + '</h2>' +
       '<span class="head-hint">' + esc(i18n.tpl('prepared', { progress: progress }, l)) + '</span></div>' +
       '<div class="progress-card">' +
         '<div class="progress-bar"><div class="progress-inner" style="width:' + progress + '%"></div></div>' +
@@ -2102,7 +2122,7 @@
     /* ---- 家庭应急计划 ---- */
     var plan = wx.getStorageSync('family_plan') || { members: '', meeting: '', contact: '', needs: '' };
     html += '<section class="section"><div class="container">' +
-      '<div class="section-head"><h2>' + esc(t.familyPlan) + '</h2></div>' +
+      '<div class="section-head"><h2 id="tool-plan">' + esc(t.familyPlan) + '</h2></div>' +
       '<div class="plan-card">' +
         planField(t.planMembers, 'members', plan.members) +
         planField(t.planMeeting, 'meeting', plan.meeting) +
@@ -2114,11 +2134,10 @@
 
     /* ---- 避险要点 ---- */
     html += '<section class="section section-alt"><div class="container">' +
-      '<div class="section-head"><h2>' + esc(t.evacuationTips) + '</h2></div>' +
+      '<div class="section-head"><h2 id="tool-evacuation">' + esc(t.evacuationTips) + '</h2></div>' +
       '<div class="tip-list">' +
-        tips.map(function (tip, i) {
-          var num = String(i + 1);
-          return '<div class="tip-card"><b>TIP ' + (num.length < 2 ? '0' + num : num) + '</b>' + esc(tip) + '</div>';
+        tips.map(function (tip) {
+          return '<div class="tip-card">' + esc(tip) + '</div>';
         }).join('') +
       '</div>' +
       '<div class="disclaimer-row"><button class="btn btn-outline" data-action="show-disclaimer">' + esc(t.disclaimer) + '</button></div>' +
@@ -2295,7 +2314,7 @@
 
   function switchRow(label, checked, action) {
     return '<div class="set-row"><span class="set-row-label">' + esc(label) + '</span>' +
-      '<label class="switch"><input type="checkbox" data-action="' + action + '" ' + (checked ? 'checked' : '') + '>' +
+      '<label class="switch"><input type="checkbox" aria-label="' + esc(label) + '" data-action="' + action + '" ' + (checked ? 'checked' : '') + '>' +
       '<span class="switch-track"></span></label></div>';
   }
 
@@ -2304,22 +2323,35 @@
   function startNotifier() {
     clearInterval(notifierTimer);
     if (wx.getStorageSync('notif_enabled') !== '1') { return; }
-    var mins = parseInt(wx.getStorageSync('notif_interval') || '30', 10);
-    notifierTimer = setInterval(checkNotif, mins * 60000);
+    var saved = Number(wx.getStorageSync('notif_interval'));
+    var minutes = [15, 30, 60].includes(saved) ? saved : 30;
+    notifierTimer = setInterval(checkNotif, minutes * 60000);
   }
   function checkNotif() {
-    api.fetchAll(currentRegion()).then(function (res) {
-      if (!res.ok) { return; }
-      var notified = wx.getStorageSync('notif_notified') || [];
-      var fresh = (res.alerts || []).filter(function (a) { return notified.indexOf(a.id) < 0; });
-      if (fresh.length) {
-        fresh.forEach(function (a) {
-          try {
-            new Notification(i18n.alertTitle(a.title, a.type, a.level, lang()), { body: i18n.areaName(a.area, a.cityName, lang()) || '' });
-          } catch (e) { }
-        });
-        wx.setStorageSync('notif_notified', notified.concat(fresh.map(function (a) { return a.id; })));
-      }
+    if (!('Notification' in window) || Notification.permission !== 'granted') { return; }
+    var region = currentRegion();
+    api.fetchAll(region).then(function (res) {
+      if (!res.ok || res.mock || currentRegion().adcode !== region.adcode || wx.getStorageSync('notif_enabled') !== '1') { return; }
+      var saved = wx.getStorageSync('notif_notified');
+      var notified = new Set(Array.isArray(saved) ? saved : []);
+      var now = Date.now();
+      (res.alerts || []).forEach(function (alert) {
+        if (notified.has(alert.id) || reliability.freshness(alert.checkedAt || res.fetchedAt, now) !== 'available' ||
+            reliability.warningValidity(alert, now) !== 'active') { return; }
+        try {
+          var notice = new Notification(i18n.alertTitle(alert.title, alert.type, alert.level, lang()), {
+            body: i18n.areaName(alert.area, alert.cityName, lang()) || '',
+            tag: alert.id
+          });
+          notice.onclick = function () {
+            window.focus();
+            location.hash = '#/detail?id=' + encodeURIComponent(alert.id);
+            notice.close();
+          };
+          notified.add(alert.id);
+        } catch (e) { /* This browser may support notifications only through a service worker. */ }
+      });
+      wx.setStorageSync('notif_notified', Array.from(notified));
     });
   }
   function toggleNotif() {
@@ -2348,8 +2380,12 @@
       wx.showToast({ title: T().notifBlocked, icon: 'none' });
       return;
     }
-    try { new Notification(T().notifTest, { body: T().appName }); } catch (e) { }
-    wx.showToast({ title: T().notifSent, icon: 'none' });
+    try {
+      new Notification(T().notifTest, { body: T().appName });
+      wx.showToast({ title: T().notifSent, icon: 'none' });
+    } catch (e) {
+      wx.showToast({ title: T().notifBlocked, icon: 'none' });
+    }
   }
 
   function showDisclaimer() {
@@ -2412,13 +2448,7 @@
    * 路由
    * ================================================================ */
   function parseQuery(qs) {
-    var out = {};
-    (qs || '').split('&').forEach(function (pair) {
-      if (!pair) { return; }
-      var kv = pair.split('=');
-      out[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
-    });
-    return out;
+    return Object.fromEntries(new URLSearchParams(qs || ''));
   }
 
   function focusDetails(selector) {
@@ -2435,8 +2465,9 @@
     var parts = raw.replace(/^#/, '').split('?');
     var path = parts[0] || '/home';
     var query = parseQuery(parts[1]);
+    if (window.NDLiveBulletins) { window.NDLiveBulletins.unmount(); }
     window.scrollTo(0, 0);
-    renderNav(path === '/map' ? '/china' : path === '/disasters' ? '/global' : path);
+    renderNav((path === '/map' || path === '/detail') ? '/china' : path === '/disasters' ? '/global' : path);
     document.body.classList.toggle('main-page', path === '/home');
     closeDrawer();
     clearInterval(countdownTimer);
@@ -2459,6 +2490,22 @@
         renderHome();
         if (!preservePosition && query.section === 'alerts') { focusDetails('#localHeading'); }
         break;
+      case '/bulletins':
+        viewEl.innerHTML = '<div class="bulletins-page">' + window.NDLiveBulletins.render(lang()) + '</div>';
+        window.NDLiveBulletins.mount(viewEl, lang());
+        document.title = web('bulletinsNav');
+        break;
+      case '/sources':
+        viewEl.innerHTML = '<div class="sources-page"><div class="container">' + window.NDSourceGuide.render(lang()) + '</div></div>';
+        document.title = web('sourcesNav');
+        if (query.source) {
+          var disclosure = document.getElementById('source-' + query.source);
+          if (disclosure && disclosure.matches('.source-guide details')) {
+            disclosure.open = true;
+            focusDetails('#' + CSS.escape(disclosure.id) + ' summary');
+          }
+        }
+        break;
       case '/rescue': window.NDRescue.render(viewEl, query); break;
       case '/disasters': window.NDDisasterList.render(viewEl, query); break;
       case '/global': renderGlobal(); break;
@@ -2476,8 +2523,16 @@
           if (topicIndex >= 0) { guideIndex = topicIndex; }
         }
         renderGuide();
+        if (!preservePosition && query.topic && topicIndex >= 0) { focusDetails('.guide-content h2'); }
         break;
-      case '/tools': renderTools(); break;
+      case '/tools':
+        if (!preservePosition && query.section === 'first-aid' && query.topic) {
+          var aidIndex = i18n.firstaid(lang()).findIndex(function (card) { return card.id === query.topic; });
+          if (aidIndex >= 0) { aidState = { tab: aidIndex, step: 0 }; }
+        }
+        renderTools();
+        if (!preservePosition && Object.hasOwn(toolSections, query.section)) { focusDetails('#tool-' + query.section); }
+        break;
       case '/products':
         if (window.NDGames) { window.NDGames.stop(); }
         productsState.game = ['aqua', 'pyro'].includes(query.game) ? query.game : null;
@@ -2515,6 +2570,7 @@
     var action = el.dataset.action;
     var d = el.dataset;
     switch (action) {
+      case 'skip-content': viewEl.focus(); break;
       case 'toggle-drawer': toggleDrawer(); break;
       case 'alert-filter': homeFilter.level = d.value || 'all'; softRerender(); break;
       case 'open-search': if (search) { search.open(); } break;
@@ -2524,6 +2580,7 @@
         dbState.q = '';
         renderDatabase();
         break;
+      case 'db-retry': loadDatabase(); break;
       case 'db-search': {
         var dbSearch = document.getElementById('dbSearch');
         dbState.q = dbSearch ? dbSearch.value.trim() : '';
@@ -2583,10 +2640,6 @@
         softRerender();
         break;
       case 'rec-toggle': toggleMaterialIndex(parseInt(d.index, 10)); break;
-      case 'guide-cat':
-        guideIndex = parseInt(d.index, 10) || 0;
-        renderGuide();
-        break;
       case 'mark-read': markGuideRead(); break;
       case 'aid-tab':
         aidState.tab = parseInt(d.index, 10) || 0;
@@ -2707,14 +2760,6 @@
   });
   loadAccess();
 
-  /* 全息地球背景 */
-  var bgCanvas = document.getElementById('bgGlobe');
-  if (bgCanvas) {
-    globe = holo.create(bgCanvas);
-    refreshMaps();
-    window.setInterval(function () { if (document.body.classList.contains('main-page')) loadGlobeHazards(); }, 60000);
-  }
-
   if (window.NDSearch) {
     search = window.NDSearch.create({
       esc: esc,
@@ -2730,16 +2775,7 @@
         if ((location.hash || '#/home') === hash) { route(); }
         else { location.hash = hash; }
       },
-      openGuide: function (i) {
-        guideIndex = i;
-        if ((location.hash || '').split('?')[0] === '#/guide') { renderGuide(); }
-        else { location.hash = '#/guide'; }
-      },
-      openProduct: function (type) {
-        productsState.game = type;
-        if ((location.hash || '').split('?')[0] === '#/products') { renderProducts(); }
-        else { location.hash = '#/products'; }
-      },
+
       selectCity: function (city) {
         homeState.province = city.province || '';
         homeState.city = city.name;
@@ -2775,8 +2811,14 @@
       dbState.page = 1;
       renderDbBody();
     } else if (e.key === 'Escape') {
-      closeDbDetail();
-    } else if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.db-row')) {
+      var drawer = document.getElementById('navDrawer');
+      if (drawer && drawer.classList.contains('open')) {
+        closeDrawer();
+        document.querySelector('.nav-toggle').focus();
+      } else {
+        closeDbDetail();
+      }
+    } else if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.db-row')) {
       e.preventDefault();
       showDbDetail(e.target.getAttribute('data-kind'), parseInt(e.target.getAttribute('data-idx'), 10));
     }

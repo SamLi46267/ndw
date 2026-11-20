@@ -57,17 +57,6 @@
 [data-theme="light"] :is(#navbar .navbar, .nav-drawer, .site-footer) { background: var(--card-solid); border-color: var(--border); color: var(--text); }
 [data-theme="light"] :is(.navbar .brand, .navbar .nav-link:hover, .site-footer h4) { color: var(--text); }
 [data-theme="light"] #navbar .nav-link.active { background: var(--holo-soft); color: var(--holo-bright); box-shadow: none; }
-[data-theme="light"] .main-landing {
-  background: linear-gradient(180deg, rgba(244, 246, 242, .04), rgba(244, 246, 242, .24) 58%, var(--bg) 100%);
-}
-[data-theme="light"] body.main-page .bg-globe { opacity: .86; }
-[data-theme="light"] .main-copy {
-  text-shadow: 0 0 6px var(--bg), 0 0 12px var(--bg), 0 0 18px var(--bg);
-}
-[data-theme="light"] .main-copy :is(button, .btn) { text-shadow: none; }
-[data-theme="light"] .main-copy :is(.home-lang-btn:not(.active), .btn-outline) { background: var(--card-solid); }
-[data-theme="light"] .main-copy :is(.home-lang-btn:not(.active), .btn-outline):hover { background: var(--holo-soft); }
-[data-theme="light"] .main-overview { background: var(--card-solid); box-shadow: var(--shadow-card); }
 [data-theme="light"] .home-lang-btn.active { background: var(--holo); border-color: var(--holo); color: #fff; }
 
 [data-theme="light"] :is(.btn-green, .home-dashboard .hero .btn-green) { background: var(--holo); border-color: var(--holo); color: #fff; }
@@ -210,3 +199,10 @@
 [data-theme="light"] .product-card h3 { color: var(--text); }
 [data-theme="light"] .product-card p { color: var(--text-mid); }
 [data-theme="light"] .gchina { background: var(--holo-soft) !important; color: var(--holo-bright) !important; border-color: var(--holo-line) !important; }
+
+
+/* The satellite masthead has its own contrast palette in both themes. */
+[data-theme="light"] .main-copy .home-lang-btn.active { background: #d3eee3; border-color: #d3eee3; color: #17332d; }
+[data-theme="light"] .main-copy .btn-green { background: #b4ecd5; color: #0e302a; border-color: #b4ecd5; }
+[data-theme="light"] .main-copy .btn-outline { background: #142c30; border-color: #78958e; color: #edf6f2; }
+[data-theme="light"] .main-copy .btn:hover { background: #e2f5eb; border-color: #b7e8d6; color: #102a24; }

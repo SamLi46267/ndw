@@ -11,6 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { mergeQuakeRows } from './alert-history.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..');
@@ -38,20 +39,33 @@ async function fetchJson(url) {
   return res.json();
 }
 
+export function usgsQuery(start, end) {
+  const url = new URL('https://earthquake.usgs.gov/fdsnws/event/1/query');
+  url.search = new URLSearchParams({
+    format: 'geojson', starttime: start.toISOString(), endtime: end.toISOString(),
+    minmagnitude: '2.5', orderby: 'time'
+  }).toString();
+  return url.href;
+}
+
+export function usgsRows(collection) {
+  const rows = [];
+  for (const feature of collection.features || []) {
+    const p = feature.properties || {};
+    const [lon, lat, depth] = feature.geometry?.coordinates || [];
+    if (!Number.isFinite(p.time) || !Number.isFinite(p.mag) || !Number.isFinite(lon) ||
+        !Number.isFinite(lat) || Math.abs(lon) > 180 || Math.abs(lat) > 90) continue;
+    rows.push([p.time, lon, lat, Number.isFinite(depth) ? depth : null, p.mag,
+      p.place || '', p.type || 'earthquake', feature.id]);
+  }
+  return rows;
+}
+
 async function collectRecent() {
   const end = new Date(NOW);
   const start = new Date(NOW.getTime() - 30 * DAY);
-  const url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson' +
-    '&starttime=' + isoDate(start) + '&endtime=' + isoDate(end) +
-    '&minmagnitude=2.5&orderby=time';
-  const data = await fetchJson(url);
-  const rows = [];
-  (data.features || []).forEach((f) => {
-    const p = f.properties || {};
-    const c = (f.geometry && f.geometry.coordinates) || [];
-    if (!isFinite(p.time) || !isFinite(c[0]) || !isFinite(c[1]) || !isFinite(p.mag)) { return; }
-    rows.push([p.time, c[0], c[1], isFinite(c[2]) ? c[2] : 0, p.mag, p.place || '', p.type || 'earthquake', f.id]);
-  });
+  const data = await fetchJson(usgsQuery(start, end));
+  const rows = usgsRows(data);
   rows.sort((a, b) => b[0] - a[0]);
   const out = {
     source: 'USGS',
@@ -68,38 +82,30 @@ function monthStart(d) { return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMo
 function nextMonth(d) { return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)); }
 function monthEnd(d) { return new Date(nextMonth(d).getTime() - DAY); }
 
+// USGS includes both endpoints. Cover each UTC millisecond once across adjacent queries.
+export function usgsMonthEnd(month, runTime) {
+  return new Date(Math.min(nextMonth(month).getTime() - 1, runTime.getTime()));
+}
+
 async function collectEarthquakeArchive() {
   const start = monthStart(new Date(Date.UTC(NOW.getUTCFullYear(), NOW.getUTCMonth() - 23, 1)));
   const end = new Date(NOW);
   const existing = readJson(ARCHIVE_FILE, { rows: [] });
-  const map = new Map();
-  (existing.rows || []).forEach((r) => {
-      map.set(r[0] + ':' + Number(r[1]).toFixed(3) + ':' + Number(r[2]).toFixed(3), r);
-  });
+  const incoming = [];
   for (let d = start; d <= end; d = nextMonth(d)) {
-    const from = isoDate(d);
-    const to = isoDate(monthEnd(d) > end ? end : monthEnd(d));
-    const url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson' +
-      '&starttime=' + from + '&endtime=' + to +
-      '&minmagnitude=2.5&orderby=time';
+    const month = d.toISOString().slice(0, 7);
     try {
-      const data = await fetchJson(url);
-      (data.features || []).forEach((f) => {
-        const p = f.properties || {};
-        const c = (f.geometry && f.geometry.coordinates) || [];
-        if (!isFinite(p.time) || !isFinite(c[0]) || !isFinite(c[1]) || !isFinite(p.mag)) { return; }
-        map.set(p.time + ':' + Number(c[0]).toFixed(3) + ':' + Number(c[1]).toFixed(3),
-          [p.time, c[0], c[1], isFinite(c[2]) ? c[2] : 0, p.mag, p.place || '', p.type || 'earthquake', f.id]);
-      });
-      console.log('USGS ' + from.slice(0, 7) + ': ' + (data.features || []).length);
+      const data = await fetchJson(usgsQuery(d, usgsMonthEnd(d, end)));
+      incoming.push(...usgsRows(data));
+      console.log('USGS ' + month + ': ' + (data.features || []).length);
     } catch (err) {
-      console.warn('USGS ' + from.slice(0, 7) + ' failed: ' + (err.message || err));
+      console.warn('USGS ' + month + ' failed: ' + (err.message || err));
     }
     await new Promise((r) => setTimeout(r, 120));
   }
-  const rows = Array.from(map.values()).sort((a, b) => b[0] - a[0]);
+  const rows = mergeQuakeRows(existing.rows || [], incoming);
   writeJson(ARCHIVE_FILE, {
-    source: 'USGS',
+    source: /apizero/i.test(existing.source || '') ? 'USGS / APIZERO' : 'USGS',
     timezone: 'UTC',
     generatedAt: NOW.toISOString(),
     count: rows.length,
@@ -155,7 +161,9 @@ async function main() {
   await collectEarthquakeArchive();
   await collectGdacsHistory();
 }
-main().catch((err) => {
-  console.error('History collection failed:', err && err.message ? err.message : err);
-  process.exitCode = 1;
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((err) => {
+    console.error('History collection failed:', err && err.message ? err.message : err);
+    process.exitCode = 1;
+  });
+}

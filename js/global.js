@@ -3,7 +3,7 @@
   var W = 1000, H = 500;
   var state = {
     mode: 'live', hmin: 4.5, selected: null, country: null,
-    layers: { affected: true, population: false, evacuation: false, infrastructure: false, gdacs: true },
+    layers: { cities: false, gdacs: true },
     loading: true, error: '', live: null, history: null, el: null, ctx: null,
     zoom: 1, panX: 0, panY: 0, fullscreen: false, gdacsType: 'all', gdacsAlert: 'all', historyRange: '30d'
   };
@@ -17,6 +17,24 @@
   function esc(v) { return state.ctx.esc(v); }
   function lang() { return state.ctx.lang(); }
 
+  var mapLabels = {
+    cities: ['城市位置', 'City locations', 'Ubicaciones de ciudades', 'Emplacement des villes', 'Posizioni delle città'],
+    flag: ['带海啸标记的记录', 'Tsunami-flagged records', 'Registros con indicador de tsunami', 'Fiches avec indicateur tsunami', 'Record con indicatore tsunami'],
+    flagMeaning: ['地震记录中的海啸标记用于提示查阅海啸信息。请查看官方公告以确认警报状态。', 'An earthquake record’s tsunami flag points readers to tsunami information. Check official bulletins for warning status.', 'El indicador de un registro sísmico remite a información sobre tsunamis. Consulta los boletines oficiales para conocer el estado de las alertas.', 'L’indicateur d’une fiche sismique renvoie aux informations sur les tsunamis. Consultez les bulletins officiels pour connaître les alertes en vigueur.', 'L’indicatore in una scheda sismica rimanda a informazioni sugli tsunami. Consulta i bollettini ufficiali per lo stato delle allerte.'],
+    tsunamiCentre: ['海啸官方公告', 'Official tsunami bulletins', 'Boletines oficiales de tsunami', 'Bulletins officiels sur les tsunamis', 'Bollettini ufficiali sugli tsunami'],
+    glossary: ['USGS 字段说明', 'USGS field definitions', 'Definiciones de campos del USGS', 'Définitions des champs de l’USGS', 'Definizioni dei campi USGS'],
+    flagged: ['来源已标记', 'Flagged by source', 'Marcado por la fuente', 'Signalé par la source', 'Segnalato dalla fonte'],
+    unflagged: ['来源未标记', 'No source flag', 'Sin indicador de la fuente', 'Aucun indicateur de la source', 'Nessun indicatore della fonte'],
+    significance: ['显著性评分', 'Significance score', 'Puntuación de relevancia', 'Indice d’importance', 'Indice di rilevanza'],
+    recent: ['近期地震', 'Recent earthquakes', 'Terremotos recientes', 'Séismes récents', 'Terremoti recenti'],
+    list: ['地图上的报告', 'Mapped reports', 'Informes en el mapa', 'Rapports sur la carte', 'Rapporti sulla mappa'],
+    overdue: ['地震快照已过期或采集时间未知。请查看事件时间及官方来源。', 'The earthquake snapshot is overdue or has no verified collection time. Check event times and the source.', 'Los datos sísmicos están atrasados o carecen de una hora de consulta verificada. Consulta las horas de los eventos y la fuente.', 'Les données sismiques sont en retard ou la date de collecte est inconnue. Consultez les heures des événements et la source.', 'I dati sismici sono in ritardo o privi di un orario di raccolta verificato. Controlla gli orari degli eventi e la fonte.'],
+    lastListed: ['上次列出', 'Last listed', 'En la última lista', 'Dernière liste', 'Nell’ultimo elenco'],
+    significanceFilter: ['M4.5 及以上', 'Magnitude 4.5 and above', 'Magnitud 4,5 o superior', 'Magnitude de 4,5 ou plus', 'Magnitudo di almeno 4,5'],
+    unknown: ['未报告', 'Unreported', 'Sin informar', 'Non indiqué', 'Non segnalato']
+  };
+  function label(key) { return mapLabels[key][Math.max(0, ['zh', 'en', 'es', 'fr', 'it'].indexOf(lang()))]; }
+
   function fetchJson(url) {
     return fetch(url, { cache: 'no-cache' }).then(function (r) {
       if (!r.ok) { throw new Error(url + ' HTTP ' + r.status); }
@@ -27,19 +45,12 @@
     if (!ms) { return '—'; }
     try {
       var opt = dateOnly
-        ? { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }
-        : { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+        ? { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit' }
+        : { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' };
       return new Intl.DateTimeFormat(lang() === 'zh' ? 'zh-CN' : lang(), opt).format(new Date(ms));
-    } catch (e) { return new Date(ms).toLocaleString(); }
+    } catch (e) { return '—'; }
   }
   function proj(lon, lat) { return { x: (lon + 180) / 360 * W, y: (90 - lat) / 180 * H }; }
-  function radiusKm(m) { return Math.max(60, (m - 2) * 180); }
-  function kmToUnits(km) { return km / 111.32 * (H / 180); }
-  function distKm(lon1, lat1, lon2, lat2) {
-    var R = 6371, dLat = (lat2 - lat1) * Math.PI / 180, dLon = (lon2 - lon1) * Math.PI / 180;
-    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  }
   function ringPath(ring) {
     var out = '';
     for (var i = 0; i < ring.length; i++) {
@@ -107,6 +118,7 @@
           name: f.properties.name,
           iso: f.properties.iso2 || '',
           d: d,
+          polygons: geo.type === 'MultiPolygon' ? geo.coordinates : [geo.coordinates],
           lon: n ? sx / n : 0,
           lat: n ? sy / n : 0,
           bbox: { minLon: minLon, maxLon: maxLon, minLat: minLat, maxLat: maxLat }
@@ -123,36 +135,40 @@
   function historyRows() {
     var hist = state.history;
     if (!hist || !hist.rows) { return []; }
-    var minTime = Date.now() - historyDays() * 86400000;
+    var now = Date.now();
+    var minTime = now - historyDays() * 86400000;
     var rows = hist.rows.filter(function (r) {
-      return Number(r[4]) >= state.hmin && Number(r[0]) >= minTime;
+      return GdacsStatus.isEarthquakeType(r[6]) &&
+        Number.isFinite(r[0]) && r[0] >= minTime && r[0] <= now &&
+        Number.isFinite(r[1]) && Number.isFinite(r[2]) &&
+        Number.isFinite(r[4]) && r[4] >= state.hmin;
     });
     rows.sort(function (a, b) { return b[4] - a[4] || b[0] - a[0]; });
-    return rows.slice(0, 1200);
+    return rows;
   }
   function currentQuakes() {
     if (state.mode === 'live') {
       var live = state.live;
       if (!live || !live.earthquakes) { return []; }
-      return live.earthquakes.map(function (q) {
+      return GdacsStatus.recentQuakes(live, Date.now()).map(function (q) {
         return {
           kind: 'quake',
           id: q.id, mag: Number(q.magnitude), place: q.place, time: q.timestamp,
-          lon: Number(q.longitude), lat: Number(q.latitude), depth: Number(q.depth_km),
-          tsunami: !!q.tsunami, alert: q.alert, significance: q.significance,
-          mmi: q.intensity_mmi, url: q.url || '', source: live.sourceName || live.source || 'USGS',
+          lon: Number(q.longitude), lat: Number(q.latitude), depth: q.depth_km,
+          tsunami: q.tsunami, alert: q.alert, significance: q.significance,
+          mmi: q.intensity_mmi, url: GdacsStatus.reportUrl(q.url), source: live.sourceName || live.source || 'USGS',
           eventType: q.event_type || 'earthquake'
         };
       }).filter(function (q) { return isFinite(q.mag) && isFinite(q.lon) && isFinite(q.lat); });
     }
     var hist = state.history;
     if (!hist || !hist.rows) { return []; }
-    return historyRows().map(function (r, i) {
+    return historyRows().map(function (r) {
       return {
         kind: 'quake',
-        id: 'h' + i, mag: Number(r[4]), place: r[5], time: r[0], lon: Number(r[1]), lat: Number(r[2]),
-        depth: Number(r[3]), tsunami: false, alert: null, significance: null, mmi: null, url: '',
-        source: hist.source || 'USGS', eventType: 'earthquake'
+        id: String(r[7] || [r[0], r[1], r[2]].join(':')), mag: Number(r[4]), place: r[5], time: r[0], lon: Number(r[1]), lat: Number(r[2]),
+        depth: r[3], tsunami: null, alert: null, significance: null, mmi: null, url: '',
+        source: hist.source || 'USGS', eventType: r[6] || 'earthquake'
       };
     });
   }
@@ -170,7 +186,8 @@
   function gdacsAlertColor(alert, text) {
     if (alert === 'red') { return text ? 'var(--gdacs-alert-red, #ff5252)' : '#ff5252'; }
     if (alert === 'orange') { return text ? 'var(--gdacs-alert-orange, #ff9a3c)' : '#ff9a3c'; }
-    return text ? 'var(--gdacs-alert-green, #43e8a0)' : '#43e8a0';
+    if (alert === 'green') return text ? 'var(--gdacs-alert-green, #43e8a0)' : '#43e8a0';
+    return 'var(--text-mid)';
   }
   function gdacsTypeLabel(type) {
     if (type === 'WF') { return web('gdacsWildfire'); }
@@ -178,12 +195,13 @@
     if (type === 'TC') { return web('gdacsCyclone'); }
     if (type === 'VO') return window.NDLocale.phrase('火山','Volcano',lang());
     if (type === 'TS') return window.NDLocale.phrase('海啸','Tsunami',lang());
-    return web('gdacsDrought');
+    if (type === 'DR') return web('gdacsDrought');
+    return type || label('unknown');
   }
   function gdacsAlertLabel(alert) {
     if (alert === 'red') { return web('gdacsRed'); }
     if (alert === 'orange') { return web('gdacsOrange'); }
-    return web('gdacsGreen');
+    return alert === 'green' ? web('gdacsGreen') : label('unknown');
   }
   function normalizeGdacs(data) {
     var seen = {};
@@ -192,14 +210,14 @@
       var p = f.properties || {};
       var c = (f.geometry && f.geometry.coordinates) || [];
       var id = p.eventtype + '-' + p.eventid + '-' + p.episodeid;
-      if (seen[id] || !isFinite(c[0]) || !isFinite(c[1])) { return; }
+      if (seen[id] || !Number.isFinite(c[0]) || Math.abs(c[0]) > 180 || !Number.isFinite(c[1]) || Math.abs(c[1]) > 90) { return; }
       seen[id] = 1;
       out.push({
         kind: 'gdacs', id: id, type: p.eventtype, name: /^event in rss format$/i.test(p.name || '') ? (p.htmldescription || p.eventtype + ' · ' + p.country) : (p.name || p.description || ''),
         country: p.country || '', alert: String(p.alertlevel || '').toLowerCase(),
         active: p._active !== false, status: p,
         from: p.fromdate || '', to: p.todate || '', modified: p.datemodified || '',
-        source: p.source || 'GDACS', url: (p.url && p.url.report) || '',
+        source: p.source || 'GDACS', url: GdacsStatus.reportUrl(p.url && p.url.report),
         description: p.htmldescription || p.description || '',
         severity: (p.severitydata && p.severitydata.severitytext) || '',
         lon: Number(c[0]), lat: Number(c[1])
@@ -214,7 +232,8 @@
       var historical = normalizeGdacs({ features: ((cache.gdacsRaw && cache.gdacsRaw.features) || []) });
       var combined = {};
       (cache.gdacsHistory || []).concat(historical).forEach(function (g) { combined[g.id] = g; });
-      var minTime = Date.now() - historyDays() * 86400000;
+      var now = Date.now();
+    var minTime = now - historyDays() * 86400000;
       return Object.keys(combined).map(function (id) { return combined[id]; }).filter(function (g) {
         if (Math.max(gdacsMs(g), gdacsParse(g.to)) < minTime) { return false; }
         if (state.gdacsType === 'EQ') { return false; }
@@ -244,22 +263,25 @@
       return String(q.alert || '').toLowerCase() === state.gdacsAlert;
     });
   }
-  function gdacsInCountry() {
-    if (!state.country) { return currentGdacs(); }
-    var c = (cache.paths || []).filter(function (p) { return p.name === state.country; })[0];
-    if (!c) { return currentGdacs(); }
-    return currentGdacs().filter(function (g) { return distKm(c.lon, c.lat, g.lon, g.lat) <= 1500; });
+  function insideRing(lon, lat, ring) {
+    var inside = false;
+    for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      var a = ring[i], b = ring[j];
+      if ((a[1] > lat) !== (b[1] > lat) && lon < (b[0] - a[0]) * (lat - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    }
+    return inside;
   }
-  function quakesInCountry(quakes) {
-    if (!state.country) { return quakes; }
-    var c = (cache.paths || []).filter(function (p) { return p.name === state.country; })[0];
-    if (!c) { return quakes; }
-    return quakes.filter(function (q) { return distKm(c.lon, c.lat, q.lon, q.lat) <= 1500; });
-  }
-  function countryHit(name, quakes) {
-    var c = (cache.paths || []).filter(function (p) { return p.name === name; })[0];
-    if (!c) { return false; }
-    return quakes.some(function (q) { return distKm(c.lon, c.lat, q.lon, q.lat) <= radiusKm(q.mag); });
+  function recordsInCountry(records) {
+    if (!state.country) return records;
+    var country = cache.paths.find(function (p) { return p.name === state.country; });
+    if (!country) return [];
+    return records.filter(function (record) {
+      var lon = record.lon, lat = record.lat, box = country.bbox;
+      if (lon < box.minLon || lon > box.maxLon || lat < box.minLat || lat > box.maxLat) return false;
+      return country.polygons.some(function (rings) {
+        return insideRing(lon, lat, rings[0]) && !rings.slice(1).some(function (hole) { return insideRing(lon, lat, hole); });
+      });
+    });
   }
 
   function header(data, quakes) {
@@ -267,13 +289,13 @@
     var total = quakes.length;
     var max = quakes.reduce(function (m, q) { return Math.max(m, q.mag); }, 0);
     var sig = quakes.filter(function (q) { return q.mag >= 4.5; }).length;
-    var capped = total > quakes.length;
+    var reliableCount = !isLive || GdacsStatus.quakeSnapshotFresh(data, Date.now());
     var tsu = quakes.filter(function (q) { return q.tsunami; }).length;
     var source = isLive ? (data.sourceName || data.source || 'USGS') : (data.source || 'CnOpenData');
-    var dataTime = isLive ? (data.generatedAt || data.fetchedAt) : (data.range ? data.range[1] : '');
+    var dataTime = isLive ? data.fetchedAt : (data.range ? data.range[1] : '');
     var listHref = '#/disasters?mode=' + state.mode + (isLive ? '' : '&days=' + historyDays());
     var quakeHref = listHref + '&source=quake&type=EQ' +
-      (isLive ? '' : '&minMag=' + state.hmin) +
+      (isLive ? '' : '&catalog=recent&minMag=' + state.hmin) +
       (state.gdacsAlert === 'all' ? '' : '&alert=' + state.gdacsAlert);
     var hazardHref = listHref + '&source=gdacs&type=' + encodeURIComponent(state.gdacsType) +
       (state.gdacsAlert === 'all' ? '' : '&alert=' + state.gdacsAlert);
@@ -281,11 +303,10 @@
       return '<a class="gkpi detail-card-link" href="' + esc(href) + '"><span>' + esc(label) + '</span><b style="color:' + (magnitude == null ? 'var(--text)' : window.NDCore.magnitudeColor(magnitude, true)) + '">' + esc(value) + '</b><small>' + esc(sub || '') + '</small></a>';
     }
     var layerDefs = [
-      ['gdacs', web('gdacsLayer')], ['affected', web('affected')], ['population', web('population')],
-      ['evacuation', web('evacuation')], ['infrastructure', web('infrastructure')]
+      ['gdacs', web('gdacsLayer')], ['cities', label('cities')]
     ];
     var layers = layerDefs.map(function (l) {
-      return '<button type="button" class="glayer' + (state.layers[l[0]] ? ' active' : '') + '" data-g="layer" data-v="' + l[0] + '">' + esc(l[1]) + '</button>';
+      return '<button type="button" class="glayer' + (state.layers[l[0]] ? ' active' : '') + '" aria-pressed="' + !!state.layers[l[0]] + '" data-g="layer" data-v="' + l[0] + '">' + esc(l[1]) + '</button>';
     }).join('');
     var countryOpts = '<option value="">' + esc(web('countryLabel')) + '</option>' + (cache.paths || []).slice().sort(function (a, b) { return a.name < b.name ? -1 : 1; }).map(function (p) {
       return '<option value="' + esc(p.name) + '"' + (state.country === p.name ? ' selected' : '') + '>' + esc(p.name) + '</option>';
@@ -298,12 +319,13 @@
     }).join('');
     var showQuakes = state.gdacsType === 'all' || state.gdacsType === 'EQ';
     var gdacs = currentGdacs();
+    var gdacsAvailable = isLive ? !!cache.gdacsRaw : !!cache.gdacsHistory;
     var kpiHtml;
     if (showQuakes) {
-      kpiHtml = kpi(isLive ? web('activeQuakes') : web('quakeRecords'), total, capped ? 'Top ' + quakes.length : (isLive ? web('live') : web('records')), quakeHref) +
-        kpi(web('maxMagnitude'), total ? 'M' + max.toFixed(1) : '—', '', quakeHref + '&sort=magnitude', total ? max : null) +
-        kpi(web('significantQuakes'), sig, 'M4.5+', quakeHref + '&significant=1') +
-        (isLive ? kpi(web('tsunamiAlerts'), tsu, '', quakeHref + '&tsunami=1') : '');
+      kpiHtml = kpi(isLive ? label('recent') : web('quakeRecords'), reliableCount ? total : '—', isLive ? '24 h' : web('records'), quakeHref) +
+        kpi(web('maxMagnitude'), reliableCount && total ? 'M' + max.toFixed(1) : '—', '', quakeHref + '&sort=magnitude', total ? max : null) +
+        kpi(label('significanceFilter'), reliableCount ? sig : '—', '', quakeHref + '&significant=1') +
+        (isLive ? kpi(label('flag'), reliableCount ? tsu : '—', '', quakeHref + '&tsunami=1') : '');
     } else {
       var active = gdacs.filter(function (g) { return g.active !== false; }).length;
       var alertRank = { green: 1, orange: 2, red: 3 };
@@ -312,13 +334,13 @@
         if ((alertRank[g.alert] || 0) > (alertRank[maxAlert] || 0)) { maxAlert = g.alert; }
         if (g.country) { countries[g.country] = 1; }
       });
-      kpiHtml = kpi(web('gdacsEvents'), String(gdacs.length), web('gdacsLayer'), hazardHref) +
-        kpi(web('live'), String(active), '', hazardHref + '&active=1') +
+      kpiHtml = kpi(web('gdacsEvents'), gdacsAvailable ? String(gdacs.length) : '—', web('gdacsLayer'), hazardHref) +
+        kpi(label('lastListed'), gdacsAvailable ? String(active) : '—', '', hazardHref + '&active=1') +
         kpi(web('gdacsAlert'), maxAlert ? gdacsAlertLabel(maxAlert) : '—', '', hazardHref + (state.gdacsAlert === 'all' && maxAlert ? '&alert=' + maxAlert : '')) +
-        kpi(web('countryLabel'), String(Object.keys(countries).length), '', hazardHref + '&withCountry=1');
+        kpi(web('countryLabel'), gdacsAvailable ? String(Object.keys(countries).length) : '—', '', hazardHref + '&withCountry=1');
     }
     return '<div class="global-head">' +
-        '<div class="global-head-main"><div class="eyebrow">GLOBAL DISASTER MONITOR</div>' +
+        '<div class="global-head-main">' +
           '<h1>' + esc(web('globalTitle')) + '</h1><p>' + esc(web('globalSub')) + '</p></div>' +
         '<div class="global-mode">' +
           '<button type="button" class="' + (isLive ? 'active' : '') + '" data-g="mode" data-v="live">' + esc(web('live')) + '</button>' +
@@ -341,11 +363,11 @@
         '</div>' +
         '<div class="global-layers"><span class="gfl">' + esc(web('layers')) + '</span>' + layers + '</div>' +
       '</div>' +
-      '<div class="global-meta"><span>' + esc(web('sourceLabel')) + ': ' + esc(source) + '</span><span>' + esc(web('dataTime')) + ': ' + esc(fmt(dataTime)) + '</span>' +
+      '<div class="global-meta"><span>' + esc(web('sourceLabel')) + ': ' + esc(source) + '</span><span>' + esc(isLive ? window.NDLocale.phrase('上次采集','Last checked',lang()) : web('dataTime')) + ': ' + esc(fmt(dataTime)) + '</span>' +
         '<span>GDACS · ' + esc(window.NDLocale.phrase('上次采集','Last checked',lang())) + ': ' + esc(fmt(gdacsParse(cache.gdacsRaw && (cache.gdacsRaw.checkedAt || cache.gdacsRaw.generatedAt)))) + ' · ' + esc(window.NDLocale.phrase('GDACS 当前事件列表；非现场确认','GDACS current-event feed; not on-site confirmation',lang())) + '</span>' +
-        (state.layers.gdacs && state.gdacsType !== 'EQ' ? '<span>' + esc(hazardTypeLabel(state.gdacsType)) + ' · GDACS ' + gdacs.length + '</span>' : '') +
+        (state.layers.gdacs && state.gdacsType !== 'EQ' ? '<span>' + esc(hazardTypeLabel(state.gdacsType)) + ' · GDACS ' + (gdacsAvailable ? gdacs.length : '—') + '</span>' : '') +
         (isLive ? '' : '<span>' + esc(web('historyRange')) + ': ' + esc(fmt(data.range && data.range[0], true)) + ' → ' + esc(fmt(data.range && data.range[1], true)) + '</span>') +
-        '<span>' + esc(data.note || '') + '</span></div>';
+        '</div>';
   }
 
   function mapSvg(quakes) {
@@ -357,8 +379,7 @@
     parts.push('<rect x="0" y="0" width="' + W + '" height="' + H + '" fill="transparent"></rect>');
     parts.push('<g class="gcountries">');
     (cache.paths || []).forEach(function (p) {
-      var hit = state.layers.affected && countryHit(p.name, quakes);
-      var cls = 'gcountry' + (hit ? ' hit' : '') + (state.country === p.name ? ' sel' : '');
+      var cls = 'gcountry' + (state.country === p.name ? ' sel' : '');
       parts.push('<path class="' + cls + '" d="' + p.d + '" data-country="' + esc(p.name) + '" vector-effect="non-scaling-stroke"><title>' + esc(p.name) + '</title></path>');
     });
     parts.push('</g>');
@@ -368,32 +389,12 @@
       parts.push('<text x="' + c.x.toFixed(1) + '" y="' + c.y.toFixed(1) + '" text-anchor="middle">' + esc(p.name) + '</text>');
     });
     parts.push('</g>');
-    if (state.layers.affected) {
-      parts.push('<g class="gaffected">');
-      quakes.forEach(function (q) {
-        var p = proj(q.lon, q.lat);
-        var color = window.NDCore.magnitudeColor(q.mag, true);
-        parts.push('<circle class="impact-pulse" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + kmToUnits(radiusKm(q.mag)).toFixed(1) + '" fill="' + color + '" opacity=".16" stroke="' + color + '" stroke-opacity=".55" stroke-width=".6" stroke-dasharray="2 3" vector-effect="non-scaling-stroke"></circle>');
-      });
-      parts.push('</g>');
-    }
-    if (state.layers.population) {
+    if (state.layers.cities) {
       parts.push('<g class="gcities">');
       (cache.cities || []).forEach(function (c) {
         var p = proj(c.lon, c.lat);
         var r = Math.max(0.8, Math.min(2.6, Math.log10(c.pop + 1) - 3.2));
         parts.push('<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + r.toFixed(1) + '" fill="#8ef0ff" opacity=".55"></circle>');
-      });
-      parts.push('</g>');
-    }
-    if (state.layers.infrastructure) {
-      parts.push('<g class="ginfra">');
-      (cache.cities || []).slice(0, 80).forEach(function (c) {
-        var p = proj(c.lon, c.lat);
-        parts.push('<rect x="' + (p.x - 1.2).toFixed(1) + '" y="' + (p.y - 1.2).toFixed(1) + '" width="2.4" height="2.4" fill="#ffd166" opacity=".8"></rect>');
-        if (c.pop > 7000000) {
-          parts.push('<text x="' + (p.x + 3).toFixed(1) + '" y="' + (p.y + 2).toFixed(1) + '" class="gcity-label">' + esc(c.name) + '</text>');
-        }
       });
       parts.push('</g>');
     }
@@ -433,20 +434,13 @@
         } else {
           shape = '<rect x="-4" y="-4" width="8" height="8" rx="1" fill="' + color + '" stroke="#061018" stroke-width=".6"></rect>';
         }
-        parts.push('<g class="gdacs-marker' + (!GdacsStatus.fresh(g.status, Date.now()) ? ' gdacs-overdue' : '') + (sel ? ' sel' : '') + '" data-gdacs="' + esc(g.id) + '" transform="translate(' + p.x.toFixed(1) + ',' + p.y.toFixed(1) + ')" style="color:' + color + '"><g class="gmarker-inner">' +
+        parts.push('<g class="gdacs-marker' + (state.mode === 'live' && !GdacsStatus.fresh(g.status, Date.now()) ? ' gdacs-overdue' : '') + (sel ? ' sel' : '') + '" data-gdacs="' + esc(g.id) + '" transform="translate(' + p.x.toFixed(1) + ',' + p.y.toFixed(1) + ')" style="color:' + color + '"><g class="gmarker-inner">' +
           (sel ? '<circle r="11" fill="none" stroke="' + color + '" stroke-width="1.4"></circle>' : '') +
           shape +
           '<circle class="gdacs-status-ring" r="8" fill="none" stroke="' + alertColor + '" stroke-width="1"></circle>' +
           '<title>' + esc(gdacsTypeLabel(g.type) + ' · ' + g.name + ' · ' + gdacsAlertLabel(g.alert)) + '</title></g></g>');
       });
       parts.push('</g>');
-    }
-    if (state.layers.evacuation && state.selected) {
-      var s = state.selected;
-      var sp = proj(s.lon, s.lat);
-      [100, 200].forEach(function (km) {
-        parts.push('<circle class="gevacuation-ring" cx="' + sp.x.toFixed(1) + '" cy="' + sp.y.toFixed(1) + '" r="' + kmToUnits(km).toFixed(1) + '" fill="none" stroke="#7ef0ff" stroke-width="1" stroke-dasharray="4 4" opacity=".8" vector-effect="non-scaling-stroke"></circle>');
-      });
     }
     parts.push('</g>');
     return '<svg class="gmap" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(web('globalTitle')) + '">' + parts.join('') + '</svg>';
@@ -668,8 +662,12 @@
     drag = null;
   }
 
+  function coordinates(event) {
+    return Math.abs(event.lat).toFixed(2) + '° ' + (event.lat < 0 ? 'S' : 'N') + ', ' +
+      Math.abs(event.lon).toFixed(2) + '° ' + (event.lon < 0 ? 'W' : 'E');
+  }
   function detailHtml(q) {
-    var tsu = window.NDLocale.text(q.tsunami ? 'Yes' : 'No',lang());
+    var tsu = q.tsunami == null ? label('unknown') : label(q.tsunami ? 'flagged' : 'unflagged');
     var mmi = q.mmi == null ? '—' : String(q.mmi);
     var alertBadge = q.alert ? '<span class="galert ' + esc(q.alert) + '">' + esc(String(q.alert).toUpperCase()) + '</span>' : '';
     var actions = [
@@ -680,21 +678,23 @@
     ];
     return '<div class="gdetail">' + window.NDRescue.button(state.country || q.place, q.place, lang()) +
       '<div class="gdetail-top"><div><div class="gkicker">' + esc(web('quakeDetail')) + '</div>' +
-        '<h3>' + esc(q.place || '—') + '</h3><div class="gcoords">' + esc(q.lon.toFixed(2)) + '°, ' + esc(q.lat.toFixed(2)) + '°</div></div>' +
+        '<h3>' + esc(q.place || '—') + '</h3><div class="gcoords">' + coordinates(q) + '</div></div>' +
         '<div class="gmag" style="color:' + window.NDCore.magnitudeColor(q.mag, true) + '">M' + esc(q.mag.toFixed(1)) + '</div></div>' +
       '<div class="gcards">' +
-        '<div><span>' + esc(web('depth')) + '</span><b>' + esc(isFinite(q.depth) ? q.depth.toFixed(1) + ' km' : '—') + '</b></div>' +
+        '<div><span>' + esc(web('depth')) + '</span><b>' + esc(Number.isFinite(q.depth) ? q.depth.toFixed(1) + ' km' : '—') + '</b></div>' +
         '<div><span>' + esc(web('intensity')) + ' (MMI)' + '</span><b>' + esc(mmi) + '</b></div>' +
-        '<div><span>' + esc(web('tsunami')) + '</span><b>' + esc(tsu) + '</b></div>' +
+        '<div><span>' + esc(label('flag')) + '</span><b>' + esc(tsu) + '</b></div>' +
       '</div>' +
       '<div class="grows">' +
         '<div><span>' + esc(web('issued')) + '</span><b>' + esc(fmt(q.time)) + '</b></div>' +
         '<div><span>' + esc(web('sourceLabel')) + '</span><b>' + esc(q.source) + '</b></div>' +
-        '<div><span>Significance</span><b>' + esc(q.significance == null ? '—' : q.significance) + '</b></div>' +
-        '<div><span>Alert</span><b>' + (alertBadge || '—') + '</b></div>' +
+        '<div><span>' + esc(label('significance')) + '</span><b>' + esc(q.significance == null ? '—' : q.significance) + '</b></div>' +
+        '<div><span>PAGER</span><b>' + (alertBadge || '—') + '</b></div>' +
       '</div>' +
       '<div class="gactions"><b>' + esc(web('recommended')) + '</b><ul>' + actions.map(function (a) { return '<li>' + esc(window.NDLocale.text(a,lang())) + '</li>'; }).join('') + '</ul></div>' +
-      (q.url ? '<a class="btn btn-outline" href="' + esc(q.url) + '" target="_blank" rel="noopener noreferrer">' + esc(window.NDLocale.text('USGS event',lang())) + ' ↗</a>' : '') +
+      '<p>' + esc(label('flagMeaning')) + '</p><p><a href="https://www.tsunami.gov/" target="_blank" rel="noopener noreferrer">' + esc(label('tsunamiCentre')) + ' ↗</a> · ' +
+      '<a href="https://earthquake.usgs.gov/data/comcat/data-eventterms.php#tsunami" target="_blank" rel="noopener noreferrer">' + esc(label('glossary')) + ' ↗</a></p>' +
+      (q.url ? '<a class="btn btn-outline" href="' + esc(q.url) + '" target="_blank" rel="noopener noreferrer">' + esc(window.NDLocale.phrase('官方报告','Official report',lang())) + ' ↗</a>' : '') +
       '</div>';
   }
 
@@ -708,9 +708,9 @@
       TC: zh ? ['留在坚固建筑内，远离窗户。', '固定室外物品，准备停电与断水。', '听从当地疏散与避难指令。'] : ['Shelter in a sturdy building, away from windows.', 'Secure outdoor items and prepare for power/water outages.', 'Follow local evacuation and shelter instructions.'],
       DR: zh ? ['节约用水，优先保障饮用与卫生。', '关注当地限水与农业援助政策。', '防范高温与粮食短缺的次生影响。'] : ['Conserve water for drinking and sanitation.', 'Follow local water restrictions and agricultural aid programs.', 'Watch for heat and food-security impacts.']
     }[g.type] || [];
-    return '<div class="gdetail gdacs-detail">' + (!GdacsStatus.fresh(g.status, Date.now()) ? '<p class="history-notice">' + window.NDLocale.phrase('上次报告 · 等待 GDACS 更新','Last reported · awaiting GDACS refresh',lang()) + '</p>' : '') + window.NDRescue.button(g.country, g.name, lang()) +
+    return '<div class="gdetail gdacs-detail">' + (state.mode === 'live' && !GdacsStatus.fresh(g.status, Date.now()) ? '<p class="history-notice">' + window.NDLocale.phrase('上次报告 · 等待 GDACS 更新','Last reported · awaiting GDACS refresh',lang()) + '</p>' : '') + window.NDRescue.button(g.country, g.name, lang()) +
       '<div class="gdetail-top"><div><div class="gkicker">GDACS · ' + esc(typeLabel) + '</div>' +
-        '<h3>' + esc(g.name || '—') + '</h3><div class="gcoords">' + esc(g.country || '') + ' · ' + esc(g.lon.toFixed(2)) + '°, ' + esc(g.lat.toFixed(2)) + '°</div></div>' +
+        '<h3>' + esc(g.name || '—') + '</h3><div class="gcoords">' + esc(g.country || '') + ' · ' + coordinates(g) + '</div></div>' +
         '<div class="gdacs-badge" style="color:' + gdacsAlertColor(g.alert, true) + '">' + esc(alertLabel) + '</div></div>' +
       '<div class="gcards">' +
         '<div><span>' + esc(web('disasterType')) + '</span><b>' + esc(typeLabel) + '</b></div>' +
@@ -718,8 +718,7 @@
         '<div><span>' + esc(web('countryLabel')) + '</span><b>' + esc(g.country || '—') + '</b></div>' +
       '</div>' +
       '<div class="grows">' +
-        '<div><span>' + esc(web('gdacsFrom')) + '</span><b>' + esc(fmt(gdacsMs(g))) + '</b></div>' +
-        '<div><span>' + esc(web('gdacsTo')) + '</span><b>' + esc(fmt(gdacsParse(g.to))) + '</b></div>' +
+        '<div><span>' + esc(window.NDLocale.phrase('报告时间范围','Reported period',lang())) + '</span><b>' + esc(fmt(gdacsParse(g.from))) + ' → ' + esc(fmt(gdacsParse(g.to))) + '</b></div>' +
         '<div><span>' + esc(web('gdacsUpdated')) + '</span><b>' + esc(fmt(gdacsParse(g.modified))) + '</b></div>' +
         '<div><span>' + esc(web('sourceLabel')) + '</span><b>' + esc(g.source) + '</b></div>' +
         (g.severity ? '<div><span>' + esc(window.NDLocale.text('Severity',lang())) + '</span><b>' + esc(g.severity) + '</b></div>' : '') +
@@ -730,7 +729,6 @@
       '</div>';
   }
 
-  function eventTime(e) { return e.kind === 'gdacs' ? gdacsMs(e) : (Number(e.time) || 0); }
   function quakeItem(q) {
     return '<button type="button" class="gitem" data-quake="' + esc(q.id) + '"><b style="color:' + window.NDCore.magnitudeColor(q.mag, true) + '">M' + q.mag.toFixed(1) + '</b><span>' + esc(q.place) + '</span><small>' + esc(fmt(q.time)) + '</small></button>';
   }
@@ -742,22 +740,24 @@
     if (state.selected) {
       return state.selected.kind === 'gdacs' ? gdacsDetailHtml(state.selected) : detailHtml(state.selected);
     }
-    var qs = (state.country ? quakesInCountry(quakes) : quakes).slice().sort(function (a, b) { return (b.time || 0) - (a.time || 0); }).slice(0, 8);
-    var gs = (state.country ? gdacsInCountry() : currentGdacs()).slice().sort(function (a, b) { return GdacsStatus.reportTime(b.status) - GdacsStatus.reportTime(a.status); });
+    var matchedQuakes = recordsInCountry(quakes);
+    var qs = matchedQuakes.slice().sort(function (a, b) { return (b.time || 0) - (a.time || 0); }).slice(0, 8);
+    var gs = recordsInCountry(currentGdacs()).slice().sort(function (a, b) { return GdacsStatus.reportTime(b.status) - GdacsStatus.reportTime(a.status); });
     var showQuakes = state.gdacsType === 'all' || state.gdacsType === 'EQ';
     var showGdacs = state.layers.gdacs && state.gdacsType !== 'EQ';
-    var title = state.country || web('gdacsEvents');
-    var sub = state.country ? hazardTypeLabel(state.gdacsType) + ' · ' + (qs.length + gs.length) :
+    var gdacsAvailable = state.mode === 'live' ? !!cache.gdacsRaw : !!cache.gdacsHistory;
+    var title = state.country || label('list');
+    var sub = state.country ? hazardTypeLabel(state.gdacsType) + ' · ' + (matchedQuakes.length + gs.length) :
       (state.gdacsType === 'EQ' ? web('earthquakeType') :
         (state.gdacsType === 'all' ? (showGdacs ? 'GDACS + ' + web(state.mode === 'history' ? 'quakeRecords' : 'activeQuakes') : web(state.mode === 'history' ? 'quakeRecords' : 'activeQuakes')) : hazardTypeLabel(state.gdacsType)));
     var html = window.NDRescue.button(state.country || '', '', lang()) + '<div class="gside-head"><h3>' + esc(title) + '</h3><span>' + esc(sub) + '</span></div><div class="glist">';
     if (showGdacs) {
-      html += '<div class="glist-label">' + esc(web('gdacsEvents')) + ' · ' + gs.length + '</div>' +
-        (gs.length ? gs.map(gdacsItem).join('') : '<div class="ops-empty">' + esc(web('noMatch')) + '</div>');
+      html += '<div class="glist-label">' + esc(web('gdacsEvents')) + ' · ' + (gdacsAvailable ? gs.length : '—') + '</div>' +
+        (gs.length ? gs.map(gdacsItem).join('') : '<div class="ops-empty">' + esc(gdacsAvailable ? window.NDLocale.phrase('没有匹配记录。','No matching records.',lang()) : web('dataUnavailable')) + '</div>');
     }
     if (showQuakes) {
-      html += '<div class="glist-label">' + esc(web(state.mode === 'history' ? 'quakeRecords' : 'activeQuakes')) + ' · ' + qs.length + '</div>' +
-        (qs.length ? qs.map(quakeItem).join('') : '<div class="ops-empty">' + esc(web('noMatch')) + '</div>');
+      html += '<div class="glist-label">' + esc(web(state.mode === 'history' ? 'quakeRecords' : 'activeQuakes')) + ' · ' + qs.length + ' / ' + matchedQuakes.length + '</div>' +
+        (qs.length ? qs.map(quakeItem).join('') : '<div class="ops-empty">' + esc(window.NDLocale.phrase('没有匹配记录。','No matching records.',lang())) + '</div>');
     }
     return html + '</div>';
   }
@@ -778,7 +778,7 @@
     if (!el) { return; }
     if (state.fullscreen) { exitFullscreen(); }
     if (state.loading) {
-      el.innerHTML = '<section class="global-page"><div class="container"><div class="global-head"><div><div class="eyebrow">GLOBAL DISASTER MONITOR</div><h1>' + esc(web('globalTitle')) + '</h1><p>' + esc(web('globalSub')) + '</p></div></div><div class="state-box"><div class="spinner"></div>' + esc(web('live')) + '…</div></div></section>';
+      el.innerHTML = '<section class="global-page"><div class="container"><div class="global-head"><div><h1>' + esc(web('globalTitle')) + '</h1><p>' + esc(web('globalSub')) + '</p></div></div><div class="state-box"><div class="spinner"></div>' + esc(web('live')) + '…</div></div></section>';
       return;
     }
     if (state.error && (!state.live || (state.mode === 'history' && !state.history))) {
@@ -790,7 +790,9 @@
     var quakes = filteredQuakes(currentQuakes());
     el.innerHTML = '<section class="global-page"><div class="container">' +
       header(data, quakes) +
-      (Date.now() - gdacsParse(cache.gdacsRaw && (cache.gdacsRaw.checkedAt || cache.gdacsRaw.generatedAt)) >= 1800000 ? '<p class="history-notice" role="status">' + (window.NDLocale.phrase('GDACS 更新已延迟。虚线标记为上次报告的位置，当前状态尚未确认；这不代表灾害已结束。','GDACS updates are overdue. Dashed markers show last-reported locations; current status is unconfirmed. A delayed update does not mean the disasters have ended.',lang())) + '</p>' : '') +
+      (state.mode === 'live' && !GdacsStatus.quakeSnapshotFresh(data, Date.now()) ? '<p class="history-notice" role="status">' + esc(label('overdue')) + '</p>' : '') +
+      (state.layers.gdacs && (state.mode === 'live' ? !cache.gdacsRaw : !cache.gdacsHistory) ? '<p class="history-notice" role="status">GDACS · ' + esc(web('dataUnavailable')) + '</p>' : '') +
+      (state.mode === 'live' && cache.gdacsRaw && Date.now() - gdacsParse(cache.gdacsRaw && (cache.gdacsRaw.checkedAt || cache.gdacsRaw.generatedAt)) >= 1800000 ? '<p class="history-notice" role="status">' + (window.NDLocale.phrase('GDACS 更新已延迟。虚线标记为上次报告的位置，当前状态尚未确认；这不代表灾害已结束。','GDACS updates are overdue. Dashed markers show last-reported locations; current status is unconfirmed. A delayed update does not mean the disasters have ended.',lang())) + '</p>' : '') +
       '<div class="global-layout"><div class="global-map-wrap">' + mapSvg(quakes) +
         '<div class="gzoom">' +
           '<button type="button" data-g="zoom" data-v="in" aria-label="' + esc(web('zoomIn')) + '" title="' + esc(web('zoomIn')) + '">+</button>' +
@@ -810,8 +812,7 @@
         '<a href="https://www.gdacs.org" target="_blank" rel="noopener noreferrer">GDACS</a> (EU JRC / UN OCHA) · ' +
         '<a href="https://apizero.cn" target="_blank" rel="noopener noreferrer">极数本源 apizero.cn</a> · ' +
         '<a href="https://earthquake.usgs.gov" target="_blank" rel="noopener noreferrer">USGS</a> · ' +
-        '<a href="https://earthdata.nasa.gov/gibs" target="_blank" rel="noopener noreferrer">NASA GIBS</a> · ' +
-        '<a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer">Open-Meteo</a>' +
+        '<a href="https://earthdata.nasa.gov/gibs" target="_blank" rel="noopener noreferrer">NASA GIBS</a>' +
       '</p>' +
       '</div></section>';
     if (window.NDUnits) window.NDUnits.enhance(el);
@@ -922,6 +923,10 @@
       refreshGdacs()
     ]).then(function (res) {
       if (res[0]) { state.live = res[0]; cache.live = res[0]; }
+      if (state.mode === 'live' && state.selected && state.selected.kind === 'quake') {
+        var selectedId = state.selected.id;
+        state.selected = currentQuakes().find(function (q) { return q.id === selectedId; }) || null;
+      }
       if (globalPageVisible() && !state.fullscreen) { paint(); }
     }).finally(function () { dataRefresh = null; });
     return dataRefresh;
@@ -992,7 +997,7 @@
 
   window.NDGlobal = {
     render: render,
-    loadLive: function () { return cache.live ? Promise.resolve(cache.live) : fetchJson('public-data/global-earthquakes.json').then(function (d) { cache.live = d; return d; }); },
+    loadLive: function () { return fetchJson('public-data/global-earthquakes.json').then(function (d) { cache.live = d; return d; }); },
     cached: function () { return cache.live; },
     history: function () { return cache.history; }
   };

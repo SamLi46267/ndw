@@ -15,7 +15,7 @@
         timeline: 'Publication times for warnings currently loaded for the selected area. This is not a complete history of past disasters or cancelled warnings.',
         distribution: 'Each slice counts loaded warnings of one hazard type for the selected area. It represents the number of notices, not their severity, affected population or probability.',
         hazards: 'Possible secondary hazards are inferred from warning type and level. These are general safety prompts, not measured conditions or a calibrated probability forecast. Follow the issuing authority’s instructions.',
-        trend: 'The line sums city warning counts observed and saved in this browser over 14 displayed dates. It is not an official national archive. Unobserved dates can appear as zero; district filters do not apply to this chart.',
+        trend: 'The line sums city warning counts observed and saved in this browser over 14 displayed dates. It is not an official national archive. Gaps mark dates without a saved city check; district filters do not apply to this chart.',
         detail: 'The issuer and issue time describe the notice; Data checked describes retrieval. An unknown time is shown as a dash. Read the affected area and recommended actions before interpreting supporting charts.',
         actions: 'Safety actions are educational guidance for this warning type. They may summarize rather than translate the official notice word for word. Specific instructions from local authorities take priority.',
         original: 'Expand to read the original Chinese notice. The external official-source link appears only when the data supplies a usable source address. A translated summary does not replace the original notice.',
@@ -35,7 +35,7 @@
         cache: 'Cached warning data avoids repeated downloads. Clearing it rereads the published snapshot without forcing provider collection. The counter records snapshot download attempts from this browser, including failures; it is not weather API quota usage.',
         reset: 'Reset removes local choices, reading progress, checklist selections and the family plan from this browser. It cannot be undone. It does not delete provider records or the separately cached offline app files.',
         products: 'These interactive demonstrations are learning prototypes. Their levels, scores and outcomes describe the game session, not real disaster conditions or emergency-response performance.',
-        sharing: 'Share sends or copies the website address; the recipient may need to select the city again. Use the official-source link when you need to reference the original notice.',
+        sharing: 'Share sends a link to this notice. Its availability depends on the published snapshot. Use the official-source link when you need to reference the original notice.',
         about: 'The version is the application’s release label, not a warning timestamp. The disclaimer explains source and update limitations; consult official notices for operational decisions.'
       }
     },
@@ -53,7 +53,7 @@
         timeline: '显示当前所选区域已加载预警的发布时间，不是过去灾害或已解除预警的完整历史记录。',
         distribution: '每个扇区表示所选区域已加载的某类预警条数，不代表灾害强度、受影响人口或发生概率。',
         hazards: '根据预警类型与级别提示可能的次生危害。这是一般避险提示，不是实测情况或经过校准的概率预测。具体行动以发布部门指引为准。',
-        trend: '折线汇总本浏览器在所示 14 个日期内记录的城市预警条数，并非官方全国历史档案。没有记录的日期也可能显示为零；区县筛选不影响此图。',
+        trend: '折线汇总本浏览器在所示 14 个日期内记录的城市预警条数，并非官方全国历史档案。没有保存查询的日期留空；区县筛选不影响此图。',
         detail: '发布部门与发布时间描述通知本身，数据查询时间表示获取时间。缺少时间时显示横线。解读辅助图表前，请先阅读影响区域与行动建议。',
         actions: '防御要点是对应灾害的学习性指引，可能是摘要，并非官方原文的逐字翻译。当地部门针对具体事件的指令优先。',
         original: '展开可阅读官方中文原文。仅在数据包含可用地址时显示官方来源外链。翻译摘要不能替代原始通知。',
@@ -73,7 +73,7 @@
         cache: '缓存可减少重复下载。清除后重新读取已发布快照，不强制上游采集。计数记录本浏览器的快照下载尝试，包含失败，不是天气接口配额消耗。',
         reset: '重置会删除本浏览器中的选择、已读进度、清单勾选和家庭计划，且无法撤销。不会删除提供方记录或单独缓存的离线程序文件。',
         products: '互动演示是学习原型。关卡、分数和结果属于游戏过程，不代表真实灾情或实际应急响应能力。',
-        sharing: '分享发送或复制网站地址，接收方可能需要重新选择城市。如需引用原始通知，请使用官方来源链接。',
+        sharing: '分享此通告的链接。能否打开通告取决于已发布的快照。如需引用原始通知，请使用官方来源链接。',
         about: '版本号是应用的发布标识，不是预警时间。免责声明解释数据来源与更新限制；实际行动请参考官方通知。'
       }
     },
@@ -91,7 +91,7 @@
         timeline: 'Horas de publicación de los avisos cargados para el área seleccionada. No es un historial completo de desastres ni de avisos cancelados.',
         distribution: 'Cada sector cuenta los avisos cargados de un tipo de peligro en el área elegida. No representa intensidad, población afectada ni probabilidad.',
         hazards: 'Posibles peligros secundarios deducidos del tipo y nivel de alerta. Son recordatorios generales, no mediciones ni probabilidades calibradas. Siga las instrucciones de la autoridad emisora.',
-        trend: 'Suma los avisos de ciudades observados y guardados en este navegador durante las 14 fechas mostradas. No es un archivo nacional oficial. Los días sin observación pueden aparecer como cero; el filtro distrital no se aplica.',
+        trend: 'Suma los avisos de ciudades observados y guardados en este navegador durante las 14 fechas mostradas. No es un archivo nacional oficial. Los días sin consultas guardadas se muestran en blanco; el filtro distrital no se aplica.',
         detail: 'El emisor y la fecha de emisión describen el aviso; la consulta indica cuándo se obtuvieron los datos. Un guion significa hora desconocida. Lea primero el área afectada y las acciones recomendadas.',
         actions: 'Orientaciones educativas para este tipo de peligro; pueden resumir el aviso sin traducirlo literalmente. Las instrucciones concretas de las autoridades locales tienen prioridad.',
         original: 'Despliegue el aviso original en chino. El enlace externo solo aparece si los datos incluyen una dirección válida de la fuente. El resumen traducido no sustituye al original.',
@@ -111,7 +111,7 @@
         cache: 'La caché evita descargas repetidas. Borrarla relee los datos publicados sin forzar consultas al proveedor. El contador suma intentos de descarga de este navegador, incluidos fallos; no es consumo de cuota meteorológica.',
         reset: 'Elimina preferencias, progreso de lectura, selecciones y plan familiar de este navegador, sin poder deshacerlo. No elimina registros del proveedor ni archivos de la aplicación guardados aparte para uso sin conexión.',
         products: 'Son prototipos educativos interactivos. Sus niveles, puntuaciones y resultados describen la partida, no condiciones reales ni capacidad de respuesta ante desastres.',
-        sharing: 'Comparte o copia la dirección del sitio; el destinatario puede tener que elegir otra vez la ciudad. Para citar el aviso original, use el enlace de la fuente oficial.',
+        sharing: 'Comparte un enlace a este aviso. Su disponibilidad depende de los datos publicados. Para citar el aviso original, use el enlace de la fuente oficial.',
         about: 'La versión identifica la edición de la aplicación, no la fecha del aviso. El descargo explica fuentes y limitaciones; para actuar consulte los avisos oficiales.'
       }
     },
@@ -129,7 +129,7 @@
         timeline: 'Heures de publication des alertes chargées pour la zone choisie. Ce n’est pas un historique complet des catastrophes ou des alertes levées.',
         distribution: 'Chaque secteur compte les alertes chargées d’un type de danger dans la zone choisie. Il n’indique ni intensité, ni population touchée, ni probabilité.',
         hazards: 'Dangers secondaires possibles déduits du type et du niveau d’alerte. Il s’agit de conseils généraux, sans mesure des conditions ni probabilité calibrée. Suivez les consignes de l’émetteur.',
-        trend: 'Additionne les nombres d’alertes municipales observés et enregistrés dans ce navigateur pour les 14 dates affichées. Ce n’est pas une archive nationale officielle. Une date sans observation peut apparaître à zéro ; le filtre par district ne s’applique pas.',
+        trend: 'Additionne les nombres d’alertes municipales observés et enregistrés dans ce navigateur pour les 14 dates affichées. Ce n’est pas une archive nationale officielle. Les jours sans relevé enregistré restent vides ; le filtre par district ne s’applique pas.',
         detail: 'L’émetteur et l’heure d’émission décrivent l’avis ; la vérification indique sa récupération. Un tiret marque une heure inconnue. Lisez d’abord la zone touchée et les actions recommandées.',
         actions: 'Conseils éducatifs pour ce type de danger, parfois résumés plutôt que traduits mot à mot. Les instructions spécifiques des autorités locales ont priorité.',
         original: 'Dépliez l’avis original en chinois. Le lien externe n’apparaît que si les données fournissent une adresse de source utilisable. Le résumé traduit ne remplace pas l’original.',
@@ -149,7 +149,7 @@
         cache: 'Le cache évite les téléchargements répétés. Le vider relit les données publiées sans forcer de collecte. Le compteur indique les tentatives de téléchargement de ce navigateur, échecs inclus, pas le quota de l’API météo.',
         reset: 'Supprime choix, progression, listes cochées et plan familial de ce navigateur, sans annulation possible. Ne supprime ni les données du fournisseur ni les fichiers hors connexion stockés séparément.',
         products: 'Ces démonstrations sont des prototypes éducatifs. Niveaux, scores et résultats concernent la partie, pas les conditions réelles ou l’efficacité des secours.',
-        sharing: 'Partage ou copie l’adresse du site ; le destinataire peut devoir sélectionner la ville. Utilisez le lien officiel pour citer l’avis original.',
+        sharing: 'Partage un lien vers cet avis. Sa disponibilité dépend des données publiées. Utilisez le lien officiel pour citer l’avis original.',
         about: 'La version identifie l’édition de l’application, pas la date d’une alerte. L’avertissement explique les sources et limites ; consultez les avis officiels pour agir.'
       }
     },
@@ -167,7 +167,7 @@
         timeline: 'Orari di pubblicazione degli avvisi caricati per l’area scelta. Non è una cronologia completa di disastri o allerte revocate.',
         distribution: 'Ogni settore conta gli avvisi caricati di un tipo di pericolo nell’area scelta. Non rappresenta intensità, popolazione coinvolta o probabilità.',
         hazards: 'Possibili pericoli secondari dedotti dal tipo e livello di allerta. Sono indicazioni generali, non misurazioni o probabilità calibrate. Segui le istruzioni dell’autorità emittente.',
-        trend: 'Somma gli avvisi cittadini osservati e salvati in questo browser per le 14 date mostrate. Non è un archivio nazionale ufficiale. I giorni senza osservazioni possono apparire a zero; il filtro distrettuale non si applica.',
+        trend: 'Somma gli avvisi cittadini osservati e salvati in questo browser per le 14 date mostrate. Non è un archivio nazionale ufficiale. I giorni senza controlli registrati rimangono vuoti; il filtro distrettuale non si applica.',
         detail: 'Emittente e ora di emissione descrivono l’avviso; il controllo indica il recupero dei dati. Il trattino segnala un orario sconosciuto. Leggi prima area coinvolta e azioni consigliate.',
         actions: 'Indicazioni educative per questo tipo di pericolo, talvolta riassunte invece di tradotte parola per parola. Le istruzioni specifiche delle autorità locali hanno priorità.',
         original: 'Espandi per leggere l’avviso originale in cinese. Il collegamento esterno appare solo se i dati forniscono un indirizzo valido. Il riepilogo tradotto non sostituisce l’originale.',
@@ -187,7 +187,7 @@
         cache: 'La cache evita download ripetuti. Svuotarla rilegge i dati pubblicati senza forzare la raccolta. Il contatore indica tentativi di download da questo browser, inclusi i fallimenti, non il consumo della quota meteo.',
         reset: 'Elimina scelte, progressi di lettura, selezioni e piano familiare da questo browser, senza possibilità di annullamento. Non elimina dati del fornitore o file offline salvati separatamente.',
         products: 'Le dimostrazioni interattive sono prototipi educativi. Livelli, punteggi e risultati descrivono la partita, non condizioni reali o capacità di risposta alle emergenze.',
-        sharing: 'Condivide o copia l’indirizzo del sito; il destinatario potrebbe dover scegliere nuovamente la città. Usa il collegamento ufficiale per citare l’avviso originale.',
+        sharing: 'Condivide un link a questo avviso. La disponibilità dipende dai dati pubblicati. Usa il collegamento ufficiale per citare l’avviso originale.',
         about: 'La versione identifica l’edizione dell’applicazione, non la data dell’allerta. L’avvertenza spiega fonti e limiti; per agire consulta gli avvisi ufficiali.'
       }
     }

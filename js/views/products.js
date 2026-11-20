@@ -19,12 +19,12 @@
         '<section class="section"><div class="container">' +
           '<a class="btn btn-outline" href="#/products">' + esc(t.backToProducts) + '</a>' +
           '<div class="game-frame">' +
-            '<div class="game-title"><h2>' + esc(name) + '</h2><p>' + esc(how) + '</p></div>' +
+            '<div class="game-title"><h1>' + esc(name) + '</h1><p>' + esc(how) + '</p></div>' +
             '<div class="game-hud" id="gameHUD"></div>' +
             '<canvas id="gameCanvas" class="game-canvas"></canvas>' +
             '<button class="game-help-btn" id="gameHelpBtn" type="button" aria-label="' + esc(how) + '">?</button>' +
             '<div class="game-help-panel" id="gameHelpPanel">' +
-              '<button class="game-help-close" id="gameHelpClose" type="button" aria-label="Close">×</button>' +
+              '<button class="game-help-close" id="gameHelpClose" type="button" aria-label="' + esc(t.close) + '">×</button>' +
               '<div class="game-help-body">' + esc(how) + '</div>' +
             '</div>' +
           '</div>' +

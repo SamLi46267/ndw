@@ -117,30 +117,20 @@
         y: pad.t + ih - ih * v / max
       };
     });
-    /* 面积 */
-    ctx.beginPath();
-    ctx.moveTo(pts[0].x, pad.t + ih);
-    pts.forEach(function (p) { ctx.lineTo(p.x, p.y); });
-    ctx.lineTo(pts[pts.length - 1].x, pad.t + ih);
-    ctx.closePath();
-    var grad = ctx.createLinearGradient(0, pad.t, 0, pad.t + ih);
-    grad.addColorStop(0, color || HOLO);
-    grad.addColorStop(1, 'rgba(67,232,207,0.02)');
-    ctx.globalAlpha = 0.22;
-    ctx.fillStyle = grad;
-    ctx.fill();
-    ctx.globalAlpha = 1;
-    /* 线 */
+    // Leave unobserved days empty and break the line across each gap.
     ctx.strokeStyle = color || HOLO;
     ctx.lineWidth = 2;
     ctx.beginPath();
-    pts.forEach(function (p, i) { i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y); });
+    pts.forEach(function (p, i) {
+      if (!Number.isFinite(values[i])) return;
+      if (i && Number.isFinite(values[i - 1])) ctx.lineTo(p.x, p.y);
+      else ctx.moveTo(p.x, p.y);
+    });
     ctx.stroke();
-    pts.forEach(function (p) {
-      ctx.fillStyle = '#0a0f12';
+    pts.forEach(function (p, i) {
+      if (!Number.isFinite(values[i])) return;
+      ctx.fillStyle = color || HOLO;
       ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, Math.PI * 2); ctx.fill();
-      ctx.strokeStyle = color || HOLO;
-      ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, Math.PI * 2); ctx.stroke();
     });
     /* x 标签（稀疏） */
     ctx.fillStyle = TEXT;

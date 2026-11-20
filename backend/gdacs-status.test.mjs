@@ -57,3 +57,41 @@ test('GDACS RSS dates and API dates resolve to the same UTC instant', () => {
   assert.equal(status.time('Wed, 11 Nov 2026 16:08:02 GMT'), status.time('2026-11-11T16:08:02'));
   assert.equal(status.time('2026-11-11T16:08:02+00:00'), status.time('2026-11-11T16:08:02Z'));
 });
+
+test('recent earthquake lists use origin time and independently check snapshot collection time', () => {
+  const event = { timestamp: now, latitude: 0, longitude: 0, magnitude: 0 };
+  const snapshot = {
+    fetchedAt: new Date(now - 1000).toISOString(),
+    earthquakes: [
+      event, { ...event, timestamp: now - 86400001 }, { ...event, timestamp: now + 1 },
+      { ...event, longitude: null }, { ...event, magnitude: null }, { ...event, latitude: 91 }
+    ]
+  };
+  assert.deepEqual(status.recentQuakes(snapshot, now), [event]);
+  assert.equal(status.quakeSnapshotFresh(snapshot, now), true);
+  assert.equal(status.quakeSnapshotFresh(snapshot, now + 3600000), false);
+  assert.equal(status.quakeSnapshotFresh({ generatedAt: '2026-11-14 12:00:00' }, now), false);
+  assert.equal(status.quakeSnapshotFresh({ fetchedAt: new Date(now + 300001).toISOString() }, now), false);
+});
+
+test('GDACS report links resolve securely and unsupported source URLs are omitted', () => {
+  assert.equal(status.reportUrl('http://www.gdacs.org/report.aspx?eventid=1'),
+    'https://www.gdacs.org/report.aspx?eventid=1');
+  assert.equal(status.reportUrl('https://earthquake.usgs.gov/earthquakes/eventpage/us123'),
+    'https://earthquake.usgs.gov/earthquakes/eventpage/us123');
+  for (const url of ['', 'http://example.com/', 'javascript:alert(1)', 'https://user:pw@example.com/']) {
+    assert.equal(status.reportUrl(url), '');
+  }
+});
+
+test('country detail shows mapped locations inside polygons, excluding holes and nearby countries', () => {
+  const context = { window: {} };
+  vm.createContext(context);
+  const source = fs.readFileSync(new URL('../js/global.js', import.meta.url), 'utf8');
+  vm.runInContext(source.replace('  var W =', '  window.inCountry = function(country, records) { state.country = country.name; cache.paths = [country]; return recordsInCountry(records); };\n  var W ='), context);
+  const square = (min, max) => [[min,min],[max,min],[max,max],[min,max],[min,min]];
+  const country = { name: 'A', bbox: { minLon: 0, maxLon: 25, minLat: 0, maxLat: 25 },
+    polygons: [[square(0,10), square(2,4)], [square(20,25)]] };
+  const records = [1,3,10.1,23].map(n => ({ lat: n, lon: n }));
+  assert.deepEqual(context.window.inCountry(country, records), [records[0], records[3]]);
+});

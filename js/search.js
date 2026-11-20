@@ -7,6 +7,7 @@
     create: function (ctx) {
       var esc = ctx.esc;
       var overlay = null;
+      var opener = null;
       var input = null;
       var listEl = null;
       var entries = [];
@@ -35,19 +36,28 @@
         add(t.productsTitle, t.productsTitle, function () { ctx.navigate('#/products'); }, 'products games 产品 游戏');
         add(t.tabSettings, t.tabSettings, function () { ctx.navigate('#/settings'); }, 'settings config 设置 配置');
 
-        ctx.data.getGuides().forEach(function (c, i) {
+        ctx.data.getGuides().forEach(function (c) {
           var name = i18n.disasterName(c.name, l);
-          add(name, t.tabGuide, function () { ctx.openGuide(i); }, JSON.stringify(window.__modules['guide-locales'].getGuide(c,l)) + ' ' + c.name + ' warning 预警 ' + name);
+          add(name, t.tabGuide, function () { ctx.navigate('#/guide?topic=' + encodeURIComponent(c.id)); }, JSON.stringify(window.__modules['guide-locales'].getGuide(c,l)) + ' ' + c.name + ' warning 预警 ' + name);
         });
 
         [
-          [t.firstAid, 'first aid cpr 急救 心肺复苏'],
-          [t.emergencyPhone, 'phone call 电话 12121'],
-          [t.materialList, 'materials checklist 物资 清单'],
-          [t.evacuationTips, 'evacuation tips 避险 要点']
+          [t.firstAid, 'first-aid', 'first aid cpr 急救 心肺复苏'],
+          [t.emergencyPhone, 'contacts', 'phone call 电话 110 119 120'],
+          [t.packWizard, 'kit', 'emergency kit 应急包'],
+          [t.materialList, 'checklist', 'materials checklist 物资 清单'],
+          [t.familyPlan, 'plan', 'household plan 家庭应急计划'],
+          [t.evacuationTips, 'evacuation', 'evacuation tips 避险 要点']
         ].forEach(function (row) {
-          if (!row[0]) { return; }
-          add(row[0], t.tabTools, function () { ctx.navigate('#/tools'); }, row[1]);
+          add(row[0], t.tabTools, function () { ctx.navigate('#/tools?section=' + row[1]); }, row[2]);
+        });
+
+        var reference = document.createElement('template');
+        reference.innerHTML = window.NDSourceGuide.render(l);
+        reference.content.querySelectorAll('details[id^="source-"]').forEach(function (section) {
+          add(section.querySelector('summary').textContent, ctx.web('sourcesNav'), function () {
+            ctx.navigate('#/sources?source=' + encodeURIComponent(section.id.slice('source-'.length)));
+          }, section.textContent);
         });
 
         [
@@ -62,8 +72,8 @@
           add(row[0], t.tabSettings, function () { ctx.navigate('#/settings'); }, row[1]);
         });
 
-        add(t.gameAquaName, t.productsTitle, function () { ctx.openProduct('aqua'); }, 'aqua water rescue 水上 救援 游戏');
-        add(t.gamePyroName, t.productsTitle, function () { ctx.openProduct('pyro'); }, 'pyro forest patrol 森林 巡逻 游戏');
+        add(t.gameAquaName, t.productsTitle, function () { ctx.navigate('#/products?game=aqua'); }, 'aqua water rescue 水上 救援 游戏');
+        add(t.gamePyroName, t.productsTitle, function () { ctx.navigate('#/products?game=pyro'); }, 'pyro forest patrol 森林 巡逻 游戏');
 
         ctx.districts.allCityGeo().forEach(function (c) {
           var name = i18n.placeName(c.name, l);
@@ -71,9 +81,9 @@
           add(name, prov, function () { ctx.selectCity(c); }, c.name + ' ' + c.province + ' city 城市');
         });
 
-        i18n.firstaid(l).forEach(function(a){add(a.name,t.firstAid,function(){ctx.navigate('#/tools');},JSON.stringify(a));});
-        i18n.materials(l).forEach(function(name){add(name,t.materialList,function(){ctx.navigate('#/tools');},name);});
-        i18n.phones(l).forEach(function(phone){add(phone.name,t.emergencyPhone,function(){ctx.navigate('#/tools');},JSON.stringify(phone));});
+        i18n.firstaid(l).forEach(function(a){add(a.name,t.firstAid,function(){ctx.navigate('#/tools?section=first-aid&topic='+encodeURIComponent(a.id));},JSON.stringify(a));});
+        i18n.materials(l).forEach(function(name){add(name,t.materialList,function(){ctx.navigate('#/tools?section=checklist');},name);});
+        i18n.phones(l).forEach(function(phone){add(phone.name,t.emergencyPhone,function(){ctx.navigate('#/tools?section=contacts');},JSON.stringify(phone));});
         document.querySelectorAll('#view h1,#view h2,#view h3,#view summary').forEach(function(node){
           var label=node.textContent.trim();
           if(!label)return;
@@ -125,10 +135,7 @@
       }
 
       function onKey(e) {
-        if (e.key === 'Escape') {
-          e.preventDefault();
-          close();
-        } else if (e.key === 'ArrowDown') {
+        if (e.key === 'ArrowDown') {
           e.preventDefault();
           active = Math.min(active + 1, filtered.length - 1);
           renderList();
@@ -168,6 +175,7 @@
           input.focus();
           return;
         }
+        opener = document.activeElement;
         entries = buildIndex();entries.forEach(function(e){e.kw=fold(e.kw);e.labelKey=fold(e.label);});
         var token=++session;historyAdded=false;
         active = 0;
@@ -176,7 +184,7 @@
         overlay.innerHTML =
           '<div class="search-dialog" role="dialog" aria-modal="true" aria-label="' + esc(ctx.web('searchTitle')) + '">' +
             '<div class="search-bar">' + ctx.SVG.iSearch +
-              '<input class="search-input" id="ndSearchInput" type="search" autocomplete="off" spellcheck="false" placeholder="' + esc(ctx.web('searchPlaceholder')) + '">' +
+              '<input class="search-input" id="ndSearchInput" type="search" aria-label="' + esc(ctx.web('searchTitle')) + '" autocomplete="off" spellcheck="false" placeholder="' + esc(ctx.web('searchPlaceholder')) + '">' +
               '<span class="search-hint">Esc</span>' +
             '</div>' +
             '<div class="search-status" role="status"></div>' +
@@ -192,6 +200,15 @@
           active = 0;
           renderList();loadHistory(token);
         });
+        overlay.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+          if (e.key === 'Tab') {
+            var last = listEl.lastElementChild;
+            if (!last || last.tagName !== 'BUTTON') { e.preventDefault(); input.focus(); }
+            else if (e.shiftKey && e.target === input) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && e.target === last) { e.preventDefault(); input.focus(); }
+          }
+        });
         input.addEventListener('keydown', onKey);
         renderList();
         loadContent(token);
@@ -202,6 +219,8 @@
         session++; loading=false;
         if (overlay && overlay.parentNode) { overlay.parentNode.removeChild(overlay); }
         overlay = null;
+        if (opener && opener.isConnected) { opener.focus({ preventScroll: true }); }
+        opener = null;
         input = null;
         listEl = null;
         entries = [];
