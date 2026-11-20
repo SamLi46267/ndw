@@ -21,7 +21,7 @@
 
 中国预警、全球地震与 GDACS 数据由 GitHub Actions 定时采集，已发布的快照由 GitHub Pages 提供。日常浏览及本地开发均无需 API 密钥。
 
-- **美国天气预警：** 页面打开时及可见时每两分钟直接查询 NWS。若查询失败，则显示 GeoWarning 最近发布的 NWS 快照及其原始采集时间。快照计划每 15 分钟采集一次，GitHub Actions 调度可能延迟。[NWS 接口说明](https://www.weather.gov/documentation/services-web-api)
+- **美国天气预警：** 页面打开时及可见时每 10 分钟直接查询 NWS。若查询失败，则显示 GeoWarning 最近发布的 NWS 快照及其原始采集时间。美国各州地图按 NWS 预警区域代码统计通告数。快照计划每 10 分钟采集一次，GitHub Actions 调度可能延迟。[NWS 接口说明](https://www.weather.gov/documentation/services-web-api)
 - **中国气象预警：** 来自中国气象局授权的 WeatherCN 数据服务。上游数据按城市提供，区县筛选依据官方正文中的地名。未细分区县的预警可能适用于全市。采集任务轮换覆盖 77 个已配置城市，通常每 15 分钟查询 4 个城市，滚动 24 小时最多尝试 450 次。独立的实况天气读数可能使用 Open-Meteo。
 - **全球灾害：** 使用 GDACS 当前事件报告，辅以其搜索接口提供的详情。采集计划每五分钟运行一次。全球灾害地图面板和实时灾害列表在页面可见时每分钟检查发布更新。GitHub Actions 的调度和发布可能延迟。
 - **地震：** 配置 APIZERO 时优先使用该来源，失败或未配置时使用美国地质调查局（USGS）。采集计划每 15 分钟运行一次。

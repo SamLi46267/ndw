@@ -38,9 +38,7 @@ test('malformed responses produce an error, valid empty collections are accepted
   assert.equal(bulletins.readFeed({ ...collection([]), updated: iso(86400000) }, now).updated, null);
 });
 
-test('NWS uses only documented area filters, escapes upstream text and retains the official link', () => {
-  assert.equal(bulletins.urlFor('PR'), 'https://api.weather.gov/alerts/active/area/PR');
-  assert.equal(bulletins.urlFor('xxx'), 'https://api.weather.gov/alerts/active');
+test('NWS escapes upstream text and retains the official link', () => {
   const input = feature('urn:oid:example', { description: '<b>Severe flooding</b>', instruction: 'Leave & seek help' });
   const row = bulletins.readFeed(collection([input]), now).rows[0];
   const html = bulletins.rowHtml(row, bulletins.messages.en, value => iso(value - now));
@@ -65,7 +63,7 @@ test('every supported language supplies all feed controls and status text', () =
 test('blocked direct access uses the published collection time and filters zones before limiting results', async () => {
   const features = Array.from({ length: 41 }, (_, index) =>
     feature('tx-' + index, { sent: iso(-10000), geocode: { UGC: ['TXC001'] } }));
-  features.push(feature('pr', { sent: iso(-20000), geocode: { UGC: ['PRZ001', 'VIZ001'] } }));
+  features.push(feature('pr', { sent: iso(-20000), geocode: { UGC: ['PRZ001', 'PRZ003', 'VIZ001', 'AMZ001', 'txZ001', 'FLinvalid'] } }));
   const payload = { ...collection(features), checkedAt: iso(-3600000) };
   const calls = [];
   const fetcher = async url => {
@@ -77,7 +75,8 @@ test('blocked direct access uses the published collection time and filters zones
   assert.deepEqual(result.rows.map(r => r.id), ['pr']);
   assert.equal(result.checkedAt, now - 3600000);
   assert.equal(result.published, true);
-  assert.deepEqual(calls, [bulletins.urlFor('PR'), 'public-data/nws-active-alerts.json']);
+  assert.deepEqual(calls, ['https://api.weather.gov/alerts/active', 'public-data/nws-active-alerts.json']);
+  assert.deepEqual(bulletins.stateCounts(result.allRows), { TX: 41, PR: 1, VI: 1 });
   assert.equal((await bulletins.loadBulletins('', signal, fetcher, () => now)).rows.length, 40);
   payload.checkedAt = iso(-6 * 3600000);
   await assert.rejects(bulletins.loadBulletins('PR', signal, fetcher, () => now), /too old/);

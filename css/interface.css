@@ -1151,6 +1151,61 @@ a.potential-hazard:hover b { text-decoration: underline; }
 .bulletin-row summary > span:first-child { flex: 1; }
 .bulletin-detail p { margin-bottom: 9px; }
 .bulletin-text { white-space: pre-line; overflow-wrap: anywhere; }
+.live-bulletins { max-width: 1440px; }
+.bulletin-actions { margin-block: 18px 10px; }
+.bulletin-status { margin-bottom: 16px; border-radius: 0 8px 8px 0; }
+.bulletin-dashboard { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(290px, 1fr); gap: 16px; align-items: start; }
+.bulletin-map-card, .bulletin-records {
+  min-width: 0; padding: clamp(12px, 1.6vw, 22px);
+  border: 1px solid var(--border); border-radius: 14px; background: var(--card-2);
+}
+.bulletin-dashboard h2 { margin: 0; font-size: 1.12rem; }
+.bulletin-map-card > p { margin: 6px 0 12px; color: var(--text-mid); font-size: .85rem; line-height: 1.5; }
+.bulletin-map {
+  --nws-map-line: #0e1b1e; --nws-map-label: #fff;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 6px;
+  min-height: 80px; display: grid; place-items: center;
+}
+.bulletin-state-map { display: block; width: 100%; height: auto; }
+.bulletin-state {
+  fill: var(--panel, var(--card-solid)); stroke: var(--nws-map-line);
+  stroke-width: 1; vector-effect: non-scaling-stroke; cursor: pointer;
+}
+.bulletin-map-card [data-count-band="0"] { --nws-band: #26383c; }
+.bulletin-map-card [data-count-band="1"] { --nws-band: #28645c; }
+.bulletin-map-card [data-count-band="2"] { --nws-band: #328f7d; }
+.bulletin-map-card [data-count-band="3"] { --nws-band: #88d9bc; }
+.bulletin-state[data-count-band] { fill: var(--nws-band); }
+.bulletin-state:hover, .bulletin-state.is-selected { stroke: var(--text); stroke-width: 2; }
+.bulletin-state-labels { pointer-events: none; font-size: 16px; font-weight: 750; text-anchor: middle; dominant-baseline: central; }
+.bulletin-state-labels text { fill: var(--nws-map-label); paint-order: stroke; stroke: #15332f; stroke-width: 3px; }
+.bulletin-map-legend { display: flex; gap: 7px 11px; flex-wrap: wrap; align-items: center; margin-top: 12px; font-size: .75rem; color: var(--text-mid); }
+.bulletin-map-legend [data-count-band]::before {
+  content: ''; display: inline-block; width: 10px; height: 10px; margin-inline-end: 4px;
+  border-radius: 2px; background: var(--nws-band); border: 1px solid var(--border-strong);
+}
+.bulletin-map-legend a { color: var(--text-mid); text-decoration: underline; }
+.bulletin-records-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.bulletin-total { font-size: .82rem; color: var(--text-mid); font-variant-numeric: tabular-nums; }
+.bulletin-dashboard .bulletin-list { margin-top: 10px; gap: 7px; max-height: 570px; overflow-y: auto; align-content: start; scrollbar-gutter: stable; }
+.bulletin-dashboard .bulletin-row summary {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 10px 12px;
+}
+.bulletin-dashboard .bulletin-row summary::after { grid-column: 2; grid-row: 1; }
+.bulletin-dashboard .bulletin-row .bulletin-meta { grid-column: 1; font-size: .75rem; }
+.bulletin-row:not([open]) .bulletin-area { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.bulletin-area { overflow-wrap: anywhere; }
+.bulletin-list-empty, .bulletin-cadence { margin-block: 10px 0; color: var(--text-mid); font-size: .82rem; }
+[data-theme="light"] .bulletin-map-card [data-count-band="0"] { --nws-band: #deeae5; }
+[data-theme="light"] .bulletin-map-card [data-count-band="1"] { --nws-band: #a5d5c7; }
+[data-theme="light"] .bulletin-map-card [data-count-band="2"] { --nws-band: #6ab9a5; }
+[data-theme="light"] .bulletin-map-card [data-count-band="3"] { --nws-band: #339379; }
+[data-theme="light"] .bulletin-map { --nws-map-line: #6b9288; --nws-map-label: #133a33; }
+[data-theme="light"] .bulletin-state-labels text { stroke: #f3fffa; }
+@media (max-width: 870px) {
+  .bulletin-dashboard { grid-template-columns: minmax(0, 1fr); }
+  .bulletin-dashboard .bulletin-list { max-height: none; overflow: visible; scrollbar-gutter: auto; }
+}
 .bulletins-page .container .container { padding-inline: 0; }
 
 @media (min-width: 981px) {

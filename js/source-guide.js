@@ -34,7 +34,7 @@
       },
       nws: {
         title: 'U.S. weather bulletins · National Weather Service',
-        scope: 'GeoWarning checks the NWS when this page opens and every two minutes while visible. If your browser cannot reach NWS, the page uses GeoWarning’s published snapshot and shows when it was collected. The list shows up to 40 bulletins for the selected area.',
+        scope: 'GeoWarning checks the NWS when this page opens and every 10 minutes while visible. If your browser cannot reach NWS, the page uses GeoWarning’s published snapshot and shows when it was collected. The list shows up to 40 bulletins for the selected area.',
         read: 'The list shows unexpired alerts and updates marked Actual, ordered by issue time. Open a bulletin to read the original English text, affected area and expiry. Additional bulletins may apply to your location. Check your local NWS office for current instructions.',
         links: ['Browse bulletins', 'Find your NWS office', 'NWS API documentation']
       },
@@ -68,7 +68,7 @@
       },
       nws: {
         title: '美国气象通告 · 美国国家气象局',
-        scope: '页面打开时及可见时每两分钟查询一次 NWS。若浏览器无法连接 NWS，则使用 GeoWarning 发布的快照并显示采集时间。每个地区最多显示 40 条通告。',
+        scope: '页面打开时及可见时每 10 分钟查询一次 NWS。若浏览器无法连接 NWS，则使用 GeoWarning 发布的快照并显示采集时间。每个地区最多显示 40 条通告。',
         read: '列表按发布时间排列，显示标为实际事件且尚未到期的预警及更新。打开通告可查看英文原文、影响区域和到期时间。当地可能还有其他通告，请查阅辖区 NWS 办公室发布的最新指示。',
         links: ['查看气象通告', '查找辖区 NWS 办公室', 'NWS 接口文档']
       },
@@ -102,7 +102,7 @@
       },
       nws: {
         title: 'Boletines de EE. UU. · National Weather Service',
-        scope: 'GeoWarning consulta el NWS al abrir la página y cada dos minutos mientras está visible. Si el navegador no puede conectarse al NWS, la página utiliza la instantánea publicada por GeoWarning e indica cuándo se recopiló. Se muestran hasta 40 boletines para el área seleccionada.',
+        scope: 'GeoWarning consulta el NWS al abrir la página y cada 10 minutos mientras está visible. Si el navegador no puede conectarse al NWS, la página utiliza la instantánea publicada por GeoWarning e indica cuándo se recopiló. Se muestran hasta 40 boletines para el área seleccionada.',
         read: 'Los avisos vigentes y sus actualizaciones con estado Actual (evento real) se ordenan por hora de emisión. Abra un boletín para ver el texto original en inglés, la zona afectada y el vencimiento. Puede haber más avisos. Consulte las instrucciones de la oficina local del NWS.',
         links: ['Consultar boletines', 'Buscar una oficina del NWS', 'Documentación de la API del NWS']
       },
@@ -136,7 +136,7 @@
       },
       nws: {
         title: 'Bulletins météo des États-Unis · National Weather Service',
-        scope: 'GeoWarning consulte le NWS à l’ouverture de la page, puis toutes les deux minutes lorsqu’elle est visible. Si le navigateur ne peut pas joindre le NWS, la page utilise l’instantané publié par GeoWarning et indique l’heure de collecte. La liste affiche jusqu’à 40 bulletins pour la zone sélectionnée.',
+        scope: 'GeoWarning consulte le NWS à l’ouverture de la page, puis toutes les 10 minutes lorsqu’elle est visible. Si le navigateur ne peut pas joindre le NWS, la page utilise l’instantané publié par GeoWarning et indique l’heure de collecte. La liste affiche jusqu’à 40 bulletins pour la zone sélectionnée.',
         read: 'Les alertes et mises à jour en vigueur portant le statut Actual (événement réel) sont classées par heure d’émission. Ouvrez le bulletin pour lire le texte original anglais, la zone concernée et l’échéance. D’autres avis peuvent s’appliquer. Consultez les consignes du bureau local du NWS.',
         links: ['Consulter les bulletins', 'Trouver un bureau du NWS', 'Documentation de l’API du NWS']
       },
@@ -170,7 +170,7 @@
       },
       nws: {
         title: 'Bollettini meteo degli Stati Uniti · National Weather Service',
-        scope: 'GeoWarning consulta il NWS all’apertura della pagina e ogni due minuti mentre è visibile. Se il browser non riesce a raggiungere il NWS, vengono mostrati i dati pubblicati da GeoWarning con l’ora di raccolta. L’elenco mostra fino a 40 bollettini per l’area selezionata.',
+        scope: 'GeoWarning consulta il NWS all’apertura della pagina e ogni 10 minuti mentre è visibile. Se il browser non riesce a raggiungere il NWS, vengono mostrati i dati pubblicati da GeoWarning con l’ora di raccolta. L’elenco mostra fino a 40 bollettini per l’area selezionata.',
         read: 'Gli avvisi e gli aggiornamenti in vigore con stato Actual (evento reale) sono ordinati per ora di emissione. Apri un bollettino per leggere il testo originale in inglese, l’area interessata e la scadenza. Potrebbero esserci altri avvisi. Consulta le istruzioni dell’ufficio locale del NWS.',
         links: ['Consulta i bollettini', 'Trova un ufficio NWS', 'Documentazione API del NWS']
       },

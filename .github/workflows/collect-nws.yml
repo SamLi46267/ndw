@@ -7,7 +7,7 @@ on:
       - 'backend/collect-nws.mjs'
       - '.github/workflows/collect-nws.yml'
   schedule:
-    - cron: '7,22,37,52 * * * *'
+    - cron: '7,17,27,37,47,57 * * * *'
   workflow_dispatch:
 
 permissions:
