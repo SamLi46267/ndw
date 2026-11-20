@@ -1389,6 +1389,9 @@
     var wrap = document.getElementById('chinaMapWrap');
     if (wrap) {
       chinaMap = __require('china-holo').create(wrap, onMapClickCity);
+      wrap.addEventListener('click', function (event) {
+        if (!event.defaultPrevented && !event.target.closest('.ch-city')) location.hash = '#/map';
+      });
       chinaMap.setStatus(sessionStatus);
       setChinaBase(chinaBase);
       hydrateNationalStatus();   /* 立即显示上次扫描结果 */

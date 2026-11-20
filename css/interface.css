@@ -143,8 +143,10 @@ button, .btn { touch-action: manipulation; }
 .ch-city:focus-visible { outline-offset: 8px; }
 .national-panel .map-legend { margin-top: 16px; gap: 10px 18px; font-size: .7rem; }
 
-/* The homepage preview links to a larger, keyboard-accessible map page. */
+/* The China map preview opens the enlarged map from its background. */
 .map-preview { display: block; margin-block: auto; border-radius: 10px; }
+.map-preview .china-map-wrap { cursor: zoom-in; }
+.map-meta a.map-hint { text-decoration: underline; text-underline-offset: 3px; }
 .expanded-map-page { padding: 28px 0 36px; }
 .expanded-map-page .back-link { margin-bottom: 20px; }
 .expanded-map-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
