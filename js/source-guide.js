@@ -30,7 +30,7 @@
         title: 'Earthquakes · APIZERO and USGS',
         scope: 'The 15-minute collection job requests the past day from APIZERO (M2.5 and above, up to 300 records). When that source is unavailable, it uses the USGS all-magnitudes past-day feed. Provider coverage can change the count.',
         read: 'Latitude and longitude locate the estimated epicenter. Depth is reported in kilometres. Magnitude describes the size of the earthquake at its source. Shaking at a particular place also depends on distance, depth and ground conditions.',
-        links: ['Earthquake map', 'USGS feed fields', 'APIZERO']
+        links: ['Earthquake map', 'USGS feed fields', 'APIZERO (极数本源 · 全球地震速报)']
       },
       nws: {
         title: 'U.S. weather bulletins · National Weather Service',
@@ -61,10 +61,10 @@
         links: ['全球灾害地图', 'GDACS 事件报告', 'GDACS 当前事件订阅源']
       },
       quakes: {
-        title: '地震 · APIZERO 与 USGS',
-        scope: '地震采集计划每 15 分钟运行一次，优先从 APIZERO 获取过去一天震级 2.5 及以上的记录，最多 300 条。该来源不可用时，改用 USGS 过去一天的全部震级订阅源。不同来源的收录范围会影响数量。',
+        title: '地震 · 极数本源与 USGS',
+        scope: '地震采集计划每 15 分钟运行一次，优先从极数本源 · 全球地震速报（APIZERO） 获取过去一天震级 2.5 及以上的记录，最多 300 条。该来源不可用时，改用 USGS 过去一天的全部震级订阅源。不同来源的收录范围会影响数量。',
         read: '经纬度表示估算的震中位置，震源深度以千米为单位。震级反映地震本身的大小。某地感受到的震动还取决于距离、震源深度和当地地质条件。',
-        links: ['地震地图', 'USGS 数据字段说明', 'APIZERO']
+        links: ['地震地图', 'USGS 数据字段说明', '极数本源 · 全球地震速报']
       },
       nws: {
         title: '美国气象通告 · 美国国家气象局',
@@ -98,7 +98,7 @@
         title: 'Sismos · APIZERO y USGS',
         scope: 'La tarea programada cada 15 minutos solicita a APIZERO hasta 300 registros del último día de magnitud 2,5 o superior. Si la fuente no está disponible, utiliza los registros del último día de todas las magnitudes del USGS. El recuento depende de la cobertura.',
         read: 'Las coordenadas sitúan el epicentro estimado. La profundidad se expresa en kilómetros. La magnitud describe el tamaño del sismo en su origen. La sacudida en un lugar también depende de la distancia, la profundidad y las condiciones del terreno.',
-        links: ['Mapa sísmico', 'Campos de datos del USGS', 'APIZERO']
+        links: ['Mapa sísmico', 'Campos de datos del USGS', 'APIZERO (极数本源 · 全球地震速报)']
       },
       nws: {
         title: 'Boletines de EE. UU. · National Weather Service',
@@ -132,7 +132,7 @@
         title: 'Séismes · APIZERO et USGS',
         scope: 'La collecte prévue toutes les 15 minutes demande à APIZERO jusqu’à 300 séismes de magnitude 2,5 ou plus sur la dernière journée. En cas d’indisponibilité, le flux USGS couvre toutes les magnitudes sur la dernière journée. Le nombre dépend de la couverture de la source.',
         read: 'Les coordonnées situent l’épicentre estimé. La profondeur est exprimée en kilomètres. La magnitude mesure la taille du séisme à sa source. Les secousses ressenties localement dépendent aussi de la distance, de la profondeur et de la nature du sol.',
-        links: ['Carte des séismes', 'Champs de données USGS', 'APIZERO']
+        links: ['Carte des séismes', 'Champs de données USGS', 'APIZERO (极数本源 · 全球地震速报)']
       },
       nws: {
         title: 'Bulletins météo des États-Unis · National Weather Service',
@@ -166,7 +166,7 @@
         title: 'Terremoti · APIZERO e USGS',
         scope: 'La raccolta programmata ogni 15 minuti richiede ad APIZERO fino a 300 eventi dell’ultimo giorno di magnitudo pari o superiore a 2,5. Se la fonte non è disponibile, utilizza il flusso USGS di tutte le magnitudo dell’ultimo giorno. Il conteggio dipende dalla copertura.',
         read: 'Le coordinate individuano l’epicentro stimato. La profondità è riportata in chilometri. La magnitudo misura la grandezza del terremoto alla sorgente. Lo scuotimento locale dipende anche dalla distanza, dalla profondità e dalle condizioni del terreno.',
-        links: ['Mappa dei terremoti', 'Campi dati USGS', 'APIZERO']
+        links: ['Mappa dei terremoti', 'Campi dati USGS', 'APIZERO (极数本源 · 全球地震速报)']
       },
       nws: {
         title: 'Bollettini meteo degli Stati Uniti · National Weather Service',

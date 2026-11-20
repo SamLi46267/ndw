@@ -331,7 +331,7 @@ body { background: #0d1217; }
 
 /* Neutral monitoring surfaces keep warning colors distinct from navigation. */
 :root {
-  --bg: #0e181b; --bg-alt: #132124;
+  --bg: #0b1012; --bg-alt: #101719;
   --card: #19292c; --card-solid: #19292c; --card-hover: #21363a; --card-2: #152427;
   --border: #35494b; --border-strong: #597173;
   --text: #f0f7f5; --text-mid: #c0d0ce; --text-dim: #a4bab8; --text-muted: var(--text-mid);

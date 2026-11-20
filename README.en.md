@@ -14,7 +14,7 @@ A static, mobile-friendly site for checking disaster reports and finding prepare
 | U.S. weather alerts | Read National Weather Service bulletins by state or territory. Open a bulletin for the issuing office, dates, affected area, and original instructions when supplied. |
 | Sources & coverage | Look up the coverage limits, collection schedule, source definitions, and official links for each feed. |
 | Database and rescue contacts | Browse collected historical records and find relief organizations or official directories by country or region. |
-| Guide, Tools, and Practice activities | Read preparedness guides, use the first-aid cards, build a checklist or family plan, and try the interactive demos. |
+| Guide, Tools, and Products | Read preparedness guides, use the first-aid cards, build a checklist or family plan, and try the interactive demos. |
 | Settings | Change language, text size, contrast, motion, or browser reminders. |
 
 ## Where the data comes from
