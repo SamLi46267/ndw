@@ -2,7 +2,7 @@
  * games.js v3 — 产品目录 3D 互动游戏（Three.js）
  *   aqua : AquaSentry  —— 发射口视角，调角度抛射救生圈（真实物理）
  *   pyro : PyroGuard   —— 网格解谜，最短路径清理树叶
- *   两个游戏各 7 个难度，最高难度重复生成
+ *   两个游戏各 7 个关卡
  * ================================================================ */
 (function () {
   var running = false;
@@ -13,6 +13,8 @@
   var frameEl = null;
   var panelEl = null;
   var onResult = null;
+  var run;
+  var FINAL_LEVEL = 7;
   var G = 9.81;
   var ENV_TEX = null;
 
@@ -806,43 +808,66 @@
     });
   }
 
-  function resultRows(S) {
-    var aqua = S.type === 'aqua';
-    var goal = aqua ? S.saved / S.cfg.targets : Math.min(1, S.bestLen / S.userSteps);
-    var remaining = Math.max(0, S.timeLeft);
-    var time = S.cfg.time - remaining;
-    var points = Math.round(700 * goal + 300 * remaining / S.cfg.time * (aqua ? goal : 1));
-    var measure = aqua ? Math.round(goal * 100) : S.userSteps;
-    if (onResult) onResult({ level: S.level, points: points, time: time, measure: measure });
-    return '<div><span>' + (aqua ? L.progress : L.steps) + '</span><b>' + measure + (aqua ? '%' : '') + '</b></div>' +
-      '<div><span>' + L.timeUsed + '</span><b>' + time.toFixed(1) + 's</b></div>' +
-      '<div><span>' + L.gamePoints + '</span><b>' + points + '</b></div>';
+  function beginRun(init) {
+    run = { time: 0, budget: 0, saved: 0, targets: 0, steps: 0, bestSteps: 0 };
+    state = init(1);
+  }
+
+  function recordAttempt(S, cleared) {
+    run.time += S.cfg.time - Math.max(0, S.timeLeft);
+    if (cleared) run.budget += S.cfg.time;
+    if (S.type === 'aqua') {
+      run.saved += S.saved;
+      run.targets += S.cfg.targets;
+    } else {
+      run.steps += S.userSteps;
+      if (cleared) run.bestSteps += S.bestLen;
+    }
+  }
+
+  function resultRow(label, value) {
+    return '<div><span>' + label + '</span><b>' + value + '</b></div>';
+  }
+
+  function showLevelClear(S, rows, init) {
+    recordAttempt(S, true);
+    var complete = S.level === FINAL_LEVEL;
+    if (complete) {
+      var aqua = S.type === 'aqua';
+      var efficiency = aqua ? run.saved / run.targets : Math.min(1, run.bestSteps / run.steps);
+      var timeBonus = Math.max(0, 1 - run.time / run.budget);
+      var points = Math.round(700 * efficiency + 300 * timeBonus * (aqua ? efficiency : 1));
+      var measure = aqua ? Math.round(efficiency * 100) : run.steps;
+      if (onResult) onResult({ points: points, time: run.time, measure: measure });
+      rows = resultRow(aqua ? L.progress : L.steps, measure + (aqua ? '%' : '')) +
+        resultRow(L.timeUsed, run.time.toFixed(1) + 's') + resultRow(L.gamePoints, points);
+    }
+    var panel = showPanel(
+      '<div class="gp-icon">✓</div>' +
+      '<div class="gp-title">' + (complete ? L.gameComplete : L.levelClear + ' ' + S.level) + '</div>' +
+      '<div class="gp-rows">' + rows + '</div>' +
+      '<button class="gp-btn" data-gp="' + (complete ? 'replay' : 'next') + '">' +
+        (complete ? L.gameReplay : L.nextLevel) + '</button>'
+    );
+    panel.querySelector('button').addEventListener('click', function () {
+      hidePanel();
+      if (complete) beginRun(init);
+      else state = init(S.level + 1);
+    });
   }
 
   function showAquaWin(S) {
     var acc = S.shots > 0 ? Math.round(S.hits / S.shots * 100) : 0;
-    var last = S.level >= 7;
-    var p = showPanel(
-      '<div class="gp-icon">✓</div>' +
-      '<div class="gp-title">' + L.levelClear + ' ' + S.level + '</div>' +
-      '<div class="gp-rows">' +
-        resultRows(S) +
-        '<div><span>' + L.accuracy + '</span><b>' + acc + '% (' + S.hits + '/' + S.shots + ')</b></div>' +
-      '</div>' +
-      '<button class="gp-btn" data-gp="next">' + (last ? L.keepChallenge : L.nextLevel) + '</button>'
-    );
-    p.querySelector('[data-gp=next]').addEventListener('click', function () {
-      hidePanel();
-      var next = S.level >= 7 ? 7 : S.level + 1;
-      state = initAqua(next);
-    });
+    showLevelClear(S, resultRow(L.timeUsed, (S.cfg.time - S.timeLeft).toFixed(1) + 's') +
+      resultRow(L.accuracy, acc + '% (' + S.hits + '/' + S.shots + ')'), initAqua);
   }
 
   function showAquaTimeout(S) {
-    showRetry(S, resultRows(S), initAqua);
+    showRetry(S, resultRow(L.progress, S.saved + '/' + S.cfg.targets), initAqua);
   }
 
   function showRetry(S, rows, init) {
+    recordAttempt(S, false);
     var p = showPanel(
       '<div class="gp-icon" style="color:#ff5a5a">✕</div>' +
       '<div class="gp-title">' + L.failed + '</div>' +
@@ -1384,24 +1409,13 @@
     var bestM = S.bestLen * S.cell;
     var extra = userM - bestM;
     paintBestPath(S);
-    var last = S.level >= 7;
-    var rows = resultRows(S) +
+    var rows =
       '<div><span>' + L.yourPath + '</span><b>' + userM + 'm</b></div>' +
       '<div><span>' + L.bestPath + '</span><b style="color:#76b900">' + bestM + 'm</b></div>' +
       (extra === 0
         ? '<div class="gp-perfect">' + L.perfect + '</div>'
         : '<div><span>' + L.vsBest + '</span><b style="color:#ffc24d">+' + extra + 'm</b></div>');
-    var p = showPanel(
-      '<div class="gp-icon">✓</div>' +
-      '<div class="gp-title">' + L.levelClear + ' ' + S.level + '</div>' +
-      '<div class="gp-rows">' + rows + '</div>' +
-      '<button class="gp-btn" data-gp="next">' + (last ? L.keepChallenge : L.nextLevel) + '</button>'
-    );
-    p.querySelector('[data-gp=next]').addEventListener('click', function () {
-      hidePanel();
-      var next = S.level >= 7 ? 7 : S.level + 1;
-      state = initPyro(next);
-    });
+    showLevelClear(S, rows, initPyro);
   }
 
   /* ---------------- 输入 ---------------- */
@@ -1449,14 +1463,14 @@
       var yawDeg = Math.round(-state.yaw * 180 / Math.PI);
       var pitDeg = Math.round(state.pitch * 180 / Math.PI);
       el.innerHTML =
-        '<span>' + L.level + ' <b>' + state.level + '</b>/7</span>' +
+        '<span>' + L.level + ' <b>' + state.level + '</b>/' + FINAL_LEVEL + '</span>' +
         '<span>' + L.target + ' <b>' + state.saved + '/' + state.cfg.targets + '</b></span>' +
         '<span>⏱ <b>' + Math.ceil(state.timeLeft) + '</b>s</span>' +
         '<span>' + L.angle + ' <b>' + (yawDeg >= 0 ? '+' : '') + yawDeg + '°/' + pitDeg + '°</b></span>' +
         '<span>' + (state.cooldown > 0 ? '● ' + state.cooldown.toFixed(1) + 's' : (state.locked ? '◉ ' + (L.lock || 'LOCK') : '● ' + L.ready));
     } else {
       el.innerHTML =
-        '<span>' + L.level + ' <b>' + state.level + '</b>/7</span>' +
+        '<span>' + L.level + ' <b>' + state.level + '</b>/' + FINAL_LEVEL + '</span>' +
         '<span>🍂 <b>' + state.cleared + '/' + state.piles.length + '</b></span>' +
         '<span>' + L.steps + ' <b>' + state.userSteps + '</b></span>' +
         '<span>⏱ <b>' + Math.ceil(state.timeLeft) + '</b>s</span>';
@@ -1485,7 +1499,7 @@
       L = labels || {};
       clock = new THREE.Clock();
       setupRenderer(canvas);
-      state = type === 'aqua' ? initAqua(1) : initPyro(1);
+      beginRun(type === 'aqua' ? initAqua : initPyro);
       running = true;
       window.addEventListener('keydown', onKeyDn);
       window.addEventListener('keyup', onKeyUp);

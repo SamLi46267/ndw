@@ -17,20 +17,16 @@
       section.className = 'game-leaderboard';
       section.setAttribute('aria-labelledby', 'gameLeaderboardTitle');
       section.innerHTML =
-        '<div class="game-leaderboard-head"><h2 id="gameLeaderboardTitle">' + esc(t.gameLeaderboard) + '</h2>' +
-        '<label>' + esc(t.level) + ' <select></select></label></div>' +
+        '<h2 id="gameLeaderboardTitle">' + esc(t.gameLeaderboard) + '</h2>' +
         '<p>' + esc(aqua ? t.gameAquaScoring : t.gamePyroScoring) + '</p>' +
         '<div class="game-leaderboard-results"></div>';
-      var select = section.querySelector('select');
+      var key = 'ndw-game-scores-v2-' + game;
       var results = section.querySelector('.game-leaderboard-results');
-      for (var level = 1; level <= 7; level++) select.add(new Option(level, level));
 
-      function key() { return 'ndw-game-scores-v1-' + game + '-' + select.value; }
       function entries() {
-        var id = key();
-        if (unsavedScores.has(id)) return unsavedScores.get(id);
+        if (unsavedScores.has(key)) return unsavedScores.get(key);
         var saved;
-        try { saved = JSON.parse(localStorage.getItem(id)); } catch (_) { /* Storage may be unavailable. */ }
+        try { saved = JSON.parse(localStorage.getItem(key)); } catch (_) { /* Storage may be unavailable. */ }
         return Array.isArray(saved) ? saved.filter(function (entry) {
           return entry && Number.isInteger(entry.points) && entry.points >= 0 && entry.points <= 1000 &&
             Number.isInteger(entry.measure) && entry.measure >= 0 && Number.isFinite(entry.time) && entry.time >= 0;
@@ -54,12 +50,10 @@
           }).join('') + '</tbody></table>';
       }
 
-      select.addEventListener('change', renderScores);
       renderScores();
       return {
         element: section,
         record: function (result) {
-          select.value = result.level;
           var rows = entries();
           rows.push(result);
           rows.sort(function (a, b) {
@@ -67,10 +61,10 @@
           });
           if (rows.length > 10) rows.length = 10;
           try {
-            localStorage.setItem(key(), JSON.stringify(rows));
-            unsavedScores.delete(key());
+            localStorage.setItem(key, JSON.stringify(rows));
+            unsavedScores.delete(key);
           } catch (_) {
-            unsavedScores.set(key(), rows);
+            unsavedScores.set(key, rows);
           }
           renderScores();
         }

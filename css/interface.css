@@ -1304,16 +1304,7 @@ dialog.db-modal-card::backdrop { background: transparent; }
   border-radius: 16px;
   background: var(--card-solid);
 }
-.game-leaderboard-head { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
 .game-leaderboard h2 { margin: 0; font-size: 1.2rem; }
-.game-leaderboard select {
-  padding: 5px 8px;
-  border: 1px solid var(--border-strong);
-  border-radius: 6px;
-  background: var(--card-solid);
-  color: var(--text);
-  font: inherit;
-}
 .game-leaderboard > p, .game-leaderboard-results { margin-top: 10px; color: var(--text-mid); font-size: .88rem; }
 .game-leaderboard table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 .game-leaderboard :is(th, td) { padding: 8px 4px; border-bottom: 1px solid var(--border); text-align: start; }
