@@ -1,17 +1,17 @@
 {
   "type": "FeatureCollection",
-  "generatedAt": "2026-11-20T21:25:19.868Z",
+  "generatedAt": "2026-11-21T02:43:03.851Z",
   "source": "GDACS",
-  "endpoint": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventlist=WF%3BFL%3BTC%3BDR&fromDate=2026-09-21&toDate=2026-11-20&alertlevel=Green%3BOrange%3BRed",
+  "endpoint": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventlist=WF%3BFL%3BTC%3BDR&fromDate=2026-09-22&toDate=2026-11-21&alertlevel=Green%3BOrange%3BRed",
   "currentFeed": "https://www.gdacs.org/xml/rss.xml",
-  "checkedAt": "2026-11-20T21:25:19.868Z",
-  "fromDate": "2026-09-21",
-  "toDate": "2026-11-20",
-  "count": 178,
+  "checkedAt": "2026-11-21T02:43:03.851Z",
+  "fromDate": "2026-09-22",
+  "toDate": "2026-11-21",
+  "count": 153,
   "bbox": [
     -163.9,
-    -34.40603386122232,
-    145.29735478873943,
+    -34.40490353937426,
+    144.92933073787626,
     43.9307763
   ],
   "features": [
@@ -40,7 +40,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033926"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -69,7 +69,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033922"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -98,7 +98,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033939"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -127,7 +127,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033924"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -156,7 +156,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033919"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -185,65 +185,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033917"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          124.60737912366396,
-          -15.601366644964283
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033746",
-        "episodeid": "16",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 09/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Mon, 09 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Wed, 11 Nov 2026 20:02:39 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033746"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          30.21289075555697,
-          7.142979532338281
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033741",
-        "episodeid": "15",
-        "name": "Green forest fire notification in South Sudan",
-        "description": "On 10/11/2026, a forest fire started in South Sudan,  until 17/11/2026.",
-        "country": "South Sudan",
-        "alertlevel": "Green",
-        "fromdate": "Tue, 10 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Wed, 11 Nov 2026 20:01:30 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033741"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -272,94 +214,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033740"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          143.97138795809312,
-          -15.110650128319172
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033728",
-        "episodeid": "13",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 09/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Mon, 09 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Wed, 11 Nov 2026 16:02:03 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033728"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.753783604726582,
-          9.741458344690212
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033696",
-        "episodeid": "13",
-        "name": "Green forest fire notification in Central African Republic",
-        "description": "On 09/11/2026, a forest fire started in Central African Republic,  until 17/11/2026.",
-        "country": "Central African Republic",
-        "alertlevel": "Green",
-        "fromdate": "Mon, 09 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Wed, 11 Nov 2026 00:02:26 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033696"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          133.27674477096065,
-          -15.273368601419909
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033694",
-        "episodeid": "11",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 10/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Tue, 10 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Wed, 11 Nov 2026 00:00:59 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033694"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -388,7 +243,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033913"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -417,94 +272,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033920"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          139.3039957764171,
-          -22.35363127824944
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033916",
-        "episodeid": "3",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 16/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 20:02:19 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033916"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          6.097418014737116,
-          11.99976170125205
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033915",
-        "episodeid": "2",
-        "name": "Green forest fire notification in Nigeria",
-        "description": "On 06/11/2026, a forest fire started in Nigeria,  until 17/11/2026.",
-        "country": "Nigeria",
-        "alertlevel": "Green",
-        "fromdate": "Fri, 06 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 16:34:33 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033915"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          136.117521220751,
-          -22.047632430548475
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033909",
-        "episodeid": "3",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 14/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 16:04:59 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033909"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -533,36 +301,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033908"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.99346267355513,
-          -15.673876479691605
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033902",
-        "episodeid": "2",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 08/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Sun, 08 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 08:24:57 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033902"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -591,123 +330,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033905"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          124.84413902985817,
-          -17.49785258599838
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033903",
-        "episodeid": "2",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 15/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 08:02:23 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033903"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -7.8571773,
-          42.3438932
-        ]
-      },
-      "properties": {
-        "eventtype": "FL",
-        "eventid": "1104287",
-        "episodeid": "1",
-        "name": "Green flood alert in Spain",
-        "description": "On 15/11/2026, a flood started in Spain, lasting until 17/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-        "country": "Spain",
-        "alertlevel": "Green",
-        "fromdate": "Sun, 15 Nov 2026 01:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 01:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 07:43:35 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104287"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          27.456125,
-          -26.904354
-        ]
-      },
-      "properties": {
-        "eventtype": "FL",
-        "eventid": "1104286",
-        "episodeid": "1",
-        "name": "Green flood alert in South Africa",
-        "description": "On 15/11/2026, a flood started in South Africa, lasting until 17/11/2026 (last update). The flood caused 0 deaths and 0 displaced .",
-        "country": "South Africa",
-        "alertlevel": "Green",
-        "fromdate": "Sun, 15 Nov 2026 01:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 01:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 07:24:32 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104286"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          144.5474702877609,
-          -15.466208201763973
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033668",
-        "episodeid": "17",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 02/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Mon, 02 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Tue, 10 Nov 2026 08:25:00 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033668"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -736,7 +359,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033684"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -765,123 +388,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104253"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -70.9521277,
-          19.336389
-        ]
-      },
-      "properties": {
-        "eventtype": "FL",
-        "eventid": "1104281",
-        "episodeid": "2",
-        "name": "Green flood alert in Dominican Republic",
-        "description": "On 06/11/2026, a flood started in Dominican Republic, lasting until 17/11/2026 (last update). The flood caused 0 deaths and 20 displaced .",
-        "country": "Dominican Republic",
-        "alertlevel": "Green",
-        "fromdate": "Fri, 06 Nov 2026 01:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 01:00:00 GMT",
-        "datemodified": "Thu, 12 Nov 2026 21:54:41 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104281"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          26.175508474302596,
-          7.947708137029263
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033868",
-        "episodeid": "7",
-        "name": "Green forest fire notification in South Sudan",
-        "description": "On 08/11/2026, a forest fire started in South Sudan,  until 17/11/2026.",
-        "country": "South Sudan",
-        "alertlevel": "Green",
-        "fromdate": "Sun, 08 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sun, 15 Nov 2026 16:11:42 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033868"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          144.0846001241803,
-          -17.393050037585784
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033616",
-        "episodeid": "23",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 03/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Tue, 03 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sun, 08 Nov 2026 08:13:45 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033616"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          24.62639473554031,
-          9.014624804349724
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033848",
-        "episodeid": "8",
-        "name": "Green forest fire notification in South Sudan, Sudan",
-        "description": "On 07/11/2026, a forest fire started in South Sudan, Sudan,  until 17/11/2026.",
-        "country": "South Sudan, Sudan",
-        "alertlevel": "Green",
-        "fromdate": "Sat, 07 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sat, 14 Nov 2026 17:27:14 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033848"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -910,7 +417,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033847"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -939,7 +446,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033843"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -968,36 +475,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033816"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          145.29735478873943,
-          -19.119421716790022
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033832",
-        "episodeid": "7",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 06/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Fri, 06 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sat, 14 Nov 2026 08:27:50 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033832"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1026,7 +504,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033813"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1055,65 +533,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033826"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -2.7407234777035487,
-          12.93830112545213
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033894",
-        "episodeid": "4",
-        "name": "Green forest fire notification in Burkina Faso",
-        "description": "On 13/11/2026, a forest fire started in Burkina Faso,  until 17/11/2026.",
-        "country": "Burkina Faso",
-        "alertlevel": "Green",
-        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Mon, 16 Nov 2026 20:02:19 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033894"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          138.40103896954167,
-          -24.03486935140856
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033878",
-        "episodeid": "3",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 14/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Mon, 16 Nov 2026 20:02:07 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033878"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1142,36 +562,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033890"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          5.8397184015500105,
-          13.082122829046288
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033874",
-        "episodeid": "3",
-        "name": "Green forest fire notification in Nigeria",
-        "description": "On 12/11/2026, a forest fire started in Nigeria,  until 17/11/2026.",
-        "country": "Nigeria",
-        "alertlevel": "Green",
-        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Mon, 16 Nov 2026 16:03:47 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033874"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1200,7 +591,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104285"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1229,7 +620,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033870"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1258,65 +649,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033651"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          1.202858010809572,
-          11.598113522548847
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033930",
-        "episodeid": "1",
-        "name": "Green forest fire notification in Benin, Burkina Faso",
-        "description": "On 13/11/2026, a forest fire started in Benin, Burkina Faso,  until 17/11/2026.",
-        "country": "Benin, Burkina Faso",
-        "alertlevel": "Green",
-        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:13:42 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033930"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          0.7628120562853469,
-          11.633615002271998
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033928",
-        "episodeid": "1",
-        "name": "Green forest fire notification in Burkina Faso",
-        "description": "On 13/11/2026, a forest fire started in Burkina Faso,  until 17/11/2026.",
-        "country": "Burkina Faso",
-        "alertlevel": "Green",
-        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:14:26 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033928"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1339,13 +672,13 @@
         "alertlevel": "Green",
         "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
         "todate": "Wed, 18 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:11:20 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:11:17 GMT",
         "iscurrent": true,
         "url": {
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033949"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1368,71 +701,13 @@
         "alertlevel": "Green",
         "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
         "todate": "Wed, 18 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:06:45 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:08:29 GMT",
         "iscurrent": true,
         "url": {
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033947"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          124.32359621497571,
-          -19.14806509881364
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033907",
-        "episodeid": "1",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 16/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:05:55 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033907"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          29.331314917134794,
-          9.277362263590199
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033936",
-        "episodeid": "1",
-        "name": "Green forest fire notification in South Sudan",
-        "description": "On 07/11/2026, a forest fire started in South Sudan,  until 17/11/2026.",
-        "country": "South Sudan",
-        "alertlevel": "Green",
-        "fromdate": "Sat, 07 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:44:00 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033936"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1461,36 +736,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033799"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          143.86361448036334,
-          -15.10790940681975
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033818",
-        "episodeid": "11",
-        "name": "Green forest fire notification in Australia",
-        "description": "On 11/11/2026, a forest fire started in Australia,  until 17/11/2026.",
-        "country": "Australia",
-        "alertlevel": "Green",
-        "fromdate": "Wed, 11 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 13 Nov 2026 20:02:49 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033818"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1519,7 +765,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033810"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1548,36 +794,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033776"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -54.99652665397544,
-          -1.3806716264806473
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033784",
-        "episodeid": "17",
-        "name": "Green forest fire notification in Brazil",
-        "description": "On 02/11/2026, a forest fire started in Brazil,  until 17/11/2026.",
-        "country": "Brazil",
-        "alertlevel": "Green",
-        "fromdate": "Mon, 02 Nov 2026 00:00:00 GMT",
-        "todate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 13 Nov 2026 09:40:36 GMT",
-        "iscurrent": true,
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033784"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1633,7 +850,7 @@
           "severityunit": "km/h"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1688,7 +905,7 @@
           "severityunit": ""
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1717,7 +934,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033892"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1746,7 +963,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033849"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1801,7 +1018,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1830,7 +1047,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033756"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1859,7 +1076,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033852"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1888,7 +1105,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033914"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1917,7 +1134,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033867"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1946,7 +1163,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033875"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -1982,7 +1199,7 @@
         "country": "Ethiopia, Sudan",
         "fromdate": "Mon, 09 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 19 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:36:33 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:23:52 GMT",
         "iso3": "ETH",
         "source": "GWIS",
         "sourceid": "",
@@ -2006,7 +1223,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2035,7 +1252,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033898"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2064,7 +1281,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033772"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2093,7 +1310,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033866"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2148,7 +1365,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2177,7 +1394,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033895"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2237,7 +1454,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2266,7 +1483,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033896"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2295,7 +1512,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033860"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2350,7 +1567,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2379,7 +1596,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033863"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2434,7 +1651,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2451,45 +1668,19 @@
         "eventtype": "WF",
         "eventid": "1033925",
         "episodeid": "2",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Benin",
-        "description": "Forest fires in Benin",
-        "htmldescription": "Green Forest fires in Benin from: 14 Nov 2026 to: 19 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033925"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
+        "name": "Green forest fire notification in Benin",
+        "description": "On 14/11/2026, a forest fire started in Benin,  until 19/11/2026.",
         "country": "Benin",
+        "alertlevel": "Green",
         "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 19 Nov 2026 00:00:00 GMT",
         "datemodified": "Thu, 19 Nov 2026 16:06:11 GMT",
-        "iso3": "BEN",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "BJ",
-            "iso3": "BEN",
-            "countryname": "Benin"
-          }
-        ],
-        "severitydata": {
-          "severity": 5360,
-          "severitytext": "Green impact for forestfire in 5360 ha",
-          "severityunit": "ha"
+        "iscurrent": true,
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033925"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2518,7 +1709,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033885"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2554,7 +1745,7 @@
         "country": "South Sudan",
         "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 19 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:08:52 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:09:54 GMT",
         "iso3": "SSD",
         "source": "GWIS",
         "sourceid": "",
@@ -2573,7 +1764,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2590,55 +1781,19 @@
         "eventtype": "WF",
         "eventid": "1033923",
         "episodeid": "6",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Togo, Benin, Burkina Faso",
-        "description": "Forest fires in Togo, Benin, Burkina Faso",
-        "htmldescription": "Green Forest fires in Togo, Benin, Burkina Faso from: 14 Nov 2026 to: 19 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033923"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
+        "name": "Green forest fire notification in Togo, Benin, Burkina Faso",
+        "description": "On 14/11/2026, a forest fire started in Togo, Benin, Burkina Faso,  until 19/11/2026.",
         "country": "Togo, Benin, Burkina Faso",
+        "alertlevel": "Green",
         "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 19 Nov 2026 00:00:00 GMT",
         "datemodified": "Wed, 18 Nov 2026 04:05:14 GMT",
-        "iso3": "TGO",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "TG",
-            "iso3": "TGO",
-            "countryname": "Togo"
-          },
-          {
-            "iso2": "BJ",
-            "iso3": "BEN",
-            "countryname": "Benin"
-          },
-          {
-            "iso2": "BF",
-            "iso3": "BFA",
-            "countryname": "Burkina Faso"
-          }
-        ],
-        "severitydata": {
-          "severity": 10783,
-          "severitytext": "Green impact for forestfire in 10783 ha",
-          "severityunit": "ha"
+        "iscurrent": true,
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033923"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2667,7 +1822,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033884"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2696,7 +1851,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033904"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2725,7 +1880,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033921"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2761,7 +1916,7 @@
         "country": "Botswana",
         "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 19 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:04:51 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:04:18 GMT",
         "iso3": "BWA",
         "source": "GWIS",
         "sourceid": "",
@@ -2780,7 +1935,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2840,7 +1995,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2869,7 +2024,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033808"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2898,7 +2053,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033760"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2927,7 +2082,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033824"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -2982,7 +2137,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -3037,7 +2192,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -3092,7 +2247,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -3121,7 +2276,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104259"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -3150,7 +2305,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104239"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -3179,7 +2334,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104289"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -3208,7 +2363,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104288"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -3237,337 +2392,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104216"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          124.21316327001404,
-          -16.546113918457873
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033980",
-        "episodeid": "1",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 14 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033980"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:11:14 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 5862,
-          "severitytext": "Green impact for forestfire in 5862 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          125.4532397186752,
-          -21.458284931124677
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033979",
-        "episodeid": "1",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 17 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033979"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:04:59 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 7888,
-          "severitytext": "Green impact for forestfire in 7888 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          122.45122722584554,
-          -19.268071988188897
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033978",
-        "episodeid": "1",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 18 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033978"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:02:28 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 9478,
-          "severitytext": "Green impact for forestfire in 9478 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          125.74713412221205,
-          -22.78697831632308
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033976",
-        "episodeid": "1",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 20 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033976"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:01:30 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 5119,
-          "severitytext": "Green impact for forestfire in 5119 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.04026129406262,
-          -22.673697806736676
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033957",
-        "episodeid": "3",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 17 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033957"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 19 Nov 2026 20:02:50 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 6380,
-          "severitytext": "Green impact for forestfire in 6380 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          125.89395915395795,
-          -22.783461469362177
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033956",
-        "episodeid": "3",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 18 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033956"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 19 Nov 2026 20:02:25 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 17216,
-          "severitytext": "Green impact for forestfire in 17216 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -3622,172 +2447,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          123.11226390156118,
-          -17.531599528738223
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033952",
-        "episodeid": "7",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033952"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 19 Nov 2026 00:12:30 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 18789,
-          "severitytext": "Green impact for forestfire in 18789 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          125.5442027418005,
-          -22.526265470946992
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033943",
-        "episodeid": "8",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 16 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033943"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Wed, 18 Nov 2026 20:02:45 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 19825,
-          "severitytext": "Green impact for forestfire in 19825 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          126.08922478443024,
-          -21.47001454506583
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033942",
-        "episodeid": "7",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 17 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033942"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Wed, 18 Nov 2026 20:02:07 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 10287,
-          "severitytext": "Green impact for forestfire in 10287 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -3842,117 +2502,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          124.50267352647353,
-          -17.17341653675724
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033937",
-        "episodeid": "8",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 15 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033937"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Wed, 18 Nov 2026 08:05:13 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 19103,
-          "severitytext": "Green impact for forestfire in 19103 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          125.75062715758804,
-          -17.883963975749847
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033912",
-        "episodeid": "11",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033912"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 16:07:53 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 7655,
-          "severitytext": "Green impact for forestfire in 7655 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -4007,62 +2557,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          123.68019483979076,
-          -18.80239974299495
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033906",
-        "episodeid": "10",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 16 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033906"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 16:01:25 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 8217,
-          "severitytext": "Green impact for forestfire in 8217 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -4117,7 +2612,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -4172,447 +2667,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          125.08228060739053,
-          -17.315171465054455
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033881",
-        "episodeid": "11",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033881"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Mon, 16 Nov 2026 00:04:10 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 11681,
-          "severitytext": "Green impact for forestfire in 11681 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          123.7345564997305,
-          -16.203389262744036
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033862",
-        "episodeid": "14",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 09 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033862"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Mon, 09 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sun, 15 Nov 2026 20:09:21 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 10703,
-          "severitytext": "Green impact for forestfire in 10703 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          122.25400504699695,
-          -19.102520885681972
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033859",
-        "episodeid": "15",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 14 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033859"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sun, 15 Nov 2026 12:01:19 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 23415,
-          "severitytext": "Green impact for forestfire in 23415 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -53.55921879757609,
-          -1.163612036419994
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033857",
-        "episodeid": "20",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Brazil",
-        "description": "Forest fires in Brazil",
-        "htmldescription": "Green Forest fires in Brazil from: 07 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033857"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Brazil",
-        "fromdate": "Sat, 07 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sun, 15 Nov 2026 08:19:39 GMT",
-        "iso3": "BRA",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "BR",
-            "iso3": "BRA",
-            "countryname": "Brazil"
-          }
-        ],
-        "severitydata": {
-          "severity": 6895,
-          "severitytext": "Green impact for forestfire in 6895 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          133.53975368954818,
-          -15.420567937323094
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033829",
-        "episodeid": "10",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 09 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033829"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Mon, 09 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sat, 14 Nov 2026 08:10:23 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 10345,
-          "severitytext": "Green impact for forestfire in 10345 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          124.18687643431569,
-          -17.233929444583477
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033825",
-        "episodeid": "15",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 13 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033825"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sat, 14 Nov 2026 08:02:15 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 11841,
-          "severitytext": "Green impact for forestfire in 11841 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          128.5283778646486,
-          -15.105004730042461
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033786",
-        "episodeid": "13",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 11 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033786"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Wed, 11 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sat, 14 Nov 2026 08:03:40 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 7696,
-          "severitytext": "Green impact for forestfire in 7696 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          142.2723415895166,
-          -11.210324546001939
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033610",
-        "episodeid": "37",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 06 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033610"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Fri, 06 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sun, 08 Nov 2026 08:07:33 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 26436,
-          "severitytext": "Green impact for forestfire in 26436 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -4667,7 +2722,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -4703,7 +2758,7 @@
         "country": "Madagascar",
         "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
         "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:05:44 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:05:55 GMT",
         "iso3": "MDG",
         "source": "GWIS",
         "sourceid": "",
@@ -4722,7 +2777,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -4777,62 +2832,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          127.88960282908987,
-          -14.565297690008972
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033951",
-        "episodeid": "7",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 15 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033951"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 19 Nov 2026 00:04:38 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 15325,
-          "severitytext": "Green impact for forestfire in 15325 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -4887,62 +2887,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          124.08299183433707,
-          -16.453141389179905
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033911",
-        "episodeid": "11",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033911"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Tue, 17 Nov 2026 16:07:11 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 8662,
-          "severitytext": "Green impact for forestfire in 8662 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -4992,7 +2937,7 @@
           "severityunit": "km/h"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5028,7 +2973,7 @@
         "country": "Central African Republic",
         "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
         "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:19:17 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:16:16 GMT",
         "iso3": "CAF",
         "source": "GWIS",
         "sourceid": "",
@@ -5047,62 +2992,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          31.52582019631706,
-          9.09932261202432
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033989",
-        "episodeid": "1",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in South Sudan",
-        "description": "Forest fires in South Sudan",
-        "htmldescription": "Green Forest fires in South Sudan from: 12 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033989"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "South Sudan",
-        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:18:20 GMT",
-        "iso3": "SSD",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "SS",
-            "iso3": "SSD",
-            "countryname": "South Sudan"
-          }
-        ],
-        "severitydata": {
-          "severity": 5459,
-          "severitytext": "Green impact for forestfire in 5459 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5138,7 +3028,7 @@
         "country": "South Sudan",
         "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
         "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:08:56 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:10:02 GMT",
         "iso3": "SSD",
         "source": "GWIS",
         "sourceid": "",
@@ -5157,7 +3047,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5193,7 +3083,7 @@
         "country": "Central African Republic",
         "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
         "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:06:04 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:06:35 GMT",
         "iso3": "CAF",
         "source": "GWIS",
         "sourceid": "",
@@ -5212,7 +3102,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5248,7 +3138,7 @@
         "country": "Benin, Burkina Faso",
         "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
         "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:05:12 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:06:40 GMT",
         "iso3": "BEN",
         "source": "GWIS",
         "sourceid": "",
@@ -5272,62 +3162,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          20.49649856976501,
-          -34.40603386122232
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033985",
-        "episodeid": "1",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in South Africa",
-        "description": "Forest fires in South Africa",
-        "htmldescription": "Green Forest fires in South Africa from: 18 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033985"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "South Africa",
-        "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:03:46 GMT",
-        "iso3": "ZAF",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "ZA",
-            "iso3": "ZAF",
-            "countryname": "South Africa"
-          }
-        ],
-        "severitydata": {
-          "severity": 10281,
-          "severitytext": "Green impact for forestfire in 10281 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5363,7 +3198,7 @@
         "country": "South Sudan",
         "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
         "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:03:34 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:02:22 GMT",
         "iso3": "SSD",
         "source": "GWIS",
         "sourceid": "",
@@ -5382,122 +3217,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          25.169223479994212,
-          8.204716352934026
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033983",
-        "episodeid": "1",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in South Sudan, Central African Republic",
-        "description": "Forest fires in South Sudan, Central African Republic",
-        "htmldescription": "Green Forest fires in South Sudan, Central African Republic from: 18 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033983"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "South Sudan, Central African Republic",
-        "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 20:02:57 GMT",
-        "iso3": "SSD",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "SS",
-            "iso3": "SSD",
-            "countryname": "South Sudan"
-          },
-          {
-            "iso2": "CF",
-            "iso3": "CAF",
-            "countryname": "Central African Republic"
-          }
-        ],
-        "severitydata": {
-          "severity": 6161,
-          "severitytext": "Green impact for forestfire in 6161 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          29.18765692814318,
-          7.477146707268307
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033982",
-        "episodeid": "2",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in South Sudan",
-        "description": "Forest fires in South Sudan",
-        "htmldescription": "Green Forest fires in South Sudan from: 15 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033982"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "South Sudan",
-        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 16:08:42 GMT",
-        "iso3": "SSD",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "SS",
-            "iso3": "SSD",
-            "countryname": "South Sudan"
-          }
-        ],
-        "severitydata": {
-          "severity": 12995,
-          "severitytext": "Green impact for forestfire in 12995 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5552,7 +3272,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5607,7 +3327,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5667,62 +3387,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          143.29045277053308,
-          -13.055638615504895
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033970",
-        "episodeid": "5",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 10 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033970"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Tue, 10 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 19 Nov 2026 20:20:51 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 5575,
-          "severitytext": "Green impact for forestfire in 5575 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5777,7 +3442,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5832,7 +3497,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5887,7 +3552,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5942,7 +3607,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -5997,7 +3662,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6052,7 +3717,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6107,62 +3772,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          32.75709794224607,
-          9.038470687564287
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033954",
-        "episodeid": "5",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in South Sudan",
-        "description": "Forest fires in South Sudan",
-        "htmldescription": "Green Forest fires in South Sudan from: 12 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033954"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "South Sudan",
-        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 19 Nov 2026 12:14:51 GMT",
-        "iso3": "SSD",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "SS",
-            "iso3": "SSD",
-            "countryname": "South Sudan"
-          }
-        ],
-        "severitydata": {
-          "severity": 7076,
-          "severitytext": "Green impact for forestfire in 7076 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6222,62 +3832,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          30.1539986709834,
-          12.399455254169379
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033948",
-        "episodeid": "3",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Sudan",
-        "description": "Forest fires in Sudan",
-        "htmldescription": "Green Forest fires in Sudan from: 15 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033948"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Sudan",
-        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Fri, 20 Nov 2026 12:13:01 GMT",
-        "iso3": "SDN",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "SD",
-            "iso3": "SDN",
-            "countryname": "Sudan"
-          }
-        ],
-        "severitydata": {
-          "severity": 6920,
-          "severitytext": "Green impact for forestfire in 6920 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6332,7 +3887,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6387,7 +3942,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6442,7 +3997,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6502,7 +4057,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6557,62 +4112,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          31.61615270496745,
-          8.736468290992686
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033929",
-        "episodeid": "6",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in South Sudan",
-        "description": "Forest fires in South Sudan",
-        "htmldescription": "Green Forest fires in South Sudan from: 13 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033929"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "South Sudan",
-        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Wed, 18 Nov 2026 12:12:46 GMT",
-        "iso3": "SSD",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "SS",
-            "iso3": "SSD",
-            "countryname": "South Sudan"
-          }
-        ],
-        "severitydata": {
-          "severity": 8496,
-          "severitytext": "Green impact for forestfire in 8496 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6677,7 +4177,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6732,7 +4232,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6787,7 +4287,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6842,62 +4342,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          28.560694692165285,
-          8.654928487580454
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033891",
-        "episodeid": "5",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in South Sudan",
-        "description": "Forest fires in South Sudan",
-        "htmldescription": "Green Forest fires in South Sudan from: 08 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033891"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "South Sudan",
-        "fromdate": "Sun, 08 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Mon, 16 Nov 2026 16:12:11 GMT",
-        "iso3": "SSD",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "SS",
-            "iso3": "SSD",
-            "countryname": "South Sudan"
-          }
-        ],
-        "severitydata": {
-          "severity": 6299,
-          "severitytext": "Green impact for forestfire in 6299 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -6957,7 +4402,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7012,7 +4457,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7072,7 +4517,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7127,7 +4572,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7187,117 +4632,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          138.56438382419933,
-          -24.006675385583467
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033858",
-        "episodeid": "11",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 14 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033858"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sun, 15 Nov 2026 12:01:03 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 14024,
-          "severitytext": "Green impact for forestfire in 14024 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          5.980717120858652,
-          10.800866757151324
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033856",
-        "episodeid": "9",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Nigeria",
-        "description": "Forest fires in Nigeria",
-        "htmldescription": "Green Forest fires in Nigeria from: 11 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033856"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Nigeria",
-        "fromdate": "Wed, 11 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sun, 15 Nov 2026 16:02:20 GMT",
-        "iso3": "NGA",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "NG",
-            "iso3": "NGA",
-            "countryname": "Nigeria"
-          }
-        ],
-        "severitydata": {
-          "severity": 12640,
-          "severitytext": "Green impact for forestfire in 12640 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7352,7 +4687,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7407,62 +4742,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
-        "_active": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          142.3633773094868,
-          -11.538657024028158
-        ]
-      },
-      "properties": {
-        "eventtype": "WF",
-        "eventid": "1033840",
-        "episodeid": "25",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 07 Nov 2026 to: 20 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033840"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
-        "country": "Australia",
-        "fromdate": "Sat, 07 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Sat, 14 Nov 2026 12:29:37 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 51231,
-          "severitytext": "Green impact for forestfire in 51231 ha",
-          "severityunit": "ha"
-        },
-        "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7522,7 +4802,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7577,7 +4857,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7632,7 +4912,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7641,14 +4921,1999 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          144.48475019549645,
-          -14.90133641877058
+          130.9586654941131,
+          -15.790435917414579
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033992",
+        "episodeid": "1",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 16 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033992"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:06:18 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 5851,
+          "severitytext": "Green impact for forestfire in 5851 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.47924480507209,
+          -15.948856345439557
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033991",
+        "episodeid": "1",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 17 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033991"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sat, 21 Nov 2026 00:04:59 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 5578,
+          "severitytext": "Green impact for forestfire in 5578 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.523850653938045,
+          9.099389303152925
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033989",
+        "episodeid": "2",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Sudan",
+        "description": "Forest fires in South Sudan",
+        "htmldescription": "Green Forest fires in South Sudan from: 12 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033989"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Sudan",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 20 Nov 2026 20:18:20 GMT",
+        "iso3": "SSD",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "SS",
+            "iso3": "SSD",
+            "countryname": "South Sudan"
+          }
+        ],
+        "severitydata": {
+          "severity": 5653,
+          "severitytext": "Green impact for forestfire in 5653 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.49779123602925,
+          -34.40490353937426
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033985",
+        "episodeid": "2",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Africa",
+        "description": "Forest fires in South Africa",
+        "htmldescription": "Green Forest fires in South Africa from: 18 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033985"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Africa",
+        "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 20 Nov 2026 20:03:46 GMT",
+        "iso3": "ZAF",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "ZA",
+            "iso3": "ZAF",
+            "countryname": "South Africa"
+          }
+        ],
+        "severitydata": {
+          "severity": 10594,
+          "severitytext": "Green impact for forestfire in 10594 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.168299592630902,
+          8.202925378206892
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033983",
+        "episodeid": "2",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Sudan, Central African Republic",
+        "description": "Forest fires in South Sudan, Central African Republic",
+        "htmldescription": "Green Forest fires in South Sudan, Central African Republic from: 18 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033983"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Sudan, Central African Republic",
+        "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 20 Nov 2026 20:02:57 GMT",
+        "iso3": "SSD",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "SS",
+            "iso3": "SSD",
+            "countryname": "South Sudan"
+          },
+          {
+            "iso2": "CF",
+            "iso3": "CAF",
+            "countryname": "Central African Republic"
+          }
+        ],
+        "severitydata": {
+          "severity": 6361,
+          "severitytext": "Green impact for forestfire in 6361 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.187596431688696,
+          7.477181529816838
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033982",
+        "episodeid": "3",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Sudan",
+        "description": "Forest fires in South Sudan",
+        "htmldescription": "Green Forest fires in South Sudan from: 15 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033982"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Sudan",
+        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 20 Nov 2026 16:08:42 GMT",
+        "iso3": "SSD",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "SS",
+            "iso3": "SSD",
+            "countryname": "South Sudan"
+          }
+        ],
+        "severitydata": {
+          "severity": 13167,
+          "severitytext": "Green impact for forestfire in 13167 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.21247873051156,
+          -16.54456649269116
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033980",
+        "episodeid": "2",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 14 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033980"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 20 Nov 2026 20:11:14 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 6170,
+          "severitytext": "Green impact for forestfire in 6170 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.45320974760473,
+          -21.463018548389673
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033979",
+        "episodeid": "2",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 17 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033979"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 20 Nov 2026 20:04:59 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 9260,
+          "severitytext": "Green impact for forestfire in 9260 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.45054368393771,
+          -19.268079357974518
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033978",
+        "episodeid": "2",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 18 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033978"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 20 Nov 2026 20:02:28 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 9568,
+          "severitytext": "Green impact for forestfire in 9568 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.74372819583941,
+          -22.787605397229267
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033976",
+        "episodeid": "2",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 20 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033976"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 20 Nov 2026 20:01:30 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 6109,
+          "severitytext": "Green impact for forestfire in 6109 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.29027444313746,
+          -13.055515152260362
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033970",
+        "episodeid": "6",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 10 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033970"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Tue, 10 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 19 Nov 2026 20:20:51 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 5631,
+          "severitytext": "Green impact for forestfire in 5631 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.04016574135798,
+          -22.673235270245165
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033957",
+        "episodeid": "4",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 17 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033957"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 19 Nov 2026 20:02:50 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 6454,
+          "severitytext": "Green impact for forestfire in 6454 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.89230678667116,
+          -22.78239905798786
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033956",
+        "episodeid": "4",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 18 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033956"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 19 Nov 2026 20:02:25 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 17581,
+          "severitytext": "Green impact for forestfire in 17581 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.758310304866974,
+          9.037835820162927
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033954",
+        "episodeid": "6",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Sudan",
+        "description": "Forest fires in South Sudan",
+        "htmldescription": "Green Forest fires in South Sudan from: 12 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033954"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Sudan",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 19 Nov 2026 12:14:51 GMT",
+        "iso3": "SSD",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "SS",
+            "iso3": "SSD",
+            "countryname": "South Sudan"
+          }
+        ],
+        "severitydata": {
+          "severity": 7239,
+          "severitytext": "Green impact for forestfire in 7239 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.11229352001496,
+          -17.53172010019964
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033952",
+        "episodeid": "8",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033952"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 19 Nov 2026 00:12:30 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 18835,
+          "severitytext": "Green impact for forestfire in 18835 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.88691638598948,
+          -14.561938042816253
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033951",
+        "episodeid": "8",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 15 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033951"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 19 Nov 2026 00:04:38 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 16793,
+          "severitytext": "Green impact for forestfire in 16793 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.15425302483867,
+          12.399538359755837
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033948",
+        "episodeid": "4",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Sudan",
+        "description": "Forest fires in Sudan",
+        "htmldescription": "Green Forest fires in Sudan from: 15 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033948"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Sudan",
+        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 20 Nov 2026 12:13:01 GMT",
+        "iso3": "SDN",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "SD",
+            "iso3": "SDN",
+            "countryname": "Sudan"
+          }
+        ],
+        "severitydata": {
+          "severity": 6944,
+          "severitytext": "Green impact for forestfire in 6944 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.54348431122456,
+          -22.52576161356618
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033943",
+        "episodeid": "9",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 16 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033943"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 18 Nov 2026 20:02:45 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 20193,
+          "severitytext": "Green impact for forestfire in 20193 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.0889525140945,
+          -21.469530226780726
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033942",
+        "episodeid": "8",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 17 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033942"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 18 Nov 2026 20:02:07 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 10529,
+          "severitytext": "Green impact for forestfire in 10529 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.50217557141629,
+          -17.17389826274624
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033937",
+        "episodeid": "9",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 15 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033937"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 18 Nov 2026 08:05:13 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 19363,
+          "severitytext": "Green impact for forestfire in 19363 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.616459294732497,
+          8.736519835329867
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033929",
+        "episodeid": "7",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Sudan",
+        "description": "Forest fires in South Sudan",
+        "htmldescription": "Green Forest fires in South Sudan from: 13 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033929"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Sudan",
+        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 18 Nov 2026 12:12:46 GMT",
+        "iso3": "SSD",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "SS",
+            "iso3": "SSD",
+            "countryname": "South Sudan"
+          }
+        ],
+        "severitydata": {
+          "severity": 8542,
+          "severitytext": "Green impact for forestfire in 8542 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.7501718818601,
+          -17.883569678105086
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033912",
+        "episodeid": "12",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033912"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Tue, 17 Nov 2026 16:07:53 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 7756,
+          "severitytext": "Green impact for forestfire in 7756 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.08360729809293,
+          -16.448893388389187
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033911",
+        "episodeid": "12",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033911"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Tue, 17 Nov 2026 16:07:11 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 9890,
+          "severitytext": "Green impact for forestfire in 9890 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.67863280323465,
+          -18.803384022087993
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033906",
+        "episodeid": "11",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 16 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033906"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Tue, 17 Nov 2026 16:01:25 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 8515,
+          "severitytext": "Green impact for forestfire in 8515 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.560888099473814,
+          8.65493448083255
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033891",
+        "episodeid": "6",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Sudan",
+        "description": "Forest fires in South Sudan",
+        "htmldescription": "Green Forest fires in South Sudan from: 08 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033891"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Sudan",
+        "fromdate": "Sun, 08 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Mon, 16 Nov 2026 16:12:11 GMT",
+        "iso3": "SSD",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "SS",
+            "iso3": "SSD",
+            "countryname": "South Sudan"
+          }
+        ],
+        "severitydata": {
+          "severity": 6316,
+          "severitytext": "Green impact for forestfire in 6316 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.49801082579085,
+          9.143491249074764
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033886",
+        "episodeid": "15",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Nigeria",
+        "description": "Forest fires in Nigeria",
+        "htmldescription": "Green Forest fires in Nigeria from: 12 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033886"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Nigeria",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Mon, 16 Nov 2026 16:02:36 GMT",
+        "iso3": "NGA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "NG",
+            "iso3": "NGA",
+            "countryname": "Nigeria"
+          }
+        ],
+        "severitydata": {
+          "severity": 45094,
+          "severitytext": "Green impact for forestfire in 45094 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.0827152494437,
+          -17.31644695489544
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033881",
+        "episodeid": "12",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033881"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Mon, 16 Nov 2026 00:04:10 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 11960,
+          "severitytext": "Green impact for forestfire in 11960 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.73443728030982,
+          -16.20306621963784
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033862",
+        "episodeid": "15",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 09 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033862"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Mon, 09 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sun, 15 Nov 2026 20:09:21 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 10771,
+          "severitytext": "Green impact for forestfire in 10771 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.25353329406389,
+          -19.103624494002798
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033859",
+        "episodeid": "16",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 14 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033859"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sun, 15 Nov 2026 12:01:19 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 23773,
+          "severitytext": "Green impact for forestfire in 23773 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.56524686060865,
+          -24.007168383478934
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033858",
+        "episodeid": "12",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 14 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033858"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sun, 15 Nov 2026 12:01:03 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 14212,
+          "severitytext": "Green impact for forestfire in 14212 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -53.55903693018771,
+          -1.163279066935884
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033857",
+        "episodeid": "21",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 07 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033857"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Sat, 07 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sun, 15 Nov 2026 08:19:39 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 6962,
+          "severitytext": "Green impact for forestfire in 6962 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.9813975446134,
+          10.79942756225045
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033856",
+        "episodeid": "10",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Nigeria",
+        "description": "Forest fires in Nigeria",
+        "htmldescription": "Green Forest fires in Nigeria from: 11 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033856"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Nigeria",
+        "fromdate": "Wed, 11 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sun, 15 Nov 2026 16:02:20 GMT",
+        "iso3": "NGA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "NG",
+            "iso3": "NGA",
+            "countryname": "Nigeria"
+          }
+        ],
+        "severitydata": {
+          "severity": 12834,
+          "severitytext": "Green impact for forestfire in 12834 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.36307183752007,
+          -11.539177119649032
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033840",
+        "episodeid": "26",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 07 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033840"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sat, 07 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sat, 14 Nov 2026 12:29:37 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 51625,
+          "severitytext": "Green impact for forestfire in 51625 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.53973051728244,
+          -15.420585292443873
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033829",
+        "episodeid": "11",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 09 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033829"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Mon, 09 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sat, 14 Nov 2026 08:10:23 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 10349,
+          "severitytext": "Green impact for forestfire in 10349 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.1867370430854,
+          -17.233885594515325
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033825",
+        "episodeid": "16",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 13 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033825"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sat, 14 Nov 2026 08:02:15 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 11871,
+          "severitytext": "Green impact for forestfire in 11871 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.52835900539054,
+          -15.104971013017968
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033786",
+        "episodeid": "14",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 11 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033786"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Wed, 11 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sat, 14 Nov 2026 08:03:40 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 7700,
+          "severitytext": "Green impact for forestfire in 7700 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.48477201829434,
+          -14.901389031770648
         ]
       },
       "properties": {
         "eventtype": "WF",
         "eventid": "1033731",
-        "episodeid": "27",
+        "episodeid": "28",
         "eventname": "",
         "glide": "",
         "name": "Forest fires in Australia",
@@ -7682,12 +6947,12 @@
           }
         ],
         "severitydata": {
-          "severity": 16756,
-          "severitytext": "Green impact for forestfire in 16756 ha",
+          "severity": 16770,
+          "severitytext": "Green impact for forestfire in 16770 ha",
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7696,14 +6961,14 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          123.72360770823792,
-          -16.315665003586318
+          123.72537069612616,
+          -16.316894868777233
         ]
       },
       "properties": {
         "eventtype": "WF",
         "eventid": "1033730",
-        "episodeid": "29",
+        "episodeid": "30",
         "eventname": "",
         "glide": "",
         "name": "Forest fires in Australia",
@@ -7737,12 +7002,12 @@
           }
         ],
         "severitydata": {
-          "severity": 24594,
-          "severitytext": "Green impact for forestfire in 24594 ha",
+          "severity": 25129,
+          "severitytext": "Green impact for forestfire in 25129 ha",
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     },
@@ -7751,27 +7016,53 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          10.498147191756669,
-          9.14347238131793
+          142.27212319970485,
+          -11.210385676421502
         ]
       },
       "properties": {
         "eventtype": "WF",
-        "eventid": "1033886",
-        "episodeid": "14",
-        "name": "Green forest fire notification in Nigeria",
-        "description": "On 12/11/2026, a forest fire started in Nigeria,  until 19/11/2026.",
-        "country": "Nigeria",
-        "alertlevel": "Green",
-        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
-        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
-        "datemodified": "Mon, 16 Nov 2026 16:02:36 GMT",
-        "iscurrent": true,
+        "eventid": "1033610",
+        "episodeid": "38",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 06 Nov 2026 to: 20 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
         "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033886"
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033610"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Fri, 06 Nov 2026 00:00:00 GMT",
+        "todate": "Fri, 20 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sun, 08 Nov 2026 08:07:33 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 26893,
+          "severitytext": "Green impact for forestfire in 26893 ha",
+          "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-20T21:25:19.868Z",
+        "_verifiedAt": "2026-11-21T02:43:03.851Z",
         "_active": true
       }
     }
