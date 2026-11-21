@@ -627,10 +627,10 @@
       return true;
     });
   }
-  function alertFilterBar(s, t) {
+  function alertFilterBar(alerts, t) {
     var levels = [['all', web('all')], ['critical', safetyText('priorityNotices')], ['red', t.redAlert], ['orange', t.orangeAlert], ['yellow', t.yellowAlert], ['blue', t.blueAlert]];
     var types = [];
-    (s.shownAlerts || []).forEach(function (a) { if (types.indexOf(a.type) < 0) { types.push(a.type); } });
+    alerts.forEach(function (a) { if (types.indexOf(a.type) < 0) { types.push(a.type); } });
     var typeOpts = '<option value="all">' + esc(web('all')) + '</option>' + types.map(function (ty) {
       return '<option value="' + esc(ty) + '"' + (homeFilter.type === ty ? ' selected' : '') + '>' + esc(i18n.disasterName(ty, lang())) + '</option>';
     }).join('');
@@ -1173,7 +1173,11 @@
     var dataReady = s.hasData && !s.loading && !s.error && reliability.freshness(s.checkedAt) === 'available';
     var dataState = s.loading ? t.loading : (reliability.freshness(s.checkedAt) === 'outdated' ? safetyText('outdated') : web('dataUnavailable'));
     if (!s.loading && (s.rawAlerts.length || s.rawWeather)) { deriveHome(l); }
-    var filteredAlerts = dataReady ? applyHomeFilter(s.shownAlerts) : [];
+    var lastReport = !dataReady && !s.loading ? api.getLastKnownCityWarnings(currentRegion()) : null;
+    var availableAlerts = dataReady ? s.shownAlerts : lastReport ? localizeList(lastReport.alerts.filter(function (alert) {
+      return !s.district || alertAffectsDistrict(alert, s.district);
+    }), l) : [];
+    var filteredAlerts = applyHomeFilter(availableAlerts);
     if (s.city && !s.loading && !s.rawWeather) loadFallbackWeather(currentRegion(), homeRequest);
     var displayCity = i18n.placeName(s.city, l);
     var displayProvince = s.province ? i18n.placeName(s.province, l) : '';
@@ -1261,7 +1265,7 @@
       '<span class="head-hint">' + esc(dataReady ? i18n.tpl('total', { n: filteredAlerts.length }, l) : dataState) +
       (s.fromCache ? ' · ' + esc(t.cached) : '') +
       '</span></div>';
-    html += alertFilterBar(s, t);
+    html += alertFilterBar(availableAlerts, t);
 
     if (s.error) {
       var expectedGap = s.errorCode === 'pending' || s.errorCode === 'outdated';
@@ -1275,16 +1279,22 @@
       html += '<div class="state-box">' + esc(dataState) + '</div>';
     } else if (filteredAlerts.length === 0) {
       html += '<div class="state-box">' + esc(s.shownAlerts.length ? web('noMatch') : safetyText('lastNoAlerts')) + '</div>';
-    } else {
+    }
+    if (lastReport && availableAlerts.length) {
+      html += '<p class="history-notice">' + esc(reliability.checkedAt(lastReport.checkedAt, l)) + ' · ' +
+        esc(safetyText('historyNotice')) + '</p>';
+      if (!filteredAlerts.length) html += '<div class="state-box">' + esc(web('noMatch')) + '</div>';
+    }
+    if (filteredAlerts.length) {
       html += '<div class="alert-grid">' + filteredAlerts.map(function (a) {
-        return '<a class="alert-card lv-' + a.level + '" href="#/detail?id=' + encodeURIComponent(a.id) + '">' +
+        return '<a class="alert-card lv-' + a.level + '" href="#/detail?id=' + encodeURIComponent(a.id) + (lastReport ? '&history=1' : '') + '">' +
           '<div class="alert-card-top">' +
             '<span class="level-badge">' + esc(a.levelName) + '</span>' +
             '<span class="alert-card-type">' + esc(i18n.disasterName(a.type, l)) + '</span>' +
           '</div>' +
           '<h3>' + esc(a.title) + '</h3>' +
           '<div class="alert-card-area">' + esc(a.area) + '</div>' +
-          '<span class="alert-card-cta">' + esc(a.status) + ' →</span>' +
+          '<span class="alert-card-cta">' + esc(lastReport ? safetyText('outdated') : a.status) + ' →</span>' +
         '</a>';
       }).join('') + '</div>';
     }
@@ -1754,7 +1764,10 @@
 
   function renderDetail(id) {
     pickerEl.innerHTML = '';
-    var alert = api.getAlertById(id);
+    var historical = parseQuery(location.hash.split('?')[1]).history === '1';
+    var lastReport = historical ? api.getLastKnownCityWarnings(currentRegion()) : null;
+    var lastAlert = lastReport && lastReport.alerts.find(function (entry) { return entry.id === id; });
+    var alert = lastAlert ? Object.assign({}, lastAlert, { checkedAt: lastReport.checkedAt }) : api.getAlertById(id);
     var l = lang();
     var t = T(l);
     if (!alert) {
@@ -1792,8 +1805,9 @@
         '<a class="back-link" href="#/china">‹ ' + esc(web('chinaTab')) + '</a>' +
         '<div><span class="level-badge">' + esc(a.levelName) + '</span></div>' +
         '<h1>' + esc(a.title) + '</h1>' +
+        (historical ? '<p class="history-notice">' + esc(safetyText('historyNotice')) + '</p>' : '') +
         '<div class="detail-meta"><span>' + esc(i18n.disasterName(a.type, l)) + '</span>' +
-        '<span class="dot-sep">•</span><span>' + esc(a.source) + '</span><span class="dot-sep">•</span><span>' + esc(a.status) + '</span></div>' +
+        '<span class="dot-sep">•</span><span>' + esc(a.source) + '</span><span class="dot-sep">•</span><span>' + esc(historical ? safetyText('outdated') : a.status) + '</span></div>' +
         '<div class="detail-summary">' +
           '<div><span>' + esc(web('disasterType')) + '</span><b>' + esc(i18n.disasterName(a.type, l)) + '</b></div>' +
           '<div><span>' + esc(web('severity')) + '</span><b>' + esc(a.levelName) + '</b></div>' +

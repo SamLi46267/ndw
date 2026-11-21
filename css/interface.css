@@ -404,7 +404,7 @@ body { background: var(--bg); }
 .high-contrast body { background: #000; }
 .high-contrast :is(.navbar,.hero,.page-top,.overview-panel,.panel-card,.guide-content,.guide-side,.dcard,.set-card,.phone-card,.aid-card,.wizard-card,.plan-card,.product-card,.site-footer,.nav-drawer) { color: #fff; background: #080808; border-color: #999; }
 .high-contrast .home-dashboard .hero .stat-row { --red: #ff9ba3; --orange: #ffc593; --yellow: #ffe09c; --blue: #b6d8ff; }
-.ch-city.st-history .ch-dot { opacity: .8; }
+.ch-city.st-history .ch-dot { fill: #7e909e; opacity: .8; }
 .ch-city.st-history .ch-halo { stroke: #f0f2ed; stroke-dasharray: 2 2; opacity: .9; animation: none; }
 .status-dot.status-history { background: transparent; outline: 1px dashed #f0f2ed; outline-offset: 2px; }
 .history-notice { color: #f0f2ed; max-width: 65ch; }
