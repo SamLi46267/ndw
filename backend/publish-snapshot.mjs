@@ -33,14 +33,22 @@ export function assertSnapshotReady(snapshot, now = Date.now()) {
   return { cities: entries.length, fresh };
 }
 
+export function readWarningData(root, ref, file) {
+  // The ledger and warning archive can exceed Node's default 1 MiB buffer.
+  // GitHub accepts individual Git blobs up to 100 MiB.
+  return JSON.parse(execFileSync('git', ['show', ref + ':' + file], {
+    cwd: root, encoding: 'utf8', maxBuffer: 100 * 1024 * 1024
+  }));
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   const ref = process.argv[2] || 'origin/ndw-data';
-  const snapshot = validateSnapshot(JSON.parse(execFileSync('git', ['show', ref + ':public-data/warnings.json'], { cwd: root, encoding: 'utf8' })));
+  const snapshot = validateSnapshot(readWarningData(root, ref, 'public-data/warnings.json'));
   const health = assertSnapshotReady(snapshot);
   fs.mkdirSync(path.join(root, 'public-data'), { recursive: true });
   fs.writeFileSync(path.join(root, 'public-data/warnings.json'), JSON.stringify(snapshot));
-  const ledger = JSON.parse(execFileSync('git', ['show', ref + ':backend/data/state.json'], { cwd: root, encoding: 'utf8' }));
+  const ledger = readWarningData(root, ref, 'backend/data/state.json');
   const archived = archiveWarnings(ledger.alertHistory, snapshot.entries);
   fs.writeFileSync(path.join(root, 'public-data/china-warning-history.json'), JSON.stringify({ source: 'WeatherCN', records: Object.values(archived) }));
   console.log('Prepared public snapshot:', health.fresh, 'fresh cities out of', health.cities);

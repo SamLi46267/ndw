@@ -38,10 +38,12 @@ This GitHub approach requires no browser API key or personal access token.
 
 The collector commits quota reservations BEFORE requests. Failed and interrupted
 requests count against the cap. The `ndw-data` branch preserves quota history,
-rotation position and last good results. Push deployments also run the collector,
-subject to the same 15-minute gate and quota. Do not delete/reset this branch while
-using the same key. Collection and publication runs are serialized. Pushes to
-the data branch do not trigger another collection workflow.
+rotation position and last good results. Push deployments and scheduled GDACS
+publications also attempt a catch-up when a city is missing or its check is at
+least five hours old. These attempts use the same 15-minute gate and quota.
+Do not delete or reset this branch while using the same key. Collection and
+publication runs are serialized. Pushes to the data branch do not trigger
+another collection workflow.
 
 Snapshot reads are shared across cities and cached for one minute per page.
 Each result retains its original successful-check time. Results older than six

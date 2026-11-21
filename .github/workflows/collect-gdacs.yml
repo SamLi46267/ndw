@@ -48,4 +48,10 @@ jobs:
           git commit -m "Publish GDACS snapshot [skip ci]"
           git pull --rebase origin main
           git push
+      - name: Recover overdue China warnings during scheduled publication
+        if: github.event_name == 'schedule'
+        continue-on-error: true
+        uses: ./.github/actions/recover-china
+        with:
+          weathercn-key: ${{ secrets.WEATHERCN_API_KEY }}
       - uses: ./.github/actions/publish-pages

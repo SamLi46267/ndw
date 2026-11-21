@@ -12,11 +12,23 @@
   var districts = __require('districts');
   var reliability = __require('reliability');
   function safetyText(key) { return reliability.text(key, lang()); }
-  function manualUpdateControl() {
-    var path = (location.hash || '#/home').split('?')[0];
-    var action = path === '#/map' ? 'refresh-map' : 'refresh';
-    return '<div class="manual-update"><button type="button" class="btn manual-update-btn" data-action="' + action + '">' + esc(safetyText('manualUpdate')) + '</button></div>';
+  function updateRequestLink() {
+    return '<a class="btn manual-update-btn" href="https://github.com/geowarning/ndw/issues/new?template=data-update.yml&city=' +
+      encodeURIComponent(homeState.city || '') + '" target="_blank" rel="noopener noreferrer">' +
+      esc(safetyText('manualUpdate')) + '</a>';
   }
+
+  function manualUpdateControl() {
+    return '<div class="manual-update">' + updateRequestLink() +
+      '<a href="https://github.com/geowarning/ndw/actions/workflows/deploy.yml" target="_blank" rel="noopener noreferrer">' +
+      esc(safetyText('updateProgress')) + '</a>' +
+      '<p>' + esc(safetyText('manualUpdateHint')) + '</p></div>';
+  }
+
+  function refreshStatus() {
+    return '<p class="warning-refresh-status" role="status">' + esc(warningRefreshText()) + '</p>';
+  }
+
   var explanations = __require('explanations');
   var openExplanations = new Set();
 
@@ -363,72 +375,96 @@
     sessionStatus[region.adcode] = Object.assign({}, saved || { count: null, checkedAt: null }, { unavailable: true });
   }
 
-  /* 后台串行扫描全国城市预警（只取预警，不取天气），边扫边更新地图 */
-  function sweepNationalStatus(force, notify) {
-    if (nationalSweeping) { return; }
+  var nationalSweep = null;
+  var warningRefreshPending = false;
+  var warningRefreshResult = null;
+
+  function warningRefreshText() {
+    if (warningRefreshPending) return safetyText('refreshingWarnings');
+    return warningRefreshResult ? safetyText(warningRefreshResult.key).replace('{n}', warningRefreshResult.count) : '';
+  }
+
+  function sweepNationalStatus(force) {
+    if (nationalSweep) return nationalSweep;
     var all = districts.allCityGeo();
     var snap = wx.getStorageSync(NATIONAL_STATUS_KEY);
     if (!force && snap && snap.time && (Date.now() - snap.time) < NATIONAL_SWEEP_TTL &&
         snap.value && all.every(function (city) { var s = snap.value[city.adcode]; return s && !s.unavailable && reliability.freshness(s.checkedAt) === 'available'; })) {
-      return; /* 60 分钟内已完整扫描过 */
+      return;
     }
-    setScanButtonState(true);
     nationalSweeping = true;
-    var previousChecks = {};
-    all.forEach(function (city) { previousChecks[city.adcode] = (sessionStatus[city.adcode] || {}).checkedAt || 0; });
-    var i = 0;
-    function next() {
-      if (i >= all.length) {
-        nationalSweeping = false;
-        saveNationalStatus();
-        refreshMaps();
-        setScanButtonState(false);
-        if (notify) {
-          var updated = all.filter(function (city) { return (sessionStatus[city.adcode] || {}).checkedAt > previousChecks[city.adcode]; }).length;
-          wx.showToast({ title: updated ? safetyText('updatedCities').replace('{n}', updated) : safetyText('noNewChecks'), icon: 'none' });
-          if (homeState.city) { loadHomeData(); }
+    setScanButtonState(true);
+    nationalSweep = (async function () {
+      for (var c of all) {
+        var list = await api.fetchAlertsOnly({ province: c.province, city: c.name, adcode: c.adcode });
+        if (list) {
+          sessionStatus[c.adcode] = {
+            high: list.some(function (a) { return a.level === 'red'; }),
+            count: list.length,
+            checkedAt: list.fetchedAt
+          };
+          recordTrend(c.adcode, list.length, list.fetchedAt);
+        } else {
+          retainCityStatus({ city: c.name, adcode: c.adcode });
         }
-        return;
       }
-      var c = all[i++];
-      api.fetchAlertsOnly({ province: c.province, city: c.name, adcode: c.adcode })
-        .then(function (list) {
-          if (list) {
-            sessionStatus[c.adcode] = {
-              high: list.some(function (a) { return a.level === 'red'; }),
-              count: list.length,
-              checkedAt: list.fetchedAt
-            };
-            recordTrend(c.adcode, list.length, list.fetchedAt);
-          } else {
-            retainCityStatus({ city: c.name, adcode: c.adcode });
-          }
-          if (i % 6 === 0 || i === all.length) {
-            saveNationalStatus();
-            refreshMaps();
-          }
-          setTimeout(next, 0);   /* 只读取共享快照，不触发上游请求 */
-        });
-    }
-    next();
+    })().finally(function () {
+      nationalSweeping = false;
+      nationalSweep = null;
+      saveNationalStatus();
+      refreshMaps();
+      setScanButtonState(false);
+    });
+    return nationalSweep;
   }
 
-  /* 地图旁扫描按钮的加载状态 */
+  async function refreshPublishedWarnings() {
+    if (warningRefreshPending) return;
+    var previousChecks = {};
+    var all = districts.allCityGeo();
+    all.forEach(function (city) {
+      previousChecks[city.adcode] = (sessionStatus[city.adcode] || {}).checkedAt || 0;
+    });
+    warningRefreshPending = true;
+    setScanButtonState(nationalSweeping);
+    try {
+      // Finish any background read before forcing a fresh network request.
+      await nationalSweep;
+      api.refreshSnapshot();
+      await api.loadSnapshot();
+      var fromCache = api.getSnapshotInfo().fromCache;
+      await Promise.all([sweepNationalStatus(true), loadHomeData()]);
+      var updated = all.filter(function (city) {
+        return (sessionStatus[city.adcode] || {}).checkedAt > previousChecks[city.adcode];
+      }).length;
+      warningRefreshResult = {
+        key: fromCache ? 'refreshWarningsFailed' : updated ? 'updatedCities' : 'noNewChecks',
+        count: updated
+      };
+    } catch (_) {
+      warningRefreshResult = { key: 'refreshWarningsFailed', count: 0 };
+    } finally {
+      warningRefreshPending = false;
+      setScanButtonState(nationalSweeping);
+    }
+  }
+
   function setScanButtonState(loading) {
     var coverage = document.getElementById('mapCoverage');
     var info = api.getSnapshotInfo();
     if (coverage) { coverage.textContent = web('coverage') + ': ' + info.checked + ' / ' + info.total; }
-    var btn = document.querySelector('[data-action="refresh-map"]');
-    if (!btn) { return; }
-    if (loading) {
-      btn.classList.add('is-loading');
-      btn.setAttribute('disabled', 'disabled');
-      btn.innerHTML = '<span class="map-scan-spin"></span>' + esc(i18n.t('scanning', lang()));
-    } else {
-      btn.classList.remove('is-loading');
-      btn.removeAttribute('disabled');
-      btn.innerHTML = SVG.refresh + esc(safetyText('refreshPublished'));
-    }
+    viewEl.querySelectorAll('.warning-refresh-status').forEach(function (node) {
+      node.textContent = warningRefreshText();
+    });
+    viewEl.querySelectorAll('[data-action="refresh"], [data-action="refresh-map"]').forEach(function (btn) {
+      var map = btn.dataset.action === 'refresh-map';
+      var busy = warningRefreshPending || (map && loading);
+      btn.disabled = busy;
+      btn.classList.toggle('is-loading', busy);
+      var iconOnly = btn.classList.contains('icon-btn');
+      btn.innerHTML = (busy ? '<span class="map-scan-spin"></span>' : map || iconOnly ? SVG.refresh : '') +
+        (iconOnly ? '' : esc(busy ? safetyText('refreshingWarnings') : safetyText('refreshPublished')));
+    });
   }
 
   // Read shared snapshots periodically; these reads never call the provider.
@@ -530,7 +566,7 @@
         resolve({ ok: false, alerts: [], weather: null, error: web('dataUnavailable'), errorCode: 'timeout', source: '' });
       }, 8000);
     });
-    Promise.race([api.fetchAll(region), fetchTimeout]).then(function (res) {
+    return Promise.race([api.fetchAll(region), fetchTimeout]).then(function (res) {
       if (requestId !== homeRequest) { return; }
       var raw = res.alerts || [];
 
@@ -1233,7 +1269,7 @@
           statBox('lv-blue', dataReady ? s.levelStats.blue : null, t.blueAlert) +
         '</div>' +
         '<p class="home-freshness" role="status">' + (!dataReady ? esc(dataState) + (s.lastUpdate ? ' · ' : '') : '') +
-          (s.lastUpdate ? esc(web('lastSuccess') + s.lastUpdate) : '') + '</p>' + manualUpdateControl() +
+          (s.lastUpdate ? esc(web('lastSuccess') + s.lastUpdate) : '') + '</p>' + refreshStatus() + manualUpdateControl() +
       '</div></section>';
 
     /* ---- 全国全息态势图 ---- */
@@ -1248,7 +1284,7 @@
       '<div class="map-meta"><a class="map-hint" href="#/map">' + esc(web('expandMap')) + ' ↗</a>' +
       '<p class="map-hint" id="mapCoverage" role="status">' + esc(web('coverage')) + ': ' + api.getSnapshotInfo().checked + ' / ' + api.getSnapshotInfo().total + '</p>' +
       '</div>' +
-      '<div class="map-preview"><div class="china-map-wrap" id="chinaMapWrap"></div></div>' +
+      refreshStatus() + '<div class="map-preview"><div class="china-map-wrap" id="chinaMapWrap"></div></div>' +
       '<div class="map-legend">' +
         '<span><i class="status-dot status-none"></i>' + esc(safetyText('lastNoAlerts')) + '</span>' +
         '<span><i class="status-dot status-normal"></i>' + esc(safetyText('lastAlerts')) + '</span>' +
@@ -1267,16 +1303,18 @@
       '</span></div>';
     html += alertFilterBar(availableAlerts, t);
 
+    var warningStatusCard = !dataReady && !s.loading;
     if (s.error) {
       var expectedGap = s.errorCode === 'pending' || s.errorCode === 'outdated';
       html += '<div class="state-box' + (expectedGap ? '' : ' error') + '"><span class="state-icon">' + (expectedGap ? '…' : '!') + '</span>' +
         '<div>' + esc(expectedGap ? web(s.errorCode === 'pending' ? 'pendingData' : 'outdatedData') : t.fetchFailed) + '</div>' +
-        '<button class="btn btn-green" data-action="refresh">' + esc(web('retryFetch')) + '</button>' +
-        '<div class="source-line" style="justify-content:center">' + esc(web('snapshotHint')) + '</div></div>';
+        '<button class="btn btn-green" data-action="refresh">' + esc(safetyText('refreshPublished')) + '</button> ' + updateRequestLink() +
+        refreshStatus() + '<div class="source-line" style="justify-content:center">' + esc(web('snapshotHint')) + '</div>';
     } else if (s.loading) {
       html += '<div class="state-box"><div class="spinner"></div>' + esc(t.loading) + '</div>';
     } else if (!dataReady) {
-      html += '<div class="state-box">' + esc(dataState) + '</div>';
+      html += '<div class="state-box">' + esc(dataState) +
+        '<button class="btn btn-green" data-action="refresh">' + esc(safetyText('refreshPublished')) + '</button> ' + updateRequestLink() + refreshStatus();
     } else if (filteredAlerts.length === 0) {
       html += '<div class="state-box">' + esc(s.shownAlerts.length ? web('noMatch') : safetyText('lastNoAlerts')) + '</div>';
     }
@@ -1298,6 +1336,7 @@
         '</a>';
       }).join('') + '</div>';
     }
+    if (warningStatusCard) html += '</div>';
     html += '</section>';
 
     /* ---- 预警动态时间线 ---- */
@@ -1413,6 +1452,7 @@
     var tl = document.getElementById('trendLine');
     if (tl) { charts.line(tl, days, vals); }
     hydrateHomeDashboard();
+    setScanButtonState(nationalSweeping);
   }
 
   function onMapClickCity(adcode) {
@@ -1447,7 +1487,7 @@
           '<span><i class="status-dot status-unknown"></i>' + esc(web('unknown')) + '</span>' +
         '</div>' +
       '</div>' +
-      '<div id="cityInspection" class="city-inspection" role="status">' + esc(safetyText('selectCity')) + '</div>' +
+      refreshStatus() + '<div id="cityInspection" class="city-inspection" role="status">' + esc(safetyText('selectCity')) + '</div>' +
       '<div class="expanded-map-viewport" id="expandedMapViewport" role="region" tabindex="0" aria-labelledby="expandedMapHeading" aria-describedby="expandedMapHint">' +
         '<div id="expandedMap"></div>' +
       '</div>' +
@@ -2689,15 +2729,8 @@
       case 'close-picker': closePicker(); break;
       case 'noop': break;
       case 'refresh':
-        api.refreshSnapshot();
-        homeState.loading = true;
-        homeState.error = '';
-        renderHomeRoute();
-        loadHomeData();
-        break;
       case 'refresh-map':
-        api.refreshSnapshot();
-        sweepNationalStatus(true, true);
+        refreshPublishedWarnings();
         break;
       case 'toggle-map-fit': {
         var fitViewport = document.getElementById('expandedMapViewport');

@@ -4,7 +4,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
-import { validateSnapshot } from './publish-snapshot.mjs';
+import { readWarningData, validateSnapshot } from './publish-snapshot.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const modules = {};
@@ -81,11 +81,11 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   let state;
   if (phase === 'reserve') {
     if (!process.env.WEATHERCN_API_KEY) throw Error('Set the WEATHERCN_API_KEY Actions secret');
-    state = parent ? JSON.parse(git('show', parent + ':backend/data/state.json')) : { calls: [], entries: {}, cursor: 0, lastAttempt: 0 };
+    state = parent ? readWarningData(root, parent, 'backend/data/state.json') : { calls: [], entries: {}, cursor: 0, lastAttempt: 0 };
     reserve(state, Date.now(), 450, 4, true, process.env.PRIORITY_CITY || '');
   } else if (phase === 'collect') {
     if (!parent || !process.env.WEATHERCN_API_KEY) throw Error('Missing reservation or key');
-    state = JSON.parse(git('show', parent + ':backend/data/state.json'));
+    state = readWarningData(root, parent, 'backend/data/state.json');
     await collect(state, process.env.WEATHERCN_API_KEY);
   } else throw Error('Expected reserve or collect');
   fs.mkdirSync(path.dirname(statePath), { recursive: true });
@@ -102,4 +102,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const commit = git('commit-tree', tree, ...(parent ? ['-p', parent] : []), '-m', 'Update shared warning ' + phase);
   // Reservation push MUST succeed before the collect phase can spend quota.
   git('push', 'origin', commit + ':refs/heads/ndw-data');
+  if (phase === 'reserve' && process.env.GITHUB_OUTPUT) {
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, 'pending=' + state.pending.length + '\n');
+  }
 }

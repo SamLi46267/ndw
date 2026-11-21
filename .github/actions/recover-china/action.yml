@@ -1,0 +1,52 @@
+name: Recover overdue China warnings
+description: Use the shared WeatherCN quota to catch up when a Pages job finds aging city data
+inputs:
+  weathercn-key:
+    description: WeatherCN Actions secret
+    required: true
+outputs:
+  published:
+    description: Whether the job staged a recovered warning snapshot
+    value: ${{ steps.recover.outputs.published }}
+runs:
+  using: composite
+  steps:
+    - name: Reserve checks for aging cities
+      id: reserve
+      shell: bash
+      env:
+        WEATHERCN_API_KEY: ${{ inputs.weathercn-key }}
+      run: |
+        needs_refresh=$(node --input-type=module - <<'JS'
+        import fs from 'node:fs';
+        import { cities } from './backend/collect.mjs';
+        const { entries } = JSON.parse(fs.readFileSync('public-data/warnings.json', 'utf8'));
+        const now = Date.now();
+        const needsRefresh = cities.some(({ key }) => {
+          const checkedAt = entries['/alerts/v1/' + key + '.json']?.checkedAt;
+          return !Number.isFinite(checkedAt) || checkedAt > now || now - checkedAt >= 5 * 3600000;
+        });
+        console.log(needsRefresh ? 'yes' : 'no');
+        JS
+        )
+        if [ "$needs_refresh" != yes ]; then exit 0; fi
+        git config user.name 'github-actions[bot]'
+        git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        node backend/collect.mjs reserve
+    - name: Collect and stage recovered warnings
+      id: recover
+      if: steps.reserve.outputs.pending != '' && steps.reserve.outputs.pending != '0'
+      shell: bash
+      env:
+        WEATHERCN_API_KEY: ${{ inputs.weathercn-key }}
+      run: |
+        node backend/collect.mjs collect
+        git fetch origin ndw-data
+        node backend/publish-snapshot.mjs FETCH_HEAD
+        git add public-data/warnings.json public-data/china-warning-history.json
+        if ! git diff --cached --quiet; then
+          git commit -m "Publish recovered China warning snapshot [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
+        fi
+        echo "published=true" >> "$GITHUB_OUTPUT"

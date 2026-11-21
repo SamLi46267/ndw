@@ -868,6 +868,7 @@ module.exports = {
     snapshotLoadedAt = 0;
     clearCaches();
   },
+  loadSnapshot: loadSharedSnapshot,
   getSnapshotInfo: function () { return snapshotInfo; },
   fetchAll: fetchAll,
   fetchAlertsOnly: fetchAlertsOnly,

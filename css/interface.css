@@ -1309,3 +1309,9 @@ dialog.db-modal-card::backdrop { background: transparent; }
 .game-leaderboard table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 .game-leaderboard :is(th, td) { padding: 8px 4px; border-bottom: 1px solid var(--border); text-align: start; }
 .game-leaderboard td strong { color: var(--text); }
+
+.manual-update > p { flex-basis: 100%; margin: 0; color: var(--text-mid); font-size: .82rem; }
+.warning-refresh-status { margin: 6px 0; color: var(--text-mid); font-size: .82rem; }
+.warning-refresh-status:empty { margin: 0; }
+.local-panel .state-box .history-notice { margin: 16px 0 8px; text-align: start; }
+.local-panel .state-box .alert-grid { text-align: start; }

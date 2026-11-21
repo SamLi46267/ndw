@@ -37,8 +37,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      # Data collection only runs for scheduled / manual / issue events, never on a
-      # plain push. That keeps UI deploys fast and prevents them from burning API quota.
+      # Scheduled and requested runs use the normal rotation. A push can also
+      # recover overdue data inside the same quota before publishing the site.
       - name: Test collector
         if: github.event_name != 'push'
         run: node --test backend/*.test.mjs
@@ -63,13 +63,14 @@ jobs:
           if [ "$city" = "_No response_" ]; then city=""; fi
           echo "city=$city" >> "$GITHUB_OUTPUT"
       - name: Reserve quota before collection
+        id: reserve
         if: github.event_name != 'push'
         env:
           WEATHERCN_API_KEY: ${{ secrets.WEATHERCN_API_KEY }}
           PRIORITY_CITY: ${{ steps.request.outputs.city }}
         run: node backend/collect.mjs reserve
       - name: Collect reserved cities
-        if: github.event_name != 'push'
+        if: steps.reserve.outputs.pending != '' && steps.reserve.outputs.pending != '0'
         env:
           WEATHERCN_API_KEY: ${{ secrets.WEATHERCN_API_KEY }}
         run: node backend/collect.mjs collect
@@ -91,6 +92,13 @@ jobs:
             git pull --rebase origin main
             git push origin HEAD:main
           fi
+      - name: Recover overdue China warnings on deploy
+        id: recover-china
+        if: github.event_name == 'push'
+        continue-on-error: true
+        uses: ./.github/actions/recover-china
+        with:
+          weathercn-key: ${{ secrets.WEATHERCN_API_KEY }}
       - uses: actions/configure-pages@v5
       - name: Stage public assets only
         env:
@@ -110,7 +118,7 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
       - name: Verify published warning data
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || steps.recover-china.outputs.published == 'true'
         run: node backend/check-published.mjs "$DEPLOYMENT_URL"
         env:
           DEPLOYMENT_URL: ${{ steps.deployment.outputs.page_url }}
