@@ -1,10 +1,10 @@
 {
   "type": "FeatureCollection",
-  "generatedAt": "2026-11-22T10:16:13.798Z",
+  "generatedAt": "2026-11-22T10:55:24.023Z",
   "source": "GDACS",
   "endpoint": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventlist=WF%3BFL%3BTC%3BDR&fromDate=2026-09-23&toDate=2026-11-22&alertlevel=Green%3BOrange%3BRed",
   "currentFeed": "https://www.gdacs.org/xml/rss.xml",
-  "checkedAt": "2026-11-22T10:16:13.798Z",
+  "checkedAt": "2026-11-22T10:55:24.023Z",
   "fromDate": "2026-09-23",
   "toDate": "2026-11-22",
   "count": 137,
@@ -40,7 +40,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033940"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -69,7 +69,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033904"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -98,7 +98,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033933"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -127,7 +127,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033918"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -156,7 +156,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033935"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -185,7 +185,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033931"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -214,7 +214,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033938"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -243,7 +243,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033760"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -272,7 +272,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033756"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -301,7 +301,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033921"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -330,7 +330,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033898"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -359,7 +359,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033914"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -388,7 +388,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033897"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -417,7 +417,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033895"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -446,7 +446,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033896"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -475,7 +475,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033899"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -504,7 +504,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104253"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -533,7 +533,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033970"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -562,7 +562,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033934"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -591,7 +591,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033932"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -620,7 +620,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033950"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -649,7 +649,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033925"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -678,7 +678,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033955"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -707,7 +707,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033944"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -736,7 +736,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033958"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -765,7 +765,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033972"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -794,7 +794,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033866"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -823,7 +823,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033852"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -852,7 +852,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033987"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -881,7 +881,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033850"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -910,7 +910,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104220"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -939,7 +939,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001351"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -968,7 +968,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033892"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -997,7 +997,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033887"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1026,7 +1026,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033875"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1055,7 +1055,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033885"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1084,7 +1084,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033877"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1113,7 +1113,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033884"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1142,7 +1142,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033860"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1171,7 +1171,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033967"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1200,7 +1200,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033969"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1229,7 +1229,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033965"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1258,7 +1258,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033946"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1287,7 +1287,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033963"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1316,7 +1316,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033973"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1345,7 +1345,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033971"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1374,7 +1374,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033960"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1403,7 +1403,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033968"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1432,7 +1432,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033824"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1461,7 +1461,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033808"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1490,7 +1490,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033772"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1519,7 +1519,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104216"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1575,7 +1575,7 @@
           "severityunit": "km/h"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1630,7 +1630,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1685,7 +1685,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1740,7 +1740,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1795,7 +1795,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1850,7 +1850,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1905,7 +1905,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -1960,7 +1960,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2015,7 +2015,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2070,7 +2070,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2125,7 +2125,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2180,7 +2180,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2240,7 +2240,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2295,7 +2295,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2355,7 +2355,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2410,7 +2410,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2465,7 +2465,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2520,7 +2520,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2575,7 +2575,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2630,7 +2630,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2685,7 +2685,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2740,7 +2740,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2795,7 +2795,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2850,7 +2850,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2905,7 +2905,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -2960,7 +2960,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3015,7 +3015,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3070,7 +3070,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3125,7 +3125,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3180,7 +3180,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3235,7 +3235,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3300,7 +3300,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3355,7 +3355,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3410,7 +3410,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3470,7 +3470,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3525,7 +3525,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3580,7 +3580,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3635,7 +3635,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3690,7 +3690,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3745,7 +3745,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3810,7 +3810,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3865,7 +3865,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3920,7 +3920,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -3975,7 +3975,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4030,7 +4030,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4085,7 +4085,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4140,7 +4140,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4195,7 +4195,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4250,7 +4250,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4305,7 +4305,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4360,7 +4360,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4420,7 +4420,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4475,7 +4475,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4535,7 +4535,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4590,7 +4590,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4645,7 +4645,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4700,7 +4700,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4760,7 +4760,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4815,7 +4815,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4870,7 +4870,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4925,7 +4925,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -4980,7 +4980,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5035,7 +5035,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5090,7 +5090,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5145,7 +5145,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5205,7 +5205,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5260,7 +5260,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5315,7 +5315,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5370,7 +5370,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5425,7 +5425,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5480,7 +5480,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5535,7 +5535,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5590,7 +5590,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5645,7 +5645,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5700,7 +5700,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5755,7 +5755,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5810,7 +5810,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5865,7 +5865,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5925,7 +5925,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -5985,7 +5985,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -6040,7 +6040,7 @@
           "severityunit": ""
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -6095,7 +6095,7 @@
           "severityunit": ""
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -6150,7 +6150,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -6205,7 +6205,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     },
@@ -6260,7 +6260,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-22T10:16:13.798Z",
+        "_verifiedAt": "2026-11-22T10:55:24.023Z",
         "_active": true
       }
     }
