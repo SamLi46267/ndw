@@ -11,7 +11,7 @@ runs:
         cp index.html CNAME favicon.svg sw.js manifest.webmanifest robots.txt sitemap.xml "$RUNNER_TEMP/ndw-public/"
         cp -R js css assets public-data "$RUNNER_TEMP/ndw-public/"
         ALLOW_STALE_DATA=1 node backend/prepare-site.mjs "$RUNNER_TEMP/ndw-public"
-    - uses: actions/upload-pages-artifact@v3
+    - uses: actions/upload-pages-artifact@v5
       with:
         path: ${{ runner.temp }}/ndw-public
-    - uses: actions/deploy-pages@v4
+    - uses: actions/deploy-pages@v5

@@ -112,11 +112,11 @@ jobs:
               echo "::warning::NWS snapshot could not be collected during deployment"
           fi
           node backend/prepare-site.mjs "$RUNNER_TEMP/ndw-public"
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: ${{ runner.temp }}/ndw-public
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
       - name: Verify published warning data
         if: github.event_name != 'push' || steps.recover-china.outputs.published == 'true'
         run: node backend/check-published.mjs "$DEPLOYMENT_URL"
