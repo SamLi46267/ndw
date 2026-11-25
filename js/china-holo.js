@@ -34,6 +34,7 @@
     var geo = window.__modules['china-geo'];
     var distMod = window.__modules['districts'];
     var cities = distMod.allCityGeo();
+    var alertLevels = window.__modules.reliability.alertLevels;
 
     var nationalD = '';
     geo.national.features.forEach(function (f) { nationalD += geomPaths(f.geometry); });
@@ -118,9 +119,10 @@
       nodes.sort(function (a, b) {
         function priority(node) {
           var status = map[node.getAttribute('data-city')] || {};
-          if (node.classList.contains('is-selected')) return 3;
+          if (node.classList.contains('is-selected')) return alertLevels.length + 1;
           if (status.unavailable || window.__modules.reliability.freshness(status.checkedAt) !== 'available') return 0;
-          return status.high ? 2 : status.count > 0 ? 1 : 0;
+          var rank = alertLevels.indexOf(status.level);
+          return rank < 0 ? 0 : alertLevels.length - rank;
         }
         return priority(b) - priority(a);
       });
@@ -133,7 +135,7 @@
       cities.forEach(function (c) {
         var node = svg.querySelector('.ch-city[data-city="' + c.adcode + '"]');
         if (!node) { return; }
-        node.classList.remove('st-none', 'st-safe', 'st-normal', 'st-high', 'st-history');
+        node.classList.remove('st-none', 'st-safe', 'st-red', 'st-orange', 'st-yellow', 'st-blue', 'st-history');
         var s = map[c.adcode];
         var reliability = window.__modules.reliability;
         var state = reliability.freshness(s && s.checkedAt);
@@ -143,15 +145,16 @@
         var description = reliability.text(state, language) + '. ' + reliability.checkedAt(s && s.checkedAt, language);
         if (hasHistory) description += '. ' + reliability.text('scanCount', language).replace('{n}', s.count);
         if (hasHistory && state !== 'available') description += '. ' + reliability.text('historyNotice', language);
+        var level = hasHistory && state === 'available' && alertLevels.includes(s.level) ? s.level : '';
+        if (level) description += '. ' + window.__modules.i18n.t(level + 'Alert', language);
         var tooltip = node.querySelector('title');
         if (!tooltip) { tooltip = document.createElementNS('http://www.w3.org/2000/svg', 'title'); node.prepend(tooltip); }
         tooltip.textContent = window.__modules.i18n.placeName(c.name, window.__modules.i18n.getLang()) + ' — ' + description;
         if (onClickCity) node.setAttribute('aria-label', tooltip.textContent);
         if (hasHistory && state !== 'available') { node.classList.add('st-history'); }
-        else if (!hasHistory) { node.classList.add('st-none'); }
-        else if (s.high) { node.classList.add('st-high'); }
-        else if (s.count > 0) { node.classList.add('st-normal'); }
-        else { node.classList.add('st-safe'); }
+        else if (hasHistory && s.count === 0) { node.classList.add('st-safe'); }
+        else if (level) { node.classList.add('st-' + level); }
+        else { node.classList.add('st-none'); }
       });
       layoutLabels(map);
     }

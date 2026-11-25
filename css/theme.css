@@ -134,8 +134,6 @@
   --china-map-label: #263f36;
   --china-map-label-halo: #f8fcf8;
   --china-map-safe: #226747;
-  --china-map-alert: #88510e;
-  --china-map-high: #a32132;
   --china-map-unknown: #526872;
   --china-map-history: #3d575c;
 }
@@ -157,10 +155,8 @@
 [data-theme="light"] .china-svg :is(.ch-dot, .ch-halo) { opacity: 1; }
 [data-theme="light"] .china-svg .ch-city { --city-marker: var(--china-map-unknown); }
 [data-theme="light"] .china-svg .st-safe { --city-marker: var(--china-map-safe); }
-[data-theme="light"] .china-svg .st-normal { --city-marker: var(--china-map-alert); }
-[data-theme="light"] .china-svg .st-high { --city-marker: var(--china-map-high); }
-[data-theme="light"] .china-svg .ch-dot { fill: var(--city-marker); }
-[data-theme="light"] .china-svg .ch-halo { stroke: var(--city-marker); }
+[data-theme="light"] .china-svg .ch-dot { fill: var(--city-alert-color, var(--city-marker)); }
+[data-theme="light"] .china-svg .ch-halo { stroke: var(--city-alert-color, var(--city-marker)); }
 [data-theme="light"] .china-svg .st-history .ch-halo { stroke: var(--china-map-history); }
 [data-theme="light"] .status-dot.status-history { outline-color: #3d575c; }
 
@@ -169,8 +165,10 @@
   --china-map-label: #fff;
   --china-map-label-halo: #10221d;
   --china-map-safe: #97e6ae;
-  --china-map-alert: #ffcb65;
-  --china-map-high: #ff8f9d;
+  --china-map-red: #ff8f9d;
+  --china-map-orange: #ffae7a;
+  --china-map-yellow: #ffdf76;
+  --china-map-blue: #8ec5ff;
   --china-map-unknown: #c3d2dd;
   --china-map-history: #f5fbfe;
 }

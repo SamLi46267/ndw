@@ -52,7 +52,7 @@ test('past city scans retain real counts and timestamps through stale, partial a
   assert.equal(await api.fetchAlertsOnly(region), null, 'Stale warnings must not become current');
   let status = api.getLastKnownCityStatus(region);
   assert.equal(status.count, 1);
-  assert.equal(status.high, true);
+  assert.equal(status.level, 'red');
   assert.equal(status.checkedAt, checkedAt);
   const emptyRegion = { city: '上海市', adcode: '310100' };
   const emptyRoute = '/alerts/v1/' + modules.cities.getLocationKey(emptyRegion.city) + '.json';

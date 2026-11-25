@@ -546,12 +546,13 @@ main { display: block; padding-top: var(--nav-h); min-height: calc(100vh - var(-
 .ch-city.st-none .ch-halo { stroke: rgba(67, 232, 207, 0.3); }
 .ch-city.st-safe .ch-dot { fill: #46c263; }
 .ch-city.st-safe .ch-halo { stroke: rgba(70, 194, 99, 0.35); }
-.ch-city.st-normal .ch-dot { fill: var(--yellow); }
-.ch-city.st-normal .ch-halo { stroke: rgba(247, 201, 72, 0.55); animation: chHaloPulse 2.2s ease-in-out infinite; }
-.ch-city.st-normal .ch-label { fill: var(--text-mid); }
-.ch-city.st-high .ch-dot { fill: var(--red); }
-.ch-city.st-high .ch-halo { stroke: rgba(255, 82, 82, 0.7); animation: chHaloPulse 1.4s ease-in-out infinite; }
-.ch-city.st-high .ch-label { fill: var(--red); font-weight: 700; }
+:is(.ch-city.st-red, .map-legend .status-red) { --city-alert-color: var(--china-map-red, var(--red)); }
+:is(.ch-city.st-orange, .map-legend .status-orange) { --city-alert-color: var(--china-map-orange, var(--orange)); }
+:is(.ch-city.st-yellow, .map-legend .status-yellow) { --city-alert-color: var(--china-map-yellow, var(--yellow)); }
+:is(.ch-city.st-blue, .map-legend .status-blue) { --city-alert-color: var(--china-map-blue, var(--blue)); }
+.ch-city:is(.st-red, .st-orange, .st-yellow, .st-blue) .ch-dot { fill: var(--city-alert-color); }
+.ch-city:is(.st-red, .st-orange, .st-yellow, .st-blue) .ch-halo { stroke: var(--city-alert-color); animation: chHaloPulse 2.2s ease-in-out infinite; }
+.map-legend :is(.status-red, .status-orange, .status-yellow, .status-blue) { background: var(--city-alert-color); }
 @keyframes chHaloPulse {
   0%, 100% { opacity: 0.25; r: 7; }
   50% { opacity: 0.8; r: 12; }

@@ -231,7 +231,7 @@
   /* ================================================================
    * 地区与区县逻辑
    * ================================================================ */
-  var sessionStatus = {};   /* {adcode:{high:bool,count:n}} 本会话已查询城市 */
+  var sessionStatus = {};   /* {adcode:{level:string,count:n}} 本会话已查询城市 */
   var chinaMap = null, search = null, chinaBase = 'holo';
 
   function setChinaBase(mode) {
@@ -389,7 +389,7 @@
     var all = districts.allCityGeo();
     var snap = wx.getStorageSync(NATIONAL_STATUS_KEY);
     if (!force && snap && snap.time && (Date.now() - snap.time) < NATIONAL_SWEEP_TTL &&
-        snap.value && all.every(function (city) { var s = snap.value[city.adcode]; return s && !s.unavailable && reliability.freshness(s.checkedAt) === 'available'; })) {
+        snap.value && all.every(function (city) { var s = snap.value[city.adcode]; return s && (s.count === 0 || typeof s.level === 'string') && !s.unavailable && reliability.freshness(s.checkedAt) === 'available'; })) {
       return;
     }
     nationalSweeping = true;
@@ -399,7 +399,7 @@
         var list = await api.fetchAlertsOnly({ province: c.province, city: c.name, adcode: c.adcode });
         if (list) {
           sessionStatus[c.adcode] = {
-            high: list.some(function (a) { return a.level === 'red'; }),
+            level: reliability.highestAlertLevel(list),
             count: list.length,
             checkedAt: list.fetchedAt
           };
@@ -589,7 +589,7 @@
 
       if (res.ok) {
         sessionStatus[region.adcode] = {
-          high: raw.some(function (a) { return a.level === 'red'; }),
+          level: reliability.highestAlertLevel(raw),
           count: raw.length,
           checkedAt: res.fetchedAt || api.getCityFreshness(region).checkedAt
         };
@@ -1285,13 +1285,7 @@
       '<p class="map-hint" id="mapCoverage" role="status">' + esc(web('coverage')) + ': ' + api.getSnapshotInfo().checked + ' / ' + api.getSnapshotInfo().total + '</p>' +
       '</div>' +
       refreshStatus() + '<div class="map-preview"><div class="china-map-wrap" id="chinaMapWrap"></div></div>' +
-      '<div class="map-legend">' +
-        '<span><i class="status-dot status-none"></i>' + esc(safetyText('lastNoAlerts')) + '</span>' +
-        '<span><i class="status-dot status-normal"></i>' + esc(safetyText('lastAlerts')) + '</span>' +
-        '<span><i class="status-dot status-high"></i>' + esc(safetyText('lastRedAlert')) + '</span>' +
-        '<span><i class="status-dot status-history"></i>' + esc(safetyText('historical')) + '</span>' +
-        '<span><i class="status-dot status-unknown"></i>' + esc(web('unknown')) + '</span>' +
-      '</div>' +
+      chinaMapLegend(t) +
     '</section>';
 
     /* ---- 预警列表 ---- */
@@ -1455,6 +1449,14 @@
     setScanButtonState(nationalSweeping);
   }
 
+  function chinaMapLegend(t) {
+    var items = reliability.alertLevels.map(function (level) { return [level, t[level + 'Alert']]; });
+    items.push(['none', safetyText('lastNoAlerts')], ['history', safetyText('historical')], ['unknown', web('unknown')]);
+    return '<div class="map-legend">' + items.map(function (item) {
+      return '<span><i class="status-dot status-' + item[0] + '"></i>' + esc(item[1]) + '</span>';
+    }).join('') + '</div>';
+  }
+
   function onMapClickCity(adcode) {
     var geo = districts.getCityGeo(adcode);
     if (!geo) { return; }
@@ -1479,13 +1481,7 @@
       '</div>' +
       manualUpdateControl() + window.NDRescue.button('China', '', lang()) +
       '<div class="expanded-map-meta"><span id="mapCoverage" role="status">' + esc(web('coverage')) + ': ' + info.checked + ' / ' + info.total + '</span>' +
-        '<div class="map-legend">' +
-          '<span><i class="status-dot status-none"></i>' + esc(safetyText('lastNoAlerts')) + '</span>' +
-          '<span><i class="status-dot status-normal"></i>' + esc(safetyText('lastAlerts')) + '</span>' +
-          '<span><i class="status-dot status-high"></i>' + esc(safetyText('lastRedAlert')) + '</span>' +
-          '<span><i class="status-dot status-history"></i>' + esc(safetyText('historical')) + '</span>' +
-          '<span><i class="status-dot status-unknown"></i>' + esc(web('unknown')) + '</span>' +
-        '</div>' +
+        chinaMapLegend(t) +
       '</div>' +
       refreshStatus() + '<div id="cityInspection" class="city-inspection" role="status">' + esc(safetyText('selectCity')) + '</div>' +
       '<div class="expanded-map-viewport" id="expandedMapViewport" role="region" tabindex="0" aria-labelledby="expandedMapHeading" aria-describedby="expandedMapHint">' +
@@ -1572,7 +1568,7 @@
       head = i18n.placeName(pc.name, l);
       back = '<button class="picker-back" data-action="back-city">‹ ' + esc(i18n.placeName(pc.name, l)) + '</button>';
       var allStatus = sessionStatus[pc.adcode];
-      var allCls = allStatus && !allStatus.unavailable && reliability.freshness(allStatus.checkedAt) === 'available' ? (allStatus.high ? 'high' : allStatus.count ? 'normal' : 'none') : 'unknown';
+      var allCls = allStatus && !allStatus.unavailable && reliability.freshness(allStatus.checkedAt) === 'available' ? ((allStatus.level === 'red' || allStatus.high) ? 'high' : allStatus.count ? 'normal' : 'none') : 'unknown';
       var allRow = '<button class="picker-city" data-action="select-district" data-name="__ALL__">' +
         '<span class="pc-left"><span class="status-dot status-' + allCls + '"></span><b>' + esc(t.allDistricts) + '</b></span>' +
         '<span class="pp-arrow">›</span></button>';
@@ -1646,7 +1642,7 @@
         var st = map[c.name];
         if (!st) { return c; }
         if (st.adcode && st.status !== 'unknown') {
-          sessionStatus[st.adcode] = { high: st.status === 'high', count: st.count, checkedAt: api.getCityFreshness({ city: c.name, adcode: st.adcode }).checkedAt };
+          sessionStatus[st.adcode] = { level: st.level, count: st.count, checkedAt: api.getCityFreshness({ city: c.name, adcode: st.adcode }).checkedAt };
         } else if (st.adcode) {
           retainCityStatus({ city: c.name, adcode: st.adcode });
         }
@@ -1679,7 +1675,7 @@
       homeState.districtList = districtStatuses(item.adcode, res.ok ? raw : null);
       if (item.adcode && res.ok) {
         sessionStatus[item.adcode] = {
-          high: raw.some(function (a) { return a.level === 'red'; }),
+          level: reliability.highestAlertLevel(raw),
           count: raw.length,
           checkedAt: res.fetchedAt
         };

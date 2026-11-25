@@ -7,6 +7,8 @@
   const pageSize = 40;
   const snapshotPath = 'public-data/nws-active-alerts.json';
   const maxSnapshotAge = 6 * 3600000;
+  // The compact northeastern states use callouts in the open Atlantic.
+  const calloutPositions = { VT: 145, NH: 176, MA: 207, RI: 238, CT: 269, NJ: 300, DE: 331, MD: 362, DC: 393 };
   const areas = {
     AL: 'Alabama', AK: 'Alaska', AS: 'American Samoa', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
     CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District of Columbia', FL: 'Florida',
@@ -28,6 +30,7 @@
       checked: 'Feed checked', updated: 'Feed last changed', agency: 'Official message', instructions: 'Issuer instructions',
       published: 'Published NWS snapshot', overdue: 'Snapshot update overdue',
       mapTitle: "Alerts by state", mapHelp: "Choose a state to filter the list. Color shows the number of NWS bulletins that include at least one zone in that state.", mapLegend: "Alert count", bulletinsTitle: "Active bulletins", mapFailed: "Map unavailable",
+      mapPan: 'Scroll the map sideways to see every state.', mapUnknown: 'Counts unavailable',
       cadence: 'Checks every 10 minutes while this page is visible.'
     },
     zh: {
@@ -38,6 +41,7 @@
       checked: '数据查询时间', updated: '数据源最后变更', agency: '官方通报原文', instructions: '发布机构建议',
       published: '已发布的 NWS 快照', overdue: '快照更新已延迟',
       mapTitle: "按州查看预警", mapHelp: "选择州以筛选列表。颜色表示至少涵盖该州一个预警区域的 NWS 通告数量。", mapLegend: "通告数量", bulletinsTitle: "有效通告", mapFailed: "地图不可用",
+      mapPan: '横向滑动地图可查看所有州。', mapUnknown: '暂无通告数量',
       cadence: '页面可见时每 10 分钟查询一次。'
     },
     es: {
@@ -48,6 +52,7 @@
       checked: 'Consulta', updated: 'Último cambio en la fuente', agency: 'Mensaje oficial', instructions: 'Instrucciones del emisor',
       published: 'Instantánea publicada del NWS', overdue: 'Actualización de la instantánea retrasada',
       mapTitle: "Alertas por estado", mapHelp: "Elige un estado para filtrar la lista. El color indica el número de boletines del NWS que incluyen al menos una zona de ese estado.", mapLegend: "Número de alertas", bulletinsTitle: "Boletines vigentes", mapFailed: "Mapa no disponible",
+      mapPan: 'Desplaza el mapa horizontalmente para ver todos los estados.', mapUnknown: 'Recuentos no disponibles',
       cadence: 'Se consulta cada 10 minutos mientras esta página está visible.'
     },
     fr: {
@@ -58,6 +63,7 @@
       checked: 'Flux consulté', updated: 'Dernière modification du flux', agency: 'Message officiel', instructions: 'Consignes de l’émetteur',
       published: 'Instantané publié du NWS', overdue: 'Actualisation de l’instantané en retard',
       mapTitle: "Alertes par État", mapHelp: "Choisissez un État pour filtrer la liste. La couleur indique le nombre de bulletins du NWS concernant au moins une zone de cet État.", mapLegend: "Nombre d’alertes", bulletinsTitle: "Bulletins en vigueur", mapFailed: "Carte indisponible",
+      mapPan: 'Faites défiler la carte horizontalement pour voir tous les États.', mapUnknown: 'Nombre indisponible',
       cadence: 'Consultation toutes les 10 minutes lorsque cette page est visible.'
     },
     it: {
@@ -68,6 +74,7 @@
       checked: 'Ultima consultazione', updated: 'Ultima modifica alla fonte', agency: 'Messaggio ufficiale', instructions: 'Istruzioni dell’ente emittente',
       published: 'Dati NWS pubblicati', overdue: 'Aggiornamento dei dati in ritardo',
       mapTitle: "Allerte per Stato", mapHelp: "Scegli uno Stato per filtrare l’elenco. Il colore indica il numero di bollettini NWS che includono almeno una zona dello Stato.", mapLegend: "Numero di allerte", bulletinsTitle: "Bollettini in vigore", mapFailed: "Mappa non disponibile",
+      mapPan: 'Scorri la mappa in orizzontale per vedere tutti gli stati.', mapUnknown: 'Conteggi non disponibili',
       cadence: 'Aggiornamento ogni 10 minuti mentre la pagina è visibile.'
     }
   };
@@ -152,9 +159,12 @@
       '<p class="bulletin-status" role="status">' + t.loading + '</p>' +
       '<div class="bulletin-dashboard"><section class="bulletin-map-card" aria-labelledby="nwsMapTitle">' +
         '<h2 id="nwsMapTitle">' + t.mapTitle + '</h2><p>' + t.mapHelp + '</p>' +
-        '<div class="bulletin-map"></div>' +
+        '<p class="bulletin-map-pan">' + t.mapPan + '</p>' +
+        '<div class="bulletin-map-viewport" tabindex="0" role="region" aria-labelledby="nwsMapTitle"><div class="bulletin-map"></div></div>' +
+        '<p class="bulletin-map-selection" role="status" hidden></p>' +
         '<div class="bulletin-map-legend"><span>' + t.mapLegend + '</span>' +
           ['0', '1–4', '5–14', '15+'].map((n, i) => '<span data-count-band="' + i + '">' + n + '</span>').join('') +
+          '<span class="bulletin-map-unknown">' + t.mapUnknown + '</span>' +
           '<a href="https://github.com/topojson/us-atlas" target="_blank" rel="noopener noreferrer">U.S. Census Bureau / US Atlas ↗</a></div>' +
         '</section><section class="bulletin-records" aria-labelledby="nwsRecordsTitle">' +
         '<div class="bulletin-records-heading"><h2 id="nwsRecordsTitle">' + t.bulletinsTitle + '</h2><span class="bulletin-total"></span></div>' +
@@ -165,14 +175,28 @@
   function mapHtml(data) {
     const paths = [];
     const labels = [];
+    const callouts = [];
+    const insets = { AK: [101.7, 456], HI: [280, 535] };
     for (const [code, name] of Object.entries(areas)) {
       if (!Object.hasOwn(data.states, name)) continue;
       const [path, x, y, size] = data.states[name];
       paths.push('<path class="bulletin-state" data-state="' + code + '" d="' + esc(path) + '"><title>' + esc(name) + '</title></path>');
-      if (size > 1700) labels.push('<text x="' + Number(x) + '" y="' + Number(y) + '">' + code + '</text>');
+      if (Object.hasOwn(calloutPositions, code)) {
+        const row = calloutPositions[code];
+        callouts.push('<g class="bulletin-state-callout" data-state="' + code + '"><title>' + esc(name) + '</title>' +
+          '<path d="M' + Number(x) + ',' + Number(y) + ' L968,' + row + '"/>' +
+          '<rect x="968" y="' + (row - 12) + '" width="46" height="24" rx="5"/>' +
+          '<text x="991" y="' + row + '">' + code + '</text></g>');
+      } else if (size > 1700 || insets[code]) {
+        const [labelX, labelY] = insets[code] || [Number(x), Number(y)];
+        labels.push('<text x="' + labelX + '" y="' + labelY + '">' + code + '</text>');
+      }
     }
-    return '<svg viewBox="' + esc(data.viewBox.join(' ')) + '" class="bulletin-state-map" aria-hidden="true">' +
-      '<g>' + paths.join('') + '</g><g class="bulletin-state-labels">' + labels.join('') + '</g></svg>';
+    const [left, top, width, height] = data.viewBox;
+    return '<svg viewBox="' + esc([left, top, width + 58, height].join(' ')) + '" class="bulletin-state-map" aria-hidden="true">' +
+      '<g class="bulletin-map-insets"><path d="M-64 445H162L211 516V612H-64Z"/><rect x="215" y="520" width="128" height="92" rx="8"/></g>' +
+      '<g>' + paths.join('') + '</g><g class="bulletin-state-labels">' + labels.join('') + '</g>' +
+      '<g class="bulletin-state-callouts">' + callouts.join('') + '</g></svg>';
   }
 
   function stateCounts(rows) {
@@ -208,6 +232,8 @@
     const t = messages[lang] || messages.en;
     const select = section.querySelector('select'), button = section.querySelector('button');
     const map = section.querySelector('.bulletin-map');
+    const selection = section.querySelector('.bulletin-map-selection');
+    const unknown = section.querySelector('.bulletin-map-unknown');
     const listTitle = section.querySelector('#nwsRecordsTitle');
     const listTotal = section.querySelector('.bulletin-total');
     const mapRequest = new AbortController();
@@ -220,6 +246,7 @@
         if (!section.isConnected || mapRequest.signal.aborted) return;
         map.innerHTML = mapHtml(data);
         if (feed) updateRows();
+        else updateMap(null);
       }).catch(() => {
         if (!mapRequest.signal.aborted) map.textContent = t.mapFailed;
       });
@@ -232,6 +259,9 @@
 
     function updateMap(valid) {
       const counts = stateCounts(valid || []);
+      unknown.hidden = Boolean(valid);
+      selection.hidden = !select.value;
+      selection.textContent = select.value ? areas[select.value] + (valid ? ' · ' + t.mapLegend + ' ' + (counts[select.value] || 0) : '') : '';
       map.querySelectorAll('[data-state]').forEach(path => {
         const state = path.dataset.state;
         const count = counts[state] || 0;

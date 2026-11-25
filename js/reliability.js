@@ -1,5 +1,13 @@
 /* Shared freshness policy and safety copy; no network requests. */
 (function () {
+  var alertLevels = ['red', 'orange', 'yellow', 'blue'];
+
+  function highestAlertLevel(alerts) {
+    return alertLevels.find(function (level) {
+      return alerts.some(function (alert) { return alert.level === level; });
+    }) || '';
+  }
+
   var copy = {
     zh: {
       localNotices: "当地预警记录",
@@ -177,5 +185,5 @@
       return visible;
     });
   }
-  window.__modules.reliability = { warningTime: warningTime, warningPeriod: warningPeriod, warningValidity: warningValidity, text: text, freshness: freshness, checkedAt: checkedAt, visibleLabels: visibleLabels, copy: copy };
+  window.__modules.reliability = { alertLevels: alertLevels, highestAlertLevel: highestAlertLevel, warningTime: warningTime, warningPeriod: warningPeriod, warningValidity: warningValidity, text: text, freshness: freshness, checkedAt: checkedAt, visibleLabels: visibleLabels, copy: copy };
 })();

@@ -473,7 +473,7 @@ function lastKnownCityWarnings(region) {
 
 function lastKnownCityStatus(region) {
   const latest = lastKnownCityWarnings(region);
-  return latest ? { checkedAt: latest.checkedAt, count: latest.alerts.length, high: latest.alerts.some(alert => alert.level === 'red') } : null;
+  return latest ? { checkedAt: latest.checkedAt, count: latest.alerts.length, level: window.__modules.reliability.highestAlertLevel(latest.alerts) } : null;
 }
 
 /* ---------- 区域处理 ---------- */
@@ -799,11 +799,9 @@ function fetchCitiesStatus(cities) {
         if (list === null) {
           results.push({ name: c.name, adcode: c.adcode || '', status: 'unknown', count: 0 });
         } else {
-          const hasRed = list.some(function (a) {
-            return a.level === 'red';
-          });
-          const status = hasRed ? 'high' : list.length > 0 ? 'normal' : 'none';
-          results.push({ name: c.name, adcode: c.adcode || '', status: status, count: list.length });
+          const level = window.__modules.reliability.highestAlertLevel(list);
+          const status = level === 'red' ? 'high' : list.length > 0 ? 'normal' : 'none';
+          results.push({ name: c.name, adcode: c.adcode || '', status: status, count: list.length, level: level });
         }
         return next(i + 1);
       });
