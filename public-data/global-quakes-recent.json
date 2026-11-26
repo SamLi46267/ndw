@@ -1,12 +1,382 @@
 {
   "source": "USGS",
   "timezone": "UTC",
-  "count": 1817,
+  "count": 1811,
   "range": [
-    1793013474421,
-    1795601925642
+    1793099225439,
+    1795685060916
   ],
   "rows": [
+    [
+      1795685060916,
+      -156.931,
+      54.674,
+      5,
+      3.3,
+      "196 km SE of Perryville, Alaska",
+      "earthquake",
+      "aka2026xkkapt"
+    ],
+    [
+      1795684965352,
+      -177.7629,
+      -20.5363,
+      493.861,
+      5.2,
+      "265 km WNW of Houma, Tonga",
+      "earthquake",
+      "us6000udmc"
+    ],
+    [
+      1795684120640,
+      117.1955,
+      -10.5618,
+      15.139,
+      5.5,
+      "204 km S of Taliwang, Indonesia",
+      "earthquake",
+      "us6000udm8"
+    ],
+    [
+      1795683030980,
+      -104.138,
+      31.652,
+      6.3562,
+      3,
+      "49 km NW of Toyah, Texas",
+      "earthquake",
+      "tx2026xgpmsr"
+    ],
+    [
+      1795677802240,
+      -116.22733,
+      32.87467,
+      10.25,
+      2.82,
+      "27 km NW of Ocotillo, CA",
+      "earthquake",
+      "ci41580416"
+    ],
+    [
+      1795677641080,
+      -116.2315,
+      32.87883,
+      10.63,
+      3.58,
+      "27 km NW of Ocotillo, CA",
+      "earthquake",
+      "ci41580392"
+    ],
+    [
+      1795673999369,
+      57.8378,
+      9.8196,
+      10,
+      4.4,
+      "Carlsberg Ridge",
+      "earthquake",
+      "us6000udla"
+    ],
+    [
+      1795673839522,
+      123.8744,
+      -48.7996,
+      10,
+      4.4,
+      "western Indian-Antarctic Ridge",
+      "earthquake",
+      "us6000udlu"
+    ],
+    [
+      1795669705120,
+      -124.293502807617,
+      40.5598335266113,
+      16.5200004577637,
+      2.83,
+      "3 km SW of Ferndale, CA",
+      "earthquake",
+      "nc75469411"
+    ],
+    [
+      1795663828511,
+      -93.126,
+      14.164,
+      10,
+      4.6,
+      "97 km SW of Puerto Madero, Mexico",
+      "earthquake",
+      "us6000udki"
+    ],
+    [
+      1795663368564,
+      -152.095,
+      59.177,
+      54.8,
+      3,
+      "22 km SSW of Nanwalek, Alaska",
+      "earthquake",
+      "aka2026xjxyti"
+    ],
+    [
+      1795661265263,
+      -169.812,
+      52.071,
+      3.9,
+      3.7,
+      "116 km SSW of Nikolski, Alaska",
+      "earthquake",
+      "aka2026xjwupu"
+    ],
+    [
+      1795660325646,
+      176.7852,
+      51.5804,
+      37.219,
+      4.3,
+      "283 km ESE of Attu Station, Alaska",
+      "earthquake",
+      "us6000udk5"
+    ],
+    [
+      1795658957972,
+      178.26,
+      -35.934,
+      10,
+      5,
+      "184 km N of Hicks Bay, New Zealand",
+      "earthquake",
+      "us6000udjz"
+    ],
+    [
+      1795657724213,
+      178.6429,
+      -35.9665,
+      12.687,
+      5.2,
+      "183 km N of Hicks Bay, New Zealand",
+      "earthquake",
+      "us6000udjx"
+    ],
+    [
+      1795656225826,
+      -178.5923,
+      -17.9154,
+      584.486,
+      4.4,
+      "222 km E of Levuka, Fiji",
+      "earthquake",
+      "us6000udjw"
+    ],
+    [
+      1795655547123,
+      -151.287,
+      58.252,
+      20.4,
+      2.5,
+      "80 km ENE of Ouzinkie, Alaska",
+      "earthquake",
+      "aka2026xjtpuu"
+    ],
+    [
+      1795655539150,
+      -119.459831237793,
+      38.5834999084473,
+      5.17999982833862,
+      2.98,
+      "8 km NNE of Walker, CA",
+      "earthquake",
+      "nc75469351"
+    ],
+    [
+      1795654201330,
+      -65.4306666666667,
+      19.3623333333333,
+      10.09,
+      3.39,
+      "112 km NNE of Vieques, Puerto Rico",
+      "earthquake",
+      "pr71540048"
+    ],
+    [
+      1795653451620,
+      -162.5413,
+      54.2127,
+      22.891,
+      3,
+      "90 km SE of False Pass, Alaska",
+      "earthquake",
+      "us6000udjj"
+    ],
+    [
+      1795648928910,
+      -121.202499389648,
+      36.5703315734863,
+      6.1399998664856,
+      2.66,
+      "7 km NW of Pinnacles, CA",
+      "earthquake",
+      "nc75469326"
+    ],
+    [
+      1795644801759,
+      -152.339,
+      59.318,
+      64.7,
+      2.5,
+      "24 km W of Nanwalek, Alaska",
+      "earthquake",
+      "aka2026xjnqgt"
+    ],
+    [
+      1795643260980,
+      -66.8233333333333,
+      18.9428333333333,
+      9.76,
+      3.12,
+      "50 km N of Hatillo, Puerto Rico",
+      "earthquake",
+      "pr71540038"
+    ],
+    [
+      1795642353545,
+      178.5511,
+      -35.8989,
+      10,
+      4.8,
+      "190 km N of Hicks Bay, New Zealand",
+      "earthquake",
+      "us6000udib"
+    ],
+    [
+      1795633169141,
+      168.224,
+      -17.6508,
+      51.54,
+      4.7,
+      "13 km NW of Port-Vila, Vanuatu",
+      "earthquake",
+      "us6000udht"
+    ],
+    [
+      1795631194550,
+      -65.0725,
+      18.7731666666667,
+      24.57,
+      2.87,
+      "50 km NNW of Charlotte Amalie, U.S. Virgin Islands",
+      "earthquake",
+      "pr71540018"
+    ],
+    [
+      1795630965680,
+      -65.0263333333333,
+      18.9876666666667,
+      27.74,
+      3.1,
+      "72 km N of Charlotte Amalie, U.S. Virgin Islands",
+      "earthquake",
+      "pr71540003"
+    ],
+    [
+      1795630079725,
+      20.6921,
+      38.4121,
+      49.971,
+      4.4,
+      "5 km NNW of Itháki, Greece",
+      "earthquake",
+      "us6000udhb"
+    ],
+    [
+      1795627241220,
+      -167.676,
+      52.345,
+      17.5,
+      3.6,
+      "103 km SE of Nikolski, Alaska",
+      "earthquake",
+      "aka2026xjdwrw"
+    ],
+    [
+      1795623833838,
+      -177.6186,
+      51.3121,
+      35,
+      3.4,
+      "92 km SW of Adak, Alaska",
+      "earthquake",
+      "us6000udfu"
+    ],
+    [
+      1795623646470,
+      -65.0438333333333,
+      18.9028333333333,
+      23.89,
+      3.4,
+      "63 km N of Charlotte Amalie, U.S. Virgin Islands",
+      "earthquake",
+      "pr71539988"
+    ],
+    [
+      1795621667480,
+      -66.4663333333333,
+      19.0713333333333,
+      20.34,
+      3.18,
+      "67 km N of Tierras Nuevas Poniente, Puerto Rico",
+      "earthquake",
+      "pr71539973"
+    ],
+    [
+      1795613959213,
+      -103.835,
+      32.007,
+      7.7789,
+      2.9,
+      "32 km SE of Malaga, New Mexico",
+      "earthquake",
+      "tx2026xfdirs"
+    ],
+    [
+      1795612568562,
+      -163.0363,
+      53.6824,
+      36.868,
+      4.3,
+      "132 km S of False Pass, Alaska",
+      "earthquake",
+      "us6000udf9"
+    ],
+    [
+      1795608492731,
+      123.0018,
+      -0.3849,
+      106.384,
+      5,
+      "67 km NNE of Luwuk, Indonesia",
+      "earthquake",
+      "us6000udf2"
+    ],
+    [
+      1795606311546,
+      -151.58,
+      63.086,
+      5,
+      2.5,
+      "51 km S of Denali National Park, Alaska",
+      "earthquake",
+      "aka2026xisfke"
+    ],
+    [
+      1795605450740,
+      -97.774,
+      29.103,
+      7.7529,
+      2.5,
+      "18 km S of Nixon, Texas",
+      "earthquake",
+      "tx2026xeyqni"
+    ],
     [
       1795601925642,
       122.9622,
@@ -38,6 +408,16 @@
       "us6000udeq"
     ],
     [
+      1795600121237,
+      -162.795,
+      54.7172,
+      85.155,
+      3.4,
+      "42 km ESE of False Pass, Alaska",
+      "earthquake",
+      "us6000udfw"
+    ],
+    [
       1795596436394,
       121.5241,
       21.8162,
@@ -62,7 +442,7 @@
       -104.8395,
       36.9498,
       5,
-      4.4,
+      4.1,
       "20 km S of Weston, Colorado",
       "earthquake",
       "us6000ude6"
@@ -76,6 +456,16 @@
       "175 km N of Hicks Bay, New Zealand",
       "earthquake",
       "us6000ude3"
+    ],
+    [
+      1795586916639,
+      -165.768,
+      53.361,
+      20.2,
+      2.9,
+      "76 km SE of Unalaska, Alaska",
+      "earthquake",
+      "aka2026xihlxq"
     ],
     [
       1795586170090,
@@ -108,10 +498,20 @@
       "us6000uddj"
     ],
     [
-      1795579606742,
-      -147.737,
-      61,
-      14.2,
+      1795580011145,
+      -151.949,
+      57.961,
+      4,
+      2.6,
+      "32 km E of Ouzinkie, Alaska",
+      "earthquake",
+      "aka2026xidqfg"
+    ],
+    [
+      1795579606490,
+      -147.73,
+      60.998,
+      13.9,
       2.5,
       "57 km ENE of Whittier, Alaska",
       "earthquake",
@@ -558,24 +958,84 @@
       "aka2026xgrbne"
     ],
     [
-      1795508069883,
-      -157.603,
-      58.871,
-      0.3,
+      1795510286943,
+      -156.52,
+      56.617,
+      31.2,
       2.6,
-      "7 km ESE of Portage Creek, Alaska",
+      "113 km SSE of Ugashik, Alaska",
+      "earthquake",
+      "aka2026xgqwqa"
+    ],
+    [
+      1795510199183,
+      -161.688,
+      54.488,
+      12.9,
+      2.7,
+      "75 km SSE of King Cove, Alaska",
+      "earthquake",
+      "aka2026xgqvme"
+    ],
+    [
+      1795508844075,
+      -169.782,
+      52.419,
+      14,
+      2.8,
+      "84 km SW of Nikolski, Alaska",
+      "earthquake",
+      "aka2026xgqbwo"
+    ],
+    [
+      1795508070281,
+      -157.583,
+      58.851,
+      1.1,
+      2.5,
+      "9 km SE of Portage Creek, Alaska",
       "earthquake",
       "aka2026xgpqpn"
     ],
     [
-      1795506214121,
-      -176.798,
-      51.49,
-      22,
-      3.7,
-      "44 km SSW of Adak, Alaska",
+      1795506254742,
+      -162.726,
+      54.312,
+      28,
+      2.8,
+      "74 km SE of False Pass, Alaska",
       "earthquake",
-      "aka2026xgopue"
+      "aka2026xgoqiv"
+    ],
+    [
+      1795506213711,
+      -176.7824,
+      51.4484,
+      10,
+      3.7,
+      "48 km SSW of Adak, Alaska",
+      "earthquake",
+      "us6000ud66"
+    ],
+    [
+      1795505406534,
+      -169.827,
+      52.415,
+      16.9,
+      2.9,
+      "87 km SW of Nikolski, Alaska",
+      "earthquake",
+      "aka2026xgoecu"
+    ],
+    [
+      1795504838948,
+      -169.774,
+      52.399,
+      13.3,
+      2.9,
+      "86 km SW of Nikolski, Alaska",
+      "earthquake",
+      "aka2026xgnvxj"
     ],
     [
       1795501448390,
@@ -588,6 +1048,36 @@
       "tx2026xctesx"
     ],
     [
+      1795500376527,
+      -168.313,
+      52.129,
+      23.1,
+      2.9,
+      "97 km SSE of Nikolski, Alaska",
+      "earthquake",
+      "aka2026xgljmr"
+    ],
+    [
+      1795500255367,
+      -164.544,
+      53.539,
+      24.1,
+      2.7,
+      "104 km SE of Akutan, Alaska",
+      "earthquake",
+      "aka2026xglhrm"
+    ],
+    [
+      1795499931536,
+      -157.615,
+      56.141,
+      37.3,
+      2.5,
+      "51 km ESE of Chignik, Alaska",
+      "earthquake",
+      "aka2026xglcyp"
+    ],
+    [
       1795499158390,
       -66.9098333333333,
       17.921,
@@ -598,22 +1088,32 @@
       "pr71539868"
     ],
     [
-      1795496279924,
-      -151.759,
-      61.475,
-      0.3,
+      1795498281002,
+      -146.413,
+      61.625,
+      19.3,
+      2.5,
+      "44 km SSE of Nelchina, Alaska",
+      "earthquake",
+      "aka2026xgkfdp"
+    ],
+    [
+      1795496280133,
+      -151.752,
+      61.473,
+      2.4,
       2.5,
       "51 km NW of Beluga, Alaska",
       "earthquake",
       "aka2026xgjcfp"
     ],
     [
-      1795496054496,
-      -151.392,
-      58.952,
-      29.8,
-      2.7,
-      "51 km SSE of Port Graham, Alaska",
+      1795496054566,
+      -151.384,
+      58.943,
+      33.7,
+      2.8,
+      "52 km SSE of Port Graham, Alaska",
       "earthquake",
       "aka2026xgiywm"
     ],
@@ -638,14 +1138,44 @@
       "aka2026xgirqj"
     ],
     [
-      1795494506758,
-      -157.401,
-      56.395,
-      57.8,
+      1795495114208,
+      -165.22,
+      52.943,
+      7.2,
       2.8,
+      "135 km SE of Unalaska, Alaska",
+      "earthquake",
+      "aka2026xgiljz"
+    ],
+    [
+      1795494506710,
+      -157.39,
+      56.396,
+      54.7,
+      3,
       "63 km E of Chignik, Alaska",
       "earthquake",
       "aka2026xgicod"
+    ],
+    [
+      1795494391135,
+      -169.305,
+      52.458,
+      19.4,
+      2.8,
+      "61 km SSW of Nikolski, Alaska",
+      "earthquake",
+      "aka2026xgiaxq"
+    ],
+    [
+      1795494182820,
+      -169.348,
+      52.453,
+      24.8,
+      2.6,
+      "63 km SSW of Nikolski, Alaska",
+      "earthquake",
+      "aka2026xghxxa"
     ],
     [
       1795493712000,
@@ -668,14 +1198,24 @@
       "pr71539848"
     ],
     [
-      1795492081372,
-      -152.054,
+      1795492081416,
+      -152.06,
       60.673,
-      89.3,
-      2.5,
-      "40 km W of Salamatof, Alaska",
+      87.6,
+      2.6,
+      "41 km W of Salamatof, Alaska",
       "earthquake",
       "aka2026xggtot"
+    ],
+    [
+      1795490001781,
+      -170.437,
+      53.603,
+      175.4,
+      3,
+      "128 km NW of Nikolski, Alaska",
+      "earthquake",
+      "aka2026xgfppi"
     ],
     [
       1795489944992,
@@ -698,12 +1238,12 @@
       "nc75471412"
     ],
     [
-      1795488506199,
-      -156.498,
-      56.555,
-      74.4,
-      2.6,
-      "119 km SSE of Ugashik, Alaska",
+      1795488505965,
+      -156.393,
+      56.506,
+      54.2,
+      2.7,
+      "126 km E of Chignik, Alaska",
       "earthquake",
       "aka2026xgetvu"
     ],
@@ -728,12 +1268,32 @@
       "us6000ud3q"
     ],
     [
-      1795485729029,
-      -156.607,
-      56.234,
-      5,
+      1795486185146,
+      -160.493,
+      54.445,
+      16.4,
       2.7,
-      "111 km E of Chignik, Alaska",
+      "99 km S of Sand Point, Alaska",
+      "earthquake",
+      "aka2026xgdmie"
+    ],
+    [
+      1795485855849,
+      -176.431,
+      51.156,
+      2.7,
+      2.7,
+      "81 km S of Adak, Alaska",
+      "earthquake",
+      "aka2026xgdhpr"
+    ],
+    [
+      1795485729468,
+      -156.641,
+      56.242,
+      1.9,
+      2.6,
+      "109 km E of Chignik, Alaska",
       "earthquake",
       "aka2026xgdfty"
     ],
@@ -766,6 +1326,16 @@
       "67 km WNW of Mangan, India",
       "earthquake",
       "us6000ud3i"
+    ],
+    [
+      1795483217377,
+      -173.778,
+      51.847,
+      27.7,
+      2.6,
+      "48 km SE of Atka, Alaska",
+      "earthquake",
+      "aka2026xgbvlt"
     ],
     [
       1795480723520,
@@ -4388,12 +4958,12 @@
       "us6000ud8v"
     ],
     [
-      1794863839700,
-      -121.709663391113,
-      36.1066665649414,
-      10.6000003814697,
-      2.79,
-      "16 km NW of Lopez Point, CA",
+      1794863839800,
+      -121.6945,
+      36.1085,
+      8.11,
+      2.69,
+      "15 km NW of Lopez Point, CA",
       "earthquake",
       "nc75467222"
     ],
@@ -6688,12 +7258,12 @@
       "tx2026wgdyjd"
     ],
     [
-      1794438022433,
-      87.8857,
-      27.8692,
+      1794438022438,
+      87.8629,
+      27.9579,
       10,
       4.6,
-      "73 km NNW of Gyalshing, India",
+      "81 km NW of Mangan, India",
       "earthquake",
       "us7000txpk"
     ],
@@ -7118,24 +7688,44 @@
       "us7000txgq"
     ],
     [
-      1794370859883,
-      -169.6878,
-      52.5525,
-      42.206,
-      4.3,
-      "70 km SW of Nikolski, Alaska",
+      1794370859938,
+      -169.6566,
+      52.5583,
+      54.114,
+      4.4,
+      "68 km SW of Nikolski, Alaska",
       "earthquake",
       "us7000txgi"
     ],
     [
-      1794369412372,
-      142.185,
-      36.1492,
+      1794370290998,
+      -112.552,
+      18.2744,
+      10,
+      4.1,
+      "Revilla Gigedo Islands region",
+      "earthquake",
+      "us7000txgk"
+    ],
+    [
+      1794369412462,
+      142.1377,
+      36.1387,
       10,
       4.6,
-      "130 km ENE of Hasaki, Japan",
+      "126 km ENE of Hasaki, Japan",
       "earthquake",
       "us7000txgg"
+    ],
+    [
+      1794367974974,
+      23.1935,
+      34.79,
+      59.107,
+      4.2,
+      "66 km SW of Palaióchora, Greece",
+      "earthquake",
+      "us6000uc0r"
     ],
     [
       1794364823300,
@@ -7148,12 +7738,12 @@
       "pr71539028"
     ],
     [
-      1794361527859,
-      -127.6912,
-      49.0876,
+      1794361528549,
+      -127.7496,
+      49.2548,
       10,
-      4.7,
-      "130 km W of Tofino, Canada",
+      4.6,
+      "134 km W of Tofino, Canada",
       "earthquake",
       "us7000txfz"
     ],
@@ -7168,22 +7758,12 @@
       "pr71539018"
     ],
     [
-      1794361101410,
-      -125.3205,
-      48.4413333333333,
-      4.78,
-      2.74,
-      "52 km W of Neah Bay, Washington",
-      "earthquake",
-      "uw714137391"
-    ],
-    [
-      1794358881525,
-      159.2964,
-      53.2952,
-      92.146,
+      1794358878997,
+      159.6546,
+      53.0929,
+      74.065,
       4.2,
-      "51 km ENE of Petropavlovsk-Kamchatsky, Russia",
+      "68 km E of Petropavlovsk-Kamchatsky, Russia",
       "earthquake",
       "us7000txfx"
     ],
@@ -8948,14 +9528,34 @@
       "aka2026wcupfw"
     ],
     [
-      1794107579026,
-      -172.499,
-      51.942,
-      29.2,
-      3.1,
-      "120 km ESE of Atka, Alaska",
+      1794109687415,
+      160.2108,
+      53.501,
+      64.985,
+      4.4,
+      "116 km ENE of Petropavlovsk-Kamchatsky, Russia",
       "earthquake",
-      "aka2026wcrggv"
+      "us7000tylc"
+    ],
+    [
+      1794107871203,
+      172.9478,
+      -22.8575,
+      10,
+      4.4,
+      "southeast of the Loyalty Islands",
+      "earthquake",
+      "us7000tylb"
+    ],
+    [
+      1794107579490,
+      -172.5198,
+      51.9278,
+      35,
+      3.1,
+      "119 km ESE of Atka, Alaska",
+      "earthquake",
+      "us7000txvg"
     ],
     [
       1794107416855,
@@ -8968,34 +9568,44 @@
       "aka2026wcrdek"
     ],
     [
-      1794106210197,
-      73.1675,
-      38.4508,
-      95.394,
+      1794106211401,
+      73.1541,
+      38.5307,
+      103.686,
       4.3,
-      "76 km WNW of Murghob, Tajikistan",
+      "81 km WNW of Murghob, Tajikistan",
       "earthquake",
       "us7000twvh"
     ],
     [
-      1794104280336,
-      -161.533,
-      54.332,
-      0.8,
-      3,
-      "95 km SSE of King Cove, Alaska",
+      1794104280397,
+      -161.472,
+      54.3547,
+      5,
+      2.8,
+      "95 km SE of King Cove, Alaska",
       "earthquake",
-      "aka2026wcpkkr"
+      "us7000txv1"
     ],
     [
-      1794102796193,
-      130.4721,
-      32.5014,
+      1794102796235,
+      130.6066,
+      32.4918,
       10,
-      4.5,
-      "11 km W of Honmachi, Japan",
+      4.3,
+      "1 km SSE of Honmachi, Japan",
       "earthquake",
       "us7000twvb"
+    ],
+    [
+      1794101642824,
+      -37.9436,
+      7.566,
+      10,
+      4.4,
+      "central Mid-Atlantic Ridge",
+      "earthquake",
+      "us7000tyl9"
     ],
     [
       1794099064367,
@@ -11098,6 +11708,16 @@
       "aka2026vvrwqb"
     ],
     [
+      1793780112158,
+      128.7778,
+      -7.3936,
+      142.027,
+      4.3,
+      "232 km ENE of Lospalos, Timor Leste",
+      "earthquake",
+      "us7000txue"
+    ],
+    [
       1793779062982,
       -169.3284,
       52.1393,
@@ -12038,12 +12658,42 @@
       "aka2026vtkchh"
     ],
     [
-      1793670087095,
-      -69.307,
-      -19.1084,
-      106.613,
-      4.3,
-      "25 km NNE of Camiña, Chile",
+      1793672964936,
+      142.8795,
+      29.4068,
+      10,
+      4.4,
+      "Izu Islands, Japan region",
+      "earthquake",
+      "us7000txl2"
+    ],
+    [
+      1793672035500,
+      -70.9679,
+      -28.4305,
+      37.964,
+      4.1,
+      "26 km NW of Vallenar, Chile",
+      "earthquake",
+      "us7000tv2d"
+    ],
+    [
+      1793670135339,
+      -178.3156,
+      51.8527,
+      22.742,
+      2.5,
+      "115 km W of Adak, Alaska",
+      "earthquake",
+      "us7000tvux"
+    ],
+    [
+      1793670086388,
+      -69.4089,
+      -19.0297,
+      114.725,
+      4.4,
+      "31 km N of Camiña, Chile",
       "earthquake",
       "us7000tv27"
     ],
@@ -12768,22 +13418,22 @@
       "us7000tuty"
     ],
     [
-      1793594748110,
-      149.5786,
-      46.6019,
+      1793594747878,
+      149.5039,
+      46.5744,
       10,
-      4.6,
-      "201 km NE of Kuril’sk, Russia",
+      4.5,
+      "195 km NE of Kuril’sk, Russia",
       "earthquake",
       "us7000tutv"
     ],
     [
-      1793593714296,
-      -178.4135,
-      -18.1834,
-      580.891,
+      1793593716129,
+      -178.6382,
+      -18.0599,
+      599.133,
       4.3,
-      "240 km E of Levuka, Fiji",
+      "216 km E of Levuka, Fiji",
       "earthquake",
       "us7000tutt"
     ],
@@ -14928,6 +15578,16 @@
       "pr71537953"
     ],
     [
+      1793342417561,
+      125.3139,
+      4.8905,
+      70.235,
+      4.2,
+      "59 km SSW of Sarangani, Philippines",
+      "earthquake",
+      "us7000twlq"
+    ],
+    [
       1793339608622,
       -103.277,
       32.03,
@@ -14958,12 +15618,12 @@
       "us7000tu6i"
     ],
     [
-      1793336311595,
-      142.3621,
-      40.3108,
-      56.598,
+      1793336311214,
+      142.3282,
+      40.2497,
+      54.249,
       4.6,
-      "51 km ENE of Noda, Japan",
+      "46 km ENE of Noda, Japan",
       "earthquake",
       "us7000tu6f"
     ],
@@ -14978,24 +15638,34 @@
       "hv75066061"
     ],
     [
-      1793335568200,
-      -150.199,
-      56.123,
-      75,
-      3.2,
-      "208 km SE of Chiniak, Alaska",
+      1793335566039,
+      -150.1374,
+      56.069,
+      25.268,
+      3.3,
+      "215 km SE of Chiniak, Alaska",
       "earthquake",
-      "aka2026vmeees"
+      "us7000tusj"
     ],
     [
-      1793333119569,
-      -177.758,
-      51.83,
-      16.5,
-      2.7,
-      "77 km W of Adak, Alaska",
+      1793334244261,
+      141.7352,
+      38.2677,
+      75.084,
+      4.3,
+      "32 km SE of Onagawa Chō, Japan",
       "earthquake",
-      "aka2026vmcujd"
+      "us7000twlm"
+    ],
+    [
+      1793333119876,
+      -177.7234,
+      51.8155,
+      10,
+      2.7,
+      "75 km W of Adak, Alaska",
+      "earthquake",
+      "us7000tusi"
     ],
     [
       1793331215120,
@@ -15008,14 +15678,24 @@
       "pr71537938"
     ],
     [
-      1793329457406,
-      148.3151,
-      -5.8137,
-      116.297,
-      5.1,
-      "97 km NNE of Finschhafen, Papua New Guinea",
+      1793329457153,
+      148.3196,
+      -5.8231,
+      113.277,
+      4.9,
+      "96 km NNE of Finschhafen, Papua New Guinea",
       "earthquake",
       "us7000tu5q"
+    ],
+    [
+      1793327495561,
+      -71.9681,
+      -31.771,
+      10,
+      3.8,
+      "77 km W of Illapel, Chile",
+      "earthquake",
+      "us7000tu5k"
     ],
     [
       1793322302221,
@@ -15358,6 +16038,16 @@
       "nc75459362"
     ],
     [
+      1793275446147,
+      -75.3426,
+      -15.7422,
+      23.984,
+      4.5,
+      "45 km SSW of San Juan, Peru",
+      "earthquake",
+      "us7000ttyn"
+    ],
+    [
       1793275317746,
       73.7119,
       34.8306,
@@ -15436,6 +16126,16 @@
       "100 km E of Akutan, Alaska",
       "earthquake",
       "us7000tu4l"
+    ],
+    [
+      1793265988091,
+      125.4467,
+      5.4123,
+      94.529,
+      4.3,
+      "2 km WNW of Sarangani, Philippines",
+      "earthquake",
+      "us7000twip"
     ],
     [
       1793263782262,
@@ -15568,44 +16268,44 @@
       "aka2026vkichp"
     ],
     [
-      1793248076215,
-      -167.99,
-      54.119,
-      202.8,
-      2.6,
+      1793248076331,
+      -168.0058,
+      54.077,
+      200.521,
+      3,
       "98 km WNW of Dutch Harbor, Alaska",
       "earthquake",
-      "aka2026vkhnie"
+      "us7000twmm"
     ],
     [
-      1793246995354,
-      -178.4546,
-      -17.8856,
-      601.522,
-      4.3,
-      "236 km E of Levuka, Fiji",
+      1793246994814,
+      -178.418,
+      -17.9727,
+      594.329,
+      4.2,
+      "240 km E of Levuka, Fiji",
       "earthquake",
       "us7000ttwv"
     ],
     [
-      1793246963828,
-      -165.015,
-      53.469,
-      29.5,
-      2.7,
-      "89 km SE of Akutan, Alaska",
+      1793246963689,
+      -164.9979,
+      53.4454,
+      35,
+      2.6,
+      "92 km SSE of Akutan, Alaska",
       "earthquake",
-      "aka2026vkgxiz"
+      "us7000twm6"
     ],
     [
-      1793245630864,
-      -161.398,
-      54.309,
-      1.7,
+      1793245631666,
+      -161.4743,
+      54.3319,
+      6.646,
       2.8,
-      "102 km SE of King Cove, Alaska",
+      "97 km SSE of King Cove, Alaska",
       "earthquake",
-      "aka2026vkgebh"
+      "us7000twlh"
     ],
     [
       1793245447725,
@@ -15618,22 +16318,22 @@
       "aka2026vkgavi"
     ],
     [
-      1793244402275,
-      141.9018,
-      -5.6991,
+      1793244401929,
+      141.9767,
+      -5.6555,
       10,
       5.7,
-      "82 km NE of Kiunga, Papua New Guinea",
+      "91 km NE of Kiunga, Papua New Guinea",
       "earthquake",
       "us7000ttw5"
     ],
     [
-      1793243945288,
-      127.4204,
-      8.3638,
+      1793243944825,
+      127.3958,
+      8.4197,
       10,
       5.8,
-      "110 km ENE of Barcelona, Philippines",
+      "109 km ENE of Barcelona, Philippines",
       "earthquake",
       "us7000ttw3"
     ],
@@ -16298,14 +16998,14 @@
       "us7000ttnk"
     ],
     [
-      1793188452421,
-      -118.6558,
-      32.1288,
-      10,
-      3,
-      "138 km SSW of Avalon, California",
+      1793188454130,
+      -118.77283,
+      32.1295,
+      10.31,
+      3.14,
+      "87 km SSW of San Clemente Is. (SE tip), CA",
       "earthquake",
-      "us7000ttng"
+      "ci41568120"
     ],
     [
       1793188364532,
@@ -17416,766 +18116,6 @@
       "197 km NW of Port-Olry, Vanuatu",
       "earthquake",
       "us7000tw9l"
-    ],
-    [
-      1793098235195,
-      165.6348,
-      -13.9257,
-      10,
-      5.2,
-      "198 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000ttfk"
-    ],
-    [
-      1793098196339,
-      -172.5364,
-      51.9366,
-      80.791,
-      3,
-      "117 km ESE of Atka, Alaska",
-      "earthquake",
-      "us7000tu6s"
-    ],
-    [
-      1793097860030,
-      -165.5464,
-      52.9774,
-      16.836,
-      2.5,
-      "119 km SSE of Unalaska, Alaska",
-      "earthquake",
-      "us7000ttgy"
-    ],
-    [
-      1793095709534,
-      165.383,
-      -13.6236,
-      10,
-      4.6,
-      "236 km W of Sola, Vanuatu",
-      "earthquake",
-      "us7000tw9g"
-    ],
-    [
-      1793095591822,
-      165.8166,
-      -13.9928,
-      10,
-      5,
-      "178 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000ttfj"
-    ],
-    [
-      1793094467874,
-      165.5934,
-      -13.9223,
-      10,
-      4.7,
-      "201 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000tw9e"
-    ],
-    [
-      1793094236358,
-      165.3724,
-      -13.9552,
-      10,
-      4.3,
-      "219 km WNW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000tw9f"
-    ],
-    [
-      1793094013308,
-      165.5439,
-      -13.9218,
-      10,
-      4.6,
-      "206 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000twae"
-    ],
-    [
-      1793093245874,
-      143.8325,
-      20.4091,
-      10,
-      4.5,
-      "Mariana Islands region",
-      "earthquake",
-      "us7000tw9b"
-    ],
-    [
-      1793093149320,
-      165.9677,
-      -13.6275,
-      10,
-      4.2,
-      "173 km W of Sola, Vanuatu",
-      "earthquake",
-      "us7000tw9d"
-    ],
-    [
-      1793092854633,
-      165.5806,
-      -13.8493,
-      10,
-      5.1,
-      "208 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000ttfe"
-    ],
-    [
-      1793092767492,
-      165.3742,
-      -14.0196,
-      10,
-      4.3,
-      "215 km WNW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000tw9c"
-    ],
-    [
-      1793092494360,
-      -64.5878333333333,
-      18.8815,
-      35.73,
-      2.78,
-      "64 km NNE of Cruz Bay, U.S. Virgin Islands",
-      "earthquake",
-      "pr71537733"
-    ],
-    [
-      1793092065037,
-      -173.4394,
-      -15.2566,
-      10,
-      5,
-      "86 km NNE of Hihifo, Tonga",
-      "earthquake",
-      "us7000ttfc"
-    ],
-    [
-      1793091849141,
-      165.4575,
-      -13.8044,
-      10,
-      4.2,
-      "221 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000tw99"
-    ],
-    [
-      1793091323294,
-      165.6113,
-      -13.9356,
-      11,
-      5.8,
-      "199 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000ttfb"
-    ],
-    [
-      1793090983851,
-      -148.2169,
-      56.9835,
-      10,
-      2.8,
-      "254 km ESE of Chiniak, Alaska",
-      "earthquake",
-      "us7000ttf9"
-    ],
-    [
-      1793089074685,
-      -174.769,
-      51.881,
-      76.2,
-      2.7,
-      "52 km SW of Atka, Alaska",
-      "earthquake",
-      "aka2026vgxdqm"
-    ],
-    [
-      1793088000757,
-      -178.522,
-      51.063,
-      4.7,
-      2.7,
-      "159 km SW of Adak, Alaska",
-      "earthquake",
-      "aka2026vgwobk"
-    ],
-    [
-      1793083371045,
-      -157.127,
-      56.233,
-      25.3,
-      2.6,
-      "79 km E of Chignik, Alaska",
-      "earthquake",
-      "aka2026vgtzgj"
-    ],
-    [
-      1793077846189,
-      -164.2024,
-      53.7346,
-      35,
-      3.1,
-      "112 km ESE of Akutan, Alaska",
-      "earthquake",
-      "us7000tu57"
-    ],
-    [
-      1793073323723,
-      -78.9162,
-      -2.7297,
-      81.317,
-      4.1,
-      "7 km W of Azogues, Ecuador",
-      "earthquake",
-      "us7000tteg"
-    ],
-    [
-      1793070993040,
-      -65.7981666666667,
-      18.8711666666667,
-      36.24,
-      3.04,
-      "49 km N of Suárez, Puerto Rico",
-      "earthquake",
-      "pr71537723"
-    ],
-    [
-      1793070944839,
-      127.2869,
-      7.9225,
-      10,
-      4.2,
-      "85 km ENE of Kinablangan, Philippines",
-      "earthquake",
-      "us7000tw90"
-    ],
-    [
-      1793069287826,
-      -25.4513,
-      -58.1145,
-      55.484,
-      4.4,
-      "South Sandwich Islands region",
-      "earthquake",
-      "us7000tw8z"
-    ],
-    [
-      1793066575356,
-      161.4207,
-      -10.6895,
-      35,
-      4.9,
-      "60 km WSW of Kirakira, Solomon Islands",
-      "earthquake",
-      "us7000tte4"
-    ],
-    [
-      1793066206130,
-      -67.5985,
-      18.2008333333333,
-      134.47,
-      3.31,
-      "39 km WSW of Stella, Puerto Rico",
-      "earthquake",
-      "pr71537718"
-    ],
-    [
-      1793064837706,
-      -178.9599,
-      -21.3418,
-      585.496,
-      4.2,
-      "Fiji region",
-      "earthquake",
-      "us7000tw8v"
-    ],
-    [
-      1793063871443,
-      140.9044,
-      33.3136,
-      47.53,
-      4.7,
-      "207 km SSE of Wada, Japan",
-      "earthquake",
-      "us7000tte0"
-    ],
-    [
-      1793063423153,
-      164.8962,
-      -10.6734,
-      35,
-      4.4,
-      "98 km W of Lata, Solomon Islands",
-      "earthquake",
-      "us7000tw8t"
-    ],
-    [
-      1793061679378,
-      -167.153,
-      53.329,
-      1.8,
-      2.5,
-      "73 km SW of Unalaska, Alaska",
-      "earthquake",
-      "aka2026vghxtu"
-    ],
-    [
-      1793060713057,
-      141.4538,
-      37.4458,
-      89.153,
-      4.7,
-      "40 km E of Namie, Japan",
-      "earthquake",
-      "us7000ttdt"
-    ],
-    [
-      1793056015934,
-      -166.182,
-      67.721,
-      3.6,
-      2.6,
-      "69 km W of Kivalina, Alaska",
-      "earthquake",
-      "aka2026vgetxr"
-    ],
-    [
-      1793055732176,
-      142.2406,
-      42.2126,
-      95.865,
-      4.5,
-      "16 km SSW of Niikappu, Japan",
-      "earthquake",
-      "us7000tw2c"
-    ],
-    [
-      1793055144740,
-      127.7078,
-      2.5446,
-      106.127,
-      4.4,
-      "96 km NNW of Tobelo, Indonesia",
-      "earthquake",
-      "us7000ttd3"
-    ],
-    [
-      1793054028319,
-      46.2456,
-      -12.3894,
-      10,
-      4.5,
-      "114 km ENE of Pamandzi, Mayotte",
-      "earthquake",
-      "us7000ttd1"
-    ],
-    [
-      1793051065225,
-      54.64,
-      14.7553,
-      10,
-      4.3,
-      "242 km NNE of Hadibu, Yemen",
-      "earthquake",
-      "us7000tw29"
-    ],
-    [
-      1793049994234,
-      127.3994,
-      6.0624,
-      10,
-      4.2,
-      "139 km ESE of Pondaguitan, Philippines",
-      "earthquake",
-      "us7000tw27"
-    ],
-    [
-      1793049491526,
-      138.5321,
-      -36.4594,
-      10,
-      4.7,
-      "98 km S of Encounter Bay, Australia",
-      "earthquake",
-      "us7000ttci"
-    ],
-    [
-      1793049296667,
-      145.7878,
-      12.7994,
-      10,
-      4.5,
-      "124 km ESE of Inarajan Village, Guam",
-      "earthquake",
-      "us7000tw26"
-    ],
-    [
-      1793047962830,
-      54.6829,
-      14.6331,
-      10,
-      4.1,
-      "230 km NNE of Hadibu, Yemen",
-      "earthquake",
-      "us7000tw25"
-    ],
-    [
-      1793047931506,
-      -71.272,
-      -32.2869,
-      47.788,
-      4.6,
-      "18 km NNW of La Ligua, Chile",
-      "earthquake",
-      "us7000ttc8"
-    ],
-    [
-      1793047653788,
-      -103.7657,
-      28.9418,
-      7.901,
-      3,
-      "44 km SSW of Terlingua, Texas",
-      "earthquake",
-      "us7000ttc5"
-    ],
-    [
-      1793047277068,
-      126.6918,
-      5.6867,
-      10,
-      4.6,
-      "93 km SE of Pondaguitan, Philippines",
-      "earthquake",
-      "us7000ttc6"
-    ],
-    [
-      1793046474114,
-      165.6122,
-      -13.9362,
-      10,
-      4.9,
-      "199 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000ttc1"
-    ],
-    [
-      1793046253926,
-      -174.4867,
-      51.7262,
-      11.687,
-      3.4,
-      "55 km SSW of Atka, Alaska",
-      "earthquake",
-      "us7000tu4c"
-    ],
-    [
-      1793046025091,
-      -71.372,
-      -30.0053,
-      55.005,
-      4.8,
-      "6 km SSW of Coquimbo, Chile",
-      "earthquake",
-      "us7000ttbz"
-    ],
-    [
-      1793045457129,
-      -148.7885,
-      56.434,
-      10,
-      3.1,
-      "249 km ESE of Chiniak, Alaska",
-      "earthquake",
-      "us7000ttbv"
-    ],
-    [
-      1793043513835,
-      54.676,
-      14.6556,
-      10,
-      4.5,
-      "233 km NNE of Hadibu, Yemen",
-      "earthquake",
-      "us7000tw23"
-    ],
-    [
-      1793043484946,
-      -103.72,
-      32.073,
-      7.9327,
-      2.6,
-      "37 km ESE of Malaga, New Mexico",
-      "earthquake",
-      "tx2026vcnlki"
-    ],
-    [
-      1793043376373,
-      -68.7246,
-      -20.3781,
-      121.301,
-      4.9,
-      "97 km E of La Tirana, Chile",
-      "earthquake",
-      "us7000ttbh"
-    ],
-    [
-      1793041394545,
-      -174.3787,
-      51.8207,
-      61.392,
-      3.5,
-      "43 km SSW of Atka, Alaska",
-      "earthquake",
-      "us7000tu4b"
-    ],
-    [
-      1793038024174,
-      70.9944,
-      38.6326,
-      53.354,
-      4.5,
-      "69 km SE of Rasht, Tajikistan",
-      "earthquake",
-      "us7000ttb5"
-    ],
-    [
-      1793032973320,
-      165.503,
-      -13.78,
-      10,
-      4.5,
-      "219 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000tw21"
-    ],
-    [
-      1793032898782,
-      165.5359,
-      -13.7793,
-      10,
-      4.5,
-      "216 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000tw22"
-    ],
-    [
-      1793032823876,
-      165.3279,
-      -13.8716,
-      10,
-      4.6,
-      "228 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000ttax"
-    ],
-    [
-      1793032718169,
-      -164.958,
-      53.535,
-      58.1,
-      2.6,
-      "85 km SE of Akutan, Alaska",
-      "earthquake",
-      "aka2026vfrvfu"
-    ],
-    [
-      1793030551900,
-      -67.3226,
-      -24.2448,
-      175.406,
-      4,
-      "102 km W of San Antonio de los Cobres, Argentina",
-      "earthquake",
-      "us7000ttat"
-    ],
-    [
-      1793027305125,
-      165.9238,
-      -14.2086,
-      10,
-      4.6,
-      "154 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000ttby"
-    ],
-    [
-      1793026932323,
-      -165.031,
-      53.447,
-      27.8,
-      2.6,
-      "90 km SSE of Akutan, Alaska",
-      "earthquake",
-      "aka2026vfopnh"
-    ],
-    [
-      1793026526127,
-      -165.0601,
-      53.5154,
-      35,
-      2.6,
-      "83 km SE of Akutan, Alaska",
-      "earthquake",
-      "us7000tu3q"
-    ],
-    [
-      1793024290214,
-      -164.9842,
-      53.4466,
-      35,
-      2.6,
-      "92 km SE of Akutan, Alaska",
-      "earthquake",
-      "us7000tu3n"
-    ],
-    [
-      1793024269838,
-      127.732,
-      -7.6017,
-      159.395,
-      4.2,
-      "129 km NE of Lospalos, Timor Leste",
-      "earthquake",
-      "us7000tw1z"
-    ],
-    [
-      1793023417950,
-      165.5871,
-      -13.8987,
-      10,
-      4.6,
-      "204 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us7000tw1y"
-    ],
-    [
-      1793023374892,
-      -141.316,
-      61.636,
-      5,
-      2.8,
-      "88 km ENE of McCarthy, Alaska",
-      "earthquake",
-      "aka2026vfmqfn"
-    ],
-    [
-      1793022747524,
-      -165.157,
-      53.36,
-      13.4,
-      2.6,
-      "95 km SSE of Akutan, Alaska",
-      "earthquake",
-      "aka2026vfmhdn"
-    ],
-    [
-      1793021048644,
-      -165.0294,
-      53.5303,
-      35,
-      3.2,
-      "83 km SE of Akutan, Alaska",
-      "earthquake",
-      "us7000tu3f"
-    ],
-    [
-      1793020802439,
-      25.8883,
-      35.0556,
-      10,
-      4.4,
-      "12 km ENE of Kentrí, Greece",
-      "earthquake",
-      "us6000u4zm"
-    ],
-    [
-      1793020233160,
-      -121.6055,
-      36.864,
-      5.06,
-      2.5,
-      "4 km SE of Aromas, CA",
-      "earthquake",
-      "nc75455061"
-    ],
-    [
-      1793017892692,
-      103.2204,
-      -6.1107,
-      35,
-      4.3,
-      "230 km S of Pagar Alam, Indonesia",
-      "earthquake",
-      "us6000u4zg"
-    ],
-    [
-      1793016810646,
-      165.583,
-      -13.8617,
-      10,
-      5.2,
-      "206 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us6000u4zb"
-    ],
-    [
-      1793016317319,
-      -176.0345,
-      51.2936,
-      35,
-      2.6,
-      "76 km SSE of Adak, Alaska",
-      "earthquake",
-      "us7000tu31"
-    ],
-    [
-      1793014949605,
-      -165.209,
-      53.355,
-      11,
-      2.9,
-      "94 km SSE of Akutan, Alaska",
-      "earthquake",
-      "aka2026vfhymy"
-    ],
-    [
-      1793014875097,
-      145.5868,
-      18.9224,
-      233.302,
-      4,
-      "Pagan region, Northern Mariana Islands",
-      "earthquake",
-      "us7000tw1u"
-    ],
-    [
-      1793014686319,
-      -165.1518,
-      53.4865,
-      35.341,
-      4.6,
-      "82 km SSE of Akutan, Alaska",
-      "earthquake",
-      "us6000u4z7"
-    ],
-    [
-      1793013474421,
-      165.4443,
-      -13.824,
-      10,
-      5,
-      "221 km NW of Port-Olry, Vanuatu",
-      "earthquake",
-      "us6000u4z6"
     ]
   ]
 }
