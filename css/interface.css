@@ -1209,7 +1209,7 @@ a.potential-hazard:hover b { text-decoration: underline; }
   --nws-water: #0e211f;
   --nws-grid: #bdd1c210;
   --nws-outline: #93b5a680;
-  --nws-unknown: #293b39;
+  --nws-unavailable: #293b39;
   --nws-label: #f3fbf5;
   --nws-label-outline: #112824;
   --nws-selection: #f2d277;
@@ -1230,16 +1230,18 @@ a.potential-hazard:hover b { text-decoration: underline; }
 .bulletin-state-map { display: block; width: 100%; height: auto; }
 .bulletin-map-insets { fill: var(--nws-grid); stroke: var(--nws-outline); stroke-width: 1.25; }
 .bulletin-state, .bulletin-state-callout rect {
-  fill: var(--nws-band, var(--nws-unknown));
+  fill: var(--nws-fill, var(--nws-unavailable));
   stroke: var(--nws-outline);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
   cursor: pointer;
 }
-.bulletin-map-card [data-count-band="0"] { --nws-band: #1e3330; }
-.bulletin-map-card [data-count-band="1"] { --nws-band: #2b6558; }
-.bulletin-map-card [data-count-band="2"] { --nws-band: #3d9581; }
-.bulletin-map-card [data-count-band="3"] { --nws-band: #8adac0; }
+.bulletin-map-card [data-map-level="extreme"] { --nws-fill: #d63e53; }
+.bulletin-map-card [data-map-level="severe"] { --nws-fill: #d87a30; }
+.bulletin-map-card [data-map-level="moderate"] { --nws-fill: #d6af3c; }
+.bulletin-map-card [data-map-level="minor"] { --nws-fill: #3984c5; }
+.bulletin-map-card [data-map-level="clear"] { --nws-fill: #1e3330; }
+.bulletin-map-card [data-map-level="unspecified"] { --nws-fill: #626877; }
 .bulletin-state-callout path { fill: none; stroke: var(--nws-outline); pointer-events: none; }
 .bulletin-state:hover, .bulletin-state.is-selected, .bulletin-state-callout:is(:hover, .is-selected) rect {
   stroke: var(--nws-selection);
@@ -1257,10 +1259,10 @@ a.potential-hazard:hover b { text-decoration: underline; }
   display: flex; gap: 8px 14px; flex-wrap: wrap; align-items: center;
   margin-top: 12px; font-size: .78rem; color: var(--text-mid);
 }
-.bulletin-map-legend :is([data-count-band], .bulletin-map-unknown)::before {
+.bulletin-map-legend [data-map-level]::before {
   content: ''; display: inline-block; width: 12px; height: 12px; margin-inline-end: 5px;
   vertical-align: -2px; border-radius: 3px;
-  background: var(--nws-band, var(--nws-unknown)); border: 1px solid var(--nws-outline);
+  background: var(--nws-fill, var(--nws-unavailable)); border: 1px solid var(--nws-outline);
 }
 .bulletin-map-legend a { margin-inline-start: auto; color: var(--text-mid); text-decoration: underline; }
 .bulletin-map-card > .bulletin-map-selection { margin: 10px 0 0; font-weight: 650; color: var(--text); }
@@ -1280,15 +1282,17 @@ a.potential-hazard:hover b { text-decoration: underline; }
   --nws-water: #e8f3f0;
   --nws-grid: #3b697613;
   --nws-outline: #43675c;
-  --nws-unknown: #ccd6db;
+  --nws-unavailable: #ccd6db;
   --nws-label: #102d28;
   --nws-label-outline: #f7fffb;
   --nws-selection: #133952;
 }
-[data-theme="light"] .bulletin-map-card [data-count-band="0"] { --nws-band: #f4f7f3; }
-[data-theme="light"] .bulletin-map-card [data-count-band="1"] { --nws-band: #a5d5c7; }
-[data-theme="light"] .bulletin-map-card [data-count-band="2"] { --nws-band: #61baa2; }
-[data-theme="light"] .bulletin-map-card [data-count-band="3"] { --nws-band: #24826b; }
+[data-theme="light"] .bulletin-map-card [data-map-level="extreme"] { --nws-fill: #e36b78; }
+[data-theme="light"] .bulletin-map-card [data-map-level="severe"] { --nws-fill: #f39b53; }
+[data-theme="light"] .bulletin-map-card [data-map-level="moderate"] { --nws-fill: #f3d15f; }
+[data-theme="light"] .bulletin-map-card [data-map-level="minor"] { --nws-fill: #72b1eb; }
+[data-theme="light"] .bulletin-map-card [data-map-level="clear"] { --nws-fill: #f4f7f3; }
+[data-theme="light"] .bulletin-map-card [data-map-level="unspecified"] { --nws-fill: #a8afc1; }
 @media (max-width: 660px) {
   .bulletin-map { min-width: 570px; }
   .bulletin-map-pan { display: block; }

@@ -82,10 +82,26 @@ test('blocked direct access uses the published collection time and filters zones
   assert.equal(result.checkedAt, now - 3600000);
   assert.equal(result.published, true);
   assert.deepEqual(calls, ['https://api.weather.gov/alerts/active', 'public-data/nws-active-alerts.json']);
-  assert.deepEqual(bulletins.stateCounts(result.allRows), { TX: 41, PR: 1, VI: 1 });
+  assert.deepEqual(bulletins.stateSummaries(result.allRows), {
+    TX: { count: 41, severity: '' }, PR: { count: 1, severity: '' }, VI: { count: 1, severity: '' }
+  });
   assert.equal((await bulletins.loadBulletins('', signal, fetcher, () => now)).rows.length, 40);
   payload.checkedAt = iso(-6 * 3600000);
   await assert.rejects(bulletins.loadBulletins('PR', signal, fetcher, () => now), /too old/);
+});
+
+test('the map keeps the highest reported severity and total count for each state', () => {
+  const payload = collection([
+    feature('many', { severity: 'Moderate', geocode: { UGC: ['TXC001', 'TXC003', 'OKC001'] } }),
+    feature('extreme', { severity: 'Extreme', geocode: { UGC: ['TXC001'] } }),
+    feature('unknown', { severity: 'Unknown', geocode: { UGC: ['TXC001', 'AKZ001'] } }),
+    feature('minor', { severity: 'Minor', geocode: { UGC: ['TXC001'] } })
+  ]);
+  assert.deepEqual(bulletins.stateSummaries(bulletins.readFeed(payload, now).allRows), {
+    TX: { count: 4, severity: 'extreme' },
+    OK: { count: 1, severity: 'moderate' },
+    AK: { count: 1, severity: '' }
+  });
 });
 
 test('collector validates all pages, preserves regional codes and accepts only NWS pagination', async () => {

@@ -31,8 +31,9 @@
       empty: 'No qualifying unexpired messages in this response.', issued: 'Issued', expires: 'Message expires', issuer: 'Issued by',
       checked: 'Feed checked', updated: 'Feed last changed', agency: 'Official message', instructions: 'Issuer instructions',
       published: 'Published NWS snapshot', overdue: 'Snapshot update overdue',
-      mapTitle: "Alerts by state", mapHelp: "Choose a state to filter the list. Color shows the number of NWS bulletins that include at least one zone in that state.", mapLegend: "Alert count", bulletinsTitle: "Active bulletins", mapFailed: "Map unavailable",
-      mapPan: 'Scroll the map sideways to see every state.', mapUnknown: 'Counts unavailable',
+      mapTitle: "Alerts by state", mapHelp: "Choose a state to filter the list. Color shows the highest severity reported by the NWS for that state.", mapCount: "Alert count", bulletinsTitle: "Active bulletins", mapFailed: "Map unavailable",
+      mapHighest: 'Highest reported severity', mapClear: 'No active alerts', mapSeverityUnknown: 'Severity unknown',
+      mapPan: 'Scroll the map sideways to see every state.', mapUnknown: 'Alert data unavailable',
       severity: { extreme: 'Extreme', severe: 'Severe', moderate: 'Moderate', minor: 'Minor' },
       cadence: 'Checks every 10 minutes while this page is visible.'
     },
@@ -44,8 +45,9 @@
       empty: '此次响应中没有符合条件且尚未过期的通报。', issued: '发布', expires: '通报到期', issuer: '发布机构',
       checked: '数据查询时间', updated: '数据源最后变更', agency: '官方通报原文', instructions: '发布机构建议',
       published: '已发布的 NWS 快照', overdue: '快照更新已延迟',
-      mapTitle: "按州查看预警", mapHelp: "选择州以筛选列表。颜色表示至少涵盖该州一个预警区域的 NWS 通告数量。", mapLegend: "通告数量", bulletinsTitle: "有效通告", mapFailed: "地图不可用",
-      mapPan: '横向滑动地图可查看所有州。', mapUnknown: '暂无通告数量',
+      mapTitle: "按州查看预警", mapHelp: "选择州以筛选列表。颜色表示 NWS 在该州报告的最高预警等级。", mapCount: "通告数量", bulletinsTitle: "有效通告", mapFailed: "地图不可用",
+      mapHighest: '最高预警等级', mapClear: '无有效预警', mapSeverityUnknown: '等级未知',
+      mapPan: '横向滑动地图可查看所有州。', mapUnknown: '预警数据不可用',
       severity: { extreme: '极重', severe: '严重', moderate: '中等', minor: '轻微' },
       cadence: '页面可见时每 10 分钟查询一次。'
     },
@@ -57,8 +59,9 @@
       empty: 'Esta respuesta no contiene mensajes vigentes que cumplan los criterios.', issued: 'Emisión', expires: 'Caducidad del mensaje', issuer: 'Emisor',
       checked: 'Consulta', updated: 'Último cambio en la fuente', agency: 'Mensaje oficial', instructions: 'Instrucciones del emisor',
       published: 'Instantánea publicada del NWS', overdue: 'Actualización de la instantánea retrasada',
-      mapTitle: "Alertas por estado", mapHelp: "Elige un estado para filtrar la lista. El color indica el número de boletines del NWS que incluyen al menos una zona de ese estado.", mapLegend: "Número de alertas", bulletinsTitle: "Boletines vigentes", mapFailed: "Mapa no disponible",
-      mapPan: 'Desplaza el mapa horizontalmente para ver todos los estados.', mapUnknown: 'Recuentos no disponibles',
+      mapTitle: "Alertas por estado", mapHelp: "Elige un estado para filtrar la lista. El color indica la gravedad más alta comunicada por el NWS para ese estado.", mapCount: "Número de alertas", bulletinsTitle: "Boletines vigentes", mapFailed: "Mapa no disponible",
+      mapHighest: 'Gravedad máxima comunicada', mapClear: 'Sin alertas vigentes', mapSeverityUnknown: 'Gravedad desconocida',
+      mapPan: 'Desplaza el mapa horizontalmente para ver todos los estados.', mapUnknown: 'Datos de alertas no disponibles',
       severity: { extreme: 'Extrema', severe: 'Grave', moderate: 'Moderada', minor: 'Leve' },
       cadence: 'Se consulta cada 10 minutos mientras esta página está visible.'
     },
@@ -70,8 +73,9 @@
       empty: 'Cette réponse ne contient aucun message en cours de validité répondant aux critères.', issued: 'Émission', expires: 'Expiration du message', issuer: 'Émetteur',
       checked: 'Flux consulté', updated: 'Dernière modification du flux', agency: 'Message officiel', instructions: 'Consignes de l’émetteur',
       published: 'Instantané publié du NWS', overdue: 'Actualisation de l’instantané en retard',
-      mapTitle: "Alertes par État", mapHelp: "Choisissez un État pour filtrer la liste. La couleur indique le nombre de bulletins du NWS concernant au moins une zone de cet État.", mapLegend: "Nombre d’alertes", bulletinsTitle: "Bulletins en vigueur", mapFailed: "Carte indisponible",
-      mapPan: 'Faites défiler la carte horizontalement pour voir tous les États.', mapUnknown: 'Nombre indisponible',
+      mapTitle: "Alertes par État", mapHelp: "Choisissez un État pour filtrer la liste. La couleur indique la gravité maximale signalée par le NWS pour cet État.", mapCount: "Nombre d’alertes", bulletinsTitle: "Bulletins en vigueur", mapFailed: "Carte indisponible",
+      mapHighest: 'Gravité maximale signalée', mapClear: 'Aucune alerte en vigueur', mapSeverityUnknown: 'Gravité inconnue',
+      mapPan: 'Faites défiler la carte horizontalement pour voir tous les États.', mapUnknown: 'Données d’alerte indisponibles',
       severity: { extreme: 'Extrême', severe: 'Sévère', moderate: 'Modérée', minor: 'Mineure' },
       cadence: 'Consultation toutes les 10 minutes lorsque cette page est visible.'
     },
@@ -83,8 +87,9 @@
       empty: 'Questa risposta non contiene messaggi validi che soddisfino i criteri.', issued: 'Emissione', expires: 'Scadenza del messaggio', issuer: 'Ente emittente',
       checked: 'Ultima consultazione', updated: 'Ultima modifica alla fonte', agency: 'Messaggio ufficiale', instructions: 'Istruzioni dell’ente emittente',
       published: 'Dati NWS pubblicati', overdue: 'Aggiornamento dei dati in ritardo',
-      mapTitle: "Allerte per Stato", mapHelp: "Scegli uno Stato per filtrare l’elenco. Il colore indica il numero di bollettini NWS che includono almeno una zona dello Stato.", mapLegend: "Numero di allerte", bulletinsTitle: "Bollettini in vigore", mapFailed: "Mappa non disponibile",
-      mapPan: 'Scorri la mappa in orizzontale per vedere tutti gli stati.', mapUnknown: 'Conteggi non disponibili',
+      mapTitle: "Allerte per Stato", mapHelp: "Scegli uno Stato per filtrare l’elenco. Il colore indica il livello più alto segnalato dal NWS per quello Stato.", mapCount: "Numero di allerte", bulletinsTitle: "Bollettini in vigore", mapFailed: "Mappa non disponibile",
+      mapHighest: 'Gravità massima segnalata', mapClear: 'Nessuna allerta in vigore', mapSeverityUnknown: 'Gravità sconosciuta',
+      mapPan: 'Scorri la mappa in orizzontale per vedere tutti gli stati.', mapUnknown: 'Dati sulle allerte non disponibili',
       severity: { extreme: 'Estrema', severe: 'Grave', moderate: 'Moderata', minor: 'Lieve' },
       cadence: 'Aggiornamento ogni 10 minuti mentre la pagina è visibile.'
     }
@@ -185,9 +190,11 @@
         '<p class="bulletin-map-pan">' + t.mapPan + '</p>' +
         '<div class="bulletin-map-viewport" tabindex="0" role="region" aria-labelledby="nwsMapTitle"><div class="bulletin-map"></div></div>' +
         '<p class="bulletin-map-selection" role="status" hidden></p>' +
-        '<div class="bulletin-map-legend"><span>' + t.mapLegend + '</span>' +
-          ['0', '1–4', '5–14', '15+'].map((n, i) => '<span data-count-band="' + i + '">' + n + '</span>').join('') +
-          '<span class="bulletin-map-unknown">' + t.mapUnknown + '</span>' +
+        '<div class="bulletin-map-legend"><strong>' + t.mapHighest + '</strong>' +
+          severityLevels.map(level => '<span data-map-level="' + level + '">' + t.severity[level] + '</span>').join('') +
+          '<span data-map-level="clear">' + t.mapClear + '</span>' +
+          '<span data-map-level="unspecified">' + t.mapSeverityUnknown + '</span>' +
+          '<span data-map-level="unavailable" class="bulletin-map-unknown">' + t.mapUnknown + '</span>' +
           '<a href="https://github.com/topojson/us-atlas" target="_blank" rel="noopener noreferrer">U.S. Census Bureau / US Atlas ↗</a></div>' +
         '</section>';
   }
@@ -219,12 +226,18 @@
       '<g class="bulletin-state-callouts">' + callouts.join('') + '</g></svg>';
   }
 
-  function stateCounts(rows) {
-    const counts = {};
+  function stateSummaries(rows) {
+    const summaries = {};
     for (const row of rows) {
-      for (const state of row.states) counts[state] = (counts[state] || 0) + 1;
+      const rank = severityLevels.indexOf(row.severity);
+      for (const state of row.states) {
+        const summary = summaries[state] ??= { count: 0, severity: '' };
+        summary.count += 1;
+        const previousRank = severityLevels.indexOf(summary.severity);
+        if (rank >= 0 && (previousRank < 0 || rank < previousRank)) summary.severity = row.severity;
+      }
     }
-    return counts;
+    return summaries;
   }
 
   function rowHtml(row, t, clock) {
@@ -288,17 +301,22 @@
 
     function updateMap(valid) {
       if (!map) return;
-      const counts = stateCounts(valid || []);
+      const summaries = stateSummaries(valid || []);
       unknown.hidden = Boolean(valid);
+      function stateDescription(state) {
+        if (!valid) return areas[state] + ' · ' + t.mapUnknown;
+        const summary = summaries[state];
+        const level = summary ? (t.severity[summary.severity] || t.mapSeverityUnknown) : t.mapClear;
+        return areas[state] + ' · ' + level + ' · ' + t.mapCount + ' ' + (summary?.count || 0);
+      }
       selection.hidden = !select.value;
-      selection.textContent = select.value ? areas[select.value] + (valid ? ' · ' + t.mapLegend + ' ' + (counts[select.value] || 0) : '') : '';
-      map.querySelectorAll('[data-state]').forEach(path => {
-        const state = path.dataset.state;
-        const count = counts[state] || 0;
-        if (valid) path.dataset.countBand = count >= 15 ? 3 : count >= 5 ? 2 : count > 0 ? 1 : 0;
-        else delete path.dataset.countBand;
-        path.classList.toggle('is-selected', select.value === state);
-        path.querySelector('title').textContent = areas[state] + (valid ? ' · ' + t.mapLegend + ' ' + count : '');
+      selection.textContent = select.value ? stateDescription(select.value) : '';
+      map.querySelectorAll('[data-state]').forEach(node => {
+        const state = node.dataset.state;
+        const summary = summaries[state];
+        node.dataset.mapLevel = !valid ? 'unavailable' : summary ? (summary.severity || 'unspecified') : 'clear';
+        node.classList.toggle('is-selected', select.value === state);
+        node.querySelector('title').textContent = stateDescription(state);
       });
     }
 
@@ -409,6 +427,6 @@
     load();
   }
   const api = { render, mount, unmount };
-  if (typeof module === 'object' && module.exports) module.exports = { ...api, readFeed, loadBulletins, stateCounts, mapHtml, rowHtml, messages };
+  if (typeof module === 'object' && module.exports) module.exports = { ...api, readFeed, loadBulletins, stateSummaries, mapHtml, rowHtml, messages };
   else root.NDLiveBulletins = api;
 })(typeof window === 'object' ? window : globalThis);
