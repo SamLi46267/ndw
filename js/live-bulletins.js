@@ -1,6 +1,7 @@
 // National Weather Service CAP messages from the API or a published snapshot.
 (function (root) {
   'use strict';
+  const explanations = typeof module === 'object' && module.exports ? require('./explanations.js') : root.__modules.explanations;
   const endpoint = 'https://api.weather.gov/alerts/active';
   const pollInterval = 10 * 60000;
   const mapPath = 'assets/us-states-map.json';
@@ -33,7 +34,7 @@
       published: 'Published NWS snapshot', overdue: 'Snapshot update overdue',
       mapTitle: "Alerts by state", mapHelp: "Choose a state to filter the list. Color shows the highest severity reported by the NWS for that state.", mapCount: "Alert count", bulletinsTitle: "Active bulletins", mapFailed: "Map unavailable",
       mapHighest: 'Highest reported severity', mapClear: 'No active alerts', mapSeverityUnknown: 'Severity unknown',
-      mapPan: 'Scroll the map sideways to see every state.', mapUnknown: 'Alert data unavailable',
+      mapPan: 'On a small screen, scroll the map sideways to see every state.', mapUnknown: 'Alert data unavailable',
       severity: { extreme: 'Extreme', severe: 'Severe', moderate: 'Moderate', minor: 'Minor' },
       cadence: 'Checks every 10 minutes while this page is visible.'
     },
@@ -47,7 +48,7 @@
       published: '已发布的 NWS 快照', overdue: '快照更新已延迟',
       mapTitle: "按州查看预警", mapHelp: "选择州以筛选列表。颜色表示 NWS 在该州报告的最高预警等级。", mapCount: "通告数量", bulletinsTitle: "有效通告", mapFailed: "地图不可用",
       mapHighest: '最高预警等级', mapClear: '无有效预警', mapSeverityUnknown: '等级未知',
-      mapPan: '横向滑动地图可查看所有州。', mapUnknown: '预警数据不可用',
+      mapPan: '在小屏幕上可横向滑动地图查看所有州。', mapUnknown: '预警数据不可用',
       severity: { extreme: '极重', severe: '严重', moderate: '中等', minor: '轻微' },
       cadence: '页面可见时每 10 分钟查询一次。'
     },
@@ -61,7 +62,7 @@
       published: 'Instantánea publicada del NWS', overdue: 'Actualización de la instantánea retrasada',
       mapTitle: "Alertas por estado", mapHelp: "Elige un estado para filtrar la lista. El color indica la gravedad más alta comunicada por el NWS para ese estado.", mapCount: "Número de alertas", bulletinsTitle: "Boletines vigentes", mapFailed: "Mapa no disponible",
       mapHighest: 'Gravedad máxima comunicada', mapClear: 'Sin alertas vigentes', mapSeverityUnknown: 'Gravedad desconocida',
-      mapPan: 'Desplaza el mapa horizontalmente para ver todos los estados.', mapUnknown: 'Datos de alertas no disponibles',
+      mapPan: 'En una pantalla pequeña, desplaza el mapa horizontalmente para ver todos los estados.', mapUnknown: 'Datos de alertas no disponibles',
       severity: { extreme: 'Extrema', severe: 'Grave', moderate: 'Moderada', minor: 'Leve' },
       cadence: 'Se consulta cada 10 minutos mientras esta página está visible.'
     },
@@ -75,7 +76,7 @@
       published: 'Instantané publié du NWS', overdue: 'Actualisation de l’instantané en retard',
       mapTitle: "Alertes par État", mapHelp: "Choisissez un État pour filtrer la liste. La couleur indique la gravité maximale signalée par le NWS pour cet État.", mapCount: "Nombre d’alertes", bulletinsTitle: "Bulletins en vigueur", mapFailed: "Carte indisponible",
       mapHighest: 'Gravité maximale signalée', mapClear: 'Aucune alerte en vigueur', mapSeverityUnknown: 'Gravité inconnue',
-      mapPan: 'Faites défiler la carte horizontalement pour voir tous les États.', mapUnknown: 'Données d’alerte indisponibles',
+      mapPan: 'Sur un petit écran, faites défiler la carte horizontalement pour voir tous les États.', mapUnknown: 'Données d’alerte indisponibles',
       severity: { extreme: 'Extrême', severe: 'Sévère', moderate: 'Modérée', minor: 'Mineure' },
       cadence: 'Consultation toutes les 10 minutes lorsque cette page est visible.'
     },
@@ -89,7 +90,7 @@
       published: 'Dati NWS pubblicati', overdue: 'Aggiornamento dei dati in ritardo',
       mapTitle: "Allerte per Stato", mapHelp: "Scegli uno Stato per filtrare l’elenco. Il colore indica il livello più alto segnalato dal NWS per quello Stato.", mapCount: "Numero di allerte", bulletinsTitle: "Bollettini in vigore", mapFailed: "Mappa non disponibile",
       mapHighest: 'Gravità massima segnalata', mapClear: 'Nessuna allerta in vigore', mapSeverityUnknown: 'Gravità sconosciuta',
-      mapPan: 'Scorri la mappa in orizzontale per vedere tutti gli stati.', mapUnknown: 'Dati sulle allerte non disponibili',
+      mapPan: 'Su uno schermo piccolo, scorri la mappa in orizzontale per vedere tutti gli stati.', mapUnknown: 'Dati sulle allerte non disponibili',
       severity: { extreme: 'Estrema', severe: 'Grave', moderate: 'Moderata', minor: 'Lieve' },
       cadence: 'Aggiornamento ogni 10 minuti mentre la pagina è visibile.'
     }
@@ -172,22 +173,23 @@
     const pageTitle = listOnly ? t.allTitle : t.title;
     return '<section class="live-bulletins' + (listOnly ? ' bulletin-list-page' : '') + '" data-nws-bulletins><div class="container">' +
       (listOnly ? '<a class="back-link" href="#/bulletins">← ' + t.backToMap + '</a>' : '') +
-      '<header class="bulletin-head"><h1>' + pageTitle + '</h1><p>' + t.lead + '</p></header>' +
+      '<header class="bulletin-head"><h1>' + pageTitle + '</h1>' +
+        explanations.disclosure(lang, 'us-bulletins-overview', pageTitle, [t.lead, t.cadence]) + '</header>' +
       '<div class="bulletin-actions"><label>' + t.filter + ' <select><option value="">' + t.all + '</option>' + options + '</select></label>' +
       '<button type="button">' + t.refresh + '</button><a href="https://www.weather.gov/" target="_blank" rel="noopener noreferrer">' + t.map + ' ↗</a></div>' +
       '<p class="bulletin-status" role="status">' + t.loading + '</p>' +
-      (listOnly ? '' : '<div class="bulletin-dashboard">' + mapPanel(t)) +
+      (listOnly ? '' : '<div class="bulletin-dashboard">' + mapPanel(t, lang)) +
       '<section class="bulletin-records" aria-labelledby="nwsRecordsTitle">' +
         '<div class="bulletin-records-heading"><h2 id="nwsRecordsTitle">' + t.bulletinsTitle + '</h2><span class="bulletin-total"></span></div>' +
         (listOnly ? '' : '<a class="btn btn-outline bulletin-view-all" href="#/bulletins/all">' + t.viewAll + '</a>') +
         '<div class="bulletin-list"></div></section>' + (listOnly ? '' : '</div>') +
-      '<p class="bulletin-meta bulletin-cadence">' + t.cadence + '</p></div></section>';
+      '</div></section>';
   }
 
-  function mapPanel(t) {
+  function mapPanel(t, lang) {
     return '<section class="bulletin-map-card" aria-labelledby="nwsMapTitle">' +
-        '<h2 id="nwsMapTitle">' + t.mapTitle + '</h2><p>' + t.mapHelp + '</p>' +
-        '<p class="bulletin-map-pan">' + t.mapPan + '</p>' +
+        '<h2 id="nwsMapTitle">' + t.mapTitle + '</h2>' +
+        explanations.disclosure(lang, 'us-map-controls', t.mapTitle, [t.mapHelp, t.mapPan]) +
         '<div class="bulletin-map-viewport" tabindex="0" role="region" aria-labelledby="nwsMapTitle"><div class="bulletin-map"></div></div>' +
         '<p class="bulletin-map-selection" role="status" hidden></p>' +
         '<div class="bulletin-map-legend"><strong>' + t.mapHighest + '</strong>' +

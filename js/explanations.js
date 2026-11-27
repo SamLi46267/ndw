@@ -10,8 +10,8 @@
         refresh: 'Refresh and Rescan reread the latest published snapshot. They do not request a new report from the weather provider. Cities are collected in rotation, so a refresh may legitimately show the same check time.',
         levels: 'Counts are warnings for your selected area, grouped by the issuing authority’s color level. Red is the highest of these four levels. A dash means data is unavailable, not zero warnings.',
         alerts: 'These are warnings returned by the latest available check for your selected area. Open a card for its issuer, timing and actions. No warnings means none were reported at that check, not a guarantee of safety.',
-        map: 'The map covers 77 configured cities, not every settlement. Open the larger map, select a marker to inspect its data, then choose View city warnings. Some labels are hidden to prevent overlap; their markers still work.',
-        freshness: 'Map colors describe the last successful check: green means zero warnings, yellow means warnings, and red means a red warning. A dashed ring marks an old or currently unavailable result; its count and original time are retained. Gray means no saved result. These are last-known conditions, not a guarantee of current safety.',
+        map: 'The map covers 77 cities. On the expanded map, hover over a marker or focus it with Tab to inspect the last check. Activate a marker to open that city’s warnings. Some labels are hidden to prevent overlap.',
+        freshness: 'Green means zero warnings at the last check. Red, orange, yellow and blue show the highest warning level. A gray marker with a dashed ring means the last result is historical. A plain gray marker means no current level can be shown. Select a city to see its notices and last check time.',
         timeline: 'Publication times for warnings currently loaded for the selected area. This is not a complete history of past disasters or cancelled warnings.',
         distribution: 'Each slice counts loaded warnings of one hazard type for the selected area. It represents the number of notices, not their severity, affected population or probability.',
         hazards: 'Possible secondary hazards are inferred from warning type and level. These are general safety prompts, not measured conditions or a calibrated probability forecast. Follow the issuing authority’s instructions.',
@@ -48,8 +48,8 @@
         refresh: '刷新和重新扫描只读取最新已发布快照，不会要求天气提供方立即生成新报告。城市轮流采集，因此刷新后查询时间可能不变。',
         levels: '数字是所选区域内按发布部门颜色级别分组的预警条数，红色为这四级中的最高级别。横线表示数据不可用，不是零条预警。',
         alerts: '这里展示所选区域最近一次有效查询返回的预警。点击卡片查看发布方、时间和行动建议。没有预警仅表示该次查询未报告预警，不保证没有危险。',
-        map: '地图覆盖已配置的 77 个城市，不是全部居民点。打开大图并选择标记可查看数据，再进入城市预警。部分文字为避免重叠而隐藏，标记仍可选择。',
-        freshness: '地图颜色表示上次成功查询的结果：绿色为零预警，黄色为有预警，红色为含红色预警。虚线环表示数据已过期或当前不可更新，仍保留原始计数与时间。灰色表示没有历史结果。历史颜色不保证当前安全。',
+        map: '地图覆盖 77 个城市。在大图上，将鼠标移到标记上或用 Tab 键聚焦可查看最近查询。选择标记可打开该城市的预警。部分地名因避免重叠而隐藏。',
+        freshness: '绿色表示上次查询无预警。红色、橙色、黄色和蓝色表示最高预警等级。带虚线环的灰色标记表示历史结果，普通灰色标记表示当前无法显示预警等级。选择城市可查看预警和查询时间。',
         timeline: '显示当前所选区域已加载预警的发布时间，不是过去灾害或已解除预警的完整历史记录。',
         distribution: '每个扇区表示所选区域已加载的某类预警条数，不代表灾害强度、受影响人口或发生概率。',
         hazards: '根据预警类型与级别提示可能的次生危害。这是一般避险提示，不是实测情况或经过校准的概率预测。具体行动以发布部门指引为准。',
@@ -86,8 +86,8 @@
         refresh: 'Actualizar y volver a escanear releen los últimos datos publicados; no solicitan un informe nuevo al proveedor. Las ciudades se consultan por turnos, por lo que la hora de consulta puede no cambiar.',
         levels: 'Los números cuentan avisos del área seleccionada según el nivel de color de la autoridad emisora. Rojo es el mayor de estos cuatro niveles. Un guion indica datos no disponibles, no cero avisos.',
         alerts: 'Avisos devueltos por la última consulta válida del área seleccionada. Abra una tarjeta para ver emisor, horarios y acciones. No tener avisos en esa consulta no garantiza ausencia de peligro.',
-        map: 'El mapa incluye 77 ciudades configuradas, no todas las localidades. Abra el mapa grande, seleccione un marcador para consultar sus datos y después abra sus alertas. Algunas etiquetas se ocultan para evitar solapamientos; los marcadores siguen disponibles.',
-        freshness: 'Los colores describen la última consulta correcta: verde indica cero alertas, amarillo alertas y rojo una alerta roja. El anillo discontinuo señala datos antiguos o no disponibles actualmente, con su recuento y hora originales. Gris significa sin resultado guardado; no garantiza seguridad actual.',
+        map: 'El mapa cubre 77 ciudades. En el mapa ampliado, pasa el puntero por un marcador o enfócalo con Tab para ver la última consulta. Activa el marcador para abrir las alertas de esa ciudad. Algunas etiquetas se ocultan para evitar solapamientos.',
+        freshness: 'El verde indica que la última consulta no encontró alertas. El rojo, naranja, amarillo y azul muestran el nivel máximo. Un marcador gris con anillo discontinuo indica un resultado histórico. El gris sin anillo indica que no se puede mostrar un nivel actual. Selecciona una ciudad para ver sus avisos y la hora de consulta.',
         timeline: 'Horas de publicación de los avisos cargados para el área seleccionada. No es un historial completo de desastres ni de avisos cancelados.',
         distribution: 'Cada sector cuenta los avisos cargados de un tipo de peligro en el área elegida. No representa intensidad, población afectada ni probabilidad.',
         hazards: 'Posibles peligros secundarios deducidos del tipo y nivel de alerta. Son recordatorios generales, no mediciones ni probabilidades calibradas. Siga las instrucciones de la autoridad emisora.',
@@ -124,8 +124,8 @@
         refresh: 'Actualiser et relancer le balayage relisent les dernières données publiées, sans demander un nouveau rapport au fournisseur. Les villes sont interrogées à tour de rôle ; l’heure de vérification peut donc rester identique.',
         levels: 'Les nombres comptent les alertes de la zone choisie selon le niveau de couleur de l’émetteur. Le rouge est le plus élevé de ces quatre niveaux. Un tiret signifie données indisponibles, pas zéro alerte.',
         alerts: 'Alertes renvoyées lors de la dernière vérification valide de la zone choisie. Ouvrez une carte pour voir l’émetteur, les horaires et les actions. L’absence d’alerte à cette vérification ne garantit pas l’absence de danger.',
-        map: 'La carte couvre 77 villes configurées, pas toutes les localités. Ouvrez la grande carte, sélectionnez un repère pour inspecter les données, puis affichez les alertes. Certains noms sont masqués pour éviter les chevauchements ; leurs repères restent accessibles.',
-        freshness: 'Les couleurs décrivent le dernier contrôle réussi : vert pour zéro alerte, jaune pour des alertes, rouge pour une alerte rouge. Un anneau pointillé signale un résultat ancien ou indisponible actuellement, avec son compte et son heure d’origine. Le gris signifie aucun résultat enregistré ; ces couleurs ne garantissent pas la sécurité actuelle.',
+        map: 'La carte couvre 77 villes. Sur la carte agrandie, survolez un marqueur ou sélectionnez-le avec Tab pour voir le dernier contrôle. Activez le marqueur pour ouvrir les alertes de la ville. Certains noms sont masqués pour éviter les chevauchements.',
+        freshness: 'Le vert indique que le dernier contrôle n’a trouvé aucune alerte. Le rouge, l’orange, le jaune et le bleu indiquent le niveau le plus élevé. Un marqueur gris à anneau pointillé signale un résultat historique. Un marqueur gris simple indique qu’aucun niveau actuel ne peut être affiché. Sélectionnez une ville pour voir ses avis et l’heure du contrôle.',
         timeline: 'Heures de publication des alertes chargées pour la zone choisie. Ce n’est pas un historique complet des catastrophes ou des alertes levées.',
         distribution: 'Chaque secteur compte les alertes chargées d’un type de danger dans la zone choisie. Il n’indique ni intensité, ni population touchée, ni probabilité.',
         hazards: 'Dangers secondaires possibles déduits du type et du niveau d’alerte. Il s’agit de conseils généraux, sans mesure des conditions ni probabilité calibrée. Suivez les consignes de l’émetteur.',
@@ -162,8 +162,8 @@
         refresh: 'Aggiorna e Ripeti scansione rileggono gli ultimi dati pubblicati, senza chiedere un nuovo rapporto al fornitore. Le città vengono controllate a rotazione, quindi l’ora del controllo può restare uguale.',
         levels: 'I numeri contano gli avvisi dell’area scelta per livello di colore dell’autorità emittente. Il rosso è il più alto dei quattro livelli. Un trattino indica dati non disponibili, non zero avvisi.',
         alerts: 'Avvisi restituiti dall’ultimo controllo valido dell’area scelta. Apri una scheda per emittente, orari e azioni. L’assenza di avvisi a quel controllo non garantisce assenza di pericolo.',
-        map: 'La mappa copre 77 città configurate, non tutte le località. Apri la mappa grande, scegli un indicatore per esaminare i dati e poi apri le allerte. Alcune etichette sono nascoste per evitare sovrapposizioni; gli indicatori restano selezionabili.',
-        freshness: 'I colori descrivono l’ultimo controllo riuscito: verde indica zero allerte, giallo allerte e rosso un’allerta rossa. Un anello tratteggiato indica dati vecchi o non disponibili attualmente, mantenendo conteggio e ora originali. Grigio indica nessun risultato salvato; non garantisce sicurezza attuale.',
+        map: 'La mappa copre 77 città. Nella mappa ingrandita, passa il puntatore su un indicatore o raggiungilo con Tab per vedere il controllo più recente. Attiva il marcatore per aprire le allerte della città. Alcune etichette sono nascoste per evitare sovrapposizioni.',
+        freshness: 'Il verde indica che l’ultimo controllo non ha trovato allerte. Rosso, arancione, giallo e blu indicano il livello più alto. Un indicatore grigio con anello tratteggiato mostra un risultato storico. Il grigio senza anello indica che non è possibile mostrare un livello attuale. Seleziona una città per vedere le allerte e l’ora del controllo.',
         timeline: 'Orari di pubblicazione degli avvisi caricati per l’area scelta. Non è una cronologia completa di disastri o allerte revocate.',
         distribution: 'Ogni settore conta gli avvisi caricati di un tipo di pericolo nell’area scelta. Non rappresenta intensità, popolazione coinvolta o probabilità.',
         hazards: 'Possibili pericoli secondari dedotti dal tipo e livello di allerta. Sono indicazioni generali, non misurazioni o probabilità calibrate. Segui le istruzioni dell’autorità emittente.',
@@ -192,10 +192,25 @@
       }
     }
   };
-  window.__modules.explanations = {
+  function escapeHtml(text) {
+    return String(text).replace(/[&<>"']/g, function (character) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character];
+    });
+  }
+
+  var api = {
     copy: copy,
     get: function (topic, language) { return (copy[language] || copy.en).topics[topic] || ''; },
     label: function (language) { return (copy[language] || copy.en).label; },
-    reads: function (language) { return (copy[language] || copy.en).reads; }
+    reads: function (language) { return (copy[language] || copy.en).reads; },
+    disclosure: function (language, key, subject, paragraphs) {
+      var label = api.label(language);
+      return '<details class="context-help compact-help" data-help="' + escapeHtml(key) + '">' +
+        '<summary aria-label="' + escapeHtml(label + ' · ' + subject) + '">' + escapeHtml(label) + '</summary>' +
+        paragraphs.filter(Boolean).map(function (text) { return '<p>' + escapeHtml(text) + '</p>'; }).join('') +
+        '</details>';
+    }
   };
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else window.__modules.explanations = api;
 })();

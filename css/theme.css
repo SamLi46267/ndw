@@ -188,7 +188,7 @@
 [data-theme="light"] .gmarker .core { stroke: #fff; stroke-width: .9; }
 [data-theme="light"] .gcities circle { fill: #266b83; }
 [data-theme="light"] .ginfra rect { fill: #734d17; }
-[data-theme="light"] :is(.glegend, .gdacs-legend, .gzoom-hint, .gzoom button) { background: #fff; border: 1px solid #849eaa; color: #24414b; }
+[data-theme="light"] :is(.glegend, .gdacs-legend, .gzoom button) { background: #fff; border: 1px solid #849eaa; color: #24414b; }
 [data-theme="light"] .gzoom button:hover { background: #d9e9ed; color: #162f37; }
 [data-theme="light"] .gdacs-legend .wf::before { background: var(--gdacs-wildfire); }
 [data-theme="light"] .gdacs-legend .fl::before { background: var(--gdacs-flood); }

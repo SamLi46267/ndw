@@ -22,7 +22,7 @@
     return '<div class="manual-update">' + updateRequestLink() +
       '<a href="https://github.com/geowarning/ndw/actions/workflows/deploy.yml" target="_blank" rel="noopener noreferrer">' +
       esc(safetyText('updateProgress')) + '</a>' +
-      '<p>' + esc(safetyText('manualUpdateHint')) + '</p></div>';
+      helpDisclosure('china-update', safetyText('manualUpdate'), [safetyText('manualUpdateHint')]) + '</div>';
   }
 
   function refreshStatus() {
@@ -32,17 +32,23 @@
   var explanations = __require('explanations');
   var openExplanations = new Set();
 
+  function helpDisclosure(key, subject, paragraphs) {
+    return explanations.disclosure(lang(), key, subject, paragraphs);
+  }
+
   function explainView() {
     var path = (location.hash || '#/home').split('?')[0];
+    viewEl.querySelectorAll('details[data-help]').forEach(function (help) {
+      help.open = openExplanations.has(help.dataset.help);
+    });
     var rules = {
       '#/home': [
         ['.hero-location', 'location'], ['.home-freshness', 'refresh'], ['.stat-row', 'levels'],
-        ['.local-panel .section-head', 'alerts'], ['.national-panel .section-head', 'map'],
-        ['.map-meta', 'freshness'], ['.activity-panel .section-head', 'timeline'],
+        ['.local-panel .section-head', 'alerts'], ['.activity-panel .section-head', 'timeline'],
         ['.home-analytics > :nth-child(1) .panel-card-title', 'distribution'],
         ['.home-analytics > :nth-child(2) .panel-card-title', 'hazards'], ['.trend-panel .section-head', 'trend']
       ],
-      '#/map': [['.expanded-map-heading', 'map'], ['.expanded-map-meta', 'freshness'], ['.expanded-map-heading', 'refresh']],
+      '#/map': [],
       '#/detail': [
         ['.detail-overview', 'detail'], ['.priority-actions .dcard-title', 'actions'],
         ['.official-notice', 'original'], ['.dcard:has(.alert-body) .dcard-title', 'impact'], ['.dcard:has(.potential-hazard) .dcard-title', 'hazards'],
@@ -74,7 +80,7 @@
       var target = viewEl.querySelector(rule[0]);
       if (!target || viewEl.querySelector('details[data-help="' + rule[1] + '"]')) return;
       var help = document.createElement('details');
-      help.className = 'context-help';
+      help.className = 'context-help' + (path === '#/china' || path === '#/detail' ? ' compact-help' : '');
       help.dataset.help = rule[1];
       help.open = openExplanations.has(rule[1]);
       var section = target.closest('section, .set-card');
@@ -203,7 +209,7 @@
   /* ================================================================
    * 页脚
    * ================================================================ */
-  function renderFooter() {
+  function renderFooter(compactMonitor) {
     var l = lang();
     var t = T(l);
     var items = navItems(l);
@@ -211,7 +217,7 @@
       '<div class="footer-grid">' +
         '<div class="footer-col">' +
           '<a class="brand" href="#/home">' + SVG.brand + '<span class="brand-name">' + esc(t.appName) + '</span></a>' +
-          '<p class="footer-brand-desc">' + esc(web('overviewSubtitle')) + '</p>' +
+          (compactMonitor ? '' : '<p class="footer-brand-desc">' + esc(web('overviewSubtitle')) + '</p>') +
         '</div>' +
         '<div class="footer-col"><h4>' + esc(t.tabIndex) + '</h4><ul>' +
           items.map(function (it) { return '<li><a href="' + it.hash + '">' + esc(it.label) + '</a></li>'; }).join('') +
@@ -222,7 +228,8 @@
         '</div>' +
         '<div class="footer-col"><h4>' + esc(t.disclaimer) + '</h4>' +
           '<ul><li><button type="button" class="footer-disclaimer" data-action="show-disclaimer">' + esc(t.disclaimerTitle) + '</button></li></ul>' +
-          '<p>' + esc(safetyText('hazardNote')) + '</p>' +
+          (compactMonitor ? helpDisclosure('monitor-footer', t.disclaimer, [safetyText('hazardNote')]) :
+            '<p>' + esc(safetyText('hazardNote')) + '</p>') +
         '</div>' +
       '</div>' +
       '<div class="footer-bottom"><span>' + esc(t.footerRights) + '</span><span>' + esc(t.version) + ' ' + APP_VERSION + '</span></div>';
@@ -1233,7 +1240,8 @@
           '<div class="weather-rows">' +
             '<div class="wr-item"><span class="h2-ic wc-ic">' + SVG.iWind + '</span><b>' + esc(t.wind) + '</b>' + esc(s.weather.wind || '—') + '</div>' +
           '</div>' +
-          '<div class="wc-source">' + esc(t.cityWeatherNote) + (s.weather.observedAt ? ' · ' + esc(formatNow(s.weather.observedAt)) : '') + '</div>' +
+          (s.weather.observedAt ? '<div class="wc-source">' + esc(formatNow(s.weather.observedAt)) + '</div>' : '') +
+          helpDisclosure('china-weather', t.realtimeWeather, [t.cityWeatherNote]) +
           '<div class="wc-source">' + esc(i18n.tpl('providedBy', { source: s.weatherSource || s.dataSource }, l)) + '</div>' +
         '</div>'
       : '';
@@ -1247,7 +1255,7 @@
             '<div class="home-intro">' +
             '<div class="eyebrow">' + esc(s.dataSource || (s.loading ? t.loading : web('chinaTab'))) + '</div>' +
             '<h1 class="hero-title">' + esc(web('overviewTitle')) + '</h1>' +
-            '<p class="hero-sub">' + esc(web('overviewSubtitle')) + '</p></div>' +
+            helpDisclosure('china-overview', web('overviewTitle'), [web('overviewSubtitle')]) + '</div>' +
             '<div class="hero-location">' +
               '<div class="hero-city">' + esc(displayCity) +
                 '<small>' + esc(displayProvince) + '</small></div>' +
@@ -1286,6 +1294,7 @@
       '</div>' +
       refreshStatus() + '<div class="map-preview"><div class="china-map-wrap" id="chinaMapWrap"></div></div>' +
       chinaMapLegend(t) +
+      helpDisclosure('china-map-preview', t.nationalSituation, [explanations.get('map', l), explanations.get('freshness', l)]) +
     '</section>';
 
     /* ---- 预警列表 ---- */
@@ -1303,7 +1312,7 @@
       html += '<div class="state-box' + (expectedGap ? '' : ' error') + '"><span class="state-icon">' + (expectedGap ? '…' : '!') + '</span>' +
         '<div>' + esc(expectedGap ? web(s.errorCode === 'pending' ? 'pendingData' : 'outdatedData') : t.fetchFailed) + '</div>' +
         '<button class="btn btn-green" data-action="refresh">' + esc(safetyText('refreshPublished')) + '</button> ' + updateRequestLink() +
-        refreshStatus() + '<div class="source-line" style="justify-content:center">' + esc(web('snapshotHint')) + '</div>';
+        refreshStatus();
     } else if (s.loading) {
       html += '<div class="state-box"><div class="spinner"></div>' + esc(t.loading) + '</div>';
     } else if (!dataReady) {
@@ -1313,9 +1322,14 @@
       html += '<div class="state-box">' + esc(s.shownAlerts.length ? web('noMatch') : safetyText('lastNoAlerts')) + '</div>';
     }
     if (lastReport && availableAlerts.length) {
-      html += '<p class="history-notice">' + esc(reliability.checkedAt(lastReport.checkedAt, l)) + ' · ' +
-        esc(safetyText('historyNotice')) + '</p>';
+      html += '<p class="history-notice">' + esc(safetyText('outdated')) + ' · ' +
+        esc(reliability.checkedAt(lastReport.checkedAt, l)) + '</p>';
       if (!filteredAlerts.length) html += '<div class="state-box">' + esc(web('noMatch')) + '</div>';
+    }
+    if (warningStatusCard) {
+      html += helpDisclosure('china-warning-status', safetyText('localNotices'), [
+        web('snapshotHint'), lastReport && availableAlerts.length ? safetyText('historyNotice') : ''
+      ]);
     }
     if (filteredAlerts.length) {
       html += '<div class="alert-grid">' + filteredAlerts.map(function (a) {
@@ -1388,7 +1402,7 @@
           var nm = i18n.riskItem(r.key, l);
           return '<a class="potential-hazard detail-card-link" href="#/detail?id=' + encodeURIComponent(r.alertId) + '&section=hazards"><b>' + esc(nm.name) + '</b><p>' + esc(nm.note) + '</p></a>';
         }).join('') : '<div class="state-box">' + esc(dataReady ? safetyText('lastNoAlerts') : dataState) + '</div>') +
-      '<p class="hazard-explanation">' + esc(safetyText('hazardNote')) + '</p></section>';
+      '</section>';
 
     /* ---- 趋势（全国城市汇总） ---- */
     var trendAll = wx.getStorageSync('daily_trend') || {};
@@ -1419,6 +1433,7 @@
 
     html += '</div>';
     var warningsFocused = document.activeElement.id === 'localHeading';
+    var focusedHelp = viewEl.contains(document.activeElement) && document.activeElement.closest('details[data-help]');
     viewEl.innerHTML = html;
     if (warningsFocused) {
       var heading = document.getElementById('localHeading');
@@ -1427,6 +1442,7 @@
     }
     document.title = web('chinaTab');
     explainView();
+    if (focusedHelp) viewEl.querySelector('details[data-help="' + CSS.escape(focusedHelp.dataset.help) + '"] summary')?.focus({ preventScroll: true });
 
     /* 中国态势图 */
     var wrap = document.getElementById('chinaMapWrap');
@@ -1472,7 +1488,9 @@
     viewEl.innerHTML = '<section class="expanded-map-page"><div class="container">' +
       '<a class="back-link" href="#/china">← ' + esc(web('backToWarnings')) + '</a>' +
       '<div class="expanded-map-heading"><div><h1 id="expandedMapHeading">' + esc(t.nationalSituation) + '</h1>' +
-        '<p id="expandedMapHint">' + esc(web('expandedMapHint')) + '</p></div>' +
+        helpDisclosure('china-map-expanded', t.nationalSituation, [
+          web('expandedMapHint'), safetyText('selectCity'), explanations.get('freshness', lang()), explanations.get('refresh', lang())
+        ]) + '</div>' +
         '<div class="expanded-map-actions">' +
           '<button class="map-scan-btn" data-action="toggle-china-base" aria-pressed="false">' + esc(web('chinaSatellite')) + '</button>' +
           '<button class="map-scan-btn" data-action="toggle-map-fit" aria-pressed="false">' + esc(web('fitMap')) + '</button>' +
@@ -1483,8 +1501,8 @@
       '<div class="expanded-map-meta"><span id="mapCoverage" role="status">' + esc(web('coverage')) + ': ' + info.checked + ' / ' + info.total + '</span>' +
         chinaMapLegend(t) +
       '</div>' +
-      refreshStatus() + '<div id="cityInspection" class="city-inspection" role="status">' + esc(safetyText('selectCity')) + '</div>' +
-      '<div class="expanded-map-viewport" id="expandedMapViewport" role="region" tabindex="0" aria-labelledby="expandedMapHeading" aria-describedby="expandedMapHint">' +
+      refreshStatus() + '<div id="cityInspection" class="city-inspection" role="status"></div>' +
+      '<div class="expanded-map-viewport" id="expandedMapViewport" role="region" tabindex="0" aria-labelledby="expandedMapHeading">' +
         '<div id="expandedMap"></div>' +
       '</div>' +
     '</div></section>';
@@ -1510,12 +1528,11 @@
     var state = sessionStatus[adcode] || {};
     var freshness = reliability.freshness(state.checkedAt);
     if (freshness === 'available' && (state.unavailable || navigator.onLine === false)) freshness = 'unavailable';
-    var historical = freshness !== 'available' && Number.isInteger(state.count) && state.count >= 0;
     var signature = [adcode, state.checkedAt, state.count, freshness, lang()].join('|');
     if (box.dataset.signature !== signature) box.innerHTML = '<div><b>' + esc(i18n.placeName(city.name, lang())) + '</b><span class="freshness-tag freshness-' + freshness + '">' + esc(safetyText(freshness)) + '</span>' +
       '<p>' + esc(reliability.checkedAt(state.checkedAt, lang())) + '</p>' +
       (Number.isInteger(state.count) ? '<p>' + esc(safetyText('scanCount').replace('{n}', state.count)) + '</p>' : '') +
-      (historical ? '<p class="history-notice">' + esc(safetyText('historyNotice')) + '</p>' : '') + '</div>' +
+      '</div>' +
       window.NDRescue.button('China', city.name, lang());
     box.dataset.signature = signature;
     document.querySelectorAll('#expandedMap .ch-city').forEach(function (node) { node.classList.toggle('is-selected', node.getAttribute('data-city') === adcode); });
@@ -1561,7 +1578,7 @@
             esc(c.label) + '</span>' +
             '<span class="pc-count">' + (c.countText ? esc(c.countText) : '') + ' ›</span></button>';
         }).join('');
-      body = back + rows + '<div class="source-line" style="padding:0 10px">' + esc(t.provinceHint) + '</div>';
+      body = back + rows + helpDisclosure('china-picker-province', head, [t.provinceHint]);
     } else {
       /* 区县视图 */
       var pc = homeState.pickerCity || { name: '', adcode: '' };
@@ -1583,7 +1600,7 @@
         }).join('');
 
       body = back + allRow + dRows +
-        '<div class="source-line" style="padding:0 10px">' + esc(t.districtCoverNote) + '</div>';
+        helpDisclosure('china-picker-district', head, [t.districtCoverNote]);
     }
 
     pickerEl.innerHTML =
@@ -1841,7 +1858,7 @@
         '<a class="back-link" href="#/china">‹ ' + esc(web('chinaTab')) + '</a>' +
         '<div><span class="level-badge">' + esc(a.levelName) + '</span></div>' +
         '<h1>' + esc(a.title) + '</h1>' +
-        (historical ? '<p class="history-notice">' + esc(safetyText('historyNotice')) + '</p>' : '') +
+        (historical ? helpDisclosure('china-detail-history', a.title, [safetyText('historyNotice')]) : '') +
         '<div class="detail-meta"><span>' + esc(i18n.disasterName(a.type, l)) + '</span>' +
         '<span class="dot-sep">•</span><span>' + esc(a.source) + '</span><span class="dot-sep">•</span><span>' + esc(historical ? safetyText('outdated') : a.status) + '</span></div>' +
         '<div class="detail-summary">' +
@@ -1882,7 +1899,7 @@
         a.risks.map(function (r) {
           return '<div class="potential-hazard"><b>' + esc(r.name) + '</b><p>' + esc(r.note) + '</p></div>';
         }).join('') +
-        '<div class="risk-tip">' + esc(safetyText('hazardNote')) + '</div></div>';
+        '</div>';
     }
 
     /* 推荐物资 */
@@ -2620,6 +2637,7 @@
       case '/bulletins/all':
         var allBulletins = path === '/bulletins/all';
         viewEl.innerHTML = '<div class="bulletins-page">' + window.NDLiveBulletins.render(lang(), allBulletins) + '</div>';
+        explainView();
         window.NDLiveBulletins.mount(viewEl, lang());
         document.title = allBulletins ? viewEl.querySelector('h1').textContent : web('bulletinsNav');
         if (allBulletins && !preservePosition) focusDetails('.bulletin-head h1');
@@ -2636,7 +2654,10 @@
         }
         break;
       case '/rescue': window.NDRescue.render(viewEl, query); break;
-      case '/disasters': window.NDDisasterList.render(viewEl, query); break;
+      case '/disasters':
+        window.NDDisasterList.render(viewEl, query);
+        explainView();
+        break;
       case '/global': renderGlobal(); break;
       case '/database':
         if (query.category) { dbState.category = query.category; dbState.q = query.q || ''; dbState.page = 1; }
@@ -2673,7 +2694,7 @@
         renderMainPage();
         break;
     }
-    renderFooter();
+    renderFooter(['/china', '/map', '/detail', '/global', '/disasters', '/bulletins', '/bulletins/all'].includes(path));
     updateConnectionNotice();
   }
 

@@ -286,6 +286,17 @@
     });
   }
 
+  function help(key, subject, paragraphs) {
+    return window.__modules.explanations.disclosure(lang(), key, subject, paragraphs);
+  }
+
+  function globalOverview() {
+    return help('global-overview', web('globalTitle'), [
+      web('globalSub'), web('globalNote'),
+      window.NDLocale.phrase('GDACS 当前事件列表；非现场确认', 'GDACS current-event feed; not on-site confirmation', lang())
+    ]);
+  }
+
   function header(data, quakes) {
     var isLive = state.mode === 'live';
     var total = quakes.length;
@@ -347,7 +358,7 @@
     }
     return '<div class="global-head">' +
         '<div class="global-head-main">' +
-          '<h1>' + esc(web('globalTitle')) + '</h1><p>' + esc(web('globalSub')) + '</p></div>' +
+          '<h1>' + esc(web('globalTitle')) + '</h1>' + globalOverview() + '</div>' +
         '<div class="global-mode">' +
           '<button type="button" class="' + (isLive ? 'active' : '') + '" data-g="mode" data-v="live">' + esc(web('live')) + '</button>' +
           '<button type="button" class="' + (!isLive ? 'active' : '') + '" data-g="mode" data-v="history">' + esc(web('history')) + '</button>' +
@@ -373,7 +384,7 @@
         '<div class="global-layers"><span class="gfl">' + esc(web('layers')) + '</span>' + layers + '</div>' +
       '</div></details>' +
       '<div class="global-meta"><span>' + esc(web('sourceLabel')) + ': ' + esc(source) + '</span><span>' + esc(isLive ? window.NDLocale.phrase('上次采集','Last checked',lang()) : web('dataTime')) + ': ' + esc(fmt(dataTime)) + '</span>' +
-        '<span>GDACS · ' + esc(window.NDLocale.phrase('上次采集','Last checked',lang())) + ': ' + esc(fmt(gdacsParse(cache.gdacsRaw && (cache.gdacsRaw.checkedAt || cache.gdacsRaw.generatedAt)))) + ' · ' + esc(window.NDLocale.phrase('GDACS 当前事件列表；非现场确认','GDACS current-event feed; not on-site confirmation',lang())) + '</span>' +
+        '<span>GDACS · ' + esc(window.NDLocale.phrase('上次采集','Last checked',lang())) + ': ' + esc(fmt(gdacsParse(cache.gdacsRaw && (cache.gdacsRaw.checkedAt || cache.gdacsRaw.generatedAt)))) + '</span>' +
         (state.layers.gdacs && state.gdacsType !== 'EQ' ? '<span>' + esc(hazardTypeLabel(state.gdacsType)) + ' · GDACS ' + (gdacsAvailable ? gdacs.length : '—') + '</span>' : '') +
         (isLive ? '' : '<span>' + esc(web('historyRange')) + ': ' + esc(fmt(data.range && data.range[0], true)) + ' → ' + esc(fmt(data.range && data.range[1], true)) + '</span>') +
         '</div>';
@@ -747,7 +758,7 @@
         '<div><span>PAGER</span><b>' + (alertBadge || '—') + '</b></div>' +
       '</div>' +
       '<div class="gactions"><b>' + esc(web('recommended')) + '</b><ul>' + actions.map(function (a) { return '<li>' + esc(window.NDLocale.text(a,lang())) + '</li>'; }).join('') + '</ul></div>' +
-      '<p>' + esc(label('flagMeaning')) + '</p><p><a href="https://www.tsunami.gov/" target="_blank" rel="noopener noreferrer">' + esc(label('tsunamiCentre')) + ' ↗</a> · ' +
+      help('global-tsunami', label('flag'), [label('flagMeaning')]) + '<p><a href="https://www.tsunami.gov/" target="_blank" rel="noopener noreferrer">' + esc(label('tsunamiCentre')) + ' ↗</a> · ' +
       '<a href="https://earthquake.usgs.gov/data/comcat/data-eventterms.php#tsunami" target="_blank" rel="noopener noreferrer">' + esc(label('glossary')) + ' ↗</a></p>' +
       (q.url ? '<a class="btn btn-outline" href="' + esc(q.url) + '" target="_blank" rel="noopener noreferrer">' + esc(window.NDLocale.phrase('官方报告','Official report',lang())) + ' ↗</a>' : '') +
       '</div>';
@@ -837,8 +848,9 @@
 
   function rescueSection() {
     var region = state.country || (state.selected && (state.selected.country || state.selected.place)) || '';
-    return '<section class="rescue-section"><h2>' + (window.NDLocale.phrase('地区救援联系','Regional rescue contacts',lang())) + '</h2><p>' +
-      (window.NDLocale.phrase('按国家查询已收录的救援机构及官方联系目录。','Search listed rescue organizations and official directories by country.',lang())) + '</p>' +
+    var title = window.NDLocale.phrase('地区救援联系', 'Regional rescue contacts', lang());
+    return '<section class="rescue-section"><h2>' + esc(title) + '</h2>' +
+      help('global-rescue', title, [window.NDLocale.phrase('按国家查询已收录的救援机构及官方联系目录。', 'Search listed rescue organizations and official directories by country.', lang())]) +
       '<form data-rescue-form><label>' + (window.NDLocale.phrase('国家或地区','Country or region',lang())) +
       '<input type="search" name="region" value="' + esc(region) + '" placeholder="' + esc(window.NDLocale.phrase('中国、秘鲁…','China, Peru…',lang())) + '"></label>' +
       '<button class="btn btn-outline" type="submit">' + (window.NDLocale.phrase('搜索救援联系','Search rescue contacts',lang())) + '</button></form></section>';
@@ -849,10 +861,11 @@
         !GdacsStatus.active(state.selected.status, Date.now())) { state.selected = null; }
     var el = state.el;
     if (!el) { return; }
+    var focusedHelp = el.contains(document.activeElement) && document.activeElement.closest('details[data-help]');
     var compactOptions = el.querySelector('.global-map-options[data-compact]');
     if (compactOptions) state.mobileOptionsOpen = compactOptions.open;
     if (state.loading) {
-      el.innerHTML = '<section class="global-page"><div class="container"><div class="global-head"><div><h1>' + esc(web('globalTitle')) + '</h1><p>' + esc(web('globalSub')) + '</p></div></div><div class="state-box"><div class="spinner"></div>' + esc(web('live')) + '…</div></div></section>';
+      el.innerHTML = '<section class="global-page"><div class="container"><div class="global-head"><div><h1>' + esc(web('globalTitle')) + '</h1>' + globalOverview() + '</div></div><div class="state-box"><div class="spinner"></div>' + esc(web('live')) + '…</div></div></section>';
       return;
     }
     if (state.error && (!state.live || (state.mode === 'history' && !state.history))) {
@@ -862,11 +875,17 @@
     var data = state.mode === 'live' ? state.live : state.history;
     if (!data) { return; }
     var quakes = filteredQuakes(currentQuakes());
+    var quakesOverdue = state.mode === 'live' && !GdacsStatus.quakeSnapshotFresh(data, Date.now());
+    var gdacsOverdue = state.mode === 'live' && state.layers.gdacs && cache.gdacsRaw &&
+      Date.now() - gdacsParse(cache.gdacsRaw.checkedAt || cache.gdacsRaw.generatedAt) >= 1800000;
+    var outdated = window.__modules.reliability.text('outdated', lang());
     el.innerHTML = '<section class="global-page"><div class="container">' +
       header(data, quakes) +
-      (state.mode === 'live' && !GdacsStatus.quakeSnapshotFresh(data, Date.now()) ? '<p class="history-notice" role="status">' + esc(label('overdue')) + '</p>' : '') +
+      (quakesOverdue ? '<p class="history-notice" role="status">' + esc(web('earthquakeType') + ' · ' + outdated) + '</p>' +
+        help('global-earthquake-status', web('earthquakeType'), [label('overdue')]) : '') +
       (state.layers.gdacs && (state.mode === 'live' ? !cache.gdacsRaw : !cache.gdacsHistory) ? '<p class="history-notice" role="status">GDACS · ' + esc(web('dataUnavailable')) + '</p>' : '') +
-      (state.mode === 'live' && cache.gdacsRaw && Date.now() - gdacsParse(cache.gdacsRaw && (cache.gdacsRaw.checkedAt || cache.gdacsRaw.generatedAt)) >= 1800000 ? '<p class="history-notice" role="status">' + (window.NDLocale.phrase('GDACS 更新已延迟。虚线标记为上次报告的位置，当前状态尚未确认；这不代表灾害已结束。','GDACS updates are overdue. Dashed markers show last-reported locations; current status is unconfirmed. A delayed update does not mean the disasters have ended.',lang())) + '</p>' : '') +
+      (gdacsOverdue ? '<p class="history-notice" role="status">GDACS · ' + esc(outdated) + '</p>' +
+        help('global-gdacs-status', 'GDACS', [window.NDLocale.phrase('GDACS 更新已延迟。虚线标记为上次报告的位置，当前状态尚未确认；这不代表灾害已结束。', 'GDACS updates are overdue. Dashed markers show last-reported locations; current status is unconfirmed. A delayed update does not mean the disasters have ended.', lang())]) : '') +
       '<div class="global-layout"><div class="global-map-wrap' + (state.fullscreen ? ' gfull' : '') + '">' + mapSvg(quakes) +
         mapSummary(state.selected) +
         '<div class="gzoom">' +
@@ -875,14 +894,13 @@
           '<button type="button" data-g="zoom" data-v="reset" aria-label="' + esc(web('resetView')) + '" title="' + esc(web('resetView')) + '">⟲</button>' +
           '<button type="button" data-g="zoom" data-v="fullscreen" aria-label="' + esc(web('fullscreen')) + '" title="' + esc(web('fullscreen')) + '">⛶</button>' +
         '</div>' +
-        '<div class="gzoom-hint">' + esc(web('zoomHint')) + '</div>' +
+        '<div class="gmap-help">' + help('global-map-controls', label('controls'), [web('zoomHint')]) + '</div>' +
         ((state.gdacsType === 'all' || state.gdacsType === 'EQ') ? '<div class="glegend">' + ['M&lt;4', 'M4', 'M5', 'M6', 'M7+'].map(function (label, index) {
           return '<span style="color:' + window.NDCore.magnitudeColor(index + 3, true) + '">' + label + '</span>';
         }).join('') + '</div>' : '') +
         ((state.layers.gdacs && state.gdacsType !== 'EQ') ? '<div class="gdacs-legend"><span class="wf">WF</span><span class="fl">FL</span><span class="tc">TC</span><span class="dr">DR</span></div>' : '') +
       '</div><aside class="global-side"><nav class="disaster-list-actions" aria-label="' + (window.NDLocale.phrase('灾害列表','Disaster lists',lang())) + '"><a class="btn btn-green" href="#/disasters?mode=' + state.mode + '">' + (state.mode === 'live' ? (window.NDLocale.phrase('查看全部当前灾害','View all live disasters',lang())) : (window.NDLocale.phrase('查看灾害历史','Browse disaster history',lang()))) + ' →</a></nav>' + sideHtml(quakes) + '</aside></div>' +
       rescueSection() +
-      '<p class="global-foot">' + esc(web('globalNote')) + '</p>' +
       '<p class="global-foot global-credits">' + esc(web('credits')) + ': ' +
         '<a href="https://www.gdacs.org" target="_blank" rel="noopener noreferrer">GDACS</a> (EU JRC / UN OCHA) · ' +
         '<a href="https://apizero.cn" target="_blank" rel="noopener noreferrer">极数本源 apizero.cn</a> · ' +
@@ -892,6 +910,7 @@
       '</div></section>';
     if (window.NDUnits) window.NDUnits.enhance(el);
     state.ctx.explainView && state.ctx.explainView();
+    if (focusedHelp) el.querySelector('details[data-help="' + CSS.escape(focusedHelp.dataset.help) + '"] summary')?.focus({ preventScroll: true });
     wms.key = '';
     applyView();
     syncSideHeight();
