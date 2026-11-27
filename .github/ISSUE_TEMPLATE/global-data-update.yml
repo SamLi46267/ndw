@@ -1,0 +1,17 @@
+name: Request a Global Hazards data update
+description: Ask the Global Hazards collectors to publish fresh earthquake and GDACS reports.
+title: "[Data update] Refresh global hazards"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit this form to request a check of the GDACS and USGS feeds.
+        The workflow skips sources that were already checked in the last few
+        minutes. GitHub may delay the collection or deployment.
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Request collection
+      options:
+        - label: I understand that a check may return the same reports.
+          required: true

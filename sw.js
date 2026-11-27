@@ -6,7 +6,7 @@ const ASSETS = [
   './js/cities.js', './js/districts.js', './js/china-geo.js', './js/pinyin-pro.js', './js/ui-locales.js',
   './js/i18n.js',
   './js/reliability.js', './js/explanations.js', './js/risk.js', './js/api.js', './js/globe-land.js', './js/holo-globe.js', './js/china-holo.js',
-  './js/charts.js', './js/three.min.js', './js/games.js', './js/app-core.js', './js/ui.js', './js/icons.js', './js/views/products.js', './js/search.js', './js/gdacs-status.js', './js/global.js', './js/unit-help.js', './js/directory-search.js', './js/disaster-list.js', './js/rescue.js', './js/source-guide.js', './js/live-bulletins.js', './js/app.js', './js/offline.js', './assets/world-satellite.jpg', './assets/china-nasa.jpg', './assets/world-countries.geojson', './assets/world-cities.json', './assets/us-states-map.json'
+  './js/charts.js', './js/three.min.js', './js/games.js', './js/app-core.js', './js/ui.js', './js/icons.js', './js/views/products.js', './js/search.js', './js/gdacs-status.js', './js/global-feeds.js', './js/global.js', './js/unit-help.js', './js/directory-search.js', './js/disaster-list.js', './js/rescue.js', './js/source-guide.js', './js/live-bulletins.js', './js/app.js', './js/offline.js', './assets/world-satellite.jpg', './assets/china-nasa.jpg', './assets/world-countries.geojson', './assets/world-cities.json', './assets/us-states-map.json'
 ];
 const allowedPaths = new Set(ASSETS.map(asset => new URL(asset, self.location.href).pathname));
 self.addEventListener('install', event => {

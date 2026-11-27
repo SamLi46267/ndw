@@ -55,28 +55,48 @@
   var clearLink=Object.keys(query).some(function(key){return key!=='mode';})
    ? '<a class="btn btn-outline" href="#/disasters?mode='+mode+'">'+t('查看全部记录','View all records')+'</a>' : '';
   document.title=mode==='live'?t('实时灾害','Live disasters'):t('灾害历史','Disaster history');
-  view.innerHTML='<section class="disaster-list-page"><div class="container"><a class="back-link" href="#/global?mode='+mode+'">← '+t('世界地图','World map')+'</a><header><div class="eyebrow">'+t('全球灾害记录','GLOBAL DISASTER RECORDS')+'</div><h1>'+esc(document.title)+'</h1>'+window.__modules.explanations.disclosure(language, 'global-list-'+mode, document.title, [mode==='live'?t('GDACS 上次列出的当前事件与最近地震。采集延迟不代表灾害已结束。','GDACS last-listed current events and recent earthquakes. Collection delays do not establish that an event ended.'):t('全部已保存的 GDACS 与地震记录，包含过去的事件及报告。','All retained GDACS and earthquake records, including past events and reports.')])+'<nav class="disaster-mode"><a href="#/disasters?mode=live" '+(mode==='live'?'aria-current="page"':'')+'>'+t('实时灾害','Live disasters')+'</a><a href="#/disasters?mode=history" '+(mode==='history'?'aria-current="page"':'')+'>'+t('历史记录','History')+'</a></nav></header><div class="rescue-search-bar"><label>'+t('搜索地点或事件','Search place or event')+'<input data-disaster-search type="search" value="'+esc(search)+'"></label><label>'+t('灾害类型','Disaster type')+'<select data-disaster-type><option value="all">'+t('全部类型','All types')+'</option>'+hazardTypes.map(function(k){return '<option value="'+k+'"'+(k===type?' selected':'')+'>'+esc(typeName(k))+'</option>';}).join('')+'</select></label>'+clearLink+'</div><p class="global-meta" data-disaster-sources></p><p data-disaster-error role="status"></p><p data-disaster-count role="status">'+t('正在加载…','Loading…')+'</p><div data-disaster-rows></div><div class="disaster-pager"><button class="btn btn-outline" data-disaster-prev disabled>← '+t('上一页','Previous')+'</button><button class="btn btn-outline" data-disaster-next disabled>'+t('下一页','Next')+' →</button></div></div></section>';
-  var urls=mode==='live'?['public-data/global-earthquakes.json','public-data/gdacs-events.json']:[query.catalog==='recent'?'public-data/global-quakes-recent.json':'public-data/global-quakes-history.json','public-data/gdacs-disaster-history.json'];
-  var snapshots=[null,null], renderedRows;
+  var updateControls=mode==='live'
+   ? '<div class="global-refresh"><button class="btn btn-outline" type="button" data-disaster-refresh>'+esc(window.NDCore.web('globalUpdate'))+'</button><span role="status" data-disaster-refresh-status></span><a data-disaster-refresh-request hidden href="'+NDGlobalFeeds.requestUrl+'" target="_blank" rel="noopener noreferrer">'+esc(window.NDCore.web('globalRequest'))+'</a></div>'
+   : '';
+  view.innerHTML='<section class="disaster-list-page"><div class="container"><a class="back-link" href="#/global?mode='+mode+'">← '+t('世界地图','World map')+'</a><header><div class="eyebrow">'+t('全球灾害记录','GLOBAL DISASTER RECORDS')+'</div><h1>'+esc(document.title)+'</h1>'+window.__modules.explanations.disclosure(language, 'global-list-'+mode, document.title, [mode==='live'?t('GDACS 上次列出的当前事件与最近地震。采集延迟不代表灾害已结束。','GDACS last-listed current events and recent earthquakes. Collection delays do not establish that an event ended.'):t('全部已保存的 GDACS 与地震记录，包含过去的事件及报告。','All retained GDACS and earthquake records, including past events and reports.')])+'<nav class="disaster-mode"><a href="#/disasters?mode=live" '+(mode==='live'?'aria-current="page"':'')+'>'+t('实时灾害','Live disasters')+'</a><a href="#/disasters?mode=history" '+(mode==='history'?'aria-current="page"':'')+'>'+t('历史记录','History')+'</a></nav>'+updateControls+'</header><div class="rescue-search-bar"><label>'+t('搜索地点或事件','Search place or event')+'<input data-disaster-search type="search" value="'+esc(search)+'"></label><label>'+t('灾害类型','Disaster type')+'<select data-disaster-type><option value="all">'+t('全部类型','All types')+'</option>'+hazardTypes.map(function(k){return '<option value="'+k+'"'+(k===type?' selected':'')+'>'+esc(typeName(k))+'</option>';}).join('')+'</select></label>'+clearLink+'</div><p class="global-meta" data-disaster-sources></p><p data-disaster-error role="status"></p><p data-disaster-count role="status">'+t('正在加载…','Loading…')+'</p><div data-disaster-rows></div><div class="disaster-pager"><button class="btn btn-outline" data-disaster-prev disabled>← '+t('上一页','Previous')+'</button><button class="btn btn-outline" data-disaster-next disabled>'+t('下一页','Next')+' →</button></div></div></section>';
+  var urls=[query.catalog==='recent'?'public-data/global-quakes-recent.json':'public-data/global-quakes-history.json','public-data/gdacs-disaster-history.json'];
+  var snapshots=[null,null], renderedRows, refreshing=false;
+  var refreshButton=view.querySelector('[data-disaster-refresh]');
+  var refreshStatus=view.querySelector('[data-disaster-refresh-status]');
+  var refreshRequest=view.querySelector('[data-disaster-refresh-request]');
   function isCurrent(){
    return token===generation&&location.hash.split('?')[0]==='#/disasters';
   }
-  async function refresh(){
-   if(!isCurrent())return;
+  async function refresh(manual){
+   if(!isCurrent()||refreshing)return;
+   clearTimeout(refreshTimer);
    if(!document.hidden||!snapshots.some(Boolean)){
-    var updates=await Promise.all(urls.map(async function(url){
+    refreshing=true;
+    if(refreshButton)refreshButton.setAttribute('aria-disabled','true');
+    if(manual)refreshStatus.textContent=window.NDCore.web('globalChecking');
+    var sources=mode==='live'
+     ? await Promise.all([NDGlobalFeeds.quakes(),NDGlobalFeeds.gdacs()])
+     : await Promise.all(urls.map(async function(url){
      try{
       var response=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(15000)});
       if(!response.ok)throw Error(response.status);
-      return await response.json();
-     }catch(error){return null;}
+      return { data: await response.json(), fetched: true };
+     }catch(error){return { data: null, fetched: false };}
     }));
     if(!isCurrent())return;
+    refreshing=false;
+    if(refreshButton)refreshButton.removeAttribute('aria-disabled');
+    if(refreshStatus){
+     var statusKey=manual?NDGlobalFeeds.updateStatus(sources,snapshots):'';
+     refreshStatus.textContent=statusKey?window.NDCore.web(statusKey):'';
+     refreshRequest.hidden=statusKey!=='globalPartial'&&statusKey!=='globalUpdateFailed';
+    }
+    var updates=sources.map(function(source){return source.data;});
     updates.forEach(function(update,index){
      if(update)snapshots[index]=update;
     });
     var notices=[];
-    if(updates.some(function(update){return !update;})){
+    if(sources.some(function(source){return !source.fetched;})){
      notices.push(t('部分数据源暂不可用，显示已加载的记录。','Some data sources could not be loaded; showing available records.'));
     }
     if(mode==='live'){
@@ -105,8 +125,9 @@
      results();
     }
    }
-   if(mode==='live'&&isCurrent())refreshTimer=setTimeout(refresh,60000);
+   if(mode==='live'&&isCurrent())refreshTimer=setTimeout(refresh,NDGlobalFeeds.interval);
   }
+  if(refreshButton)refreshButton.addEventListener('click',function(){refresh(true);});
   refresh();
  }
  document.addEventListener('input',function(e){if(e.target.matches('[data-disaster-search]')){search=e.target.value;page=1;results();}});

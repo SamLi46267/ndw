@@ -19,13 +19,12 @@ permissions:
   id-token: write
   issues: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
   deploy:
     if: github.event_name != 'issues' || github.event.issue.title == '[Data update] Refresh warning data'
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     environment:
       name: github-pages

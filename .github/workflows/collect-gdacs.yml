@@ -11,18 +11,21 @@ on:
   schedule:
     - cron: '2-59/5 * * * *'
   workflow_dispatch:
+  issues:
+    types: [opened]
 
 permissions:
   contents: write
   pages: write
   id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  issues: write
 
 jobs:
   collect:
+    if: github.event_name != 'issues' || github.event.issue.title == '[Data update] Refresh global hazards'
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -33,11 +36,31 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Check recent global collections
+        id: freshness
+        if: github.event_name == 'issues'
+        run: |
+          node --input-type=module - <<'JS' >> "$GITHUB_OUTPUT"
+          import { readFileSync } from 'node:fs';
+          for (const [key, file, field] of [
+            ['gdacs', 'gdacs-events.json', 'checkedAt'],
+            ['quakes', 'global-earthquakes.json', 'fetchedAt']
+          ]) {
+            const snapshot = JSON.parse(readFileSync('public-data/' + file, 'utf8'));
+            const age = Date.now() - Date.parse(snapshot[field]);
+            console.log(key + '=' + (!(age >= 0 && age < 5 * 60000)));
+          }
+          JS
       - name: Collect GDACS snapshot
+        if: github.event_name != 'issues' || steps.freshness.outputs.gdacs == 'true'
         run: node backend/collect-gdacs.mjs
+      - name: Collect USGS earthquake snapshot
+        if: github.event_name == 'push' || steps.freshness.outputs.quakes == 'true'
+        run: node backend/collect-global.mjs
       - name: Publish snapshot
         run: |
-          git add public-data/gdacs-events.json public-data/gdacs-disaster-history.json
+          git add public-data/gdacs-events.json public-data/gdacs-disaster-history.json \
+            public-data/global-earthquakes.json public-data/global-quakes-history.json
           if [ -f public-data/gdacs-history.json ]; then git add public-data/gdacs-history.json; fi
           if git diff --cached --quiet; then
             echo "No change"
@@ -55,3 +78,10 @@ jobs:
         with:
           weathercn-key: ${{ secrets.WEATHERCN_API_KEY }}
       - uses: ./.github/actions/publish-pages
+      - name: Complete global data request
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          UPDATE_ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: gh issue close "$UPDATE_ISSUE_NUMBER" --reason completed

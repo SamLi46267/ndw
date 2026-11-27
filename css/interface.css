@@ -1414,3 +1414,16 @@ dialog.db-modal-card::backdrop { background: transparent; }
   background: var(--card-solid);
   color: var(--text);
 }
+
+.global-refresh {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  margin-block: 10px;
+}
+.global-refresh .btn { min-height: 32px; padding: 6px 10px; font-size: .8rem; }
+.global-refresh [aria-disabled="true"] { opacity: .65; cursor: wait; }
+.global-refresh :is([role="status"], a) { font-size: .82rem; }
+.global-refresh a { text-decoration: underline; }
+.global-refresh a[hidden] { display: none; }

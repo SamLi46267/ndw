@@ -10,7 +10,7 @@
   var cache = { live: null, history: null, countries: null, cities: null, paths: null, gdacs: null, gdacsRaw: null, gdacsHistory: null };
   var wms = { key: '', timer: null };
   var bound = false;
-  var gdacsRequest = null;
+  var feeds = window.NDGlobalFeeds;
   var dataRefresh = null;
 
   function web(k) { return state.ctx.web(k); }
@@ -69,20 +69,30 @@
     return '';
   }
   function refreshGdacs() {
-    if (!gdacsRequest) {
-      gdacsRequest = fetchJson('public-data/gdacs-events.json').then(function (data) {
-        cache.gdacsRaw = data;
-        cache.gdacs = normalizeGdacs(data);
+    return feeds.gdacs().then(function (result) {
+      if (result.data && result.data !== cache.gdacsRaw) {
+        cache.gdacsRaw = result.data;
+        cache.gdacs = normalizeGdacs(result.data);
         if (state.mode === 'live' && state.selected && state.selected.kind === 'gdacs') {
           var selectedId = state.selected.id;
           state.selected = currentGdacs().find(function (event) { return event.id === selectedId; }) || null;
         }
-      }).catch(function () {
-        // Keep the last successful snapshot when a download fails.
-      }).finally(function () { gdacsRequest = null; });
-    }
-    return gdacsRequest;
+      }
+      return result;
+    });
   }
+
+  function refreshControls() {
+    if (state.mode !== 'live') return '';
+    return '<div class="global-refresh"><button type="button" class="btn btn-outline" data-g="refresh"' +
+      (dataRefresh ? ' aria-disabled="true"' : '') + '>' + esc(web('globalUpdate')) + '</button>' +
+      '<span class="global-refresh-status" role="status">' +
+      (state.refreshStatus ? esc(web(state.refreshStatus)) : '') + '</span>' +
+      ((state.refreshStatus === 'globalPartial' || state.refreshStatus === 'globalUpdateFailed') ?
+        '<a href="' + feeds.requestUrl + '" target="_blank" rel="noopener noreferrer">' + esc(web('globalRequest')) + '</a>' : '') +
+      '</div>';
+  }
+
   function ensureGeo() {
     return Promise.all([
       cache.countries ? Promise.resolve(cache.countries) : fetchJson('assets/world-countries.geojson'),
@@ -364,6 +374,7 @@
           '<button type="button" class="' + (!isLive ? 'active' : '') + '" data-g="mode" data-v="history">' + esc(web('history')) + '</button>' +
         '</div>' +
       '</div>' +
+      refreshControls() +
       '<div class="global-kpis">' + kpiHtml + '</div>' +
       '<details class="global-map-options"' + (window.innerWidth <= 620 ? ' data-compact' : '') +
         (window.innerWidth > 620 || state.mobileOptionsOpen ? ' open' : '') + '>' +
@@ -862,6 +873,7 @@
     var el = state.el;
     if (!el) { return; }
     var focusedHelp = el.contains(document.activeElement) && document.activeElement.closest('details[data-help]');
+    var refreshFocused = el.contains(document.activeElement) && document.activeElement.matches('[data-g="refresh"]');
     var compactOptions = el.querySelector('.global-map-options[data-compact]');
     if (compactOptions) state.mobileOptionsOpen = compactOptions.open;
     if (state.loading) {
@@ -872,7 +884,7 @@
       el.innerHTML = '<section class="global-page"><div class="container"><div class="state-box error">' + esc(state.error) + '</div></div></section>';
       return;
     }
-    var data = state.mode === 'live' ? state.live : state.history;
+    var data = state.mode === 'live' ? (state.live || {}) : state.history;
     if (!data) { return; }
     var quakes = filteredQuakes(currentQuakes());
     var quakesOverdue = state.mode === 'live' && !GdacsStatus.quakeSnapshotFresh(data, Date.now());
@@ -911,6 +923,7 @@
     if (window.NDUnits) window.NDUnits.enhance(el);
     state.ctx.explainView && state.ctx.explainView();
     if (focusedHelp) el.querySelector('details[data-help="' + CSS.escape(focusedHelp.dataset.help) + '"] summary')?.focus({ preventScroll: true });
+    if (refreshFocused) el.querySelector('[data-g="refresh"]')?.focus({ preventScroll: true });
     wms.key = '';
     applyView();
     syncSideHeight();
@@ -921,6 +934,7 @@
     var g = e.target.closest('[data-g]');
     if (g) {
       var k = g.getAttribute('data-g'), v = g.getAttribute('data-v');
+      if (k === 'refresh') { refreshData(true); return; }
       if (k === 'close-summary') { closeMapSummary(); return; }
       if (k === 'zoom') {
         if (v === 'in') { zoomAt(W / 2, H / 2, 1.6); }
@@ -951,7 +965,7 @@
             state.loading = false;
             paint();
           }).catch(function (err) { state.loading = false; state.error = String(err); paint(); });
-        } else { paint(); }
+        } else { paint(); if (v === 'live') refreshData(); }
         return;
       }
       if (k === 'hmin') { state.hmin = parseFloat(v); state.selected = null; paint(); return; }
@@ -1030,19 +1044,32 @@
       path === (state.ctx.embedded ? '#/home' : '#/global');
   }
 
-  function refreshData() {
-    if (!globalPageVisible() || state.loading || dataRefresh) { return; }
-    dataRefresh = Promise.all([
-      fetchJson('public-data/global-earthquakes.json').catch(function () { return null; }),
-      refreshGdacs()
-    ]).then(function (res) {
-      if (res[0]) { state.live = res[0]; cache.live = res[0]; }
+  function refreshData(manual) {
+    if (!globalPageVisible() || state.loading || state.mode !== 'live') return;
+    if (manual) {
+      state.refreshStatus = 'globalChecking';
+      var status = state.el.querySelector('.global-refresh-status');
+      if (status) status.textContent = web(state.refreshStatus);
+    }
+    if (dataRefresh) return dataRefresh;
+    var previous = [state.live, cache.gdacsRaw];
+    state.el.querySelector('[data-g="refresh"]')?.setAttribute('aria-disabled', 'true');
+    dataRefresh = Promise.all([feeds.quakes(), refreshGdacs()]).then(function (results) {
+      var quake = results[0];
+      if (quake.data) { state.live = quake.data; cache.live = quake.data; }
       if (state.mode === 'live' && state.selected && state.selected.kind === 'quake') {
         var selectedId = state.selected.id;
         state.selected = currentQuakes().find(function (q) { return q.id === selectedId; }) || null;
       }
-      if (globalPageVisible() && !state.fullscreen) { paint(); }
-    }).finally(function () { dataRefresh = null; });
+      if (state.refreshStatus === 'globalChecking') {
+        state.refreshStatus = feeds.updateStatus(results, previous);
+      } else {
+        state.refreshStatus = '';
+      }
+    }).finally(function () {
+      dataRefresh = null;
+      if (globalPageVisible()) paint();
+    });
     return dataRefresh;
   }
 
@@ -1101,7 +1128,7 @@
       window.setInterval(function () {
         if (!state.el || !state.el.isConnected || document.hidden) { return; }
         refreshData();
-      }, 60 * 1000);
+      }, feeds.interval);
       document.addEventListener('visibilitychange', function () {
         if (!document.hidden) { refreshData(); }
       });
@@ -1110,14 +1137,14 @@
     if (!ctx.embedded) { document.title = ctx.web('globalTitle'); }
     paint();
     Promise.all([
-      state.live ? Promise.resolve(state.live) : fetchJson('public-data/global-earthquakes.json'),
+      state.mode === 'live' || !state.live ? feeds.quakes() : Promise.resolve({ data: state.live }),
       ensureGeo(),
       refreshGdacs(),
       state.mode === 'history' && !state.history ? Promise.all([
         fetchJson('public-data/global-quakes-recent.json'), fetchJson('public-data/gdacs-disaster-history.json')
       ]) : Promise.resolve(null)
     ]).then(function(res) {
-      state.live = res[0]; cache.live = res[0];
+      state.live = res[0].data; cache.live = state.live;
       if(res[3]) { state.history = res[3][0]; cache.history = res[3][0]; cache.gdacsHistory = normalizeGdacs(res[3][1]); }
       state.loading = false; paint();
     }).catch(function(err) { state.loading = false; state.error = String(err.message || err); paint(); });
