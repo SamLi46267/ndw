@@ -707,60 +707,102 @@
     state.selected = list.filter(function (x) { return x.id === id; })[0] || null;
     paint();
   }
-  var drag = null;
+  var gesture = null;
+  var paintAfterGesture = false;
   var suppressClickUntil = 0;
+
+  function mapPoint(map, x, y) {
+    var matrix = map.getScreenCTM();
+    return matrix && new DOMPoint(x, y).matrixTransform(matrix.inverse());
+  }
+
   function onWheel(e) {
-    var map = e.target.closest && e.target.closest('.gmap');
-    if (!map) { return; }
-    e.preventDefault();
-    var r = map.getBoundingClientRect();
-    if (!r.width || !r.height) { return; }
-    var px = (e.clientX - r.left) / r.width * W;
-    var py = (e.clientY - r.top) / r.height * H;
-    zoomAt(px, py, Math.exp(-e.deltaY * 0.0015));
-  }
-  function onPointerDown(e) {
-    if (zoomAnimation) { cancelAnimationFrame(zoomAnimation); zoomAnimation = null; }
-    if (e.button != null && e.button !== 0) { return; }
-    if (e.target.closest('.gzoom,[data-quake],[data-gdacs]')) { return; }
     var map = e.target.closest('.gmap');
-    if (!map) { return; }
-    var r = map.getBoundingClientRect();
-    drag = { x: e.clientX, y: e.clientY, px: state.panX, py: state.panY, w: r.width, h: r.height, moved: false, captured: false, target: e.target, pointerId: e.pointerId, map: map };
+    if (!map) return;
+    e.preventDefault();
+    var point = mapPoint(map, e.clientX, e.clientY);
+    if (point) zoomAt(point.x, point.y, Math.exp(-e.deltaY * 0.0015));
   }
-  function onPointerMove(e) {
-    if (!drag) { return; }
-    if (!drag.w || !drag.h) { return; }
-    var dx = (e.clientX - drag.x) / drag.w * W;
-    var dy = (e.clientY - drag.y) / drag.h * H;
-    if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 8) {
-      drag.moved = true;
-      if (!drag.captured) {
-        try { drag.map.setPointerCapture(drag.pointerId); drag.captured = true; } catch (err) { /* ignore */ }
-      }
+
+  function pointerGeometry() {
+    var points = Array.from(gesture.pointers.values());
+    var first = points[0], second = points[1];
+    return second ? {
+      x: (first.x + second.x) / 2, y: (first.y + second.y) / 2,
+      distance: Math.hypot(first.x - second.x, first.y - second.y)
+    } : { x: first.x, y: first.y, distance: 0 };
+  }
+
+  // Start from the current view each time a finger joins or leaves.
+  function beginGestureSegment() {
+    var center = pointerGeometry();
+    gesture.center = center;
+    gesture.anchor = mapPoint(gesture.map, center.x, center.y);
+    gesture.zoom = state.zoom;
+    gesture.panX = state.panX;
+    gesture.panY = state.panY;
+  }
+
+  function captureMapPointers() {
+    gesture.pointers.forEach(function (_, id) {
+      if (gesture.map.hasPointerCapture(id)) return;
+      try { gesture.map.setPointerCapture(id); } catch (_) { /* Pointer already released. */ }
+    });
+  }
+
+  function onPointerDown(e) {
+    var map = e.target.closest('.gmap');
+    if (!map || e.button !== 0) return;
+    if (gesture && (gesture.map !== map || gesture.type !== 'touch' || e.pointerType !== 'touch' ||
+        gesture.pointers.size >= 2)) return;
+    if (zoomAnimation) { cancelAnimationFrame(zoomAnimation); zoomAnimation = null; }
+    if (!gesture) gesture = { map: map, type: e.pointerType, target: e.target, pointers: new Map(), moved: false };
+    gesture.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    beginGestureSegment();
+    if (gesture.pointers.size === 2) {
+      gesture.moved = true;
+      captureMapPointers();
     }
-    if (state.zoom <= 1) { return; }
-    state.panX = drag.px + dx;
-    state.panY = drag.py + dy;
+  }
+
+  function onPointerMove(e) {
+    if (!gesture?.pointers.has(e.pointerId)) return;
+    gesture.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    var center = pointerGeometry();
+    if (!gesture.moved) {
+      if (Math.hypot(center.x - gesture.center.x, center.y - gesture.center.y) <= 8) return;
+      gesture.moved = true;
+      captureMapPointers();
+    }
+    var point = mapPoint(gesture.map, center.x, center.y);
+    if (!point || !gesture.anchor) return;
+    var factor = gesture.center.distance ? center.distance / gesture.center.distance : 1;
+    state.zoom = Math.max(1, Math.min(96, gesture.zoom * factor));
+    var scale = state.zoom / gesture.zoom;
+    state.panX = point.x - (gesture.anchor.x - gesture.panX) * scale;
+    state.panY = point.y - (gesture.anchor.y - gesture.panY) * scale;
     clampPan();
     applyView();
   }
-  function onPointerUp() {
-    if (drag) {
-      if (!drag.moved) {
-        var t = drag.target;
-        var cEl = t && t.closest ? t.closest('[data-country]') : null;
-        var qEl = t && t.closest ? t.closest('[data-quake]') : null;
-        var dEl = t && t.closest ? t.closest('[data-gdacs]') : null;
-        suppressClickUntil = Date.now() + 350;
-        if (dEl) { selectGdacs(dEl.getAttribute('data-gdacs')); }
-        else if (cEl) { selectCountry(cEl.getAttribute('data-country')); }
-        else if (qEl) { selectQuake(qEl.getAttribute('data-quake')); }
-      } else {
-        suppressClickUntil = Date.now() + 350;
-      }
+
+  function endPointer(e) {
+    if (e.type === 'lostpointercapture' && e.target !== gesture?.map) return;
+    if (!gesture?.pointers.delete(e.pointerId)) return;
+    if (gesture.pointers.size) {
+      beginGestureSegment();
+      return;
     }
-    drag = null;
+    var target = !gesture.moved && e.type === 'pointerup' ? gesture.target : null;
+    var repaint = paintAfterGesture;
+    gesture = null;
+    paintAfterGesture = false;
+    suppressClickUntil = Date.now() + 350;
+    var item = target && target.closest('[data-gdacs], [data-quake], [data-country]');
+    if (item?.dataset.gdacs) selectGdacs(item.dataset.gdacs);
+    else if (item?.dataset.quake) selectQuake(item.dataset.quake);
+    else if (item?.dataset.country) selectCountry(item.dataset.country);
+    else if (target && state.selected) closeMapSummary();
+    else if (repaint) paint();
   }
 
   function coordinates(event) {
@@ -896,6 +938,7 @@
         !GdacsStatus.active(state.selected.status, Date.now())) { state.selected = null; }
     var el = state.el;
     if (!el) { return; }
+    if (gesture?.map.isConnected) { paintAfterGesture = true; return; }
     var focusedHelp = el.contains(document.activeElement) && document.activeElement.closest('details[data-help]');
     var refreshFocused = el.contains(document.activeElement) && document.activeElement.matches('[data-g="refresh"]');
     var compactOptions = el.querySelector('.global-map-options[data-compact]');
@@ -954,7 +997,7 @@
   }
 
   function onClick(e) {
-    if (Date.now() < suppressClickUntil) { return; }
+    if (e.detail && Date.now() < suppressClickUntil && e.target.closest('.gmap')) return;
     var g = e.target.closest('[data-g]');
     if (g) {
       var k = g.getAttribute('data-g'), v = g.getAttribute('data-v');
@@ -1105,6 +1148,8 @@
       state.el.removeEventListener('pointerdown', onPointerDown);
       state.el.__ndGlobalBound = false;
     }
+    gesture = null;
+    paintAfterGesture = false;
     state.el = viewEl;
     state.ctx = ctx;
     var requestedMode = new URLSearchParams((location.hash || '').split('?')[1] || '').get('mode');
@@ -1122,7 +1167,9 @@
     }
     if (!bound) {
       window.addEventListener('pointermove', onPointerMove);
-      window.addEventListener('pointerup', onPointerUp);
+      window.addEventListener('pointerup', endPointer);
+      window.addEventListener('pointercancel', endPointer);
+      window.addEventListener('lostpointercapture', endPointer);
       window.addEventListener('keydown', function (e) {
         if (e.key !== 'Escape') { return; }
         if (globalPageVisible() && state.el.querySelector('.gmap-summary:not([hidden])')) {
@@ -1136,7 +1183,11 @@
         }
       });
       window.addEventListener('hashchange', function () {
-        if ((location.hash || '').split('?')[0] !== '#/global') { exitFullscreen(); }
+        if ((location.hash || '').split('?')[0] !== '#/global') {
+          gesture = null;
+          paintAfterGesture = false;
+          exitFullscreen();
+        }
       });
       window.addEventListener('resize', function () {
         var options = state.el && state.el.querySelector('.global-map-options');

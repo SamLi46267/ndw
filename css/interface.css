@@ -490,7 +490,7 @@ body { background: var(--bg); }
 .global-layers .glayer.active, .gchip.active { border-color: var(--holo); color: var(--holo-bright); background: rgba(126, 240, 255, .1); }
 .global-meta { display: flex; flex-wrap: wrap; gap: 16px; color: var(--text-dim); font-size: .74rem; margin: 6px 0 14px; }
 .global-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 16px; align-items: start; }
-.global-map-wrap { position: relative; background: #03080d; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.global-map-wrap { position: relative; background: #03080d; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; touch-action: none; }
 .gmap-summary {
   position: absolute;
   z-index: 5;
