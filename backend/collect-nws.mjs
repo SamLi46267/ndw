@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import bulletins from '../js/live-bulletins.js';
 
 const endpoint = 'https://api.weather.gov/alerts/active';
-const fields = ['id', 'status', 'messageType', 'event', 'areaDesc', 'effective', 'sent',
+const fields = ['id', 'status', 'messageType', 'event', 'severity', 'areaDesc', 'effective', 'sent',
   'expires', 'senderName', 'headline', 'description', 'instruction', 'references', 'geocode'];
 
 export async function collectNws(fetcher = fetch, now = Date.now) {

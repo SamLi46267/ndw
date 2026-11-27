@@ -1362,3 +1362,25 @@ dialog.db-modal-card::backdrop { background: transparent; }
 .warning-refresh-status:empty { margin: 0; }
 .local-panel .state-box .history-notice { margin: 16px 0 8px; text-align: start; }
 .local-panel .state-box .alert-grid { text-align: start; }
+
+.bulletin-row[data-accent="extreme"] { --bulletin-accent: var(--red); }
+.bulletin-row[data-accent="severe"] { --bulletin-accent: var(--orange); }
+.bulletin-row[data-accent="moderate"] { --bulletin-accent: var(--yellow); }
+.bulletin-row[data-accent="minor"] { --bulletin-accent: var(--blue); }
+.bulletin-row[data-accent] {
+  border-inline-start: 3px solid var(--bulletin-accent, var(--border-strong));
+}
+.bulletin-row[data-accent] > summary {
+  background: color-mix(in srgb, var(--bulletin-accent, transparent) 9%, transparent);
+  border-radius: 7px 9px 9px 7px;
+}
+.bulletin-event { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+.bulletin-severity {
+  display: inline-block;
+  padding: 1px 7px;
+  border: 1px solid color-mix(in srgb, var(--bulletin-accent) 55%, transparent);
+  border-radius: 999px;
+  color: var(--bulletin-accent);
+  font-size: .71rem;
+  font-weight: 700;
+}

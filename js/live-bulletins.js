@@ -7,6 +7,7 @@
   const pageSize = 40;
   const snapshotPath = 'public-data/nws-active-alerts.json';
   const maxSnapshotAge = 6 * 3600000;
+  const severityLevels = ['extreme', 'severe', 'moderate', 'minor'];
   // The compact northeastern states use callouts in the open Atlantic.
   const calloutPositions = { VT: 145, NH: 176, MA: 207, RI: 238, CT: 269, NJ: 300, DE: 331, MD: 362, DC: 393 };
   const areas = {
@@ -31,6 +32,7 @@
       published: 'Published NWS snapshot', overdue: 'Snapshot update overdue',
       mapTitle: "Alerts by state", mapHelp: "Choose a state to filter the list. Color shows the number of NWS bulletins that include at least one zone in that state.", mapLegend: "Alert count", bulletinsTitle: "Active bulletins", mapFailed: "Map unavailable",
       mapPan: 'Scroll the map sideways to see every state.', mapUnknown: 'Counts unavailable',
+      severity: { extreme: 'Extreme', severe: 'Severe', moderate: 'Moderate', minor: 'Minor' },
       cadence: 'Checks every 10 minutes while this page is visible.'
     },
     zh: {
@@ -42,6 +44,7 @@
       published: '已发布的 NWS 快照', overdue: '快照更新已延迟',
       mapTitle: "按州查看预警", mapHelp: "选择州以筛选列表。颜色表示至少涵盖该州一个预警区域的 NWS 通告数量。", mapLegend: "通告数量", bulletinsTitle: "有效通告", mapFailed: "地图不可用",
       mapPan: '横向滑动地图可查看所有州。', mapUnknown: '暂无通告数量',
+      severity: { extreme: '极重', severe: '严重', moderate: '中等', minor: '轻微' },
       cadence: '页面可见时每 10 分钟查询一次。'
     },
     es: {
@@ -53,6 +56,7 @@
       published: 'Instantánea publicada del NWS', overdue: 'Actualización de la instantánea retrasada',
       mapTitle: "Alertas por estado", mapHelp: "Elige un estado para filtrar la lista. El color indica el número de boletines del NWS que incluyen al menos una zona de ese estado.", mapLegend: "Número de alertas", bulletinsTitle: "Boletines vigentes", mapFailed: "Mapa no disponible",
       mapPan: 'Desplaza el mapa horizontalmente para ver todos los estados.', mapUnknown: 'Recuentos no disponibles',
+      severity: { extreme: 'Extrema', severe: 'Grave', moderate: 'Moderada', minor: 'Leve' },
       cadence: 'Se consulta cada 10 minutos mientras esta página está visible.'
     },
     fr: {
@@ -64,6 +68,7 @@
       published: 'Instantané publié du NWS', overdue: 'Actualisation de l’instantané en retard',
       mapTitle: "Alertes par État", mapHelp: "Choisissez un État pour filtrer la liste. La couleur indique le nombre de bulletins du NWS concernant au moins une zone de cet État.", mapLegend: "Nombre d’alertes", bulletinsTitle: "Bulletins en vigueur", mapFailed: "Carte indisponible",
       mapPan: 'Faites défiler la carte horizontalement pour voir tous les États.', mapUnknown: 'Nombre indisponible',
+      severity: { extreme: 'Extrême', severe: 'Sévère', moderate: 'Modérée', minor: 'Mineure' },
       cadence: 'Consultation toutes les 10 minutes lorsque cette page est visible.'
     },
     it: {
@@ -75,6 +80,7 @@
       published: 'Dati NWS pubblicati', overdue: 'Aggiornamento dei dati in ritardo',
       mapTitle: "Allerte per Stato", mapHelp: "Scegli uno Stato per filtrare l’elenco. Il colore indica il numero di bollettini NWS che includono almeno una zona dello Stato.", mapLegend: "Numero di allerte", bulletinsTitle: "Bollettini in vigore", mapFailed: "Mappa non disponibile",
       mapPan: 'Scorri la mappa in orizzontale per vedere tutti gli stati.', mapUnknown: 'Conteggi non disponibili',
+      severity: { extreme: 'Estrema', severe: 'Grave', moderate: 'Moderata', minor: 'Lieve' },
       cadence: 'Aggiornamento ogni 10 minuti mentre la pagina è visibile.'
     }
   };
@@ -109,7 +115,8 @@
       const zones = Array.isArray(p.geocode?.UGC) ? p.geocode.UGC : [];
       const states = [...new Set(zones.filter(code => typeof code === 'string' && /^[A-Z]{2}[CZ]\d{3}$/.test(code))
         .map(code => code.slice(0, 2)).filter(code => Object.hasOwn(areas, code)))];
-      entries.set(p.id, { id: p.id, sent, expires, states, event: p.event, area: p.areaDesc, issuer: p.senderName,
+      const severity = typeof p.severity === 'string' ? p.severity.trim().toLowerCase() : '';
+      entries.set(p.id, { severity: severityLevels.includes(severity) ? severity : '', id: p.id, sent, expires, states, event: p.event, area: p.areaDesc, issuer: p.senderName,
         headline: p.headline, description: p.description, instruction: p.instruction });
     }
     const allRows = Array.from(entries.values()).filter(row => !replaced.has(row.id)).sort((a, b) => b.sent - a.sent);
@@ -208,8 +215,15 @@
   }
 
   function rowHtml(row, t, clock) {
-    return '<details class="bulletin-row" data-id="' + esc(row.id) + '"><summary><span><strong>' + esc(row.event) +
-      '</strong><span class="bulletin-area">' + esc(row.area) + '</span></span><span class="bulletin-meta">' +
+    const severity = severityLevels.includes(row.severity) ? row.severity : '';
+    // Older published snapshots did not preserve CAP severity. Highlight their
+    // named bulletin type without presenting it as a reported severity.
+    const type = /\b(warning|watch|advisory|statement)\s*$/i.exec(row.event)?.[1].toLowerCase();
+    const accent = severity || ({ warning: 'severe', watch: 'moderate', advisory: 'minor', statement: 'minor' })[type] || 'unknown';
+    return '<details class="bulletin-row" data-accent="' + accent + '" data-id="' + esc(row.id) + '"><summary><span>' +
+      '<span class="bulletin-event"><strong>' + esc(row.event) + '</strong>' +
+      (severity ? '<span class="bulletin-severity">' + esc(t.severity[severity]) + '</span>' : '') +
+      '</span><span class="bulletin-area">' + esc(row.area) + '</span></span><span class="bulletin-meta">' +
       t.issued + ' · ' + clock(row.sent) + '</span></summary><div class="bulletin-detail">' +
       (row.headline ? '<p><strong>' + esc(row.headline) + '</strong></p>' : '') +
       (row.issuer ? '<p>' + t.issuer + ' · ' + esc(row.issuer) + '</p>' : '') +

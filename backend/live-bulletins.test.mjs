@@ -39,13 +39,19 @@ test('malformed responses produce an error, valid empty collections are accepted
 });
 
 test('NWS escapes upstream text and retains the official link', () => {
-  const input = feature('urn:oid:example', { description: '<b>Severe flooding</b>', instruction: 'Leave & seek help' });
+  const input = feature('urn:oid:example', { severity: 'Severe', description: '<b>Severe flooding</b>', instruction: 'Leave & seek help' });
   const row = bulletins.readFeed(collection([input]), now).rows[0];
   const html = bulletins.rowHtml(row, bulletins.messages.en, value => iso(value - now));
   assert.match(html, /&lt;b&gt;Severe flooding&lt;\/b&gt;/);
   assert.match(html, /Leave &amp; seek help/);
   assert.match(html, /https:\/\/api\.weather\.gov\/alerts\/urn%3Aoid%3Aexample/);
   assert.doesNotMatch(html, /<b>Severe flooding/);
+  assert.match(html, /data-accent="severe"/);
+  assert.match(html, /class="bulletin-severity">Severe</);
+  const olderRow = bulletins.readFeed(collection([feature('older', { event: 'Wind Advisory' })]), now).rows[0];
+  const olderHtml = bulletins.rowHtml(olderRow, bulletins.messages.en, value => iso(value - now));
+  assert.match(olderHtml, /data-accent="minor"/);
+  assert.doesNotMatch(olderHtml, /class="bulletin-severity"/);
 });
 
 test('every supported language supplies all feed controls and status text', () => {
@@ -86,11 +92,12 @@ test('collector validates all pages, preserves regional codes and accepts only N
   const { collectNws } = await import('./collect-nws.mjs');
   const page1 = collection([feature('tx')]);
   page1.pagination = { next: 'https://api.weather.gov/alerts/active?cursor=more' };
-  const page2 = collection([feature('fl', { geocode: { UGC: ['FLZ001'] }, unused: true })]);
+  const page2 = collection([feature('fl', { severity: 'Moderate', geocode: { UGC: ['FLZ001'] }, unused: true })]);
   const snapshot = await collectNws(async url => Response.json(url.includes('cursor=') ? page2 : page1), () => now);
   assert.equal(snapshot.checkedAt, iso(0));
   assert.deepEqual(snapshot.features.map(f => f.properties.id), ['tx', 'fl']);
   assert.equal(snapshot.features[1].properties.unused, undefined);
+  assert.equal(snapshot.features[1].properties.severity, 'Moderate');
   assert.deepEqual(bulletins.readFeed(snapshot, now, 'FL').rows.map(row => row.id), ['fl']);
   page1.pagination.next = 'https://example.org/alerts/active';
   await assert.rejects(collectNws(async () => Response.json(page1), () => now), /pagination/);
