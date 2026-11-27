@@ -175,13 +175,11 @@
 [data-theme="light"] .china-svg.is-nasa .ch-provinces { stroke: rgba(226, 251, 242, .7); }
 [data-theme="light"] .china-svg.is-nasa .ch-label { stroke-width: 3px; }
 
-[data-theme="light"] .global-map-wrap { background: #e5f0f4; border-color: #9ab6be; }
-[data-theme="light"] #gmapBase { opacity: .14; }
-[data-theme="light"] :is(#gmapHi, #gmapWms) { opacity: .42; }
-[data-theme="light"] .gcountry { fill: rgba(221, 235, 216, .82); stroke: #67837a; stroke-width: .75; }
-[data-theme="light"] .gcountry.hit { fill: rgba(246, 208, 170, .84); stroke: #a15d36; }
-[data-theme="light"] .gcountry:hover { fill: #bfded1; }
-[data-theme="light"] .gcountry.sel { fill: #b4d6cd; stroke: #195b4c; stroke-width: 1.3; }
+[data-theme="light"] .global-map-wrap { border-color: #9ab6be; }
+[data-theme="light"] .gcountry { fill: rgba(221, 235, 216, .10); stroke: #d8e8e0; stroke-opacity: .68; stroke-width: .75; }
+[data-theme="light"] .gcountry.hit { fill: rgba(246, 208, 170, .28); stroke: #ffd1a4; stroke-opacity: 1; }
+[data-theme="light"] .gcountry:hover { fill: rgba(191, 222, 209, .28); }
+[data-theme="light"] .gcountry.sel { fill: rgba(180, 214, 205, .23); stroke: #d9fff1; stroke-opacity: 1; stroke-width: 1.3; }
 [data-theme="light"] .glables text,
 [data-theme="light"] .gcity-label { fill: #233a35; opacity: 1; paint-order: stroke; stroke: #f5faf8; stroke-width: .28px; }
 [data-theme="light"] .gmarker .core { stroke: #fff; stroke-width: .9; }

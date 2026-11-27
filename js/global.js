@@ -120,23 +120,47 @@
           });
         }
         var geo = f.geometry;
-        if (geo.type === 'Polygon') {
-          geo.coordinates.forEach(scanRing);
-        } else if (geo.type === 'MultiPolygon') {
-          geo.coordinates.forEach(function (poly) { poly.forEach(scanRing); });
-        }
+        var polygons = geo.type === 'MultiPolygon' ? geo.coordinates : [geo.coordinates];
+        polygons.forEach(function (poly) { poly.forEach(scanRing); });
+        var bbox = { minLon: minLon, maxLon: maxLon, minLat: minLat, maxLat: maxLat };
+        // The basemap ends at ±180°. Frame the largest contiguous landmass
+        // when a country's polygons sit on both edges of the map.
+        var focusBounds = minLon <= -179.5 && maxLon >= 179.5 ? largestPolygonBounds(polygons) : bbox;
         paths.push({
           name: f.properties.name,
           iso: f.properties.iso2 || '',
           d: d,
-          polygons: geo.type === 'MultiPolygon' ? geo.coordinates : [geo.coordinates],
+          polygons: polygons,
           lon: n ? sx / n : 0,
           lat: n ? sy / n : 0,
-          bbox: { minLon: minLon, maxLon: maxLon, minLat: minLat, maxLat: maxLat }
+          bbox: bbox,
+          focusBounds: focusBounds
         });
       });
       cache.paths = paths;
     });
+  }
+  function largestPolygonBounds(polygons) {
+    var largest = null, largestArea = -1;
+    polygons.forEach(function (polygon) {
+      var ring = polygon[0];
+      if (!ring || ring.length < 3) return;
+      var area = 0;
+      var box = { minLon: 180, maxLon: -180, minLat: 90, maxLat: -90 };
+      ring.forEach(function (point, i) {
+        var next = ring[(i + 1) % ring.length];
+        area += point[0] * next[1] - next[0] * point[1];
+        box.minLon = Math.min(box.minLon, point[0]);
+        box.maxLon = Math.max(box.maxLon, point[0]);
+        box.minLat = Math.min(box.minLat, point[1]);
+        box.maxLat = Math.max(box.maxLat, point[1]);
+      });
+      if (Math.abs(area) > largestArea) {
+        largestArea = Math.abs(area);
+        largest = box;
+      }
+    });
+    return largest;
   }
   function historyDays() {
     if (state.historyRange === '3d') { return 3; }
@@ -651,7 +675,7 @@
   }
   function zoomToCountry(c) {
     if (!c || !c.bbox) { return; }
-    var b = c.bbox;
+    var b = c.focusBounds || c.bbox;
     var w = Math.max(0.5, (b.maxLon - b.minLon) / 360 * W);
     var h = Math.max(0.5, (b.maxLat - b.minLat) / 180 * H);
     var z = Math.max(1, Math.min(96, Math.min(W / w, H / h) * 0.78));
