@@ -1468,3 +1468,27 @@ dialog.db-modal-card::backdrop { background: transparent; }
   from { opacity: .86; transform: translateY(var(--reveal-offset, 5px)); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.pyro-controls {
+  display: grid;
+  grid-template-columns: repeat(3, 48px);
+  grid-template-areas: ". up ." "left down right";
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+.pyro-controls button {
+  min-height: 48px;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  background: var(--card-solid);
+  color: var(--text);
+  font: 700 1.4rem/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+.pyro-controls button:active { background: var(--card-hover); border-color: var(--holo); }
+.pyro-controls button:focus-visible { outline: 2px solid var(--holo); outline-offset: 2px; }
+.pyro-controls [data-pyro-move="up"] { grid-area: up; }
+.pyro-controls [data-pyro-move="left"] { grid-area: left; }
+.pyro-controls [data-pyro-move="down"] { grid-area: down; }
+.pyro-controls [data-pyro-move="right"] { grid-area: right; }

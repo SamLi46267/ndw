@@ -33,7 +33,7 @@
     renderer.toneMapping = THREE.LinearToneMapping;
     renderer.toneMappingExposure = 0.72;
     cv.style.display = 'none';
-    frameEl.appendChild(renderer.domElement);
+    cv.after(renderer.domElement);
     container = renderer.domElement;
     container.style.width = '100%';
     container.style.borderRadius = '10px';
@@ -899,7 +899,7 @@
       type: 'pyro', level: level, cfg: cfg,
       n: cfg.n, cell: CELL,
       grid: [], start: null, piles: [],
-      tank: null, moving: null,
+      tank: null, moving: null, queuedMove: null,
       userSteps: 0, visited: [],
       cleared: 0,
       timeLeft: cfg.time,
@@ -1304,8 +1304,13 @@
     return res;
   }
 
-  function tryMovePyro(S, dr, dc) {
+  var pyroMoves = { up: [-1, 0], down: [1, 0], left: [0, -1], right: [0, 1] };
+  var pyroKeys = { arrowup: 'up', w: 'up', arrowdown: 'down', s: 'down',
+    arrowleft: 'left', a: 'left', arrowright: 'right', d: 'right' };
+
+  function tryMovePyro(S, direction) {
     if (S.over || S.moving) { return; }
+    var [dr, dc] = pyroMoves[direction];
     var last = S.userPathCells[S.userPathCells.length - 1];
     var nr = last.r + dr, nc = last.c + dc;
     if (nr < 0 || nc < 0 || nr >= S.n || nc >= S.n) { return; }
@@ -1368,6 +1373,10 @@
         if (S.cleared >= S.piles.length) {
           S.over = true;
           showPyroWin(S);
+        } else if (S.queuedMove) {
+          var direction = S.queuedMove;
+          S.queuedMove = null;
+          tryMovePyro(S, direction);
         }
       }
     }
@@ -1419,9 +1428,18 @@
   }
 
   /* ---------------- 输入 ---------------- */
+  function onPyroControl(e) {
+    var button = e.target.closest('[data-pyro-move]');
+    if (!button || !running || state.type !== 'pyro' || state.over) return;
+    var direction = button.dataset.pyroMove;
+    if (!Object.hasOwn(pyroMoves, direction)) return;
+    if (state.moving) state.queuedMove = direction;
+    else tryMovePyro(state, direction);
+  }
+
   function onKey(e, down) {
     if (!running || !state) { return; }
-    if (down && e.target instanceof Element && e.target.closest('button, a, select, input, textarea, summary')) { return; }
+    if (down && e.target instanceof Element && e.target.closest('button:not([data-pyro-move]), a, select, input, textarea, summary')) { return; }
     var k = e.key;
     if (state.type === 'aqua') {
       if (e.key === 'a' || e.key === 'A' || k === 'ArrowLeft') { state.input.l = down; e.preventDefault(); }
@@ -1431,10 +1449,11 @@
       if (down && k === ' ') { fireAqua(state); e.preventDefault(); }
     } else if (state.type === 'pyro') {
       if (!down) { return; }
-      if (k === 'ArrowUp' || k === 'w' || k === 'W') { tryMovePyro(state, -1, 0); e.preventDefault(); }
-      if (k === 'ArrowDown' || k === 's' || k === 'S') { tryMovePyro(state, 1, 0); e.preventDefault(); }
-      if (k === 'ArrowLeft' || k === 'a' || k === 'A') { tryMovePyro(state, 0, -1); e.preventDefault(); }
-      if (k === 'ArrowRight' || k === 'd' || k === 'D') { tryMovePyro(state, 0, 1); e.preventDefault(); }
+      var key = k.toLowerCase();
+      if (Object.hasOwn(pyroKeys, key)) {
+        tryMovePyro(state, pyroKeys[key]);
+        e.preventDefault();
+      }
     }
   }
   function onKeyDn(e) { onKey(e, true); }
@@ -1501,6 +1520,7 @@
       setupRenderer(canvas);
       beginRun(type === 'aqua' ? initAqua : initPyro);
       running = true;
+      if (type === 'pyro') frameEl.addEventListener('click', onPyroControl);
       window.addEventListener('keydown', onKeyDn);
       window.addEventListener('keyup', onKeyUp);
       window.addEventListener('mousemove', onPointer);
@@ -1515,6 +1535,7 @@
       window.removeEventListener('keyup', onKeyUp);
       window.removeEventListener('mousemove', onPointer);
       window.removeEventListener('click', onPointer);
+      frameEl?.removeEventListener('click', onPyroControl);
       hidePanel();
       if (state && state.cubeRT) { try { state.cubeRT.dispose(); } catch (e) { /* ignore */ } }
       if (ENV_TEX) { try { ENV_TEX.dispose(); } catch (e) { /* ignore */ } ENV_TEX = null; }

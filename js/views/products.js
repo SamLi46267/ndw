@@ -71,6 +71,17 @@
       };
     }
 
+    function pyroControls(t) {
+      var labels = t.gamePyroControls;
+      var arrows = { up: '↑', left: '←', down: '↓', right: '→' };
+      return '<div class="pyro-controls" role="group" aria-label="' + esc(labels.label) + '">' +
+        Object.keys(arrows).map(function (direction) {
+          return '<button type="button" data-pyro-move="' + direction + '" aria-label="' +
+            esc(labels[direction]) + '">' + arrows[direction] + '</button>';
+        }).join('') +
+      '</div>';
+    }
+
     function renderGameView() {
       var t = T();
       var g = state.game;
@@ -83,8 +94,9 @@
             '<div class="game-title"><h1>' + esc(name) + '</h1><p>' + esc(how) + '</p></div>' +
             '<div class="game-hud" id="gameHUD"></div>' +
             '<canvas id="gameCanvas" class="game-canvas"></canvas>' +
+            (g === 'pyro' ? pyroControls(t) : '') +
             '<button class="game-help-btn" id="gameHelpBtn" type="button" aria-label="' + esc(how) + '">?</button>' +
-            '<div class="game-help-panel" id="gameHelpPanel">' +
+            '<div class="game-help-panel" id="gameHelpPanel"' + (g === 'pyro' ? ' hidden' : '') + '>' +
               '<button class="game-help-close" id="gameHelpClose" type="button" aria-label="' + esc(t.close) + '">×</button>' +
               '<div class="game-help-body">' + esc(how) + '</div>' +
             '</div>' +
