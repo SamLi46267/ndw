@@ -2597,9 +2597,25 @@
     target.scrollIntoView({ block: 'start' });
   }
 
+  var previousRoute;
+  var routeAnimation;
+  function animateRoute() {
+    if (!viewEl.animate || document.documentElement.classList.contains('reduce-motion') ||
+        !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+    var timing = { duration: 220, easing: 'cubic-bezier(.2, .65, .35, 1)' };
+    routeAnimation?.cancel();
+    routeAnimation = viewEl.animate([{ opacity: .92 }, { opacity: 1 }], timing);
+    viewEl.querySelector('h1')?.animate([
+      { transform: 'translateY(6px)' },
+      { transform: 'translateY(0)' }
+    ], timing);
+  }
+
   function route(preservePosition) {
     preservePosition = preservePosition === true;
     var raw = location.hash || '#/home';
+    var entering = raw !== previousRoute;
+    previousRoute = raw;
     var parts = raw.replace(/^#/, '').split('?');
     var path = parts[0] || '/home';
     var query = parseQuery(parts[1]);
@@ -2692,6 +2708,7 @@
     }
     renderFooter(['/china', '/map', '/detail', '/global', '/disasters', '/bulletins', '/bulletins/all'].includes(path));
     updateConnectionNotice();
+    if (entering && !preservePosition) animateRoute();
   }
 
   /* 保持滚动位置的重绘（答题/勾选时） */
