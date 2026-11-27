@@ -1384,3 +1384,6 @@ dialog.db-modal-card::backdrop { background: transparent; }
   font-size: .71rem;
   font-weight: 700;
 }
+
+.bulletin-view-all { margin-top: 10px; padding: 6px 12px; font-size: .8rem; }
+.bulletin-view-all[hidden] { display: none; }
