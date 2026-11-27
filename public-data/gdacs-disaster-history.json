@@ -1,11 +1,11 @@
 {
   "source": "GDACS",
-  "updatedAt": "2026-11-27T00:02:43.522Z",
+  "updatedAt": "2026-11-27T01:57:57.802Z",
   "range": [
     "2024-12-01",
     "2026-11-26"
   ],
-  "count": 4554,
+  "count": 4585,
   "features": [
     {
       "type": "Feature",
@@ -2584,7 +2584,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033943"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -3439,7 +3439,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -8855,7 +8855,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -19698,7 +19698,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -28308,7 +28308,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033910"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -34305,7 +34305,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -34389,7 +34389,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -34418,7 +34418,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -34447,7 +34447,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -36549,7 +36549,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -36691,7 +36691,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -40225,7 +40225,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -40652,7 +40652,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -40875,7 +40875,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -42336,7 +42336,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033862"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -45658,7 +45658,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033856"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -49053,7 +49053,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -51208,7 +51208,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033855"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -56678,7 +56678,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -57179,7 +57179,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -72185,7 +72185,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -72602,7 +72602,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034000"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -72972,7 +72972,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -73938,7 +73938,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034023"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -75171,7 +75171,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -75805,7 +75805,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -78187,7 +78187,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -80237,7 +80237,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033886"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -80493,7 +80493,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -83045,7 +83045,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -84836,7 +84836,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -86858,7 +86858,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -89673,7 +89673,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -90035,7 +90035,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -90423,7 +90423,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -90891,7 +90891,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033966"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -104670,7 +104670,7 @@
           "severityunit": ""
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -104962,45 +104962,19 @@
         "eventtype": "WF",
         "eventid": "1033952",
         "episodeid": "13",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in Australia",
-        "description": "Forest fires in Australia",
-        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 25 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033952"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
+        "name": "Green forest fire notification in Australia",
+        "description": "On 12/11/2026, a forest fire started in Australia,  until 19/11/2026.",
         "country": "Australia",
+        "alertlevel": "Green",
         "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
         "todate": "Wed, 25 Nov 2026 00:00:00 GMT",
         "datemodified": "Thu, 19 Nov 2026 00:12:30 GMT",
-        "iso3": "AUS",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "AU",
-            "iso3": "AUS",
-            "countryname": "Australia"
-          }
-        ],
-        "severitydata": {
-          "severity": 19027,
-          "severitytext": "Green impact for forestfire in 19027 ha",
-          "severityunit": "ha"
+        "iscurrent": true,
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033952"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -105072,45 +105046,19 @@
         "eventtype": "WF",
         "eventid": "1033989",
         "episodeid": "9",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in South Sudan",
-        "description": "Forest fires in South Sudan",
-        "htmldescription": "Green Forest fires in South Sudan from: 12 Nov 2026 to: 25 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033989"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
+        "name": "Green forest fire notification in South Sudan",
+        "description": "On 12/11/2026, a forest fire started in South Sudan,  until 20/11/2026.",
         "country": "South Sudan",
+        "alertlevel": "Green",
         "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
         "todate": "Wed, 25 Nov 2026 00:00:00 GMT",
         "datemodified": "Fri, 20 Nov 2026 20:18:20 GMT",
-        "iso3": "SSD",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "SS",
-            "iso3": "SSD",
-            "countryname": "South Sudan"
-          }
-        ],
-        "severitydata": {
-          "severity": 6959,
-          "severitytext": "Green impact for forestfire in 6959 ha",
-          "severityunit": "ha"
+        "iscurrent": true,
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033989"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -105237,45 +105185,19 @@
         "eventtype": "WF",
         "eventid": "1033954",
         "episodeid": "14",
-        "eventname": "",
-        "glide": "",
-        "name": "Forest fires in South Sudan",
-        "description": "Forest fires in South Sudan",
-        "htmldescription": "Green Forest fires in South Sudan from: 12 Nov 2026 to: 25 Nov 2026.",
-        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
-        "url": {
-          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033954"
-        },
-        "alertlevel": "Green",
-        "alertscore": 1,
-        "episodealertlevel": "Green",
-        "episodealertscore": 0.5,
-        "istemporary": "false",
-        "iscurrent": true,
+        "name": "Green forest fire notification in South Sudan",
+        "description": "On 12/11/2026, a forest fire started in South Sudan,  until 25/11/2026.",
         "country": "South Sudan",
+        "alertlevel": "Green",
         "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
         "todate": "Wed, 25 Nov 2026 00:00:00 GMT",
         "datemodified": "Thu, 19 Nov 2026 12:14:51 GMT",
-        "iso3": "SSD",
-        "source": "GWIS",
-        "sourceid": "",
-        "polygonlabel": "Centroid",
-        "Class": "Point_Centroid",
-        "affectedcountries": [
-          {
-            "iso2": "SS",
-            "iso3": "SSD",
-            "countryname": "South Sudan"
-          }
-        ],
-        "severitydata": {
-          "severity": 9147,
-          "severitytext": "Green impact for forestfire in 9147 ha",
-          "severityunit": "ha"
+        "iscurrent": true,
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033954"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -105610,7 +105532,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -105720,7 +105642,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -106055,7 +105977,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -106385,7 +106307,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -106840,7 +106762,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -106924,7 +106846,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033979"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -107319,7 +107241,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -107458,7 +107380,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034001"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -107518,7 +107440,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -107803,7 +107725,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -107887,7 +107809,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034040"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -107910,13 +107832,13 @@
         "alertlevel": "Green",
         "fromdate": "Thu, 19 Nov 2026 00:00:00 GMT",
         "todate": "Tue, 24 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 26 Nov 2026 20:08:17 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:06:06 GMT",
         "iscurrent": true,
         "url": {
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034057"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -108246,7 +108168,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -108301,7 +108223,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -108411,7 +108333,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -108466,7 +108388,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -108560,7 +108482,7 @@
         "country": "Bolivia, Brazil",
         "fromdate": "Sat, 21 Nov 2026 00:00:00 GMT",
         "todate": "Wed, 25 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 26 Nov 2026 20:03:33 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:03:42 GMT",
         "iso3": "BOL",
         "source": "GWIS",
         "sourceid": "",
@@ -108584,7 +108506,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -108671,7 +108593,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034039"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -108787,7 +108709,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034027"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -110194,7 +110116,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034055"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -110223,7 +110145,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033970"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -110252,7 +110174,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034056"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -110891,7 +110813,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104299"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -110920,7 +110842,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001352"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -111010,7 +110932,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104298"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -111039,7 +110961,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104295"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -242814,7 +242736,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -242868,7 +242790,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -242978,7 +242900,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243033,7 +242955,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243143,7 +243065,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243198,7 +243120,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243253,7 +243175,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243344,7 +243266,7 @@
         "country": "Australia",
         "fromdate": "Sun, 22 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 26 Nov 2026 20:03:14 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:02:47 GMT",
         "iso3": "AUS",
         "source": "GWIS",
         "sourceid": "",
@@ -243363,7 +243285,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243421,7 +243343,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104253"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243450,7 +243372,7 @@
           "report": "http://www.gdacs.org/report.aspx?eventtype=FL&eventid=1104216"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243480,7 +243402,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -243534,7 +243456,7 @@
           "severityunit": ""
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243589,7 +243511,7 @@
           "severityunit": ""
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243644,7 +243566,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243699,7 +243621,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243754,7 +243676,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -243865,7 +243787,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -243920,7 +243842,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -243975,7 +243897,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -244140,7 +244062,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -244194,7 +244116,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -244230,7 +244152,7 @@
         "country": "Australia",
         "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 26 Nov 2026 20:20:01 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:34:21 GMT",
         "iso3": "AUS",
         "source": "GWIS",
         "sourceid": "",
@@ -244249,7 +244171,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -244360,7 +244282,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -244415,7 +244337,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -244470,7 +244392,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -244579,7 +244501,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -244690,7 +244612,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -244860,7 +244782,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -244970,7 +244892,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -245025,7 +244947,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -245080,7 +245002,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -245139,7 +245061,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -245359,7 +245281,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -245415,7 +245337,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -245524,7 +245446,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -245580,7 +245502,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -245634,7 +245556,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -245694,7 +245616,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -245749,7 +245671,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -245805,7 +245727,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -245864,7 +245786,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -245920,7 +245842,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -245955,7 +245877,7 @@
         "country": "South Sudan",
         "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 26 Nov 2026 20:18:53 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:33:14 GMT",
         "iso3": "SSD",
         "source": "GWIS",
         "sourceid": "",
@@ -245974,7 +245896,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246030,7 +245952,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -246089,7 +246011,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246145,7 +246067,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -246200,7 +246122,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -246235,7 +246157,7 @@
         "country": "South Sudan, Sudan",
         "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 26 Nov 2026 20:16:02 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:13:05 GMT",
         "iso3": "SSD",
         "source": "GWIS",
         "sourceid": "",
@@ -246259,7 +246181,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246315,7 +246237,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -246374,7 +246296,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246434,7 +246356,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246489,7 +246411,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246544,7 +246466,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246599,7 +246521,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246659,7 +246581,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246715,7 +246637,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -246769,7 +246691,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246824,7 +246746,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246879,7 +246801,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246934,7 +246856,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -246989,7 +246911,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247054,7 +246976,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247109,7 +247031,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247165,7 +247087,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -247200,7 +247122,7 @@
         "country": "South Sudan",
         "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 26 Nov 2026 20:09:05 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:08:16 GMT",
         "iso3": "SSD",
         "source": "GWIS",
         "sourceid": "",
@@ -247219,7 +247141,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247275,7 +247197,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -247329,7 +247251,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247384,7 +247306,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247439,7 +247361,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247494,7 +247416,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247549,7 +247471,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247605,7 +247527,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -247659,7 +247581,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247715,7 +247637,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -247770,7 +247692,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -247824,7 +247746,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -247884,29 +247806,23 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
     {
       "type": "Feature",
-      "bbox": [
-        26.9139,
-        7.4639,
-        26.9139,
-        7.4639
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
-          26.9139,
-          7.4639
+          26.913887993251286,
+          7.463930157308441
         ]
       },
       "properties": {
         "eventtype": "WF",
-        "eventid": 1034098,
-        "episodeid": 2,
+        "eventid": "1034098",
+        "episodeid": "2",
         "eventname": "",
         "glide": "",
         "name": "Forest fires in South Sudan",
@@ -247915,20 +247831,18 @@
         "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
         "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
         "url": {
-          "geometry": "https://www.gdacs.org/gdacsapi/api/polygons/getgeometry?eventtype=WF&eventid=1034098&episodeid=2",
-          "report": "https://www.gdacs.org/report.aspx?eventid=1034098&episodeid=2&eventtype=WF",
-          "details": "https://www.gdacs.org/gdacsapi/api/events/geteventdata?eventtype=WF&eventid=1034098"
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034098"
         },
         "alertlevel": "Green",
         "alertscore": 1,
         "episodealertlevel": "Green",
         "episodealertscore": 0.5,
         "istemporary": "false",
-        "iscurrent": "true",
+        "iscurrent": true,
         "country": "South Sudan",
-        "fromdate": "2026-11-23T00:00:00",
-        "todate": "2026-11-26T00:00:00",
-        "datemodified": "2026-11-27T00:02:11",
+        "fromdate": "Mon, 23 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 20:02:17 GMT",
         "iso3": "SSD",
         "source": "GWIS",
         "sourceid": "",
@@ -247946,7 +247860,9 @@
           "severitytext": "Green impact for forestfire in 6973 ha",
           "severityunit": "ha"
         },
-        "_active": false
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
       }
     },
     {
@@ -247981,7 +247897,7 @@
         "country": "South Sudan",
         "fromdate": "Mon, 23 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 26 Nov 2026 20:02:37 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:02:18 GMT",
         "iso3": "SSD",
         "source": "GWIS",
         "sourceid": "",
@@ -248000,7 +247916,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -248055,29 +247971,23 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
     {
       "type": "Feature",
-      "bbox": [
-        0.1092,
-        15.8052,
-        0.1092,
-        15.8052
-      ],
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0.1092,
-          15.8052
+          0.10924957286562519,
+          15.805223059250535
         ]
       },
       "properties": {
         "eventtype": "WF",
-        "eventid": 1034096,
-        "episodeid": 2,
+        "eventid": "1034096",
+        "episodeid": "2",
         "eventname": "",
         "glide": "",
         "name": "Forest fires in Mali",
@@ -248086,20 +247996,18 @@
         "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
         "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
         "url": {
-          "geometry": "https://www.gdacs.org/gdacsapi/api/polygons/getgeometry?eventtype=WF&eventid=1034096&episodeid=2",
-          "report": "https://www.gdacs.org/report.aspx?eventid=1034096&episodeid=2&eventtype=WF",
-          "details": "https://www.gdacs.org/gdacsapi/api/events/geteventdata?eventtype=WF&eventid=1034096"
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034096"
         },
         "alertlevel": "Green",
         "alertscore": 1,
         "episodealertlevel": "Green",
         "episodealertscore": 0.5,
         "istemporary": "false",
-        "iscurrent": "true",
+        "iscurrent": true,
         "country": "Mali",
-        "fromdate": "2026-11-24T00:00:00",
-        "todate": "2026-11-26T00:00:00",
-        "datemodified": "2026-11-27T00:01:30",
+        "fromdate": "Tue, 24 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 20:01:17 GMT",
         "iso3": "MLI",
         "source": "GWIS",
         "sourceid": "",
@@ -248117,7 +248025,9 @@
           "severitytext": "Green impact for forestfire in 5378 ha",
           "severityunit": "ha"
         },
-        "_active": false
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
       }
     },
     {
@@ -248152,7 +248062,7 @@
         "country": "South Sudan",
         "fromdate": "Tue, 24 Nov 2026 00:00:00 GMT",
         "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
-        "datemodified": "Thu, 26 Nov 2026 20:01:32 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:01:20 GMT",
         "iso3": "SSD",
         "source": "GWIS",
         "sourceid": "",
@@ -248171,7 +248081,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -248227,7 +248137,7 @@
         },
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
-        "_active": true
+        "_active": false
       }
     },
     {
@@ -248286,7 +248196,7 @@
           "severityunit": "ha"
         },
         "_currentFeed": true,
-        "_verifiedAt": "2026-11-27T00:02:43.522Z",
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
         "_active": true
       }
     },
@@ -248346,6 +248256,1711 @@
         "_currentFeed": true,
         "_verifiedAt": "2026-11-27T00:02:43.522Z",
         "_active": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.12665304962768,
+          -16.43768072625409
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033911",
+        "episodeid": "32",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 12 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033911"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Tue, 17 Nov 2026 16:07:11 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 50309,
+          "severitytext": "Green impact for forestfire in 50309 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -53.04997608282841,
+          -2.8451482385525733
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034071",
+        "episodeid": "5",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 12 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034071"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 25 Nov 2026 20:19:20 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 7340,
+          "severitytext": "Green impact for forestfire in 7340 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -53.83271774487575,
+          -2.3918618028461265
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034086",
+        "episodeid": "4",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 12 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034086"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 00:22:27 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 5349,
+          "severitytext": "Green impact for forestfire in 5349 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.894153743193776,
+          -3.144300778020338
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034087",
+        "episodeid": "4",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 12 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034087"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Thu, 12 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 00:22:46 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 5760,
+          "severitytext": "Green impact for forestfire in 5760 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.16804684617115,
+          -17.22680046137538
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033825",
+        "episodeid": "30",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 13 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033825"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sat, 14 Nov 2026 08:02:15 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 15761,
+          "severitytext": "Green impact for forestfire in 15761 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.74808602875198,
+          -16.939032356116055
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034032",
+        "episodeid": "10",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 13 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034032"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Tue, 24 Nov 2026 08:13:51 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 8451,
+          "severitytext": "Green impact for forestfire in 8451 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -51.72600659433418,
+          -0.9436071889775318
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034060",
+        "episodeid": "8",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 13 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034060"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Fri, 13 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 25 Nov 2026 00:13:41 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 6312,
+          "severitytext": "Green impact for forestfire in 6312 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.28967960710162,
+          -19.1403311867989
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033859",
+        "episodeid": "37",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 14 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033859"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Sun, 15 Nov 2026 12:01:19 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 58893,
+          "severitytext": "Green impact for forestfire in 58893 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -53.831160519720484,
+          -1.2282634155244152
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034026",
+        "episodeid": "12",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 14 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034026"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Mon, 23 Nov 2026 08:08:10 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 8683,
+          "severitytext": "Green impact for forestfire in 8683 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.03863215636764,
+          -1.152977124299726
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034069",
+        "episodeid": "6",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 14 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034069"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 25 Nov 2026 12:12:01 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 5502,
+          "severitytext": "Green impact for forestfire in 5502 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.07158514775301,
+          -1.3148993516957463
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034106",
+        "episodeid": "1",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 14 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034106"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Sat, 14 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:27:39 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 5265,
+          "severitytext": "Green impact for forestfire in 5265 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.48855019281152,
+          -17.18855801371302
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033937",
+        "episodeid": "25",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 15 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033937"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 18 Nov 2026 08:05:13 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 29099,
+          "severitytext": "Green impact for forestfire in 29099 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.86348087690172,
+          -14.556009916881614
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033951",
+        "episodeid": "24",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 15 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033951"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 19 Nov 2026 00:04:38 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 24656,
+          "severitytext": "Green impact for forestfire in 24656 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.43488538744059,
+          -18.342544835980416
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034054",
+        "episodeid": "7",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 15 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034054"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 25 Nov 2026 08:08:25 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 6383,
+          "severitytext": "Green impact for forestfire in 6383 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.335847017437125,
+          -3.524379429902798
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034068",
+        "episodeid": "5",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 15 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034068"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Sun, 15 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 25 Nov 2026 20:10:47 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 5735,
+          "severitytext": "Green impact for forestfire in 5735 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.66925044331073,
+          -18.812587752088508
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1033906",
+        "episodeid": "26",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 16 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1033906"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Tue, 17 Nov 2026 16:01:25 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 11111,
+          "severitytext": "Green impact for forestfire in 11111 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.50680992119012,
+          8.128580622389244
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034076",
+        "episodeid": "4",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Sudan",
+        "description": "Forest fires in South Sudan",
+        "htmldescription": "Green Forest fires in South Sudan from: 16 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034076"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Sudan",
+        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 00:10:38 GMT",
+        "iso3": "SSD",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "SS",
+            "iso3": "SSD",
+            "countryname": "South Sudan"
+          }
+        ],
+        "severitydata": {
+          "severity": 6227,
+          "severitytext": "Green impact for forestfire in 6227 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.35078735696901,
+          -3.0887444228995826
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034090",
+        "episodeid": "3",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 16 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034090"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Mon, 16 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 08:08:08 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 5129,
+          "severitytext": "Green impact for forestfire in 5129 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -51.77137837159377,
+          -1.234971146722822
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034021",
+        "episodeid": "14",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 17 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034021"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Mon, 23 Nov 2026 00:03:45 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 6688,
+          "severitytext": "Green impact for forestfire in 6688 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -51.63041431941693,
+          -0.37320166686313694
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034050",
+        "episodeid": "9",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 17 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034050"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Tue, 24 Nov 2026 08:05:56 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 7392,
+          "severitytext": "Green impact for forestfire in 7392 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -50.59315357669084,
+          1.6828223384296692
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034084",
+        "episodeid": "4",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 17 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034084"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 00:07:46 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 6476,
+          "severitytext": "Green impact for forestfire in 6476 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.09602290054792,
+          -19.29848911840424
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034105",
+        "episodeid": "1",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 17 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034105"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Tue, 17 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:08:41 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 5201,
+          "severitytext": "Green impact for forestfire in 5201 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.12012250150084,
+          -16.412281449872882
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034067",
+        "episodeid": "6",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 18 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034067"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Wed, 18 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 25 Nov 2026 16:04:21 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 9390,
+          "severitytext": "Green impact for forestfire in 9390 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.98212277154548,
+          8.742761921902524
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034042",
+        "episodeid": "8",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Sudan",
+        "description": "Forest fires in South Sudan",
+        "htmldescription": "Green Forest fires in South Sudan from: 19 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034042"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Sudan",
+        "fromdate": "Thu, 19 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Tue, 24 Nov 2026 08:03:39 GMT",
+        "iso3": "SSD",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "SS",
+            "iso3": "SSD",
+            "countryname": "South Sudan"
+          }
+        ],
+        "severitydata": {
+          "severity": 7246,
+          "severitytext": "Green impact for forestfire in 7246 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -55.06068161851882,
+          -1.6692602175207034
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034089",
+        "episodeid": "3",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Brazil",
+        "description": "Forest fires in Brazil",
+        "htmldescription": "Green Forest fires in Brazil from: 19 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034089"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Brazil",
+        "fromdate": "Thu, 19 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 08:03:55 GMT",
+        "iso3": "BRA",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "BR",
+            "iso3": "BRA",
+            "countryname": "Brazil"
+          }
+        ],
+        "severitydata": {
+          "severity": 7291,
+          "severitytext": "Green impact for forestfire in 7291 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.38853550905552,
+          -8.21377084888277
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034104",
+        "episodeid": "1",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Papua New Guinea",
+        "description": "Forest fires in Papua New Guinea",
+        "htmldescription": "Green Forest fires in Papua New Guinea from: 19 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034104"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Papua New Guinea",
+        "fromdate": "Thu, 19 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Fri, 27 Nov 2026 00:05:58 GMT",
+        "iso3": "PNG",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "PG",
+            "iso3": "PNG",
+            "countryname": "Papua New Guinea"
+          }
+        ],
+        "severitydata": {
+          "severity": 7215,
+          "severitytext": "Green impact for forestfire in 7215 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.5294142899631,
+          -17.748402871624496
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034061",
+        "episodeid": "9",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 21 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034061"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sat, 21 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Wed, 25 Nov 2026 08:02:11 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 14716,
+          "severitytext": "Green impact for forestfire in 14716 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.14646781757683,
+          -14.40614362014024
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034081",
+        "episodeid": "3",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 21 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034081"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sat, 21 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 08:02:36 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 6074,
+          "severitytext": "Green impact for forestfire in 6074 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.535175367241205,
+          -34.197153737071204
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034088",
+        "episodeid": "3",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in South Africa",
+        "description": "Forest fires in South Africa",
+        "htmldescription": "Green Forest fires in South Africa from: 21 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034088"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "South Africa",
+        "fromdate": "Sat, 21 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 16:05:56 GMT",
+        "iso3": "ZAF",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "ZA",
+            "iso3": "ZAF",
+            "countryname": "South Africa"
+          }
+        ],
+        "severitydata": {
+          "severity": 5661,
+          "severitytext": "Green impact for forestfire in 5661 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.600675875870156,
+          9.1267664754139
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034100",
+        "episodeid": "2",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Central African Republic",
+        "description": "Forest fires in Central African Republic",
+        "htmldescription": "Green Forest fires in Central African Republic from: 21 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034100"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Central African Republic",
+        "fromdate": "Sat, 21 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 20:04:48 GMT",
+        "iso3": "CAF",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "CF",
+            "iso3": "CAF",
+            "countryname": "Central African Republic"
+          }
+        ],
+        "severitydata": {
+          "severity": 6476,
+          "severitytext": "Green impact for forestfire in 6476 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.74310954235267,
+          -16.727624035895193
+        ]
+      },
+      "properties": {
+        "eventtype": "WF",
+        "eventid": "1034092",
+        "episodeid": "3",
+        "eventname": "",
+        "glide": "",
+        "name": "Forest fires in Australia",
+        "description": "Forest fires in Australia",
+        "htmldescription": "Green Forest fires in Australia from: 22 Nov 2026 to: 26 Nov 2026.",
+        "icon": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "iconoverall": "https://www.gdacs.org/images/gdacs_icons/maps/Green/WF.png",
+        "url": {
+          "report": "http://www.gdacs.org/report.aspx?eventtype=WF&eventid=1034092"
+        },
+        "alertlevel": "Green",
+        "alertscore": 1,
+        "episodealertlevel": "Green",
+        "episodealertscore": 0.5,
+        "istemporary": "false",
+        "iscurrent": true,
+        "country": "Australia",
+        "fromdate": "Sun, 22 Nov 2026 00:00:00 GMT",
+        "todate": "Thu, 26 Nov 2026 00:00:00 GMT",
+        "datemodified": "Thu, 26 Nov 2026 16:05:18 GMT",
+        "iso3": "AUS",
+        "source": "GWIS",
+        "sourceid": "",
+        "polygonlabel": "Centroid",
+        "Class": "Point_Centroid",
+        "affectedcountries": [
+          {
+            "iso2": "AU",
+            "iso3": "AUS",
+            "countryname": "Australia"
+          }
+        ],
+        "severitydata": {
+          "severity": 5658,
+          "severitytext": "Green impact for forestfire in 5658 ha",
+          "severityunit": "ha"
+        },
+        "_currentFeed": true,
+        "_verifiedAt": "2026-11-27T01:57:57.802Z",
+        "_active": true
       }
     }
   ],
