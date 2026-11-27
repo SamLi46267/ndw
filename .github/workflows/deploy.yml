@@ -116,7 +116,7 @@ jobs:
         with:
           path: ${{ runner.temp }}/ndw-public
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: ./.github/actions/deploy-pages
       - name: Verify published warning data
         if: github.event_name != 'push' || steps.recover-china.outputs.published == 'true'
         run: node backend/check-published.mjs "$DEPLOYMENT_URL"

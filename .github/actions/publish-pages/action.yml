@@ -14,4 +14,4 @@ runs:
     - uses: actions/upload-pages-artifact@v5
       with:
         path: ${{ runner.temp }}/ndw-public
-    - uses: actions/deploy-pages@v5
+    - uses: ./.github/actions/deploy-pages
