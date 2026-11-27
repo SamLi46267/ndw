@@ -26,7 +26,6 @@
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     var resizeObserver = window.ResizeObserver ? new ResizeObserver(resize) : null;
     var observedContainer = null;
-    var lightTheme = false;
 
     /* 颜色 */
     var darkPalette = {
@@ -106,10 +105,7 @@
           x: Math.cos(phi) * Math.sin(lam),
           y: -Math.sin(phi),
           z: Math.cos(phi) * Math.cos(lam),
-          color: c.color,
-          level: c.level || '',
-          label: c.label || '',
-          adcode: c.adcode || ''
+          color: c.color
         };
       });
     }
@@ -157,8 +153,7 @@
 
     function resize() {
       var container = cv.closest('.hero');
-      lightTheme = document.documentElement.dataset.theme === 'light';
-      COL = lightTheme ? lightPalette : darkPalette;
+      COL = document.documentElement.dataset.theme === 'light' ? lightPalette : darkPalette;
       if (resizeObserver && container !== observedContainer) {
         resizeObserver.disconnect();
         if (container) { resizeObserver.observe(container); }
@@ -178,21 +173,6 @@
         cx = W * .85;
         cy = H * .4;
         R = Math.min(H * .4, W * .64) * zoom;
-      }
-      if (lightTheme && !container) {
-        var nav = document.querySelector('#navbar .navbar');
-        var sidebar = window.matchMedia('(min-width: 981px)').matches;
-        var margin = W < 900 ? 20 : 28;
-        var left = margin + (sidebar && nav ? nav.offsetWidth : 0);
-        var top = margin + (!sidebar && nav ? nav.offsetHeight : 0);
-        var right = W - margin;
-        var bottom = H - margin;
-
-        // Leave room for the globe above its decorative ground rings.
-        var fitRadius = Math.min((right - left) / 2, (bottom - top) / 2.25);
-        R = Math.max(1, Math.min(R, fitRadius));
-        cx = Math.max(left + R, Math.min(cx, right - R));
-        cy = Math.max(top + R, Math.min(cy, bottom - 1.25 * R));
       }
       dirty = true;
     }
@@ -408,34 +388,6 @@
       }
     }
 
-    function drawLightLabel(label, point, boxes) {
-      ctx.font = '600 12px system-ui, sans-serif';
-      var maxWidth = Math.min(210, W - 16);
-      if (maxWidth < 32) { return; }
-      if (ctx.measureText(label).width > maxWidth) {
-        var chars = Array.from(label);
-        do {
-          chars.pop();
-          label = chars.join('') + '…';
-        } while (chars.length && ctx.measureText(label).width > maxWidth);
-      }
-      var width = ctx.measureText(label).width + 4;
-      var x = Math.max(4, Math.min(point.sx + 8, W - width - 6));
-      var y = Math.max(15, Math.min(point.sy - 9, H - 4));
-      var box = { left: x, right: x + width, top: y - 13, bottom: y + 3 };
-      if (boxes.some(function (other) {
-        return box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top;
-      })) { return; }
-      ctx.globalAlpha = 1;
-      ctx.lineWidth = 3;
-      ctx.lineJoin = 'round';
-      ctx.strokeStyle = '#f4faf6';
-      ctx.strokeText(label, x, y);
-      ctx.fillStyle = '#203e35';
-      ctx.fillText(label, x, y);
-      boxes.push(box);
-    }
-
     function drawGlobe() {
       ctx.clearRect(0, 0, W, H);
       var time = reducedMotion.matches || paused || document.documentElement.classList.contains('reduce-motion') ? 0 : Date.now() / 1000;
@@ -490,8 +442,6 @@
       drawDisasters(time);
 
       /* 城市脉冲 */
-      var labels = 0;
-      var labelBoxes = [];
       cities.forEach(function (c) {
         var pp = project(c.x, c.y, c.z);
         if (pp.depth < 0.05) { return; }
@@ -500,7 +450,7 @@
         var rr2 = 3.5 + pulse * 3.5;
         ctx.save();
         ctx.globalAlpha = 0.55 + front * 0.45;
-        ctx.strokeStyle = lightTheme ? '#3d5c52' : (c.color || COL.cityBase);
+        ctx.strokeStyle = c.color || COL.cityBase;
         ctx.lineWidth = 1.2;
         ctx.beginPath();
         ctx.arc(pp.sx, pp.sy, rr2, 0, Math.PI * 2);
@@ -509,17 +459,6 @@
         ctx.beginPath();
         ctx.arc(pp.sx, pp.sy, 2.6 + front * 1.6, 0, Math.PI * 2);
         ctx.fill();
-        if (lightTheme) { ctx.stroke(); }
-        if (c.label && pp.depth > .35) {
-          if (lightTheme && labelBoxes.length < 10) {
-            drawLightLabel(c.label, pp, labelBoxes);
-          } else if (!lightTheme && labels < 10) {
-            ctx.font = '11px system-ui, sans-serif';
-            ctx.fillStyle = '#e5f3ec';
-            ctx.fillText(c.label.length > 36 ? c.label.slice(0, 35) + '…' : c.label, pp.sx + 9, pp.sy - 8);
-            labels++;
-          }
-        }
         ctx.restore();
       });
 

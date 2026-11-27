@@ -787,7 +787,7 @@
     renderGlobalInto(viewEl, false);
   }
 
-  var globe, globeLoadedAt = 0, globeLanguage;
+  var globe, globeLoadedAt = 0;
   function renderMainGlobe() {
     var canvas = document.getElementById('bgGlobe');
     if (!globe) {
@@ -796,10 +796,8 @@
     }
     globe.resize();
 
-    var l = lang();
     var now = Date.now();
-    if (globeLanguage === l && now - globeLoadedAt < 60000) return;
-    globeLanguage = l;
+    if (now - globeLoadedAt < 60000) return;
     globeLoadedAt = now;
     var requestedAt = now;
     Promise.all(['gdacs-events', 'global-earthquakes', 'warnings'].map(function (name) {
@@ -807,7 +805,7 @@
         .then(function (response) { return response.ok ? response.json() : null; })
         .catch(function () { return null; });
     })).then(function (snapshots) {
-      if (globeLoadedAt !== requestedAt || globeLanguage !== l) return;
+      if (globeLoadedAt !== requestedAt) return;
       var now = Date.now();
       var hazards = [];
       var gdacs = snapshots[0];
@@ -818,17 +816,16 @@
         if (!coords || !Number.isFinite(coords[0]) || !Number.isFinite(coords[1]) || !GdacsStatus.active(p, now)) continue;
         var fresh = GdacsStatus.fresh(p, now);
         hazards.push({
-          lng: coords[0], lat: coords[1], type: types[p.eventtype], level: 'normal',
-          color: !fresh ? '#a4b6bc' : p.alertlevel === 'Red' ? '#ff5252' : p.alertlevel === 'Orange' ? '#ff9a3c' : '#43e8a0',
-          label: (p.name || p.description || '') + (fresh ? '' : window.NDLocale.phrase(' · 上次报告', ' · Last reported', l))
+          lng: coords[0], lat: coords[1], type: types[p.eventtype],
+          color: !fresh ? '#a4b6bc' : p.alertlevel === 'Red' ? '#ff5252' : p.alertlevel === 'Orange' ? '#ff9a3c' : '#43e8a0'
         });
       }
       var earthquakeData = snapshots[1];
       if (GdacsStatus.quakeSnapshotFresh(earthquakeData, now)) {
         for (var q of GdacsStatus.recentQuakes(earthquakeData, now)) {
           hazards.push({
-            lng: q.longitude, lat: q.latitude, type: 'quake', level: 'normal',
-            color: window.NDCore.magnitudeColor(q.magnitude), label: 'M' + q.magnitude + ' · ' + q.place
+            lng: q.longitude, lat: q.latitude, type: 'quake',
+            color: window.NDCore.magnitudeColor(q.magnitude)
           });
         }
       }
@@ -851,8 +848,7 @@
           });
           if (active) {
             cityMarkers.push({
-              lng: city.lng, lat: city.lat, level: 'normal', color: (alert.Color && alert.Color.Hex) || '#ffb020',
-              label: i18n.placeName(city.name, l) + ' · ' + ((l === 'zh' ? description.Localized : description.English) || i18n.disasterName(alert.Type, l))
+              lng: city.lng, lat: city.lat, color: (alert.Color && alert.Color.Hex) || '#ffb020'
             });
           }
         }

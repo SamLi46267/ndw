@@ -60,7 +60,6 @@
 [data-theme="light"] .main-landing {
   background: linear-gradient(180deg, rgba(244, 246, 242, .04), rgba(244, 246, 242, .24) 58%, var(--bg) 100%);
 }
-[data-theme="light"] body.main-page .bg-globe { opacity: .94; }
 [data-theme="light"] .main-copy {
   text-shadow: 0 0 6px var(--bg), 0 0 12px var(--bg), 0 0 18px var(--bg);
 }
