@@ -2592,7 +2592,8 @@
     var query = parseQuery(parts[1]);
     if (window.NDLiveBulletins) { window.NDLiveBulletins.unmount(); }
     window.scrollTo(0, 0);
-    renderNav((path === '/map' || path === '/detail') ? '/china' : path === '/disasters' ? '/global' : path);
+    renderNav((path === '/map' || path === '/detail') ? '/china' :
+      path === '/disasters' ? '/global' : path === '/bulletins/all' ? '/bulletins' : path);
     document.body.classList.toggle('main-page', path === '/home');
     closeDrawer();
     clearInterval(countdownTimer);
@@ -2616,9 +2617,12 @@
         if (!preservePosition && query.section === 'alerts') { focusDetails('#localHeading'); }
         break;
       case '/bulletins':
-        viewEl.innerHTML = '<div class="bulletins-page">' + window.NDLiveBulletins.render(lang()) + '</div>';
+      case '/bulletins/all':
+        var allBulletins = path === '/bulletins/all';
+        viewEl.innerHTML = '<div class="bulletins-page">' + window.NDLiveBulletins.render(lang(), allBulletins) + '</div>';
         window.NDLiveBulletins.mount(viewEl, lang());
-        document.title = web('bulletinsNav');
+        document.title = allBulletins ? viewEl.querySelector('h1').textContent : web('bulletinsNav');
+        if (allBulletins && !preservePosition) focusDetails('.bulletin-head h1');
         break;
       case '/sources':
         viewEl.innerHTML = '<div class="sources-page"><div class="container">' + window.NDSourceGuide.render(lang()) + '</div></div>';

@@ -1386,4 +1386,6 @@ dialog.db-modal-card::backdrop { background: transparent; }
 }
 
 .bulletin-view-all { margin-top: 10px; padding: 6px 12px; font-size: .8rem; }
-.bulletin-view-all[hidden] { display: none; }
+.bulletin-list-page { max-width: 1060px; }
+.bulletin-list-page .bulletin-head { margin-top: 18px; }
+.bulletin-list-page .bulletin-list { margin-top: 12px; }

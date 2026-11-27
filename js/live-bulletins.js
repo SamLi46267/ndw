@@ -25,7 +25,7 @@
   const messages = {
     en: {
       title: 'U.S. weather alerts', lead: 'Read original National Weather Service bulletins for covered land and marine areas. Messages are sorted newest first. Filter by state or territory for local coverage.',
-      viewAll: 'View all U.S. alerts', viewLess: 'Show fewer alerts',
+      viewAll: 'View all U.S. alerts', allTitle: 'All U.S. weather alerts', backToMap: 'U.S. alert map',
       filter: 'State or territory', all: 'All covered areas', refresh: 'Refresh', map: 'Official NWS map',
       loading: 'Checking the NWS feed…', failed: 'The NWS feed is unavailable. Check the official map for current warnings.',
       empty: 'No qualifying unexpired messages in this response.', issued: 'Issued', expires: 'Message expires', issuer: 'Issued by',
@@ -38,7 +38,7 @@
     },
     zh: {
       title: '美国天气预警', lead: '查阅美国国家气象局（NWS）针对其覆盖的陆地和海域发布的原始通报。通报按发布时间从新到旧排列。可按州或属地查看当地通报。',
-      viewAll: '查看全美预警', viewLess: '收起预警列表',
+      viewAll: '查看全美预警', allTitle: '全美天气预警', backToMap: '美国预警地图',
       filter: '州或属地', all: '全部覆盖地区', refresh: '刷新', map: 'NWS 官方地图',
       loading: '正在查询 NWS 通报…', failed: '暂时无法获取 NWS 数据。请查看官方地图了解当前预警。',
       empty: '此次响应中没有符合条件且尚未过期的通报。', issued: '发布', expires: '通报到期', issuer: '发布机构',
@@ -51,7 +51,7 @@
     },
     es: {
       title: 'Alertas meteorológicas de EE. UU.', lead: 'Consulta los boletines originales del Servicio Meteorológico Nacional (NWS) para las zonas terrestres y marítimas cubiertas. Los mensajes se ordenan del más reciente al más antiguo. Filtra por estado o territorio para consultar tu zona.',
-      viewAll: 'Ver todas las alertas de EE. UU.', viewLess: 'Mostrar menos alertas',
+      viewAll: 'Ver todas las alertas de EE. UU.', allTitle: 'Todas las alertas meteorológicas de EE. UU.', backToMap: 'Mapa de alertas de EE. UU.',
       filter: 'Estado o territorio', all: 'Todas las zonas cubiertas', refresh: 'Actualizar', map: 'Mapa oficial del NWS',
       loading: 'Consultando el NWS…', failed: 'El servicio del NWS no está disponible. Consulta el mapa oficial para ver los avisos actuales.',
       empty: 'Esta respuesta no contiene mensajes vigentes que cumplan los criterios.', issued: 'Emisión', expires: 'Caducidad del mensaje', issuer: 'Emisor',
@@ -64,7 +64,7 @@
     },
     fr: {
       title: 'Alertes météo aux États-Unis', lead: 'Consultez les bulletins originaux du National Weather Service (NWS) pour les zones terrestres et maritimes couvertes. Les messages sont classés du plus récent au plus ancien. Filtrez par État ou territoire pour consulter les bulletins locaux.',
-      viewAll: 'Voir toutes les alertes des États-Unis', viewLess: 'Afficher moins d’alertes',
+      viewAll: 'Voir toutes les alertes des États-Unis', allTitle: 'Toutes les alertes météo aux États-Unis', backToMap: 'Carte des alertes aux États-Unis',
       filter: 'État ou territoire', all: 'Toutes les zones couvertes', refresh: 'Actualiser', map: 'Carte officielle du NWS',
       loading: 'Consultation du NWS…', failed: 'Le flux du NWS est indisponible. Consultez la carte officielle pour les alertes en cours.',
       empty: 'Cette réponse ne contient aucun message en cours de validité répondant aux critères.', issued: 'Émission', expires: 'Expiration du message', issuer: 'Émetteur',
@@ -77,7 +77,7 @@
     },
     it: {
       title: 'Allerte meteo degli Stati Uniti', lead: 'Consulta i bollettini originali del National Weather Service (NWS) per le aree terrestri e marine coperte. I messaggi sono ordinati dal più recente al meno recente. Filtra per stato o territorio per consultare i bollettini locali.',
-      viewAll: 'Vedi tutte le allerte USA', viewLess: 'Mostra meno allerte',
+      viewAll: 'Vedi tutte le allerte USA', allTitle: 'Tutte le allerte meteo degli Stati Uniti', backToMap: 'Mappa delle allerte USA',
       filter: 'Stato o territorio', all: 'Tutte le aree coperte', refresh: 'Aggiorna', map: 'Mappa ufficiale del NWS',
       loading: 'Consultazione del NWS…', failed: 'Il servizio NWS non è disponibile. Consulta la mappa ufficiale per le allerte in corso.',
       empty: 'Questa risposta non contiene messaggi validi che soddisfino i criteri.', issued: 'Emissione', expires: 'Scadenza del messaggio', issuer: 'Ente emittente',
@@ -161,15 +161,26 @@
     }
   }
 
-  function render(lang) {
+  function render(lang, listOnly = false) {
     const t = messages[lang] || messages.en;
     const options = Object.entries(areas).map(([key, name]) => '<option value="' + key + '">' + name + ' (' + key + ')</option>').join('');
-    return '<section class="live-bulletins" data-nws-bulletins><div class="container">' +
-      '<header class="bulletin-head"><h1>' + t.title + '</h1><p>' + t.lead + '</p></header>' +
+    const pageTitle = listOnly ? t.allTitle : t.title;
+    return '<section class="live-bulletins' + (listOnly ? ' bulletin-list-page' : '') + '" data-nws-bulletins><div class="container">' +
+      (listOnly ? '<a class="back-link" href="#/bulletins">← ' + t.backToMap + '</a>' : '') +
+      '<header class="bulletin-head"><h1>' + pageTitle + '</h1><p>' + t.lead + '</p></header>' +
       '<div class="bulletin-actions"><label>' + t.filter + ' <select><option value="">' + t.all + '</option>' + options + '</select></label>' +
       '<button type="button">' + t.refresh + '</button><a href="https://www.weather.gov/" target="_blank" rel="noopener noreferrer">' + t.map + ' ↗</a></div>' +
       '<p class="bulletin-status" role="status">' + t.loading + '</p>' +
-      '<div class="bulletin-dashboard"><section class="bulletin-map-card" aria-labelledby="nwsMapTitle">' +
+      (listOnly ? '' : '<div class="bulletin-dashboard">' + mapPanel(t)) +
+      '<section class="bulletin-records" aria-labelledby="nwsRecordsTitle">' +
+        '<div class="bulletin-records-heading"><h2 id="nwsRecordsTitle">' + t.bulletinsTitle + '</h2><span class="bulletin-total"></span></div>' +
+        (listOnly ? '' : '<a class="btn btn-outline bulletin-view-all" href="#/bulletins/all">' + t.viewAll + '</a>') +
+        '<div class="bulletin-list"></div></section>' + (listOnly ? '' : '</div>') +
+      '<p class="bulletin-meta bulletin-cadence">' + t.cadence + '</p></div></section>';
+  }
+
+  function mapPanel(t) {
+    return '<section class="bulletin-map-card" aria-labelledby="nwsMapTitle">' +
         '<h2 id="nwsMapTitle">' + t.mapTitle + '</h2><p>' + t.mapHelp + '</p>' +
         '<p class="bulletin-map-pan">' + t.mapPan + '</p>' +
         '<div class="bulletin-map-viewport" tabindex="0" role="region" aria-labelledby="nwsMapTitle"><div class="bulletin-map"></div></div>' +
@@ -178,11 +189,7 @@
           ['0', '1–4', '5–14', '15+'].map((n, i) => '<span data-count-band="' + i + '">' + n + '</span>').join('') +
           '<span class="bulletin-map-unknown">' + t.mapUnknown + '</span>' +
           '<a href="https://github.com/topojson/us-atlas" target="_blank" rel="noopener noreferrer">U.S. Census Bureau / US Atlas ↗</a></div>' +
-        '</section><section class="bulletin-records" aria-labelledby="nwsRecordsTitle">' +
-        '<div class="bulletin-records-heading"><h2 id="nwsRecordsTitle">' + t.bulletinsTitle + '</h2><span class="bulletin-total"></span></div>' +
-        '<button class="btn btn-outline bulletin-view-all" type="button" aria-controls="nwsBulletinList" aria-expanded="false" hidden>' +
-          t.viewAll + '</button><div class="bulletin-list" id="nwsBulletinList"></div></section></div>' +
-      '<p class="bulletin-meta bulletin-cadence">' + t.cadence + '</p></div></section>';
+        '</section>';
   }
 
   function mapHtml(data) {
@@ -256,30 +263,31 @@
     const unknown = section.querySelector('.bulletin-map-unknown');
     const listTitle = section.querySelector('#nwsRecordsTitle');
     const listTotal = section.querySelector('.bulletin-total');
-    const viewAll = section.querySelector('.bulletin-view-all');
-    const mapRequest = new AbortController();
-    fetch(mapPath, { signal: mapRequest.signal })
-      .then(response => {
-        if (!response.ok) throw Error('Map HTTP ' + response.status);
-        return response.json();
-      })
-      .then(data => {
-        if (!section.isConnected || mapRequest.signal.aborted) return;
-        map.innerHTML = mapHtml(data);
-        if (feed) updateRows();
-        else updateMap(null);
-      }).catch(() => {
-        if (!mapRequest.signal.aborted) map.textContent = t.mapFailed;
-      });
+    const mapRequest = map ? new AbortController() : null;
+    if (mapRequest) {
+      fetch(mapPath, { signal: mapRequest.signal })
+        .then(response => {
+          if (!response.ok) throw Error('Map HTTP ' + response.status);
+          return response.json();
+        })
+        .then(data => {
+          if (!section.isConnected || mapRequest.signal.aborted) return;
+          map.innerHTML = mapHtml(data);
+          if (feed) updateRows();
+          else updateMap(null);
+        }).catch(() => {
+          if (!mapRequest.signal.aborted) map.textContent = t.mapFailed;
+        });
+    }
     const status = section.querySelector('.bulletin-status'), list = section.querySelector('.bulletin-list');
     const formatter = new Intl.DateTimeFormat(lang, { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
     function clock(ms) {
       return '<time datetime="' + new Date(ms).toISOString() + '">' + esc(formatter.format(ms)) + '</time>';
     }
     let pending, expiryTimer, feed, attemptedAt, lastHtml;
-    let showingAll = false;
 
     function updateMap(valid) {
+      if (!map) return;
       const counts = stateCounts(valid || []);
       unknown.hidden = Boolean(valid);
       selection.hidden = !select.value;
@@ -300,14 +308,11 @@
       const tooOld = feed.published && now - feed.checkedAt >= maxSnapshotAge;
       const valid = tooOld ? [] : feed.allRows.filter(row => row.expires > now);
       const scoped = select.value ? valid.filter(row => row.states.includes(select.value)) : valid;
-      const visible = showingAll ? scoped : scoped.slice(0, pageSize);
+      const visible = map ? scoped.slice(0, pageSize) : scoped;
       const html = visible.map(row => rowHtml(row, t, clock)).join('') ||
         (tooOld ? '' : '<p class="bulletin-list-empty">' + t.empty + '</p>');
       listTitle.textContent = select.value ? areas[select.value] : t.bulletinsTitle;
       listTotal.textContent = tooOld ? '' : visible.length < scoped.length ? visible.length + ' / ' + scoped.length : String(scoped.length);
-      viewAll.hidden = tooOld || !(showingAll || select.value || valid.length > pageSize);
-      viewAll.setAttribute('aria-expanded', String(showingAll));
-      viewAll.textContent = showingAll ? t.viewLess : t.viewAll;
       updateMap(tooOld ? null : valid);
       if (html !== lastHtml) {
         const openIds = new Set(Array.from(list.querySelectorAll('details[open]'), item => item.dataset.id));
@@ -343,7 +348,6 @@
       lastHtml = null;
       list.replaceChildren();
       listTotal.textContent = '';
-      viewAll.hidden = true;
       updateMap(null);
     }
     async function load() {
@@ -370,16 +374,8 @@
       }
     }
     function changeArea() {
-      showingAll = false;
       if (feed) updateRows();
       else updateMap(null);
-      list.scrollTop = 0;
-    }
-    function toggleAll() {
-      if (!feed) return;
-      showingAll = !showingAll;
-      if (showingAll) select.value = '';
-      updateRows();
       list.scrollTop = 0;
     }
     function selectState(event) {
@@ -395,21 +391,19 @@
       }
     }
     select.addEventListener('change', changeArea);
-    map.addEventListener('click', selectState);
+    map?.addEventListener('click', selectState);
     button.addEventListener('click', load);
-    viewAll.addEventListener('click', toggleAll);
     document.addEventListener('visibilitychange', visibilityChanged);
     const poll = setInterval(load, pollInterval);
     dispose = function () {
       clearInterval(poll);
-      mapRequest.abort();
-      map.removeEventListener('click', selectState);
+      mapRequest?.abort();
+      map?.removeEventListener('click', selectState);
       clearTimeout(expiryTimer);
       if (pending) pending.abort();
       pending = null;
       select.removeEventListener('change', changeArea);
       button.removeEventListener('click', load);
-      viewAll.removeEventListener('click', toggleAll);
       document.removeEventListener('visibilitychange', visibilityChanged);
     };
     load();
